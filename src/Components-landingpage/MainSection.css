@@ -1,0 +1,242 @@
+/*  GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+/* MAIN CONTAINER */
+.lp-main-hero-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 40px;
+  min-height: calc(100vh - 82px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+ 
+.lp-main-hero-left {
+  flex: 1.1;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+}
+ 
+.lp-main-hero-right {
+  flex: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 
+.lp-main-hero-right img {
+  width: 100%;
+  max-width: 550px;
+  object-fit: contain;
+}
+ 
+/* TYPOGRAPHY & TEXT STYLES */
+.lp-main-hero-left h1 {
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #111827;
+  margin-bottom: 24px;
+}
+ 
+.lp-main-hero-left h1 span {
+  color: #2563eb;
+}
+ 
+.lp-main-hero-left p {
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.7;
+  color: #6b7280;
+  max-width: 510px;
+  margin-bottom: 35px;
+}
+ 
+/* BUTTONS & STATES */
+.lp-main-hero-buttons {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 35px;
+}
+ 
+.lp-main-hero-btn {
+  width: 230px;
+  height: 68px;
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+ 
+.lp-main-hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+ 
+.lp-main-hero-btn span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  order: 1;
+}
+ 
+.lp-main-hero-btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  order: 2;
+}
+ 
+.lp-main-active-btn {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+ 
+.lp-main-active-btn span {
+  color: #fff;
+}
+ 
+.lp-main-active-btn img {
+  filter: brightness(0) invert(1);
+}
+ 
+/* FEATURE CARDS */
+.lp-main-features {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+ 
+.lp-main-feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 180px;
+}
+ 
+.lp-main-feature-card img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+ 
+.lp-main-feature-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+ 
+.lp-main-feature-card p {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+ 
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 768px) {
+  .lp-main-hero-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "heading"
+      "description"
+      "right-image"
+      "buttons"
+      "features-list";
+    padding: 40px 24px;
+    gap: 20px;
+    text-align: center;
+  }
+  .lp-main-hero-left {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    width: 100%;
+    display: contents;
+  }
+  .lp-main-hero-left h1 {
+    grid-area: heading;
+    font-size: 34px;
+    margin-bottom: 0px;
+  }
+ 
+  .lp-main-hero-left p {
+    grid-area: description;
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+ 
+  .lp-main-hero-right {
+    grid-area: right-image;
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+  }
+ 
+  .lp-main-hero-right img {
+    max-width: 340px;
+  }
+ 
+  .lp-main-hero-buttons {
+    grid-area: buttons;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 12px;
+  }
+ 
+  .lp-main-hero-btn {
+    width: 100%;
+    max-width: 380px;
+    height: 64px;
+  }
+ 
+  .lp-main-features {
+    grid-area: features-list;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    max-width: 380px;
+    margin: 10px auto 0 auto;
+  }
+ 
+  .lp-main-feature-card {
+    width: 100%;
+    text-align: left;
+  }
+}
+ 
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .lp-main-hero-section {
+    padding: 30px 16px;
+  }
+ 
+  .lp-main-hero-left h1 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+ 
+  .lp-main-hero-right img {
+    max-width: 250px;
+  }
+}

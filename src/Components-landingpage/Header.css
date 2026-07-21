@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} /* HEADER */
+ 
+.lp-header {
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  padding: 0 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ececec;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+ 
+/* LOGO */
+ 
+.lp-header-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+ 
+.lp-header-logo-section img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+ 
+.lp-header-logo-section h2 {
+  color: #2563eb;
+  font-size: 24px;
+  font-weight: 700;
+}
+ 
+/* NAV LINKS */
+ 
+.lp-header-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+ 
+.lp-header-nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+ 
+.lp-header-nav-links a:hover {
+  color: #2563eb;
+}
+ 
+.lp-header-active-link {
+  color: #2563eb !important;
+  font-weight: 700;
+}
+ 
+/* BUTTONS */
+ 
+.lp-header-login-btn {
+  width: 110px;
+  height: 44px;
+  background: #fff;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  color: #2563eb;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+ 
+.lp-header-login-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+ 
+.lp-header-register-btn {
+  width: 140px;
+  height: 44px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+ 
+.lp-header-register-btn:hover {
+  background: #1746c8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(23, 70, 200, 0.35);
+}
+ 
+/* HAMBURGER */
+ 
+.lp-header-menu-icon {
+  display: none;
+  font-size: 32px;
+  cursor: pointer;
+  user-select: none;
+}
+ 
+/* LAPTOP */
+ 
+@media (max-width: 1024px) {
+  .lp-header {
+    padding: 0 35px;
+  }
+ 
+  .lp-header-nav-links {
+    gap: 18px;
+  }
+ 
+  .lp-header-logo-section h2 {
+    font-size: 22px;
+  }
+}
+ 
+/* MOBILE */
+ 
+@media (max-width: 768px) {
+  .lp-header {
+    padding: 0 20px;
+  }
+ 
+  .lp-header-menu-icon {
+    display: block;
+  }
+ 
+  .lp-header-nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+ 
+  .lp-header-nav-links.lp-header-active {
+    display: flex;
+  }
+ 
+  .lp-header-nav-links a {
+    font-size: 18px;
+  }
+ 
+  .lp-header-login-btn,
+  .lp-header-register-btn {
+    width: 85%;
+    max-width: 280px;
+  }
+}
+ 
+/* SMALL MOBILE */
+ 
+@media (max-width: 480px) {
+  .lp-header {
+    height: 70px;
+  }
+ 
+  .lp-header-logo-section img {
+    width: 40px;
+    height: 40px;
+  }
+ 
+  .lp-header-logo-section h2 {
+    font-size: 18px;
+  }
+ 
+  .lp-header-nav-links {
+    top: 70px;
+  }
+}
+ 

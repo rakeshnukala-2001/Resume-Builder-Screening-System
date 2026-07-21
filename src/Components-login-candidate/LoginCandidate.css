@@ -1,0 +1,521 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+ 
+body {
+  background: #f5f5f5;
+}
+ 
+.lc-login-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+ 
+/* ================= LEFT ================= */
+ 
+.lc-left-section {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  height: 100%;
+}
+.lc-login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lc-welcome-content {
+  position: absolute;
+  top: 80px;
+  left: 70px;
+  z-index: 2;
+}
+ 
+.lc-welcome-content h1 {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+ 
+.lc-welcome-content p {
+  font-size: clamp(16px, 1.8vw, 24px);
+  line-height: 1.5;
+}
+ 
+/* ================= RIGHT ================= */
+ 
+.lc-right-section {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  overflow: hidden;
+  padding: clamp(12px, 3vh, 40px) 20px;
+}
+ 
+.lc-login-form {
+  width: min(70%, 520px);
+  max-height: 100%;
+
+}
+ 
+.lc-login-form h2 {
+  text-align: center;
+  margin-bottom: clamp(14px, 3vh, 40px);
+  font-size: clamp(20px, 2.6vh, 30px);
+  font-weight: 700;
+}
+ 
+/* ================= INPUT ================= */
+ 
+.lc-input-group {
+  margin-bottom: clamp(12px, 3vh, 40px);
+}
+ 
+.lc-input-group label {
+  display: block;
+  margin-bottom: clamp(4px, 0.8vh, 8px);
+  font-weight: 600;
+  font-size: 14px;
+}
+ 
+.lc-input-box,
+lc.password-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+ 
+ 
+.lc-password-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+ .lc-password-box input {
+  width: 100%;
+  padding-right: 40px; /* icon space */
+}
+.lc-eye-right {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+}
+ 
+.lc-password-toggle-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  filter:brightness(0%) contrast(200%);
+}
+ 
+ 
+ .lc-eye-left, .lc-eye-right {
+   position: absolute; top: 50%;
+   transform:  translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   cursor: pointer; z-index: 2;
+   }
+  .lc-eye-left {
+      left: 14px;
+     }
+  .lc-eye-right {
+   right: 14px;
+   
+  }
+ 
+  .lc-password-toggle-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: block;
+    user-select: none;
+    opacity: 0.8;
+    filter: brightness(0.6) contrast(1.2);
+    transition: all 0.2s ease;
+         }
+  .lc-password-toggle-icon:hover {
+  opacity: 1;
+  filter: brightness(0.4) contrast(1.2);
+           }
+           
+  .lc-input-box input,
+  .lc-password-box input {
+   width: 100%;
+   height: clamp(38px, 6vh, 52px);
+   border: 1px solid #d8d8d8;
+   border-radius: 8px;
+   padding-left: 42px;              
+   padding-right: 45px;
+   font-size: 14px;
+  outline: none; }
+ 
+ 
+.lc-input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+ 
+/* ================= ERROR ================= */
+ 
+.lc-error-input {
+  border: 1px solid #ff4d4f !important;
+}
+ 
+.lc-error-text {
+  display: block;
+  width: 100%;
+  color: #ff4d4f;
+  font-size: 13px;
+  margin-top: 6px;
+  text-align: left !important;
+  padding-left: 2px;
+  font-weight: 500;
+}
+ 
+.lc-input-group{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+ 
+/* ================= OPTIONS ================= */
+ 
+.lc-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(10px, 2vh, 25px);
+  width: 100%;
+}
+ 
+.lc-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.lc-remember input[type="checkbox"] {
+  width: 18px !important;      
+  height: 18px !important;    
+  margin: 0;                    
+  cursor: pointer;
+  accent-color: #3366ff;      
+  border-radius: 4px;
+}  
+ 
+.lc-remember label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 0 !important;
+}
+ 
+.lc-options a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+.lc-.options a:hover {
+  color: #3366ff;
+}
+ 
+/* ================= BUTTON ================= */
+ 
+.lc-continue-btn {
+  width: 100%;
+  height: clamp(38px, 6vh, 52px);
+  border: none;
+  border-radius: 8px;
+  background: #3366ff;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 3px 8px rgba(51, 102, 255, 0.3);
+}
+ 
+.lc-continue-btn:hover {
+  background: #2958e6;
+}
+ 
+/* ================= DIVIDER ================= */
+ 
+.lc-divider {
+  display: flex;
+  align-items: center;
+  margin: clamp(10px, 2.4vh, 30px) 0 clamp(8px, 1.6vh, 20px);
+}
+ 
+.lc-divider span {
+  flex: 1;
+  height: 1px;
+  background: #d9d9d9;
+}
+ 
+.lc-divider p {
+  margin: 0 12px;
+  font-size: 14px;
+}
+ 
+/* ================= SOCIAL ================= */
+ 
+.lc-continue-text {
+  text-align: center;
+  margin-bottom: clamp(8px, 1.6vh, 20px);
+  font-size: 14px;
+}
+.lc-social-login {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: clamp(6px, 1.4vh, 18px);
+}
+ 
+.lc-social-login a {
+  width: clamp(36px, 5.6vh, 44px);
+  height: clamp(36px, 5.6vh, 44px);
+  background:rgb(228, 224, 224);
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+}
+ 
+.lc-social-login a:hover {
+  transform: translateY(-2px);
+}
+ 
+.lc-social-login img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+/* ================= CONTACT ================= */
+ 
+.lc-contact-admin {
+  margin-top: clamp(10px, 2vh, 30px);
+  text-align: center;
+  font-size: 15px;
+}
+ 
+.lc-contact-admin a {
+  text-decoration: none;
+  color: #3366ff;
+  font-weight: 500;
+}
+ 
+@media screen and (max-width: 992px) {
+  .lc-login-form {
+    max-width: 380px;
+  }
+}
+ 
+/* ================= BELOW 768px ================= */
+@media screen and (max-width: 767px) {
+ 
+  .lc-login-container {
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+  }
+ 
+  html, body {
+    height: 100vh;
+    overflow: hidden;
+  }
+ 
+  .lc-left-section {
+    display: none; 
+  }
+ 
+  .lc-right-section {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    padding: 24px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+ 
+  .lc-login-form {
+    width: 100%;
+    max-width: 420px;
+    max-height: none;
+  }
+ 
+  .lc-login-form h2 {
+    font-size: 26px;
+    margin-bottom: 26px;
+  }
+ 
+  .lc-input-group {
+    margin-bottom: 20px;
+  }
+ 
+  .lc-input-box input,
+  .lc-password-box input {
+    width: 100%;
+    height: 48px;
+  }
+ 
+  .lc-continue-btn {
+    width: 100%;
+    height: 48px;
+  }
+ 
+  .lc-welcome-content {
+    top: 20px;
+    left: 20px;
+  }
+}
+ 
+ 
+/* ================= MOBILE ================= */
+@media screen and (max-width: 480px) {
+ 
+  .lc-right-section {
+    padding: 18px 14px;
+  }
+ 
+  .lc-login-form {
+    width: 100%;
+    max-width: 100%;
+  }
+ 
+  .lc-login-form h2 {
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+ 
+  .lc-input-group {
+    margin-bottom: 16px;
+  }
+ 
+  .lc-input-box input,
+  .lc-password-box input,
+  .lc-continue-btn {
+    height: 44px;
+    font-size: 14px;
+  }
+ 
+  .lc-options {
+    font-size: 13px;
+  }
+ 
+  .lc-divider {
+    margin: 18px 0 14px;
+  }
+ 
+  .lc-continue-text {
+    margin-bottom: 12px;
+  }
+ 
+  .lc-contact-admin {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+ 
+  .lc-social-login {
+    gap: 12px;
+    margin-top: 10px;
+  }
+ 
+  .lc-social-login a {
+    width: 38px;
+    height: 38px;
+  }
+}
+ 
+/* Login Type */
+ 
+.lc-login-type {
+  display: flex;
+  justify-content: center;
+  gap: 20px;      
+  margin: 25px 0 35px;
+}
+ 
+/* Common Button Style */
+.lc-login-type button {
+  min-width: 110px;
+  padding: 8px 22px;
+  border: 1px solid #d8deea;
+  border-radius: 6px;
+  background: #ecf2ff;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+ 
+/* Candidate Active */
+/* Candidate Button */
+.lc-candidate-btn {
+  /* width: 220px;
+  height: 48px; */
+  background: linear-gradient(180deg, #94b3ff 0%, #4479f5 100%);
+  border: 1px solid #2f69e7;
+  border-radius: 8px;
+  color: #1f2a44;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lc-candidate-btn:hover {
+ background: #e0eaff;
+  border-color: #abc4ff;
+}
+.lc-candidate-btn.active {
+background: linear-gradient(180deg, #abc4ff 0%, #5589ff 100%);
+  border: 1px solid #779ad9;
+  color: #000;
+}
+/* Recruiter Button */
+.lc-recruiter-btn {
+  
+  background: #ECF0F9;
+  border: 1px solid #C9D2E3;
+  border-radius: 8px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: default; 
+}
+
+/* Recruiterக்கு Hover இல்லை */
+.lc-recruiter-btn:hover {
+  background: #ECF0F9;
+  color: #000;
+  border-color: #C9D2E3;
+}

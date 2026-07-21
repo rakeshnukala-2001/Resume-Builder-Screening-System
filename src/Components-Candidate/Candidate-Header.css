@@ -1,0 +1,244 @@
+/* NAVBAR COMPONENT */
+.dashboard-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  background: #ffffff;
+  border-bottom: 0.07rem solid #e2e8f0;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   HEADER LOGO (LEFT SIDE)
+=========================== */
+
+/* Navbar Left Box */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-logo-img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Logo Text Section */
+.header-logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  margin-left: 0.75rem;
+}
+
+.header-logo-text h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.header-logo-text p {
+  margin: 0;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ===========================
+   CENTER SEARCH ENGINE
+=========================== */
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 470px;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 0.07rem solid #d1d5db;
+  border-radius: 0.6rem;
+  padding: 0 1rem;
+  transition: border-color 0.25s ease;
+}
+
+.search-box:focus-within {
+  border-color: #2563eb;
+}
+
+.search-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.search-box input {
+  flex: 1;
+  margin-left: 0.75rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.search-box input::placeholder {
+  color: #94a3b8;
+}
+
+/* ===========================
+   RIGHT ACTIONS CONTROLS
+=========================== */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+.nav-icon {
+  width: 1.38rem;
+  height: 1.38rem;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.08);
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.profile-img {
+  width: 2.38rem;
+  height: 2.38rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info h3 {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.profile-info p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* ===========================
+   NAVBAR RESPONSIVE OVERRIDES
+=========================== */
+
+@media (max-width: 1200px) {
+  .dashboard-navbar {
+    padding: 0 1rem;
+  }
+  .navbar-center {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header-logo-text h2 {
+    font-size: 0.88rem;
+  }
+  .header-logo-text p {
+    font-size: 0.68rem;
+  }
+  .search-box {
+    max-width: 100%;
+  }
+}
+
+/* Mobile Layout (768px & below) */
+@media (max-width: 768px) {
+  .dashboard-navbar {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+    padding: 1rem 4%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "left right"
+      "search search";
+    row-gap: 0.85rem;
+  }
+
+  .navbar-left {
+    grid-area: left;
+    width: 100%;
+  }
+
+  .navbar-center {
+    grid-area: search;
+    width: 100%;
+    padding: 0;
+    display: block;
+  }
+
+  .navbar-right {
+    grid-area: right;
+    width: 100%;
+    gap: 0.85rem;
+  }
+
+  .profile-info {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo-text h2 {
+    font-size: 0.82rem;
+  }
+  .header-logo-text p {
+    font-size: 0.65rem;
+  }
+  .search-box {
+    height: 2.5rem;
+  }
+  .profile-img {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+}
