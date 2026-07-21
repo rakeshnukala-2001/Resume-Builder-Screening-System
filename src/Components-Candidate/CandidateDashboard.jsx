@@ -387,10 +387,6 @@ const CandidtateDashboard = () => {
 
       <main className="dashboard-main">
         {/* ===========================================
-           Navbar (Placeholder/Container as per structure)
-        =========================================== */}
-
-        {/* ===========================================
            Header
         =========================================== */}
         <section className="dashboard-header">

@@ -1332,7 +1332,6 @@ body {
 .sidebar::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
-
 .logo-section,
 .logo,
 .logo-text {
@@ -1504,7 +1503,7 @@ body {
 }
 
 /* =========================================
-   MEDIA QUERIES
+   MEDIA QUERIES (RESPONSIVE STYLES)
 ========================================= */
 @media (max-width: 1440px) {
   .sidebar {
