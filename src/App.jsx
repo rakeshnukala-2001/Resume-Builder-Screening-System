@@ -18,6 +18,7 @@ import ForgotPasswordRe from "./Components-login-recruiter/ForgotpasswordRe";
 import CreatePasswordRe from "./Components-login-recruiter/CreatepasswordRe";
 import RecruiterDashboard from "./Components-Recruiter/RecruiterDashboard";
 import CandidateDashboard from "./Components-Candidate/CandidateDashboard";
+import CandidateProfile from "./Components-CandidateProfile/CandidateProfile";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
   {
     path: "/Resume-builder/dashboard/candidate",
     element: <CandidateDashboard />,
+  },
+  {
+    path: "/Resume-builder/candidate/profile",
+    element: <CandidateProfile />,
   },
 ]);
 
