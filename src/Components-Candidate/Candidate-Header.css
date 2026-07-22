@@ -1,9 +1,12 @@
-/* NAVBAR COMPONENT */
+/* NAVBAR BASE LAYOUT (Desktop & Global) */
+
 .dashboard-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 999999 !important;
-  height: 4.5rem;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 75px !important;
+  z-index: 10000 !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,6 +15,7 @@
   border-bottom: 0.07rem solid #e2e8f0;
   box-sizing: border-box;
   overflow: visible !important;
+  transition: all 0.3s ease;
 }
 
 .navbar-top-row {
@@ -21,11 +25,22 @@
   width: 100%;
 }
 
-/* LEFT LOGO SECTION */
+/* LEFT LOGO & HAMBURGER SECTION */
 .navbar-left {
   display: flex;
   align-items: center;
+  gap: 0.8rem;
   flex-shrink: 0;
+}
+
+.mobile-hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 0.2rem;
+  outline: none;
 }
 
 .header-logo {
@@ -44,7 +59,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 0.75rem;
 }
 
 .header-logo-text h2 {
@@ -63,7 +77,7 @@
   font-weight: 500;
 }
 
-/* CENTER SEARCH SECTION (For 1024px, 1440px & above) */
+/* CENTER SEARCH SECTION (Desktop) */
 .navbar-center {
   flex: 1;
   display: flex;
@@ -115,7 +129,7 @@
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 1.15rem;
+  gap: 1.25rem;
   flex-shrink: 0;
   justify-content: flex-end;
 }
@@ -129,6 +143,10 @@
 
 .nav-icon:hover {
   transform: scale(1.08);
+}
+
+.mobile-search-trigger {
+  display: none;
 }
 
 .profile-section {
@@ -191,12 +209,9 @@
   right: 0;
   width: 175px;
   background: #ffffff;
-
-  /* Clearly Visible Dark Border & Shadow Fix */
   border: 1.5px solid #cbd5e1 !important;
   border-radius: 0.6rem;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.25) !important;
-
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -243,34 +258,68 @@
   color: #dc2626;
 }
 
-/* Search Bar Mobile Toggle Display */
-.mobile-search-section {
-  display: none;
-}
-
+.mobile-notification-item,
 .mobile-settings-item {
   display: none;
 }
 
-/* ===========================
-   RESPONSIVE DESIGN 
-=========================== */
+.mobile-search-section {
+  display: none;
+}
 
-/* Desktop Screens (1024px, 1440px and above) */
+/* RESPONSIVE BREAKPOINTS (768px & below) */
+
 @media (min-width: 769px) {
   .desktop-search-section {
     display: flex !important;
   }
 }
 
-/* Mobile Layout (768px & below) */
 @media (max-width: 768px) {
   .dashboard-navbar {
-    height: auto;
-    padding: 0.85rem 1rem;
+    height: 75px !important;
+    padding: 0 1rem;
     flex-direction: column;
-    gap: 0.85rem;
-    overflow: visible !important;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .dashboard-navbar.show-mobile-search {
+    height: 130px !important;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .mobile-hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar-left {
+    gap: 0.35rem !important;
+  }
+
+  .desktop-logo-wrapper {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .header-logo-img {
+    display: none !important;
+  }
+
+  .header-logo-text {
+    display: flex;
+    margin-left: 0.1rem;
+  }
+
+  .header-logo-text h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .header-logo-text p {
+    font-size: 0.78rem;
   }
 
   .navbar-top-row {
@@ -280,27 +329,37 @@
     align-items: center;
   }
 
+  .desktop-settings-icon,
+  .desktop-notification-icon {
+    display: none !important;
+  }
+
+  .mobile-search-trigger {
+    display: flex !important;
+  }
+
+  .mobile-notification-item,
+  .mobile-settings-item {
+    display: flex !important;
+  }
+  .navbar-right {
+    gap: 1.5rem !important;
+  }
+
   .desktop-search-section {
     display: none !important;
   }
 
-  .mobile-search-section {
+  .dashboard-navbar.show-mobile-search .mobile-search-section {
     display: flex !important;
     width: 100%;
-    padding: 0;
+    margin-top: 0.65rem;
   }
 
-  .search-box {
+  .mobile-search-section .search-box {
+    width: 100%;
     max-width: 100%;
     height: 2.5rem;
-  }
-
-  .desktop-settings-icon {
-    display: none;
-  }
-
-  .mobile-settings-item {
-    display: flex;
   }
 
   .profile-info {
@@ -315,18 +374,29 @@
 }
 
 @media (max-width: 480px) {
-  .header-logo-text h2 {
-    font-size: 0.82rem;
-  }
-  .header-logo-text p {
-    font-size: 0.64rem;
-  }
   .nav-icon {
     width: 1.25rem;
     height: 1.25rem;
   }
+
   .profile-img {
     width: 2.1rem;
     height: 2.1rem;
+  }
+
+  .header-logo-text h2 {
+    font-size: 0.95rem;
+  }
+
+  .header-logo-text p {
+    font-size: 0.72rem;
+  }
+
+  .navbar-left {
+    gap: 0.3rem !important;
+  }
+
+  .navbar-right {
+    gap: 1.25rem !important;
   }
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Candidate-Header.css";
 
 import LogoImg from "../assets/Candidate-Dashboard-images/logo.png";
@@ -8,9 +8,10 @@ import settingsImg from "../assets/Candidate-Dashboard-images/settings.png";
 import profileImg from "../assets/Candidate-Dashboard-images/profile.png";
 import arrowImg from "../assets/Candidate-Dashboard-images/dropdownarrow.png";
 
-const Header = () => {
+const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [search, setSearch] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
   // Search Validation
   const handleSearch = () => {
@@ -24,6 +25,7 @@ const Header = () => {
   // Notification
   const handleNotification = () => {
     alert("No New Notifications");
+    setIsDropdownOpen(false);
   };
 
   // Settings
@@ -35,6 +37,11 @@ const Header = () => {
   // Profile Dropdown Toggle
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
+  };
+
+  // Mobile Search Bar Toggle
+  const toggleMobileSearch = () => {
+    setIsMobileSearchOpen((prev) => !prev);
   };
 
   // Dropdown Actions
@@ -49,21 +56,45 @@ const Header = () => {
   };
 
   return (
-    <nav className="dashboard-navbar">
-      {/* Top Row / Desktop Main Bar */}
+    <nav
+      className={`dashboard-navbar ${isMobileSearchOpen ? "show-mobile-search" : ""}`}
+    >
+      {/* Top Row / Main Bar */}
       <div className="navbar-top-row">
-        {/* Left Section (Logo + Text) */}
+        {/* Left Section (Hamburger + Logo Text) */}
         <div className="navbar-left">
-          <div className="header-logo">
+          <button
+            className="mobile-hamburger-btn"
+            onClick={() => setIsSidebarOpen && setIsSidebarOpen(!isSidebarOpen)}
+            aria-label="Toggle Menu"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#0f172a"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          {/* Logo Section */}
+          <div className="header-logo desktop-logo-wrapper">
             <img src={LogoImg} alt="Logo" className="header-logo-img" />
           </div>
-          <div className="header-logo-text">
+          <div className="header-logo-text desktop-logo-wrapper">
             <h2>AI Resume Builder</h2>
             <p>& Screening System</p>
           </div>
         </div>
 
-        {/* Center Section (Desktop Middle Search Bar) */}
+        {/* Center Section (Desktop Search Bar) */}
         <div className="navbar-center desktop-search-section">
           <div className="search-box">
             <img
@@ -86,12 +117,21 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Right Section (Icons + Profile + Arrow) */}
+        {/* Right Section */}
         <div className="navbar-right">
+          {/* Search Icon */}
+          <img
+            src={searchImg}
+            alt="Search Toggle"
+            className="nav-icon mobile-search-trigger"
+            onClick={toggleMobileSearch}
+          />
+
+          {/* Desktop Notification Icon (Hidden on Mobile) */}
           <img
             src={notificationImg}
             alt="Notification"
-            className="nav-icon"
+            className="nav-icon desktop-notification-icon"
             onClick={handleNotification}
           />
 
@@ -103,7 +143,7 @@ const Header = () => {
             onClick={handleSettings}
           />
 
-          {/* Profile + Arrow Section with Dropdown */}
+          {/* Profile Section + Dropdown */}
           <div className="profile-dropdown-wrapper">
             <div className="profile-section" onClick={toggleDropdown}>
               <img src={profileImg} alt="Profile" className="profile-img" />
@@ -121,7 +161,20 @@ const Header = () => {
             {/* Dropdown Menu */}
             {isDropdownOpen && (
               <div className="profile-dropdown-menu">
-                {/* Mobile-only Settings Option */}
+                {/* Mobile Notification Option */}
+                <button
+                  className="dropdown-item mobile-notification-item"
+                  onClick={handleNotification}
+                >
+                  <img
+                    src={notificationImg}
+                    alt="Notification"
+                    className="dropdown-item-icon"
+                  />
+                  Notifications
+                </button>
+
+                {/* Mobile Settings Option */}
                 <button
                   className="dropdown-item mobile-settings-item"
                   onClick={handleSettings}
@@ -171,7 +224,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Search Bar Section (For 768px and below mobile display) */}
+      {/* Expandable Mobile Second Line Search Bar */}
       <div className="navbar-center mobile-search-section">
         <div className="search-box">
           <img

@@ -17,7 +17,7 @@ import OtpRecruiter from "./Components-login-recruiter/OtpRecruiter";
 import ForgotPasswordRe from "./Components-login-recruiter/ForgotpasswordRe";
 import CreatePasswordRe from "./Components-login-recruiter/CreatepasswordRe";
 import RecruiterDashboard from "./Components-Recruiter/RecruiterDashboard";
-import CandidateDashboard from "./Components-Candidate/Candidate";
+import CandidateDashboard from "./Components-Candidate/CandidateDashboard";
 
 const router = createBrowserRouter([
   {
