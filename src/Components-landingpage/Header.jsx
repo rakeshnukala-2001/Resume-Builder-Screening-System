@@ -1,17 +1,26 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Components-landingpage/Header.css";
 import logo from "../assets/landingpage/logo.png";
- 
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
- 
+  const location = useLocation();
+
+  const isHomeActive =
+    location.pathname === "/Resume-builder/home" ||
+    location.pathname === "/Resume-builder" ||
+    location.pathname === "/" ||
+    location.pathname.endsWith("/home");
+
+  const isAboutActive = location.pathname.includes("about");
+
   const handleNavigation = (path) => {
     setMenuOpen(false);
     navigate(path);
   };
- 
+
   return (
     <header className="lp-header">
       {/* Logo */}
@@ -19,37 +28,42 @@ const Header = () => {
         <img src={logo} alt="logo" />
         <h2>AI RB & SS</h2>
       </div>
- 
+
       {/* Hamburger */}
-      <div className="lp-header-menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+      <div
+        className="lp-header-menu-icon"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
         ≡
       </div>
- 
+
       {/* Nav Links */}
-      <div className={`lp-header-nav-links ${menuOpen ? "lp-header-active" : ""}`}>
-        <NavLink
-          to="/"
-          className={({ isActive }) => (isActive ? "lp-header-active-link" : "")}
+      <div
+        className={`lp-header-nav-links ${menuOpen ? "lp-header-active" : ""}`}
+      >
+        <Link
+          to="/Resume-builder/home"
+          className={isHomeActive ? "lp-header-active-link" : ""}
           onClick={() => setMenuOpen(false)}
         >
           Home
-        </NavLink>
- 
-        <NavLink
+        </Link>
+
+        <Link
           to="/about"
-          className={({ isActive }) => (isActive ? "lp-header-active-link" : "")}
+          className={isAboutActive ? "lp-header-active-link" : ""}
           onClick={() => setMenuOpen(false)}
         >
           About Us
-        </NavLink>
- 
+        </Link>
+
         <button
           className="lp-header-login-btn"
           onClick={() => handleNavigation("/Resume-builder/login/candidate")}
         >
           Login
         </button>
- 
+
         <button
           className="lp-header-register-btn"
           onClick={() => handleNavigation("/Resume-builder/userregcandidate")}
@@ -60,5 +74,5 @@ const Header = () => {
     </header>
   );
 };
- 
+
 export default Header;

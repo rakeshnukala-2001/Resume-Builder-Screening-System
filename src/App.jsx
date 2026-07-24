@@ -22,7 +22,7 @@ import CandidateProfile from "./Components-CandidateProfile/CandidateProfile";
 
 const router = createBrowserRouter([
   {
-    path: "/Resume-builder/",
+    path: "/Resume-builder/home",
     element: <LandingPage />,
   },
   {
