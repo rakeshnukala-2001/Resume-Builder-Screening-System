@@ -1,0 +1,555 @@
+/* ====================================
+      Base & Global Styles                                 
+   ==================================== */
+.resume-page-wrapper {
+  background-color: #f8fafc;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  padding: 32px 48px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Header Section */
+.resume-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-left-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resume-top-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Mobile-only elements hidden on desktop */
+.mobile-hamburger-btn,
+.mobile-only-dropdown-wrapper,
+.mobile-nav-drawer {
+  display: none;
+}
+
+.header-action-btns {
+  display: flex;
+  gap: 12px;
+}
+
+.save-btn {
+  background: #ffffff;
+  color: #2563eb;
+  border: 1px solid #cbd5e1;
+  padding: 8px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.download-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.download-btn-icon {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
+}
+
+/* Top Stepper Card Box */
+.steps-card-box {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 18px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.resume-steps-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.step-item {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.step-item.active {
+  color: #2563eb;
+}
+
+/* Two-column Layout Grid */
+.resume-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Card Containers */
+.resume-card-box {
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 24px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Form Section Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.form-group input {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: #111827;
+  outline: none;
+}
+
+.form-row-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* AI Summary Section */
+.ai-summary-section {
+  margin-top: 18px;
+}
+
+.ai-summary-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ai-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.ai-summary-title h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.summary-sublabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.ai-summary-section textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 12.5px;
+  color: #6b7280;
+  line-height: 1.5;
+  resize: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+/* Right Side Resume Live Preview Styles */
+.preview-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.profile-img-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #d1d5db;
+}
+
+.preview-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1d4ed8;
+  margin: 0 0 4px 0;
+}
+
+.preview-title {
+  font-size: 13.5px;
+  color: #4b5563;
+  margin: 0 0 12px 0;
+}
+
+.preview-contacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.preview-contacts span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #6b7280;
+}
+
+.preview-contacts img {
+  width: 13px;
+  height: 13px;
+}
+
+/* Contact divider line */
+.preview-thick-hr {
+  border-top: 2px solid #cbd5e1;
+  margin: 20px 0 16px 0;
+  width: 100%;
+}
+
+/* Section Underlines */
+.preview-section {
+  margin-bottom: 16px;
+}
+
+.section-title-underlined {
+  font-size: 12px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 6px;
+  width: 100%;
+}
+
+.preview-summary-text {
+  font-size: 11.5px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.item-date {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.bullet-list {
+  margin: 0 0 0 16px;
+  padding: 0;
+  font-size: 11.5px;
+  color: #6b7280;
+  line-height: 1.55;
+}
+
+.university-name {
+  font-size: 11.5px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Skill Badges */
+.skills-badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-chip {
+  background: #eff6ff;
+  color: #3b82f6;
+  font-size: 11.5px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #dbeafe;
+  font-weight: 500;
+}
+
+/* Centered Bottom Next Button */
+.bottom-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  width: 100%;
+}
+
+.center-next-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 48px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.center-next-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ==================================================== 
+       Tablet Responsive Rules (426px to 900px)            
+ ==================================================== */
+@media screen and (min-width: 426px) and (max-width: 900px) {
+  .resume-page-wrapper {
+    padding: 16px;
+  }
+
+  .resume-grid-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px;
+  }
+
+  .resume-grid-layout .preview-card {
+    order: 1 !important;
+  }
+
+  .resume-grid-layout .form-card {
+    order: 2 !important;
+  }
+
+  .form-row-two {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    gap: 20px;
+  }
+
+  .preview-contacts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ==================================================== 
+    Mobile Specific Rules (320px, 375px, 425px)          
+   ==================================================== */
+@media screen and (max-width: 430px) {
+  .resume-page-wrapper {
+    padding: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Hide Desktop Elements strictly */
+  .desktop-only-steps,
+  .desktop-only-actions {
+    display: none !important;
+  }
+
+  /* Header Alignment  */
+  .resume-top-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
+    gap: 8px !important;
+  }
+
+  .header-left-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-shrink: 1 !important;
+  }
+
+  .resume-top-header h2 {
+    font-size: 18px !important;
+    white-space: nowrap !important;
+  }
+
+  /* LHS Top Hamburger Icon */
+  .mobile-hamburger-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    font-size: 18px !important;
+    color: #1e293b !important;
+    cursor: pointer !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* RHS Top Dropdown Button */
+  .mobile-only-dropdown-wrapper {
+    display: block !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+  }
+
+  .action-dropdown-btn {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #cbd5e1 !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 6px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .action-dropdown-menu {
+    position: absolute !important;
+    right: 0 !important;
+    top: 42px !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 1000 !important;
+    min-width: 110px !important;
+    overflow: hidden !important;
+  }
+
+  .action-dropdown-menu button {
+    background: #ffffff !important;
+    border: none !important;
+    padding: 10px 14px !important;
+    text-align: left !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    cursor: pointer !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+  }
+
+  .action-dropdown-menu button:last-child {
+    border-bottom: none !important;
+  }
+
+  /* Mobile Drawer Navigation List */
+  .mobile-nav-drawer {
+    display: flex !important;
+    flex-direction: column !important;
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 8px !important;
+    margin-bottom: 16px !important;
+    padding: 8px 0 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .drawer-item {
+    padding: 10px 16px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #6b7280 !important;
+    cursor: pointer !important;
+  }
+
+  .drawer-item.active {
+    color: #2563eb !important;
+    background: #eff6ff !important;
+  }
+
+  /* Grid Fix */
+  .resume-grid-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .resume-grid-layout .resume-card-box {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
+  }
+  .resume-grid-layout .preview-card {
+    order: 1 !important;
+  }
+
+  .resume-grid-layout .form-card {
+    order: 2 !important;
+  }
+
+  .form-row-two {
+    grid-template-columns: 1fr !important;
+  }
+
+  .preview-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .preview-contacts {
+    grid-template-columns: 1fr !important;
+  }
+
+  .preview-contacts span {
+    justify-content: center !important;
+  }
+}
