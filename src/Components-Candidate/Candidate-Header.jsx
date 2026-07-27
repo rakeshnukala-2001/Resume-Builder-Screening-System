@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./Candidate-Header.css";
 
-import LogoImg from "../assets/Candidate-Dashboard-images/logo.png";
-import searchImg from "../assets/Candidate-Dashboard-images/search.png";
-import notificationImg from "../assets/Candidate-Dashboard-images/notification.png";
-import settingsImg from "../assets/Candidate-Dashboard-images/settings.png";
-import profileImg from "../assets/Candidate-Dashboard-images/profile.png";
-import arrowImg from "../assets/Candidate-Dashboard-images/dropdownarrow.png";
+import LogoImg from "../assets/Candidate/Dashboard-images/logo.png";
+import searchImg from "../assets/Candidate/Dashboard-images/search.png";
+import notificationImg from "../assets/Candidate/Dashboard-images/notification.png";
+import settingsImg from "../assets/Candidate/Dashboard-images/settings.png";
+import profileImg from "../assets/Candidate/Dashboard-images/profile.png";
+import arrowImg from "../assets/Candidate/Dashboard-images/dropdownarrow.png";
 
 const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [search, setSearch] = useState("");
@@ -148,7 +148,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <div className="profile-section" onClick={toggleDropdown}>
               <img src={profileImg} alt="Profile" className="profile-img" />
               <div className="profile-info">
-                <h3>Rakesh</h3>
+                <h3>Akash</h3>
                 <p>Candidate</p>
               </div>
               <img

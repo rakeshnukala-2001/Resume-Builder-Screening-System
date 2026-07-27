@@ -18,7 +18,8 @@ import ForgotPasswordRe from "./Components-login-recruiter/ForgotpasswordRe";
 import CreatePasswordRe from "./Components-login-recruiter/CreatepasswordRe";
 import RecruiterDashboard from "./Components-Recruiter/RecruiterDashboard";
 import CandidateDashboard from "./Components-Candidate/CandidateDashboard";
-import CandidateProfile from "./Components-CandidateProfile/CandidateProfile";
+import CandidateProfile from "./Components-Candidate/CandidateProfile";
+import CreateResume from "./Components-AI Report/CreateResume";
 
 const router = createBrowserRouter([
   {
@@ -82,12 +83,16 @@ const router = createBrowserRouter([
     element: <RecruiterDashboard />,
   },
   {
-    path: "/Resume-builder/dashboard/candidate",
+    path: "/Resume-builder/candidate/dashboard",
     element: <CandidateDashboard />,
   },
   {
     path: "/Resume-builder/candidate/profile",
     element: <CandidateProfile />,
+  },
+  {
+    path: "/Resume-builder/ai-report",
+    element: <CreateResume />,
   },
 ]);
 

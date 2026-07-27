@@ -7,6 +7,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
    Image Imports (Strictly Profile-images path)
 =========================================== */
 import profileImg from "../assets/Candidate/Profile-images/profile.png";
+import verifiedIcon from "../assets/Candidate/Profile-images/verified.png";
 import locationIcon from "../assets/Candidate/Profile-images/location.png";
 import phoneIcon from "../assets/Candidate/Profile-images/phone.png";
 import emailIcon from "../assets/Candidate/Profile-images/email.png";
@@ -185,77 +186,92 @@ const CandidateProfile = () => {
 
         {/* Main Content Area */}
         <main className="dashboard-main profile-main-content">
-          {/* Top Section: Unified Large Profile Card matching second image layout */}
+          {/* Top Section: Unified Large Profile Card */}
           <div className="profile-top-layout-grid">
             <div className="profile-user-strength-unified-card">
               <div className="profile-top-split-row">
                 {/* Left side details */}
-                <div className="user-profile-inner-row">
-                  <div className="avatar-wrapper" onClick={handleCameraClick}>
-                    <img
-                      src={profileData.avatar}
-                      alt="Akash"
-                      className="profile-avatar-img"
-                    />
-                    <span
-                      className="camera-icon-badge"
-                      title="Change Profile Picture"
-                    >
-                      📷
-                    </span>
-                  </div>
-                  <div className="profile-meta">
-                    <div className="name-row">
-                      <h2>{profileData.name}</h2>
-                      <span className="verified-badge">✔</span>
+                <div className="user-profile-inner-col-group">
+                  <div className="user-profile-inner-row">
+                    <div className="avatar-wrapper" onClick={handleCameraClick}>
+                      <img
+                        src={profileData.avatar}
+                        alt="Akash"
+                        className="profile-avatar-img"
+                      />
+                      <span
+                        className="camera-icon-badge clickable-action"
+                        title="Change Profile Picture"
+                        onClick={handleCameraClick}
+                      >
+                        📷
+                      </span>
                     </div>
-                    <p className="role-text">{profileData.role}</p>
-                    <div className="contact-details">
-                      <p>
+                    <div className="profile-meta">
+                      <div className="name-row">
+                        <h2>{profileData.name}</h2>
                         <img
-                          src={locationIcon}
-                          alt="Location"
-                          className="contact-icon"
+                          src={verifiedIcon}
+                          alt="Verified"
+                          className="verified-badge-img"
                         />
-                        {profileData.location}
-                      </p>
-                      <p>
-                        <img
-                          src={phoneIcon}
-                          alt="Phone"
-                          className="contact-icon"
-                        />
-                        {profileData.phone}
-                      </p>
-                      <p>
-                        <img
-                          src={emailIcon}
-                          alt="Email"
-                          className="contact-icon"
-                        />
-                        {profileData.email}
-                      </p>
-                      <p>
-                        <img
-                          src={linkedinIcon}
-                          alt="LinkedIn"
-                          className="contact-icon"
-                        />
-                        {profileData.linkedin}
-                      </p>
+                      </div>
+                      <p className="role-text">{profileData.role}</p>
+                      <div className="contact-details">
+                        <p>
+                          <img
+                            src={locationIcon}
+                            alt="Location"
+                            className="contact-icon"
+                          />
+                          {profileData.location}
+                        </p>
+                        <p>
+                          <img
+                            src={phoneIcon}
+                            alt="Phone"
+                            className="contact-icon"
+                          />
+                          {profileData.phone}
+                        </p>
+                        <p>
+                          <img
+                            src={emailIcon}
+                            alt="Email"
+                            className="contact-icon"
+                          />
+                          {profileData.email}
+                        </p>
+                        <p>
+                          <img
+                            src={linkedinIcon}
+                            alt="LinkedIn"
+                            className="contact-icon"
+                          />
+                          {profileData.linkedin}
+                        </p>
+                      </div>
                     </div>
                   </div>
+
+                  {/* Edit Profile Button */}
+                  <button
+                    className="edit-profile-action-btn clickable-action"
+                    onClick={handleEditToggle}
+                  >
+                    {isEditing ? "Save Profile" : "Edit Profile"}
+                  </button>
                 </div>
 
                 {/* Right side Profile Strength Chart */}
                 <div className="profile-strength-inner-box">
                   <div className="strength-chart-box">
-                    <ResponsiveContainer width="100%" height={110}>
+                    <ResponsiveContainer width="100%" height={120}>
                       <PieChart>
                         <Pie
                           data={profileStrengthData}
                           cx="50%"
-                          cy="100%"
+                          cy="90%"
                           startAngle={180}
                           endAngle={0}
                           innerRadius={45}
@@ -285,14 +301,6 @@ const CandidateProfile = () => {
                   </p>
                 </div>
               </div>
-
-              {/* Edit Profile Button aligned below left side */}
-              <button
-                className="edit-profile-action-btn"
-                onClick={handleEditToggle}
-              >
-                {isEditing ? "Save Profile" : "Edit Profile"}
-              </button>
             </div>
 
             {/* Right: Professional Highlights */}
@@ -358,7 +366,8 @@ const CandidateProfile = () => {
                 <img
                   src={editIcon}
                   alt="Edit"
-                  className="card-edit-icon dark-edit"
+                  className="card-edit-icon dark-edit clickable-action"
+                  onClick={handleEditToggle}
                 />
               </div>
               <p>{profileData.bio}</p>
@@ -460,13 +469,12 @@ const CandidateProfile = () => {
             </div>
           </div>
 
-          {/* Bottom Row: Experience & Education with Two Points */}
+          {/* Bottom Row: Experience & Education */}
           <div className="profile-bottom-grid">
-            {/* Experience Section */}
             <div className="experience-timeline-card">
               <div className="section-header-with-add">
                 <h3>Experience</h3>
-                <button className="add-item-btn">+ Add</button>
+                <button className="add-item-btn clickable-action">+ Add</button>
               </div>
 
               <div className="timeline-item">
@@ -479,12 +487,14 @@ const CandidateProfile = () => {
                       <img
                         src={editIcon}
                         alt="Edit"
-                        className="action-icon-btn edit-color-icon"
+                        className="action-icon-btn edit-color-icon clickable-action"
+                        onClick={handleEditToggle}
                       />
                       <img
                         src={deleteIcon}
                         alt="Delete"
-                        className="action-icon-btn delete-color-icon"
+                        className="action-icon-btn delete-color-icon clickable-action"
+                        onClick={() => alert("Delete experience clicked")}
                       />
                     </div>
                   </div>
@@ -503,12 +513,14 @@ const CandidateProfile = () => {
                       <img
                         src={editIcon}
                         alt="Edit"
-                        className="action-icon-btn edit-color-icon"
+                        className="action-icon-btn edit-color-icon clickable-action"
+                        onClick={handleEditToggle}
                       />
                       <img
                         src={deleteIcon}
                         alt="Delete"
-                        className="action-icon-btn delete-color-icon"
+                        className="action-icon-btn delete-color-icon clickable-action"
+                        onClick={() => alert("Delete experience clicked")}
                       />
                     </div>
                   </div>
@@ -518,11 +530,10 @@ const CandidateProfile = () => {
               </div>
             </div>
 
-            {/* Education Section */}
             <div className="education-timeline-card">
               <div className="section-header-with-add">
                 <h3>Education</h3>
-                <button className="add-item-btn">+ Add</button>
+                <button className="add-item-btn clickable-action">+ Add</button>
               </div>
 
               <div className="timeline-item">
@@ -537,12 +548,14 @@ const CandidateProfile = () => {
                       <img
                         src={editIcon}
                         alt="Edit"
-                        className="action-icon-btn edit-color-icon"
+                        className="action-icon-btn edit-color-icon clickable-action"
+                        onClick={handleEditToggle}
                       />
                       <img
                         src={deleteIcon}
                         alt="Delete"
-                        className="action-icon-btn delete-color-icon"
+                        className="action-icon-btn delete-color-icon clickable-action"
+                        onClick={() => alert("Delete education clicked")}
                       />
                     </div>
                   </div>
@@ -563,16 +576,19 @@ const CandidateProfile = () => {
                       <img
                         src={editIcon}
                         alt="Edit"
-                        className="action-icon-btn edit-color-icon"
+                        className="action-icon-btn edit-color-icon clickable-action"
+                        onClick={handleEditToggle}
                       />
                       <img
                         src={deleteIcon}
                         alt="Delete"
-                        className="action-icon-btn delete-color-icon"
+                        className="action-icon-btn delete-color-icon clickable-action"
+                        onClick={() => alert("Delete education clicked")}
                       />
                     </div>
                   </div>
                   <p className="company-name">Dav matriculation School</p>
+                  <p className="t-date">State Board</p>
                 </div>
               </div>
             </div>
