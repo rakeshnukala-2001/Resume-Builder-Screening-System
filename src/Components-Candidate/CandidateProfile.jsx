@@ -1,10 +1,9 @@
 import React, { useState, useRef } from "react";
-import Header from "./Candidate-Header";
 import "./CandidateProfile.css";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 /* ===========================================
-   Image Imports (Strictly Profile-images path)
+   Image Imports
 =========================================== */
 import profileImg from "../assets/Candidate/Profile-images/profile.png";
 import verifiedIcon from "../assets/Candidate/Profile-images/verified.png";
@@ -29,18 +28,6 @@ import highlightsSkillIcon from "../assets/Candidate/Profile-images/highlight-sk
 import highlightsEduIcon from "../assets/Candidate/Profile-images/highlight-edu.png";
 import highlightsLangIcon from "../assets/Candidate/Profile-images/highlight-lang.png";
 
-// Sidebar Shared Icons
-import dashboardIcon from "../assets/Candidate/Dashboard-images/dashboard.png";
-import profileIconSidebar from "../assets/Candidate/Dashboard-images/profileIcon.png";
-import aiReportIcon from "../assets/Candidate/Dashboard-images/ai-report.png";
-import skillIconSidebar from "../assets/Candidate/Dashboard-images/skill.png";
-import jobsIcon from "../assets/Candidate/Dashboard-images/jobs.png";
-import savedIcon from "../assets/Candidate/Dashboard-images/saved.png";
-import messageIcon from "../assets/Candidate/Dashboard-images/message.png";
-import learningIcon from "../assets/Candidate/Dashboard-images/learning.png";
-import crownIcon from "../assets/Candidate/Dashboard-images/crown.png";
-import arrowIcon from "../assets/Candidate/Dashboard-images/arrow.png";
-
 /* ===========================================
    Profile Strength Chart Data (Recharts)
 =========================================== */
@@ -51,11 +38,9 @@ const profileStrengthData = [
 const STRENGTH_COLORS = ["#10b981", "#e2e8f0"];
 
 const CandidateProfile = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [activeTab, setActiveTab] = useState("Profile");
   const fileInputRef = useRef(null);
 
+  // Main Profile State
   const [profileData, setProfileData] = useState({
     name: "Akash",
     role: "Full Stack Developer",
@@ -68,13 +53,72 @@ const CandidateProfile = () => {
     avatar: profileImg,
   });
 
-  const handleEditToggle = () => {
-    if (isEditing) {
-      alert("Profile Saved Successfully!");
-    }
-    setIsEditing(!isEditing);
-  };
+  // Dynamic Dynamic Dynamic Lists
+  const [experienceList, setExperienceList] = useState([
+    {
+      id: 1,
+      role: "Full Stack Developer",
+      company: "Sutherland Global Services",
+      date: "June 2025 - Present.",
+      location: "Chennai, India",
+    },
+    {
+      id: 2,
+      role: "Front End Developer Intern",
+      company: "TechNova Solutions",
+      date: "February 2025 - June 2025.",
+      location: "Chennai, India",
+    },
+  ]);
 
+  const [educationList, setEducationList] = useState([
+    {
+      id: 1,
+      degree: "Bachelor Of Engineering (CSE)",
+      institution: "Sethu Institute Of Technology",
+      year: "2016-2020",
+      percentage: "92%",
+      cgpa: "CGPA: 8.5/10",
+    },
+    {
+      id: 2,
+      degree: "Higher Secondary (12th)",
+      institution: "Dav matriculation School",
+      year: "2015-2016",
+      percentage: "90%",
+      cgpa: "State Board",
+    },
+  ]);
+
+  // Modal / Form States
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showAboutModal, setShowAboutModal] = useState(false);
+  const [showExpModal, setShowExpModal] = useState(false);
+  const [showEduModal, setShowEduModal] = useState(false);
+
+  // Edit Trackers
+  const [editExpId, setEditExpId] = useState(null);
+  const [editEduId, setEditEduId] = useState(null);
+
+  // Form Input Bindings
+  const [tempProfile, setTempProfile] = useState({ ...profileData });
+  const [expForm, setExpForm] = useState({
+    role: "",
+    company: "",
+    date: "",
+    location: "",
+  });
+  const [eduForm, setEduForm] = useState({
+    degree: "",
+    institution: "",
+    year: "",
+    percentage: "",
+    cgpa: "",
+  });
+
+  /* ===========================================
+     Handy Validation & Handler Functions
+  =========================================== */
   const handleCameraClick = () => {
     fileInputRef.current.click();
   };
@@ -87,20 +131,136 @@ const CandidateProfile = () => {
     }
   };
 
-  const menuItems = [
-    { name: "Dashboard", icon: dashboardIcon },
-    { name: "Profile", icon: profileIconSidebar },
-    { name: "AI Report", icon: aiReportIcon },
-    { name: "Skill Matching", icon: skillIconSidebar },
-    { name: "Job Matches", icon: jobsIcon },
-    { name: "Saved Jobs", icon: savedIcon },
-    { name: "Message", icon: messageIcon, badge: "2" },
-    { name: "Learning Center", icon: learningIcon },
-  ];
+  // 1. Profile Save Validation
+  const handleSaveProfile = (e) => {
+    e.preventDefault();
+    if (
+      !tempProfile.name.trim() ||
+      !tempProfile.role.trim() ||
+      !tempProfile.email.trim()
+    ) {
+      alert("Name, Role, and Email are mandatory!");
+      return;
+    }
+    setProfileData(tempProfile);
+    setShowProfileModal(false);
+    alert("Profile info updated successfully!");
+  };
+
+  // 2. About Me Save Validation
+  const handleSaveAbout = (e) => {
+    e.preventDefault();
+    if (!tempProfile.bio.trim()) {
+      alert("Bio cannot be empty!");
+      return;
+    }
+    setProfileData((prev) => ({
+      ...prev,
+      bio: tempProfile.bio,
+      languages: Array.isArray(tempProfile.languages)
+        ? tempProfile.languages
+        : tempProfile.languages.split(",").map((l) => l.trim()),
+    }));
+    setShowAboutModal(false);
+    alert("About Me updated!");
+  };
+
+  // 3. Experience CRUD
+  const handleOpenExpModal = (exp = null) => {
+    if (exp) {
+      setEditExpId(exp.id);
+      setExpForm({
+        role: exp.role,
+        company: exp.company,
+        date: exp.date,
+        location: exp.location,
+      });
+    } else {
+      setEditExpId(null);
+      setExpForm({ role: "", company: "", date: "", location: "" });
+    }
+    setShowExpModal(true);
+  };
+
+  const handleSaveExp = (e) => {
+    e.preventDefault();
+    if (!expForm.role.trim() || !expForm.company.trim()) {
+      alert("Role and Company are required!");
+      return;
+    }
+
+    if (editExpId) {
+      setExperienceList((prev) =>
+        prev.map((item) =>
+          item.id === editExpId ? { ...item, ...expForm } : item,
+        ),
+      );
+    } else {
+      setExperienceList((prev) => [...prev, { id: Date.now(), ...expForm }]);
+    }
+    setShowExpModal(false);
+  };
+
+  const handleDeleteExp = (id) => {
+    if (window.confirm("Are you sure you want to delete this experience?")) {
+      setExperienceList((prev) => prev.filter((item) => item.id !== id));
+    }
+  };
+
+  // 4. Education CRUD
+  const handleOpenEduModal = (edu = null) => {
+    if (edu) {
+      setEditEduId(edu.id);
+      setEduForm({
+        degree: edu.degree,
+        institution: edu.institution,
+        year: edu.year,
+        percentage: edu.percentage,
+        cgpa: edu.cgpa,
+      });
+    } else {
+      setEditEduId(null);
+      setEduForm({
+        degree: "",
+        institution: "",
+        year: "",
+        percentage: "",
+        cgpa: "",
+      });
+    }
+    setShowEduModal(true);
+  };
+
+  const handleSaveEdu = (e) => {
+    e.preventDefault();
+    if (!eduForm.degree.trim() || !eduForm.institution.trim()) {
+      alert("Degree and Institution are required!");
+      return;
+    }
+
+    if (editEduId) {
+      setEducationList((prev) =>
+        prev.map((item) =>
+          item.id === editEduId ? { ...item, ...eduForm } : item,
+        ),
+      );
+    } else {
+      setEducationList((prev) => [...prev, { id: Date.now(), ...eduForm }]);
+    }
+    setShowEduModal(false);
+  };
+
+  const handleDeleteEdu = (id) => {
+    if (
+      window.confirm("Are you sure you want to delete this education entry?")
+    ) {
+      setEducationList((prev) => prev.filter((item) => item.id !== id));
+    }
+  };
 
   return (
     <div className="dashboard-page-wrapper">
-      {/* Hidden file input for camera upload */}
+      {/* Hidden File Input */}
       <input
         type="file"
         ref={fileInputRef}
@@ -109,88 +269,12 @@ const CandidateProfile = () => {
         onChange={handleImageChange}
       />
 
-      {/* Header with Props */}
-      <Header
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
-
-      <div className="dashboard-layout">
-        {/* Mobile Sidebar Overlay */}
-        {isSidebarOpen && (
-          <div
-            className="sidebar-mobile-overlay"
-            onClick={() => setIsSidebarOpen(false)}
-          />
-        )}
-
-        {/* Sidebar */}
-        <aside className={`sidebar ${isSidebarOpen ? "mobile-open" : ""}`}>
-          <div className="sidebar-menu-wrapper">
-            <ul className="menu">
-              {menuItems.map((item) => (
-                <li
-                  key={item.name}
-                  className={`${activeTab === item.name ? "active" : ""} ${
-                    item.name === "Message" ? "message" : ""
-                  }`}
-                  onClick={() => {
-                    setActiveTab(item.name);
-                    setIsSidebarOpen(false);
-                  }}
-                >
-                  <div className="left">
-                    <img
-                      src={item.icon}
-                      alt={item.name}
-                      className="sidebar-menu-icon"
-                    />
-                    <span>{item.name}</span>
-                  </div>
-                  {item.badge && <span className="badge">{item.badge}</span>}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="upgrade-card">
-            <div className="upgrade-title">
-              <img src={crownIcon} alt="Crown" />
-              <span>Upgrade to Pro</span>
-            </div>
-            <p>Unlock Premium tools and grow your career faster</p>
-            <ul className="features">
-              <li>
-                <img src={tickIcon} alt="Tick" className="feature-check-img" />
-                <span>Advanced AI Insights</span>
-              </li>
-              <li>
-                <img src={tickIcon} alt="Tick" className="feature-check-img" />
-                <span>Unlimited Resumes</span>
-              </li>
-              <li>
-                <img src={tickIcon} alt="Tick" className="feature-check-img" />
-                <span>Priority Support</span>
-              </li>
-              <li>
-                <img src={tickIcon} alt="Tick" className="feature-check-img" />
-                <span>Job Match Boost</span>
-              </li>
-            </ul>
-            <button className="upgrade-btn">
-              Upgrade Now
-              <img src={arrowIcon} alt="Arrow" />
-            </button>
-          </div>
-        </aside>
-
-        {/* Main Content Area */}
+      <div className="dashboard-layout full-width-layout">
         <main className="dashboard-main profile-main-content">
-          {/* Top Section: Unified Large Profile Card */}
+          {/* Top Section: Profile Card & Professional Highlights */}
           <div className="profile-top-layout-grid">
             <div className="profile-user-strength-unified-card">
               <div className="profile-top-split-row">
-                {/* Left side details */}
                 <div className="user-profile-inner-col-group">
                   <div className="user-profile-inner-row">
                     <div className="avatar-wrapper" onClick={handleCameraClick}>
@@ -202,7 +286,6 @@ const CandidateProfile = () => {
                       <span
                         className="camera-icon-badge clickable-action"
                         title="Change Profile Picture"
-                        onClick={handleCameraClick}
                       >
                         📷
                       </span>
@@ -221,7 +304,7 @@ const CandidateProfile = () => {
                         <p>
                           <img
                             src={locationIcon}
-                            alt="Location"
+                            alt="Loc"
                             className="contact-icon"
                           />
                           {profileData.location}
@@ -254,16 +337,18 @@ const CandidateProfile = () => {
                     </div>
                   </div>
 
-                  {/* Edit Profile Button */}
                   <button
                     className="edit-profile-action-btn clickable-action"
-                    onClick={handleEditToggle}
+                    onClick={() => {
+                      setTempProfile({ ...profileData });
+                      setShowProfileModal(true);
+                    }}
                   >
-                    {isEditing ? "Save Profile" : "Edit Profile"}
+                    Edit Profile
                   </button>
                 </div>
 
-                {/* Right side Profile Strength Chart */}
+                {/* Right Profile Strength Chart */}
                 <div className="profile-strength-inner-box">
                   <div className="strength-chart-box">
                     <ResponsiveContainer width="100%" height={120}>
@@ -303,51 +388,59 @@ const CandidateProfile = () => {
               </div>
             </div>
 
-            {/* Right: Professional Highlights */}
+            {/* Professional Highlights Card */}
             <div className="professional-highlights-container">
               <div className="prof-highlights-header">
                 <h3>Professional Highlights</h3>
               </div>
               <div className="prof-highlights-grid-2x2">
-                <div className="highlight-box">
+                <div className="highlight-box purple-accent">
                   <div className="h-icon-wrap purp">
                     <img src={expIcon} alt="Exp" />
                   </div>
                   <div>
-                    <h4>2+ Years of Experience</h4>
+                    <h4>
+                      <span className="num-bold">2+</span> Years of Experience
+                    </h4>
                     <p>Built user-friendly, responsive web application.</p>
                   </div>
                 </div>
-                <div className="highlight-box">
+                <div className="highlight-box green-accent">
                   <div className="h-icon-wrap green">
                     <img src={eduIcon} alt="Edu" />
                   </div>
                   <div>
-                    <h4>B.E Computer Science</h4>
+                    <h4>
+                      <span className="num-bold">B.E</span> Computer Science
+                    </h4>
                     <p>
                       Bachelor of Engineering in Computer Science and
                       Engineering.
                     </p>
                   </div>
                 </div>
-                <div className="highlight-box">
+                <div className="highlight-box yellow-accent">
                   <div className="h-icon-wrap yellow">
                     <img src={certIcon} alt="Cert" />
                   </div>
                   <div>
-                    <h4>3 Certifications</h4>
+                    <h4>
+                      <span className="num-bold">3</span> Certifications
+                    </h4>
                     <p>
                       Industry-recognized certifications enhancing technical
                       expertise.
                     </p>
                   </div>
                 </div>
-                <div className="highlight-box">
+                <div className="highlight-box red-accent">
                   <div className="h-icon-wrap red">
                     <img src={skillIcon} alt="Skill" />
                   </div>
                   <div>
-                    <h4>4 Skills Learned</h4>
+                    <h4>
+                      <span className="num-bold">4</span> Skills Learned
+                    </h4>
                     <p>
                       Core-skills in Frontend development and modern
                       technologies.
@@ -358,7 +451,7 @@ const CandidateProfile = () => {
             </div>
           </div>
 
-          {/* Middle Row: About Me, Profile Highlights List, Skill Competency */}
+          {/* Middle Row */}
           <div className="profile-middle-grid">
             <div className="about-me-card">
               <div className="card-heading-flex">
@@ -367,7 +460,10 @@ const CandidateProfile = () => {
                   src={editIcon}
                   alt="Edit"
                   className="card-edit-icon dark-edit clickable-action"
-                  onClick={handleEditToggle}
+                  onClick={() => {
+                    setTempProfile({ ...profileData });
+                    setShowAboutModal(true);
+                  }}
                 />
               </div>
               <p>{profileData.bio}</p>
@@ -469,132 +565,356 @@ const CandidateProfile = () => {
             </div>
           </div>
 
-          {/* Bottom Row: Experience & Education */}
+          {/* Bottom Row */}
           <div className="profile-bottom-grid">
+            {/* Experience Timeline */}
             <div className="experience-timeline-card">
               <div className="section-header-with-add">
                 <h3>Experience</h3>
-                <button className="add-item-btn clickable-action">+ Add</button>
+                <button
+                  className="add-item-btn clickable-action"
+                  onClick={() => handleOpenExpModal()}
+                >
+                  + Add
+                </button>
               </div>
 
-              <div className="timeline-item">
-                <div className="timeline-dot-pure"></div>
-                <div className="timeline-content">
-                  <div className="t-header">
-                    <h4>Full Stack Developer</h4>
-                    <div className="timeline-actions-right">
-                      <span className="location-tag">Chennai, India</span>
-                      <img
-                        src={editIcon}
-                        alt="Edit"
-                        className="action-icon-btn edit-color-icon clickable-action"
-                        onClick={handleEditToggle}
-                      />
-                      <img
-                        src={deleteIcon}
-                        alt="Delete"
-                        className="action-icon-btn delete-color-icon clickable-action"
-                        onClick={() => alert("Delete experience clicked")}
-                      />
+              <div className="timeline-items-wrapper">
+                {experienceList.map((exp) => (
+                  <div className="timeline-item" key={exp.id}>
+                    <div className="timeline-dot-pure"></div>
+                    <div className="timeline-content">
+                      <div className="t-header">
+                        <h4>{exp.role}</h4>
+                        <div className="timeline-actions-right">
+                          <span className="location-tag">{exp.location}</span>
+                          <img
+                            src={editIcon}
+                            alt="Edit"
+                            className="action-icon-btn edit-color-icon clickable-action"
+                            onClick={() => handleOpenExpModal(exp)}
+                          />
+                          <img
+                            src={deleteIcon}
+                            alt="Delete"
+                            className="action-icon-btn delete-color-icon clickable-action"
+                            onClick={() => handleDeleteExp(exp.id)}
+                          />
+                        </div>
+                      </div>
+                      <p className="company-name">{exp.company}</p>
+                      <p className="t-date">{exp.date}</p>
                     </div>
                   </div>
-                  <p className="company-name">Sutherland Global Services</p>
-                  <p className="t-date">June 2025 - Present.</p>
-                </div>
-              </div>
-
-              <div className="timeline-item">
-                <div className="timeline-dot-pure"></div>
-                <div className="timeline-content">
-                  <div className="t-header">
-                    <h4>Front End Developer Intern</h4>
-                    <div className="timeline-actions-right">
-                      <span className="location-tag">Chennai, India</span>
-                      <img
-                        src={editIcon}
-                        alt="Edit"
-                        className="action-icon-btn edit-color-icon clickable-action"
-                        onClick={handleEditToggle}
-                      />
-                      <img
-                        src={deleteIcon}
-                        alt="Delete"
-                        className="action-icon-btn delete-color-icon clickable-action"
-                        onClick={() => alert("Delete experience clicked")}
-                      />
-                    </div>
-                  </div>
-                  <p className="company-name">TechNova Solutions</p>
-                  <p className="t-date">February 2025 - June 2025.</p>
-                </div>
+                ))}
               </div>
             </div>
 
+            {/* Education Timeline */}
             <div className="education-timeline-card">
               <div className="section-header-with-add">
                 <h3>Education</h3>
-                <button className="add-item-btn clickable-action">+ Add</button>
+                <button
+                  className="add-item-btn clickable-action"
+                  onClick={() => handleOpenEduModal()}
+                >
+                  + Add
+                </button>
               </div>
 
-              <div className="timeline-item">
-                <div className="timeline-dot-pure"></div>
-                <div className="timeline-content">
-                  <div className="t-header">
-                    <h4>Bachelor Of Engineering (CSE)</h4>
-                    <div className="timeline-actions-right">
-                      <span className="score-tag">
-                        2016-2020 <strong>|</strong> 92%
-                      </span>
-                      <img
-                        src={editIcon}
-                        alt="Edit"
-                        className="action-icon-btn edit-color-icon clickable-action"
-                        onClick={handleEditToggle}
-                      />
-                      <img
-                        src={deleteIcon}
-                        alt="Delete"
-                        className="action-icon-btn delete-color-icon clickable-action"
-                        onClick={() => alert("Delete education clicked")}
-                      />
+              <div className="timeline-items-wrapper">
+                {educationList.map((edu) => (
+                  <div className="timeline-item" key={edu.id}>
+                    <div className="timeline-dot-pure"></div>
+                    <div className="timeline-content">
+                      <div className="t-header">
+                        <h4>{edu.degree}</h4>
+                        <div className="timeline-actions-right">
+                          <span className="score-tag">
+                            {edu.year} <strong>|</strong> {edu.percentage}
+                          </span>
+                          <img
+                            src={editIcon}
+                            alt="Edit"
+                            className="action-icon-btn edit-color-icon clickable-action"
+                            onClick={() => handleOpenEduModal(edu)}
+                          />
+                          <img
+                            src={deleteIcon}
+                            alt="Delete"
+                            className="action-icon-btn delete-color-icon clickable-action"
+                            onClick={() => handleDeleteEdu(edu.id)}
+                          />
+                        </div>
+                      </div>
+                      <p className="company-name">{edu.institution}</p>
+                      <p className="t-date">{edu.cgpa}</p>
                     </div>
                   </div>
-                  <p className="company-name">Sethu Institute Of Technology</p>
-                  <p className="t-date">CGPA: 8.5/10</p>
-                </div>
-              </div>
-
-              <div className="timeline-item">
-                <div className="timeline-dot-pure"></div>
-                <div className="timeline-content">
-                  <div className="t-header">
-                    <h4>Higher Secondary (12th)</h4>
-                    <div className="timeline-actions-right">
-                      <span className="score-tag">
-                        2015-2016 <strong>|</strong> 90%
-                      </span>
-                      <img
-                        src={editIcon}
-                        alt="Edit"
-                        className="action-icon-btn edit-color-icon clickable-action"
-                        onClick={handleEditToggle}
-                      />
-                      <img
-                        src={deleteIcon}
-                        alt="Delete"
-                        className="action-icon-btn delete-color-icon clickable-action"
-                        onClick={() => alert("Delete education clicked")}
-                      />
-                    </div>
-                  </div>
-                  <p className="company-name">Dav matriculation School</p>
-                  <p className="t-date">State Board</p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </main>
       </div>
+
+      {/* ===========================================
+          Validation Popups / Modals
+      =========================================== */}
+      {showProfileModal && (
+        <div className="profile-modal-overlay">
+          <div className="profile-modal-content">
+            <h3>Edit Profile Details</h3>
+            <form onSubmit={handleSaveProfile}>
+              <div className="form-field">
+                <label>Full Name *</label>
+                <input
+                  type="text"
+                  value={tempProfile.name}
+                  onChange={(e) =>
+                    setTempProfile({ ...tempProfile, name: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Job Title *</label>
+                <input
+                  type="text"
+                  value={tempProfile.role}
+                  onChange={(e) =>
+                    setTempProfile({ ...tempProfile, role: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Location</label>
+                <input
+                  type="text"
+                  value={tempProfile.location}
+                  onChange={(e) =>
+                    setTempProfile({ ...tempProfile, location: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Phone Number</label>
+                <input
+                  type="text"
+                  value={tempProfile.phone}
+                  onChange={(e) =>
+                    setTempProfile({ ...tempProfile, phone: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Email *</label>
+                <input
+                  type="email"
+                  value={tempProfile.email}
+                  onChange={(e) =>
+                    setTempProfile({ ...tempProfile, email: e.target.value })
+                  }
+                />
+              </div>
+              <div className="modal-btn-row">
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={() => setShowProfileModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn-save">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showAboutModal && (
+        <div className="profile-modal-overlay">
+          <div className="profile-modal-content">
+            <h3>Edit About Me</h3>
+            <form onSubmit={handleSaveAbout}>
+              <div className="form-field">
+                <label>Bio *</label>
+                <textarea
+                  rows="4"
+                  value={tempProfile.bio}
+                  onChange={(e) =>
+                    setTempProfile({ ...tempProfile, bio: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Languages (comma separated)</label>
+                <input
+                  type="text"
+                  value={
+                    Array.isArray(tempProfile.languages)
+                      ? tempProfile.languages.join(", ")
+                      : tempProfile.languages
+                  }
+                  onChange={(e) =>
+                    setTempProfile({
+                      ...tempProfile,
+                      languages: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className="modal-btn-row">
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={() => setShowAboutModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn-save">
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showExpModal && (
+        <div className="profile-modal-overlay">
+          <div className="profile-modal-content">
+            <h3>{editExpId ? "Edit Experience" : "Add Experience"}</h3>
+            <form onSubmit={handleSaveExp}>
+              <div className="form-field">
+                <label>Role *</label>
+                <input
+                  type="text"
+                  value={expForm.role}
+                  onChange={(e) =>
+                    setExpForm({ ...expForm, role: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Company *</label>
+                <input
+                  type="text"
+                  value={expForm.company}
+                  onChange={(e) =>
+                    setExpForm({ ...expForm, company: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Duration / Date</label>
+                <input
+                  type="text"
+                  value={expForm.date}
+                  onChange={(e) =>
+                    setExpForm({ ...expForm, date: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Location</label>
+                <input
+                  type="text"
+                  value={expForm.location}
+                  onChange={(e) =>
+                    setExpForm({ ...expForm, location: e.target.value })
+                  }
+                />
+              </div>
+              <div className="modal-btn-row">
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={() => setShowExpModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn-save">
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showEduModal && (
+        <div className="profile-modal-overlay">
+          <div className="profile-modal-content">
+            <h3>{editEduId ? "Edit Education" : "Add Education"}</h3>
+            <form onSubmit={handleSaveEdu}>
+              <div className="form-field">
+                <label>Degree / Qualification *</label>
+                <input
+                  type="text"
+                  value={eduForm.degree}
+                  onChange={(e) =>
+                    setEduForm({ ...eduForm, degree: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>School / University *</label>
+                <input
+                  type="text"
+                  value={eduForm.institution}
+                  onChange={(e) =>
+                    setEduForm({ ...eduForm, institution: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Year Batch (e.g. 2016-2020)</label>
+                <input
+                  type="text"
+                  value={eduForm.year}
+                  onChange={(e) =>
+                    setEduForm({ ...eduForm, year: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>Percentage / Score</label>
+                <input
+                  type="text"
+                  value={eduForm.percentage}
+                  onChange={(e) =>
+                    setEduForm({ ...eduForm, percentage: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-field">
+                <label>CGPA or Stream Info</label>
+                <input
+                  type="text"
+                  value={eduForm.cgpa}
+                  onChange={(e) =>
+                    setEduForm({ ...eduForm, cgpa: e.target.value })
+                  }
+                />
+              </div>
+              <div className="modal-btn-row">
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={() => setShowEduModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn-save">
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
