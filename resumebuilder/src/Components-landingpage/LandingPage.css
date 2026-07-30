@@ -12,7 +12,7 @@
 ========================================== */
 .lp-main-hero-section {
   width: 100%;
-  max-width: 1600px; 
+  max-width: 1600px;
   margin: 0 auto;
   padding: 40px 40px;
   min-height: calc(100vh - 82px);
@@ -24,7 +24,7 @@
 
 .lp-main-hero-left {
   flex: 1.2;
-  max-width: 680px; 
+  max-width: 680px;
   display: flex;
   flex-direction: column;
 }
@@ -58,7 +58,7 @@
   font-size: clamp(16px, 1.5vw, 19px);
   line-height: 1.7;
   color: #6b7280;
-  max-width: 600px; 
+  max-width: 600px;
   margin-bottom: 35px;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .lp-main-hero-btn {
-  width: 260px; 
+  width: 260px;
   height: 68px;
   background: #fff;
   border: 2px solid #e5e7eb;
@@ -125,7 +125,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  width: 220px; 
+  width: 220px;
   cursor: pointer;
   padding: 10px;
   border: 1px solid transparent;
@@ -166,7 +166,7 @@
 ========================================== */
 .features-section {
   width: 100%;
-  max-width: 1600px; 
+  max-width: 1600px;
   margin: 0 auto;
   padding: 5px 40px 0px 40px !important;
   margin-top: -5px !important;
@@ -177,7 +177,7 @@
   border-radius: 24px;
   padding: 50px 40px 25px 40px !important;
   width: 100%;
-  max-width: 1400px; 
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -197,7 +197,7 @@
   flex-wrap: wrap;
   gap: 28px;
   width: 100%;
-  max-width: 1300px; 
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -254,14 +254,14 @@
 
 .stats-wrapper-block {
   width: 100%;
-  max-width: 1600px; 
+  max-width: 1600px;
   margin: 0 auto;
   padding: 5px 40px 10px 40px !important;
 }
 
 .stats-row-container {
   width: 100%;
-  max-width: 1400px; 
+  max-width: 1400px;
   margin: 0 auto;
   background: #2563eb;
   border-radius: 16px;
@@ -322,14 +322,14 @@
 ========================================== */
 .cta-wrapper-section {
   width: 100%;
-  max-width: 1600px; 
+  max-width: 1600px;
   margin: 0 auto;
   padding: 5px 40px 50px 40px !important;
 }
 
 .cta-blue-card {
   width: 100%;
-  max-width: 1400px; 
+  max-width: 1400px;
   margin: 0 auto;
   background: #2563eb;
   border-radius: 16px;
@@ -635,7 +635,7 @@
     display: grid !important;
     grid-template-columns: 100% !important;
     min-height: auto !important;
-    padding: 95px 16px 20px 16px !important;
+    padding: 25px 16px 20px 16px !important;
     gap: 12px !important;
     text-align: center !important;
   }

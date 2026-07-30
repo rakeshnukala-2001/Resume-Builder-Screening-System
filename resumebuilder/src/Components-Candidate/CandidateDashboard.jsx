@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Navigation hook import
 import CandidateHeader from "./CandidateHeader";
 import CandidateProfile from "./CandidateProfile";
 import "./CandidateDashboard.css";
@@ -30,12 +31,12 @@ import crownIcon from "../assets/candidate/crown.png";
 import arrowIcon from "../assets/candidate/arrow.png";
 import tickIcon from "../assets/candidate/tick.png";
 import calendarIcon from "../assets/candidate/UpcomingInterview.png";
-import resumeScoreImg from "../assets/recruiter/resume.png";
+import resumeScoreImg from "../assets/candidate/resume-score.png";
 import profileStrengthImg from "../assets/candidate/profileIcon.png";
 import skillMatchImg from "../assets/candidate/skill.png";
 import interviewImg from "../assets/candidate/interview-prep.png";
 import profileViewsImg from "../assets/candidate/ProfileVisibility-views.png";
-import upArrowImg from "../assets/candidate/arrow.png";
+import upArrowImg from "../assets/candidate/up-arrow.png";
 import welcomeImg from "../assets/candidate/ai-star.png";
 import createResumeImg from "../assets/candidate/arrow.png";
 import uploadResumeImg from "../assets/candidate/arrow.png";
@@ -167,25 +168,18 @@ const CandidateDashboard = () => {
   // Sidebar Mobile Toggle State
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Navigation Click Handler
-  const handleNavClick = (tabName, sectionId) => {
-    setActiveTab(tabName);
+  const navigate = useNavigate(); // Navigation init
 
-    // If on Dashboard, scroll to section smoothly; otherwise just switch view tab
-    if (tabName === "Dashboard") {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
+  // Navigation Click Handler
+  const handleNavClick = (tabName) => {
+    setActiveTab(tabName);
     setIsSidebarOpen(false);
   };
 
+  // Create Resume Redirect Handler
   const handleCreateResume = () => {
     setActiveButton("create");
-    setTimeout(() => {
-      alert("Resume Builder Opened Successfully");
-    }, 100);
+    navigate("/Resume-builder/candidate/candidate/personalinfo");
   };
 
   const handleUploadResume = () => {
@@ -259,6 +253,404 @@ const CandidateDashboard = () => {
     },
   ];
 
+  // Render logic based on active tab
+  const renderMainContent = () => {
+    if (activeTab === "Profile") {
+      return <CandidateProfile />;
+    }
+
+    if (activeTab === "Dashboard") {
+      return (
+        <>
+          <section id="can-dashboard-sec" className="can-dashboard-header">
+            <div className="can-welcome-container">
+              <div className="can-welcome-left">
+                <div className="can-welcome-heading">
+                  <h1>Welcome back, Akash!</h1>
+                  <img
+                    src={welcomeImg}
+                    alt="Welcome"
+                    className="can-welcome-img"
+                  />
+                </div>
+                <p>Let's continue your journey towards your dream career.</p>
+              </div>
+
+              <div className="can-welcome-right">
+                <button
+                  className={`can-action-btn ${
+                    activeButton === "create"
+                      ? "can-active-highlight"
+                      : "can-inactive-btn"
+                  }`}
+                  onClick={handleCreateResume}
+                >
+                  <div className="can-btn-content-left">
+                    <span className="can-plus-symbol">+</span>
+                    <span>Create Resume</span>
+                  </div>
+                  <img
+                    src={createResumeImg}
+                    alt="Chevron"
+                    className={`can-btn-inner-img ${
+                      activeButton === "create"
+                        ? "can-img-white"
+                        : "can-img-blue-arrow"
+                    }`}
+                  />
+                </button>
+
+                <button
+                  className={`can-action-btn ${
+                    activeButton === "upload"
+                      ? "can-active-highlight"
+                      : "can-inactive-btn"
+                  }`}
+                  onClick={handleUploadResume}
+                >
+                  <div className="can-btn-content-left">
+                    <span className="can-plus-symbol">+</span>
+                    <span>
+                      {resumeUploaded ? "Resume Uploaded" : "Upload Resume"}
+                    </span>
+                  </div>
+                  <img
+                    src={uploadResumeImg}
+                    alt="Chevron"
+                    className={`can-btn-inner-img ${
+                      activeButton === "upload"
+                        ? "can-img-white"
+                        : "can-img-blue-arrow"
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+
+            <div className="can-dashboard-cards">
+              {dashboardCards.map((card, index) => {
+                const isImageBlueActive = activeButton === card.id;
+
+                return (
+                  <div key={index} className="can-dashboard-card">
+                    <div className="can-card-header">
+                      <div
+                        className="can-card-img-wrapper"
+                        style={{ backgroundColor: `${card.valColor}15` }}
+                      >
+                        <img
+                          src={card.image}
+                          alt={card.title}
+                          className={`can-card-top-icon ${
+                            isImageBlueActive ? "can-card-img-active-blue" : ""
+                          }`}
+                        />
+                      </div>
+                      <h3>{card.title}</h3>
+                    </div>
+
+                    <h2 style={{ color: card.valColor }}>{card.value}</h2>
+                    <h4 style={{ color: card.statusColor }}>{card.status}</h4>
+
+                    <div className="can-card-growth-trend">
+                      {card.hasGrowth && (
+                        <img
+                          src={upArrowImg}
+                          alt="Up"
+                          className="can-trend-arrow-img"
+                        />
+                      )}
+                      <span className="can-trend-percentage">
+                        {card.percentage}
+                      </span>
+                      <span className="can-trend-timeline">
+                        {card.timeline}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Inner Content */}
+          <div className="can-dashboard-content">
+            <div className="can-dashboard-row-one">
+              {/* ATS Score */}
+              <div id="can-report-sec" className="can-ats-wrapper">
+                <div className="can-ats-card">
+                  <h2 className="can-ats-title">ATS Score Breakdown</h2>
+                  <div className="can-ats-content">
+                    <div className="can-gauge-wrapper">
+                      <svg className="can-gauge" viewBox="0 0 240 150">
+                        <path
+                          d="M30 120 A90 90 0 0 1 210 120"
+                          className="can-gauge-bg"
+                          pathLength="100"
+                        />
+                        <path
+                          d="M30 120 A90 90 0 0 1 210 120"
+                          className="can-gauge-progress"
+                          pathLength="100"
+                        />
+                      </svg>
+
+                      <div
+                        className="can-gauge-text"
+                        onClick={() => setShowPopup(true)}
+                      >
+                        <h1>94%</h1>
+                        <span>Excellent</span>
+                      </div>
+                    </div>
+
+                    <div className="can-score-list">
+                      {scoreData.map((item) => (
+                        <div className="can-score-item" key={item.label}>
+                          <div className="can-score-left">
+                            <span
+                              className="can-dot"
+                              style={{ background: item.color }}
+                            />
+                            <span>{item.label}</span>
+                          </div>
+                          <strong>{item.value}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {showPopup && (
+                  <div className="can-popup-overlay">
+                    <div className="can-popup">
+                      <button
+                        className="can-close-btn"
+                        onClick={() => setShowPopup(false)}
+                      >
+                        ×
+                      </button>
+                      <h2>ATS Score Breakdown</h2>
+                      <div className="can-popup-score">94%</div>
+                      <p className="can-status">Excellent</p>
+                      <div className="can-popup-list">
+                        {scoreData.map((item) => (
+                          <div className="can-popup-item" key={item.label}>
+                            <div className="can-popup-left">
+                              <span
+                                className="can-dot"
+                                style={{ background: item.color }}
+                              />
+                              <span>{item.label}</span>
+                            </div>
+                            <strong>{item.value}</strong>
+                          </div>
+                        ))}
+                      </div>
+                      <button
+                        className="can-popup-button"
+                        onClick={() => setShowPopup(false)}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Skill Analysis */}
+              <div id="can-skill-sec" className="can-skill-analysis-wrapper">
+                <div className="can-skill-card">
+                  <h2>Skill Analysis</h2>
+                  {skillsData.map((skill) => (
+                    <div className="can-skill-box" key={skill.name}>
+                      <div className="can-skill-title">
+                        <span>{skill.name}</span>
+                        <span>{skill.percent}%</span>
+                      </div>
+                      <div className="can-progress-bar">
+                        <div
+                          className="can-progress-fill"
+                          style={{ width: `${skill.percent}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* AI Assistant */}
+              <div id="can-learning-sec" className="can-ai-assistant-wrapper">
+                <div className="can-assistant-card">
+                  <div className="can-assistant-header">
+                    <img src={aiStar} alt="AI Star" />
+                    <div>
+                      <h2>AI Career Assistant</h2>
+                      <p>Navigate your career with AI.</p>
+                    </div>
+                  </div>
+                  {assistantData.map((item, index) => (
+                    <div className="can-assistant-item" key={index}>
+                      <img
+                        src={item.icon}
+                        alt=""
+                        className="can-assistant-icon"
+                      />
+                      <div>
+                        <h4>{item.title}</h4>
+                        <p>{item.subtitle}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="can-dashboard-row-two">
+              {/* Recent Activity */}
+              <div id="can-message-sec" className="can-recent-activity-wrapper">
+                <div className="can-recent-activity-card">
+                  <h3 className="can-recent-activity-title">Recent Activity</h3>
+                  <div className="can-recent-activity-list">
+                    {activitiesData.map((activity) => (
+                      <div
+                        className="can-recent-activity-item"
+                        key={activity.id}
+                      >
+                        <div className="can-recent-activity-left">
+                          <div className="can-recent-activity-icon">
+                            <img src={activity.icon} alt={activity.title} />
+                          </div>
+                          <div className="can-recent-activity-content">
+                            <h4>{activity.title}</h4>
+                            <p>{activity.subtitle}</p>
+                          </div>
+                        </div>
+                        <span className="can-recent-activity-time">
+                          {activity.time}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Upcoming Interviews */}
+              <div
+                id="can-jobs-sec"
+                className="can-upcoming-interviews-wrapper"
+              >
+                <div className="can-upcoming-card">
+                  <h3 className="can-upcoming-title">Upcoming Interviews</h3>
+                  <div className="can-upcoming-list">
+                    {interviewsData.map((item) => (
+                      <div className="can-interview-item" key={item.id}>
+                        <div className="can-date-box">
+                          <span className="can-month">{item.month}</span>
+                          <span className="can-day">{item.day}</span>
+                        </div>
+                        <div className="can-interview-details">
+                          <h4>{item.title}</h4>
+                          <p>{item.company}</p>
+                        </div>
+                        <div className="can-interview-time">
+                          <span>{item.time}</span>
+                          <img
+                            src={calendarIcon}
+                            alt="Calendar"
+                            className="can-calendar-icon"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Profile Visibility */}
+              <div
+                id="can-profile-sec"
+                className="can-profile-visibility-wrapper"
+              >
+                <div id="can-saved-sec" className="can-profile-card">
+                  <h3 className="can-profile-title">Profile Visibility</h3>
+                  <p className="can-profile-subtitle">
+                    Your profile is <strong>70%</strong> visible to recruiters
+                  </p>
+                  <img
+                    src={profileFrame}
+                    alt="Profile Frame"
+                    className="can-profile-frame"
+                  />
+                  <div className="can-profile-stats">
+                    <div className="can-stat-box">
+                      <img
+                        src={visibilityIcon}
+                        alt="visibility"
+                        className="can-stat-icon"
+                      />
+                      <h4>70%</h4>
+                      <p>Visibility</p>
+                    </div>
+                    <div className="can-divider"></div>
+                    <div className="can-stat-box">
+                      <img
+                        src={notifiedIcon}
+                        alt="notified"
+                        className="can-stat-icon"
+                      />
+                      <h4>2.5X</h4>
+                      <p>Most likely to get noticed</p>
+                    </div>
+                    <div className="can-divider"></div>
+                    <div className="can-stat-box">
+                      <img
+                        src={viewsIcon}
+                        alt="views"
+                        className="can-stat-icon"
+                      />
+                      <h4>12</h4>
+                      <p>Profile Views in last 7 days</p>
+                    </div>
+                  </div>
+
+                  <h4 className="can-why-title">
+                    Why profile completion matters?
+                  </h4>
+                  <div className="can-benefit-item">
+                    <img
+                      src={matchIcon}
+                      alt="match"
+                      className="can-benefit-icon"
+                    />
+                    <div className="can-benefit-item-content">
+                      <h5>Better job matches</h5>
+                      <p>Get matched with your ideal job.</p>
+                    </div>
+                  </div>
+                  <div className="can-benefit-item">
+                    <img
+                      src={interviewIcon}
+                      alt="interview"
+                      className="can-benefit-icon"
+                    />
+                    <div className="can-benefit-item-content">
+                      <h5>More interview opportunities</h5>
+                      <p>Complete profile to get callbacks.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    // Default: Empty White Section for pages without content yet
+    return <div className="can-empty-content" />;
+  };
+
   return (
     <div className="can-dashboard-page-wrapper">
       {/* Dynamic Header Component */}
@@ -277,54 +669,56 @@ const CandidateDashboard = () => {
         )}
 
         {/* Sidebar */}
-        <aside className={`can-sidebar ${isSidebarOpen ? "can-mobile-open" : ""}`}>
+        <aside
+          className={`can-sidebar ${isSidebarOpen ? "can-mobile-open" : ""}`}
+        >
           <div>
             <ul className="can-menu">
               <li
                 className={activeTab === "Dashboard" ? "can-active" : ""}
-                onClick={() => handleNavClick("Dashboard", "can-dashboard-sec")}
+                onClick={() => handleNavClick("Dashboard")}
               >
                 <img src={dashboardIcon} alt="Dashboard" />
                 <span>Dashboard</span>
               </li>
               <li
                 className={activeTab === "Profile" ? "can-active" : ""}
-                onClick={() => handleNavClick("Profile", "can-profile-sec")}
+                onClick={() => handleNavClick("Profile")}
               >
                 <img src={profileIcon} alt="Profile" />
                 <span>Profile</span>
               </li>
               <li
                 className={activeTab === "AI Report" ? "can-active" : ""}
-                onClick={() => handleNavClick("AI Report", "can-report-sec")}
+                onClick={() => handleNavClick("AI Report")}
               >
                 <img src={aiReportIcon} alt="AI Report" />
                 <span>AI Report</span>
               </li>
               <li
                 className={activeTab === "Skill Matching" ? "can-active" : ""}
-                onClick={() => handleNavClick("Skill Matching", "can-skill-sec")}
+                onClick={() => handleNavClick("Skill Matching")}
               >
                 <img src={skillIconSidebar} alt="Skill Matching" />
                 <span>Skill Matching</span>
               </li>
               <li
                 className={activeTab === "Job Matches" ? "can-active" : ""}
-                onClick={() => handleNavClick("Job Matches", "can-jobs-sec")}
+                onClick={() => handleNavClick("Job Matches")}
               >
                 <img src={jobsIcon} alt="Job Matches" />
                 <span>Job Matches</span>
               </li>
               <li
                 className={activeTab === "Saved Jobs" ? "can-active" : ""}
-                onClick={() => handleNavClick("Saved Jobs", "can-saved-sec")}
+                onClick={() => handleNavClick("Saved Jobs")}
               >
                 <img src={savedIcon} alt="Saved Jobs" />
                 <span>Saved Jobs</span>
               </li>
               <li
                 className={`can-message ${activeTab === "Message" ? "can-active" : ""}`}
-                onClick={() => handleNavClick("Message", "can-message-sec")}
+                onClick={() => handleNavClick("Message")}
               >
                 <div className="can-left">
                   <img src={messageIcon} alt="Message" />
@@ -334,7 +728,7 @@ const CandidateDashboard = () => {
               </li>
               <li
                 className={activeTab === "Learning Center" ? "can-active" : ""}
-                onClick={() => handleNavClick("Learning Center", "can-learning-sec")}
+                onClick={() => handleNavClick("Learning Center")}
               >
                 <img src={learningIcon} alt="Learning Center" />
                 <span>Learning Center</span>
@@ -350,19 +744,35 @@ const CandidateDashboard = () => {
             <p>Unlock Premium tools and grow your career faster</p>
             <ul className="can-features">
               <li>
-                <img src={tickIcon} alt="Tick" className="can-feature-check-img" />
+                <img
+                  src={tickIcon}
+                  alt="Tick"
+                  className="can-feature-check-img"
+                />
                 <span>Advanced AI Insights</span>
               </li>
               <li>
-                <img src={tickIcon} alt="Tick" className="can-feature-check-img" />
+                <img
+                  src={tickIcon}
+                  alt="Tick"
+                  className="can-feature-check-img"
+                />
                 <span>Unlimited Resumes</span>
               </li>
               <li>
-                <img src={tickIcon} alt="Tick" className="can-feature-check-img" />
+                <img
+                  src={tickIcon}
+                  alt="Tick"
+                  className="can-feature-check-img"
+                />
                 <span>Priority Support</span>
               </li>
               <li>
-                <img src={tickIcon} alt="Tick" className="can-feature-check-img" />
+                <img
+                  src={tickIcon}
+                  alt="Tick"
+                  className="can-feature-check-img"
+                />
                 <span>Job Match Boost</span>
               </li>
             </ul>
@@ -374,362 +784,7 @@ const CandidateDashboard = () => {
         </aside>
 
         {/* Main Section Dynamic Render */}
-        <main className="can-dashboard-main">
-          {activeTab === "Profile" ? (
-            <CandidateProfile />
-          ) : (
-            <>
-              <section id="can-dashboard-sec" className="can-dashboard-header">
-                <div className="can-welcome-container">
-                  <div className="can-welcome-left">
-                    <div className="can-welcome-heading">
-                      <h1>Welcome back, Rakesh!</h1>
-                      <img src={welcomeImg} alt="Welcome" className="can-welcome-img" />
-                    </div>
-                    <p>Let's continue your journey towards your dream career.</p>
-                  </div>
-
-                  <div className="can-welcome-right">
-                    <button
-                      className={`can-action-btn ${
-                        activeButton === "create"
-                          ? "can-active-highlight"
-                          : "can-inactive-btn"
-                      }`}
-                      onClick={handleCreateResume}
-                    >
-                      <div className="can-btn-content-left">
-                        <span className="can-plus-symbol">+</span>
-                        <span>Create Resume</span>
-                      </div>
-                      <img
-                        src={createResumeImg}
-                        alt="Chevron"
-                        className={`can-btn-inner-img ${
-                          activeButton === "create" ? "can-img-white" : "can-img-blue-arrow"
-                        }`}
-                      />
-                    </button>
-
-                    <button
-                      className={`can-action-btn ${
-                        activeButton === "upload"
-                          ? "can-active-highlight"
-                          : "can-inactive-btn"
-                      }`}
-                      onClick={handleUploadResume}
-                    >
-                      <div className="can-btn-content-left">
-                        <span className="can-plus-symbol">+</span>
-                        <span>
-                          {resumeUploaded ? "Resume Uploaded" : "Upload Resume"}
-                        </span>
-                      </div>
-                      <img
-                        src={uploadResumeImg}
-                        alt="Chevron"
-                        className={`can-btn-inner-img ${
-                          activeButton === "upload" ? "can-img-white" : "can-img-blue-arrow"
-                        }`}
-                      />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="can-dashboard-cards">
-                  {dashboardCards.map((card, index) => {
-                    const isImageBlueActive = activeButton === card.id;
-
-                    return (
-                      <div key={index} className="can-dashboard-card">
-                        <div className="can-card-header">
-                          <div
-                            className="can-card-img-wrapper"
-                            style={{ backgroundColor: `${card.valColor}15` }}
-                          >
-                            <img
-                              src={card.image}
-                              alt={card.title}
-                              className={`can-card-top-icon ${
-                                isImageBlueActive ? "can-card-img-active-blue" : ""
-                              }`}
-                            />
-                          </div>
-                          <h3>{card.title}</h3>
-                        </div>
-
-                        <h2 style={{ color: card.valColor }}>{card.value}</h2>
-                        <h4 style={{ color: card.statusColor }}>{card.status}</h4>
-
-                        <div className="can-card-growth-trend">
-                          {card.hasGrowth && (
-                            <img
-                              src={upArrowImg}
-                              alt="Up"
-                              className="can-trend-arrow-img"
-                            />
-                          )}
-                          <span className="can-trend-percentage">
-                            {card.percentage}
-                          </span>
-                          <span className="can-trend-timeline">{card.timeline}</span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
-
-              {/* Inner Content */}
-              <div className="can-dashboard-content">
-                <div className="can-dashboard-row-one">
-                  {/* ATS Score */}
-                  <div id="can-report-sec" className="can-ats-wrapper">
-                    <div className="can-ats-card">
-                      <h2 className="can-ats-title">ATS Score Breakdown</h2>
-                      <div className="can-ats-content">
-                        <div className="can-gauge-wrapper">
-                          <svg className="can-gauge" viewBox="0 0 240 150">
-                            <path
-                              d="M30 120 A90 90 0 0 1 210 120"
-                              className="can-gauge-bg"
-                              pathLength="100"
-                            />
-                            <path
-                              d="M30 120 A90 90 0 0 1 210 120"
-                              className="can-gauge-progress"
-                              pathLength="100"
-                            />
-                          </svg>
-
-                          <div
-                            className="can-gauge-text"
-                            onClick={() => setShowPopup(true)}
-                          >
-                            <h1>94%</h1>
-                            <span>Excellent</span>
-                          </div>
-                        </div>
-
-                        <div className="can-score-list">
-                          {scoreData.map((item) => (
-                            <div className="can-score-item" key={item.label}>
-                              <div className="can-score-left">
-                                <span
-                                  className="can-dot"
-                                  style={{ background: item.color }}
-                                />
-                                <span>{item.label}</span>
-                              </div>
-                              <strong>{item.value}</strong>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {showPopup && (
-                      <div className="can-popup-overlay">
-                        <div className="can-popup">
-                          <button
-                            className="can-close-btn"
-                            onClick={() => setShowPopup(false)}
-                          >
-                            ×
-                          </button>
-                          <h2>ATS Score Breakdown</h2>
-                          <div className="can-popup-score">94%</div>
-                          <p className="can-status">Excellent</p>
-                          <div className="can-popup-list">
-                            {scoreData.map((item) => (
-                              <div className="can-popup-item" key={item.label}>
-                                <div className="can-popup-left">
-                                  <span
-                                    className="can-dot"
-                                    style={{ background: item.color }}
-                                  />
-                                  <span>{item.label}</span>
-                                </div>
-                                <strong>{item.value}</strong>
-                              </div>
-                            ))}
-                          </div>
-                          <button
-                            className="can-popup-button"
-                            onClick={() => setShowPopup(false)}
-                          >
-                            Close
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Skill Analysis */}
-                  <div id="can-skill-sec" className="can-skill-analysis-wrapper">
-                    <div className="can-skill-card">
-                      <h2>Skill Analysis</h2>
-                      {skillsData.map((skill) => (
-                        <div className="can-skill-box" key={skill.name}>
-                          <div className="can-skill-title">
-                            <span>{skill.name}</span>
-                            <span>{skill.percent}%</span>
-                          </div>
-                          <div className="can-progress-bar">
-                            <div
-                              className="can-progress-fill"
-                              style={{ width: `${skill.percent}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* AI Assistant */}
-                  <div id="can-learning-sec" className="can-ai-assistant-wrapper">
-                    <div className="can-assistant-card">
-                      <div className="can-assistant-header">
-                        <img src={aiStar} alt="AI Star" />
-                        <div>
-                          <h2>AI Career Assistant</h2>
-                          <p>Navigate your career with AI.</p>
-                        </div>
-                      </div>
-                      {assistantData.map((item, index) => (
-                        <div className="can-assistant-item" key={index}>
-                          <img src={item.icon} alt="" className="can-assistant-icon" />
-                          <div>
-                            <h4>{item.title}</h4>
-                            <p>{item.subtitle}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="can-dashboard-row-two">
-                  {/* Recent Activity */}
-                  <div id="can-message-sec" className="can-recent-activity-wrapper">
-                    <div className="can-recent-activity-card">
-                      <h3 className="can-recent-activity-title">Recent Activity</h3>
-                      <div className="can-recent-activity-list">
-                        {activitiesData.map((activity) => (
-                          <div className="can-recent-activity-item" key={activity.id}>
-                            <div className="can-recent-activity-left">
-                              <div className="can-recent-activity-icon">
-                                <img src={activity.icon} alt={activity.title} />
-                              </div>
-                              <div className="can-recent-activity-content">
-                                <h4>{activity.title}</h4>
-                                <p>{activity.subtitle}</p>
-                              </div>
-                            </div>
-                            <span className="can-recent-activity-time">
-                              {activity.time}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Upcoming Interviews */}
-                  <div id="can-jobs-sec" className="can-upcoming-interviews-wrapper">
-                    <div className="can-upcoming-card">
-                      <h3 className="can-upcoming-title">Upcoming Interviews</h3>
-                      <div className="can-upcoming-list">
-                        {interviewsData.map((item) => (
-                          <div className="can-interview-item" key={item.id}>
-                            <div className="can-date-box">
-                              <span className="can-month">{item.month}</span>
-                              <span className="can-day">{item.day}</span>
-                            </div>
-                            <div className="can-interview-details">
-                              <h4>{item.title}</h4>
-                              <p>{item.company}</p>
-                            </div>
-                            <div className="can-interview-time">
-                              <span>{item.time}</span>
-                              <img
-                                src={calendarIcon}
-                                alt="Calendar"
-                                className="can-calendar-icon"
-                              />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Profile Visibility */}
-                  <div id="can-profile-sec" className="can-profile-visibility-wrapper">
-                    <div id="can-saved-sec" className="can-profile-card">
-                      <h3 className="can-profile-title">Profile Visibility</h3>
-                      <p className="can-profile-subtitle">
-                        Your profile is <strong>70%</strong> visible to recruiters
-                      </p>
-                      <img
-                        src={profileFrame}
-                        alt="Profile Frame"
-                        className="can-profile-frame"
-                      />
-                      <div className="can-profile-stats">
-                        <div className="can-stat-box">
-                          <img
-                            src={visibilityIcon}
-                            alt="visibility"
-                            className="can-stat-icon"
-                          />
-                          <h4>70%</h4>
-                          <p>Visibility</p>
-                        </div>
-                        <div className="can-divider"></div>
-                        <div className="can-stat-box">
-                          <img
-                            src={notifiedIcon}
-                            alt="notified"
-                            className="can-stat-icon"
-                          />
-                          <h4>2.5X</h4>
-                          <p>Most likely to get noticed</p>
-                        </div>
-                        <div className="can-divider"></div>
-                        <div className="can-stat-box">
-                          <img src={viewsIcon} alt="views" className="can-stat-icon" />
-                          <h4>12</h4>
-                          <p>Profile Views in last 7 days</p>
-                        </div>
-                      </div>
-
-                      <h4 className="can-why-title">Why profile completion matters?</h4>
-                      <div className="can-benefit-item">
-                        <img src={matchIcon} alt="match" className="can-benefit-icon" />
-                        <div className="can-benefit-item-content">
-                          <h5>Better job matches</h5>
-                          <p>Get matched with your ideal job.</p>
-                        </div>
-                      </div>
-                      <div className="can-benefit-item">
-                        <img
-                          src={interviewIcon}
-                          alt="interview"
-                          className="can-benefit-icon"
-                        />
-                        <div className="can-benefit-item-content">
-                          <h5>More interview opportunities</h5>
-                          <p>Complete profile to get callbacks.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-        </main>
+        <main className="can-dashboard-main">{renderMainContent()}</main>
       </div>
     </div>
   );

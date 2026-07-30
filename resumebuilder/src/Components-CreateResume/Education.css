@@ -1,0 +1,577 @@
+/* Base Container Styles */
+.edu-page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  box-sizing: border-box;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Header Section */
+.edu-header-section {
+  margin-bottom: 24px;
+}
+
+.edu-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edu-header-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.edu-title-wrapper h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.edu-header-section p {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 4px 0 0 36px;
+}
+
+/* Main Grid Layout - Fixed to Match Reference Image */
+.edu-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 24px;
+  align-items: start; /* Image standard: Top aligned, not stretched */
+}
+
+.edu-form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edu-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.edu-card-title-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.edu-card-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-top: 2px;
+}
+
+.edu-card-title-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.edu-card-title-box p {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 2px 0 0 0;
+}
+
+/* Nested Cards */
+.edu-nested-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.edu-nested-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.edu-nested-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.edu-nested-header h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+/* Default 3-Column Inputs Grid */
+.edu-form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 14px;
+}
+
+.edu-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.edu-input-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.edu-input-group label sup {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.edu-input-group input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #374151;
+  background-color: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.edu-input-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-error {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 11px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.input-with-icon {
+  position: relative;
+  width: 100%;
+}
+
+.input-with-icon input {
+  padding-right: 36px;
+}
+
+.field-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Right Side Resume Preview Card */
+.edu-preview-column {
+  position: sticky;
+  top: 24px;
+}
+
+.edu-preview-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.preview-profile-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.profile-avatar-wrapper {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid #2563eb;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.candidate-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+.candidate-role {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  margin: 2px 0 8px 0;
+}
+
+.profile-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+}
+
+.profile-contact-grid span {
+  font-size: 11px;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.profile-contact-grid img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.preview-divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 16px 0;
+}
+
+.preview-section {
+  margin-bottom: 16px;
+}
+
+.preview-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 2px;
+}
+
+.preview-text {
+  font-size: 11px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.preview-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.preview-job-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.preview-job-date {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.preview-subtext {
+  font-size: 11px;
+  color: #6b7280;
+  margin: 2px 0 0 0;
+}
+
+.preview-bullets {
+  margin: 4px 0 0 0;
+  padding-left: 14px;
+}
+
+.preview-bullets li {
+  font-size: 11px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 2px;
+}
+
+.skills-badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* Footer Action Buttons */
+.edu-footer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.edu-btn-prev,
+.edu-btn-next {
+  padding: 10px 36px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edu-btn-prev:hover,
+.edu-btn-next:hover {
+  background-color: #1d4ed8;
+}
+
+/* =========================================================
+   BREAKPOINTS & RESPONSIVE CONFIGURATIONS
+========================================================= */
+
+/* Mobile & Tablet (<1024px) */
+@media (max-width: 1023px) {
+  .edu-main-grid {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .edu-preview-column {
+    position: static;
+    width: 100%;
+  }
+
+  .edu-form-column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .edu-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .edu-page-container {
+    padding: 16px 12px;
+  }
+
+  .edu-form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edu-footer-actions {
+    width: 100%;
+  }
+
+  .edu-btn-prev,
+  .edu-btn-next {
+    flex: 1;
+  }
+}
+
+/* 1024px SCREEN SPECIFIC CONFIGURATION */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .edu-page-container {
+    max-width: 100%;
+    padding: 24px 20px;
+  }
+
+  .edu-main-grid {
+    grid-template-columns: 1fr 420px;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* Requirement: Degree card lo two boxes (2 columns per row) layout */
+  .edu-card:first-child .edu-form-grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* School Education nested cards stay 3-columns */
+  .edu-nested-card .edu-form-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 1440px SCREEN DESKTOP CONFIGURATION */
+@media (min-width: 1440px) and (max-width: 2559px) {
+  .edu-page-container {
+    max-width: 1400px;
+    padding: 32px;
+  }
+
+  .edu-main-grid {
+    grid-template-columns: 1fr 460px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .edu-card {
+    padding: 24px;
+  }
+
+  .edu-preview-card {
+    padding: 28px;
+  }
+}
+
+/* 2560px 4K FULL SCREEN COVERAGE */
+@media (min-width: 2560px) {
+  .edu-page-container {
+    max-width: 95vw;
+    padding: 40px 60px;
+  }
+
+  .edu-title-wrapper h2 {
+    font-size: 30px;
+  }
+
+  .edu-header-section p {
+    font-size: 15px;
+  }
+
+  .edu-main-grid {
+    grid-template-columns: 1fr 700px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .edu-card {
+    padding: 36px;
+    border-radius: 16px;
+  }
+
+  .edu-nested-card {
+    padding: 28px;
+    border-radius: 12px;
+    margin-top: 24px;
+  }
+
+  .edu-card-title-box h3 {
+    font-size: 22px;
+  }
+
+  .edu-card-title-box p {
+    font-size: 14px;
+  }
+
+  .edu-input-group label {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .edu-input-group input {
+    height: 48px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  .edu-preview-card {
+    padding: 40px;
+    border-radius: 16px;
+  }
+
+  .profile-avatar-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+
+  .candidate-name {
+    font-size: 26px;
+  }
+
+  .candidate-role {
+    font-size: 16px;
+  }
+
+  .profile-contact-grid span {
+    font-size: 13.5px;
+  }
+
+  .preview-section-title {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .preview-text,
+  .preview-bullets li {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .preview-job-title {
+    font-size: 15px;
+  }
+
+  .skill-tag {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  .edu-btn-prev,
+  .edu-btn-next {
+    padding: 14px 52px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+}
