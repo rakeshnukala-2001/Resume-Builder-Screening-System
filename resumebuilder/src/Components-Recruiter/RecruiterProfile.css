@@ -1,826 +1,685 @@
-/* =====================================================
-   Reset & Base Styles
-===================================================== */
+/* ======================
+   GLOBAL RESET
+========================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    "Segoe UI",
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    sans-serif;
 }
- 
+
 body {
-    background: #F8FAFC;
+  background: #f8fafc;
 }
- 
-/* =====================================================
-   Main Page Layout & Header
-===================================================== */
+
 .recruiter-page {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px 0 40px;
-    background: #F8FAFC;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
- 
+
+/* =============================
+   PAGE HEADER & TOP BUTTONS
+================================ */
 .recruiter-page-header {
-    width: 100%;
-    max-width: 1057px;
-    margin: 0 auto 24px;
-    padding: 0 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
- 
+
 .header-left {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
- 
+
 .header-left h1 {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 32px;
-    color: #111827;
-    letter-spacing: -0.2px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
 }
- 
+
 .breadcrumb-nav {
-    font-size: 13px;
-    color: #6B7280;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
 }
- 
-.breadcrumb-nav .separator {
-    color: #9CA3AF;
+
+.separator {
+  color: #9ca3af;
 }
- 
+
+/* HEADER BUTTONS */
 .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
- 
+
 .btn-change-password,
 .btn-edit-profile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-    line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
- 
+
 .header-btn-icon {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-    flex-shrink: 0;
+  width: 16px;
+  height: 16px;
 }
 
 .btn-change-password {
-    background: #FFFFFF;
-    border: 1px solid #D1D5DB;
-    color: #374151;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #2563eb;
 }
- 
+
 .btn-change-password:hover {
-    background: #F3F4F6;
+  background: #f3f4f6;
+  border-color: #2563eb;
 }
- 
+
 .btn-edit-profile {
-    background: #2563EB;
-    border: 1px solid #2563EB;
-    color: #FFFFFF;
+  background: #2563eb;
+  border: 1px solid #2563eb;
+  color: #ffffff;
 }
- 
+
 .btn-edit-profile:hover {
-    background: #1D4ED8;
+  background: #1d4ed8;
 }
- 
-/* =====================================================
-   Dashboard Grid Container (Desktop >768px)
-===================================================== */
+
+/* ===========================
+   GRID CONTAINER & LAYOUT
+============================== */
 .recruiter-profile-container {
-    width: 100%;
-    max-width: 1057px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 263px 394px 352px;
-    grid-template-areas:
-        "profile company professional"
-        "activity security documents";
-    column-gap: 24px;
-    row-gap: 24px;
-    justify-content: center;
-    align-items: start;
-    box-sizing: border-box;
-    padding: 0 16px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 280px 1fr 340px;
+  grid-template-areas:
+    "profile company professional"
+    "activity security documents";
+  gap: 24px;
+  align-items: stretch;
 }
- 
-.profile-card { grid-area: profile; width: 100%; }
-.company-card { grid-area: company; width: 100%; }
-.professional-card { grid-area: professional; width: 100%; }
-.recent-activity-card { grid-area: activity; width: 100%; height: 332px; }
-.security-card { grid-area: security; width: 100%; height: 332px; }
-.documents-card { grid-area: documents; width: 100%; height: 332px; }
- 
-.recruiter-profile-wrapper { display: contents; }
- 
-/* =====================================================
-   Common Card Styling
-===================================================== */
+
+/* GRID AREAS */
+.profile-card {
+  grid-area: profile;
+}
+
+.company-card {
+  grid-area: company;
+}
+
+.professional-card {
+  grid-area: professional;
+}
+
+.recent-activity-card {
+  grid-area: activity;
+}
+
+.security-card {
+  grid-area: security;
+}
+
+.documents-card {
+  grid-area: documents;
+}
+
+/* COMMON CARD STYLES */
 .profile-card,
 .company-card,
 .professional-card,
 .recent-activity-card,
 .security-card,
 .documents-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    border-radius: 12px;
-    box-shadow: 0 1px 6px rgba(15, 23, 42, 0.05);
-    transition: .3s;
-    overflow: hidden;
-    box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  transition: all 0.25s ease;
 }
- 
+
 .profile-card:hover,
 .company-card:hover,
 .professional-card:hover,
 .recent-activity-card:hover,
 .security-card:hover,
 .documents-card:hover {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
- 
-/* =====================================================
-   Profile Card
-===================================================== */
+
+/* ====================
+   PROFILE CARD
+======================= */
 .profile-card {
-    height: 437px;
-    position: relative;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+  position: relative;
+  align-items: center;
+  text-align: center;
 }
- 
+
 .status {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    height: 28px;
-    padding: 0 12px;
-    border-radius: 7px;
-    background: #ECFDF3;
-    color: #16A34A;
-    font-size: 12px;
-    font-weight: 600;
-    border: 1px solid #A7F3D0;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #ecfdf3;
+  border: 1px solid #a7f3d0;
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .status-icon {
-    width: 13px;
-    height: 13px;
-    object-fit: contain;
+  width: 12px;
+  height: 12px;
 }
- 
+
 .profile-image {
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #EEF4FF;
-    margin: 8px auto 12px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #eef4ff;
+  margin-top: 12px;
 }
 
 .profile-name-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
 }
 
 .profile-name-row h2 {
-    margin: 0;
-    font-size: 17px;
-    font-weight: 700;
-    color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
 }
 
 .verified-icon {
-    width: 14px;
-    height: 14px;
-    object-fit: contain;
-    flex-shrink: 0;
-    margin-top: 1px;
-}
- 
-.designation {
-    font-size: 13px;
-    font-weight: 500;
-    color: #374151;
-    margin-top: 4px;
-    margin-bottom: 4px;
-}
- 
-.company {
-    font-size: 12px;
-    font-weight: 500;
-    color: #4B5563;
-    margin-bottom: 12px;
-}
- 
-.recruiter-id {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #2563EB;
-    border-radius: 8px;
-    background: #EEF4FF;
-    color: #2563EB;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-bottom: 12px;
-}
- 
-.recruiter-id:hover {
-    background: #2563EB;
-    color: #FFF;
-}
- 
-.profile-card hr {
-    border: none;
-    border-top: 1px solid #E5E7EB;
-    margin: 12px 0;
-}
- 
-.contact-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    text-align: left;
-}
- 
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #374151;
-}
- 
-.contact-item img {
-    width: 15px;
-    height: 15px;
-    object-fit: contain;
-    flex-shrink: 0;
-}
- 
-.contact-item a {
-    color: #2563EB;
-    text-decoration: none;
-    font-weight: 500;
-    word-break: break-all;
-}
- 
-.contact-item a:hover { text-decoration: underline; }
- 
-/* =====================================================
-   Company Card
-===================================================== */
-.company-card {
-    height: 437px;
-    padding: 24px;
+  width: 16px;
+  height: 16px;
 }
 
+.designation {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.company {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.recruiter-id {
+  width: 100%;
+  margin-top: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #2563eb;
+  background: #eef4ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.profile-card hr {
+  width: 100%;
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+.contact-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.contact-item img {
+  width: 16px;
+  height: 16px;
+}
+
+.contact-item span,
+.contact-item a {
+  font-size: 13px;
+  color: #374151;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contact-item a:hover {
+  color: #2563eb;
+}
+
+/* ======================
+   COMPANY CARD
+========================= */
 .company-card h3 {
-    margin: 0 0 22px;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 28px;
-    color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 22px;
 }
 
 .company-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
 }
 
 .company-logo {
-    width: 72px;
-    height: 72px;
-    border-radius: 8px;
-    border: 1px solid #E5E7EB;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    background: #FFFFFF;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  flex-shrink: 0;
 }
 
 .company-logo-image {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    margin-top: 80px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
 }
 
 .company-details {
-    flex: 1;
+  flex: 1;
 }
 
 .company-details h2 {
-    margin: 0 0 12px;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #111827;
+  font-size: 17px;
+  margin-bottom: 12px;
+  color: #111827;
 }
 
 .company-details p {
-    margin: 0 0 8px;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 20px;
-    color: #374151;
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 8px;
+  line-height: 20px;
 }
 
 .company-details strong {
-    color: #111827;
-    font-weight: 600;
+  color: #111827;
 }
 
 .company-details a {
-    color: #2563EB;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.company-details a:hover {
-    text-decoration: underline;
+  color: #2563eb;
+  text-decoration: none;
 }
 
 .company-card hr {
-    border: 0;
-    border-top: 1px solid #E5E7EB;
-    margin: 22px 0;
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
 }
 
 .about-company h4 {
-    margin: 0 0 12px;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #111827;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .about-company p {
-    margin: 0;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 22px;
-    color: #374151;
+  font-size: 13px;
+  line-height: 22px;
+  color: #4b5563;
 }
- 
-/* =====================================================
-   Professional Card
-===================================================== */
-.professional-card {
-    height: 437px;
-    padding: 24px;
-}
- 
+
+/* ========================
+   PROFESSIONAL CARD
+=========================== */
 .professional-card h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
 }
- 
+
 .info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #f1f5f9;
 }
- 
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
 .info-row span {
-    font-size: 13px;
-    font-weight: 500;
-    color: #374151;
+  font-size: 13px;
+  color: #6b7280;
 }
- 
+
 .info-row strong {
-    font-size: 13px;
-    color: #111827;
-    font-weight: 600;
+  font-size: 13px;
+  color: #111827;
 }
- 
+
 .domain-title {
-    margin-top: 16px;
-    margin-bottom: 8px;
-    font-size: 15px;
-    font-weight: 700;
-    color: #111827;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 700;
 }
- 
+
 .domain-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
- 
+
 .domain-tags span {
-    padding: 4px 10px;
-    background: #EEF4FF;
-    color: #2563EB;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
+  padding: 6px 10px;
+  background: #eef4ff;
+  color: #2563eb;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
 }
- 
+
 .location {
-    margin-top: 16px;
+  margin-top: 22px;
 }
- 
+
 .location h4 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 4px;
+  margin-bottom: 8px;
+  font-size: 15px;
 }
- 
+
 .location p {
-    font-size: 13px;
-    font-weight: 500;
-    color: #374151;
-    line-height: 1.5;
+  font-size: 13px;
+  color: #374151;
+  line-height: 22px;
 }
- 
-/* =====================================================
-   Row 2 Cards
-===================================================== */
-.recent-activity-card {
-    overflow: hidden;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
- 
+
+/* =======================
+   RECENT ACTIVITY
+========================== */
 .recent-activity-title {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
 }
- 
-.recent-activity-content {
-    position: relative;
-    flex: 1;
-    display: flex;
-    margin-top: 0;
-}
- 
+
 .activity-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 16px;
-    width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 20px;
 }
- 
+
+.activity-list::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: #2563eb;
+}
+
 .activity-item {
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
- 
-.activity-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-}
- 
+
 .timeline-dot {
-    width: 8px;
-    height: 8px;
-    margin-top: 5px;
-    border-radius: 50%;
-    background: #2563EB;
-    flex-shrink: 0;
+  position: absolute;
+  left: -20px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px #2563eb;
 }
- 
+
 .activity-header h4 {
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 500;
-    color: #1F2937;
-    max-width: 250px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 18px;
 }
- 
+
 .activity-item p {
-    font-size: 12px;
-    color: #6B7280;
-    margin-left: 16px;
-    margin-top: 4px;
-    line-height: 15px;
-}
- 
-/* Security Card */
-.security-card{
-    overflow:hidden;
-    padding:24px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
+  margin-top: 3px;
+  font-size: 12px;
+  color: #6b7280;
 }
 
-.security-title{
-    font-size:18px;
-    font-weight:700;
-    line-height:28px;
-    color:#111827;
-    margin:0;
+/* ======================
+   SECURITY CARD 
+========================= */
+.security-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
 }
 
-.security-list{
-    display:flex;
-    flex-direction:column;
-    margin-top:18px;
-    flex:1;
+.security-list {
+  display: flex;
+  flex-direction: column;
 }
 
-.security-item{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:52px;
-    border-bottom:1px solid #F1F5F9;
+.security-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eef2f7;
 }
 
-.security-item:last-child{
-    border-bottom:none;
+.security-item:last-child {
+  border-bottom: none;
 }
 
-.security-left{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    flex:1;
-    min-width:0;
+.security-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.security-icon{
-    width:18px;
-    height:18px;
-    object-fit:contain;
-    flex-shrink:0;
+.security-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
-.security-text{
-    font-size:15px;
-    font-weight:500;
-    line-height:22px;
-    color:#111827;
+.security-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
 }
 
-.security-right{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-left:auto;
+.security-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.enabled-badge{
-    width:64px;
-    height:24px;
-    object-fit:contain;
+.enabled-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #ecfdf3;
+  color: #16a34a;
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
 }
 
-.active-device-text{
-    font-size:14px;
-    font-weight:500;
-    line-height:20px;
-    color:#2563EB;
-    white-space:nowrap;
+.active-device-text {
+  font-size: 12px;
+  color: #2563eb;
+  white-space: nowrap;
 }
 
-.arrow-icon{
-    width:15px;
-    height:15px;
-    object-fit:contain;
-    flex-shrink:0;
+.arrow-icon {
+  width: 14px;
+  height: 14px;
 }
- 
-/* Documents Card */
-.documents-card {
-    overflow: hidden;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 18px 20px;
-}
- 
+
+/* ========================
+   DOCUMENTS CARD
+=========================== */
 .documents-title {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #111827;
-    margin-bottom:14px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
 }
- 
+
 .documents-list {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    margin-top: 16px;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
- 
+
 .document-item {
-    display: flex;
-    align-items: center;
-    height: auto;
+  display: flex;
+  align-items: center;
 }
- 
+
 .document-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
- 
+
 .document-icon-box {
-    width: 44px;
-    height: 40px;
-    border-radius: 10px;
-    background: #F5F8FF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: #f5f8ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }
- 
-.document-icon{
-    width:35px;
-    height:35px;
-    object-fit:contain;
+
+.document-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
- 
+
 .document-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.document-info h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.document-info span {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* ==================================
+   RESPONSIVE BREAKPOINTS
+===================================== */
+@media (max-width: 1024px) {
+  .recruiter-profile-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "profile company"
+      "professional activity"
+      "security documents";
+  }
+}
+
+@media (max-width: 768px) {
+  .recruiter-page {
+    padding: 16px;
+  }
+
+  .recruiter-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .btn-change-password,
+  .btn-edit-profile {
+    width: 100%;
+  }
+
+  .recruiter-profile-container {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-width: 0;
-}
- 
-.document-info h4 {
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 500;
-    color: #1F2937;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
- 
-.document-info span {
-    font-size: 11px;
-    color: #6B7280;
-    margin-top: 2px;
-}
+    gap: 16px;
+  }
 
-.recent-activity-card,
-.security-card,
-.documents-card{
-    min-height:410px;
-}
- 
-/* =====================================================
-   Hover Effects
-===================================================== */
-.document-item:hover .document-info h4,
-.security-item:hover .security-text,
-.activity-item:hover h4 {
-    color: #2563EB;
-    transition: .25s ease;
-}
- 
-.document-item:hover .document-icon-box {
-    background: #EAF2FF;
-    transition: .25s ease;
-}
- 
-.security-item:hover .arrow-icon {
-    transform: translateX(2px);
-    transition: .25s ease;
-}
- 
-/* =====================================================
-   Responsive Mobile & Tablet Behaviour (Up to 768px)
-===================================================== */
-@media screen and (max-width: 768px) {
-    .recruiter-page {
-        padding: 20px 16px;
-    }
-
-    .recruiter-page-header {
-        width: 100%;
-        max-width: 394px;
-        padding: 0;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 24px;
-    }
-
-    .header-actions {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .recruiter-profile-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-        width: 100%;
-        max-width: 394px;
-        padding: 0;
-    }
-
-    .profile-card,
-    .company-card,
-    .professional-card,
-    .recent-activity-card,
-    .security-card,
-    .documents-card {
-        width: 100%;
-        max-width: 394px;
-        height: auto;
-    }
-
-    .company-content {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 18px;
-    }
-
-    .company-logo-image {
-        margin-top: 8px;
-    }
-
-    .info-row {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-}
-
-/* =====================================================
-   Extra Small Mobile (Up to 480px)
-===================================================== */
-@media screen and (max-width: 480px) {
-    .header-actions {
-        width: 100%;
-        display: flex;
-        gap: 12px;
-    }
-
-    .btn-change-password,
-    .btn-edit-profile {
-        flex: 1;
-        height: 44px;
-        padding: 0 12px;
-        font-size: 14px;
-        justify-content: center;
-    }
-
-    .header-btn-icon {
-        width: 15px;
-        height: 15px;
-    }
+  .company-content {
+    flex-direction: column;
+  }
 }

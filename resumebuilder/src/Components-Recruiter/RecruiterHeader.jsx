@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./RecruiterHeader.css";
 import FiUser from "../assets/recruiter/FiUser.png";
 import SearchIcon from "../assets/recruiter/SearchIcon.png";
@@ -8,6 +9,7 @@ import FiChevronDown from "../assets/candidate/dropdownarrow.png";
 import logor from "../assets/candidate/logor.png";
 
 const RecruiterHeader = ({ mobileMenuOpen, setMobileMenuOpen }) => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
@@ -55,9 +57,13 @@ const RecruiterHeader = ({ mobileMenuOpen, setMobileMenuOpen }) => {
     setDropdownOpen(false);
   };
 
+  // 3. Updated Logout Handler with Redirection
   const handleLogout = () => {
     console.log("Logging out...");
     setDropdownOpen(false);
+
+    // Recruiter Login route redirection
+    navigate("/Resume-builder/login/recruiter");
   };
 
   const handleHelp = () => {

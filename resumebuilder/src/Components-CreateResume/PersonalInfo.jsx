@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CandidateHeader from "./../Components-Candidate/CandidateHeader";
+import Sidebar from "./Sidebar";
 import "./PersonalInfo.css";
 
-// Assets Imports
+// Form & Resume Assets
+import ProfileImg from "../assets/Create-Resume/profile.png";
 import mailIcon from "../assets/Create-Resume/email.png";
 import phoneIcon from "../assets/Create-Resume/phone.png";
 import locationIcon from "../assets/Create-Resume/location.png";
@@ -11,24 +13,11 @@ import linkedinIcon from "../assets/Create-Resume/linkedin.png";
 import aiIcon from "../assets/Create-Resume/ai.png";
 import downloadIconAsset from "../assets/Create-Resume/download.png";
 
-// Sidebar Assets
-import dashboardIcon from "../assets/candidate/dashboard.png";
-import profileIcon from "../assets/candidate/profileIcon.png";
-import aiReportIcon from "../assets/candidate/ai-report.png";
-import skillIconSidebar from "../assets/candidate/skill.png";
-import jobsIcon from "../assets/candidate/jobs.png";
-import savedIcon from "../assets/candidate/saved.png";
-import messageIcon from "../assets/candidate/message.png";
-import learningIcon from "../assets/candidate/learning.png";
-import crownIcon from "../assets/candidate/crown.png";
-import arrowIcon from "../assets/candidate/arrow.png";
-import tickIcon from "../assets/candidate/tick.png";
-
 const PersonalInfo = () => {
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState("Profile");
   const [activeStep, setActiveStep] = useState(1);
+  const [activeTab, setActiveTab] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showMobileActionMenu, setShowMobileActionMenu] = useState(false);
   const [errors, setErrors] = useState({});
@@ -43,15 +32,6 @@ const PersonalInfo = () => {
     summary:
       "Frontend Developer with 3+ years of experience building responsive web applications using HTML, CSS, JavaScript and React. Passionate about creating intuitive user interfaces and optimizing performance.",
   });
-
-  // Dynamic Router mapping for ALL Sidebar Items
-  const handleNavClick = (tabName, routePath) => {
-    setActiveTab(tabName);
-    setIsSidebarOpen(false);
-    if (routePath) {
-      navigate(routePath);
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -80,25 +60,22 @@ const PersonalInfo = () => {
   const handleStepClick = (stepNumber) => {
     if (!validateForm()) return;
 
-    if (stepNumber === 3) {
-      // Direct redirect to Education keeping full routing intact
+    if (stepNumber === 1) {
+      navigate("/Resume-builder/candidate/candidate/personalinfo");
+    } else if (stepNumber === 2) {
+      navigate("/Resume-builder/candidate/candidate/experience");
+    } else if (stepNumber === 3) {
       navigate("/Resume-builder/candidate/candidate/education");
-    } else {
-      setActiveStep(stepNumber);
+    } else if (stepNumber === 4) {
+      navigate("/Resume-builder/candidate/candidate/skills");
+    } else if (stepNumber === 5) {
+      navigate("/Resume-builder/candidate/candidate/review");
     }
   };
 
   const handleNextStep = () => {
     if (validateForm()) {
-      if (activeStep === 1) {
-        setActiveStep(2);
-      } else if (activeStep === 2) {
-        navigate("/Resume-builder/candidate/candidate/education");
-      } else if (activeStep < 5) {
-        setActiveStep((prev) => prev + 1);
-      } else {
-        alert("Resume creation complete!");
-      }
+      navigate("/Resume-builder/candidate/candidate/experience");
     }
   };
 
@@ -110,169 +87,13 @@ const PersonalInfo = () => {
       />
 
       <div className="can-dashboard-layout">
-        {isSidebarOpen && (
-          <div
-            className="can-sidebar-mobile-overlay"
-            onClick={() => setIsSidebarOpen(false)}
-          />
-        )}
+        <Sidebar
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          isOpen={isSidebarOpen}
+          setIsOpen={setIsSidebarOpen}
+        />
 
-        {/* Dynamic Nav Sidebar Menu */}
-        <aside
-          className={`can-sidebar ${isSidebarOpen ? "can-mobile-open" : ""}`}
-        >
-          <div>
-            <ul className="can-menu">
-              <li
-                className={activeTab === "Dashboard" ? "can-active" : ""}
-                onClick={() =>
-                  handleNavClick(
-                    "Dashboard",
-                    "/Resume-builder/candidate/candidate/dashboard",
-                  )
-                }
-              >
-                <img src={dashboardIcon} alt="Dashboard" />
-                <span>Dashboard</span>
-              </li>
-              <li
-                className={activeTab === "Profile" ? "can-active" : ""}
-                onClick={() =>
-                  handleNavClick(
-                    "Profile",
-                    "/Resume-builder/candidate/candidate/profile",
-                  )
-                }
-              >
-                <img src={profileIcon} alt="Profile" />
-                <span>Profile</span>
-              </li>
-              <li
-                className={activeTab === "AI Report" ? "can-active" : ""}
-                onClick={() =>
-                  handleNavClick(
-                    "AI Report",
-                    "/Resume-builder/candidate/candidate/ai-report",
-                  )
-                }
-              >
-                <img src={aiReportIcon} alt="AI Report" />
-                <span>AI Report</span>
-              </li>
-              <li
-                className={activeTab === "Skill Matching" ? "can-active" : ""}
-                onClick={() =>
-                  handleNavClick(
-                    "Skill Matching",
-                    "/Resume-builder/candidate/candidate/skill-matching",
-                  )
-                }
-              >
-                <img src={skillIconSidebar} alt="Skill Matching" />
-                <span>Skill Matching</span>
-              </li>
-              <li
-                className={activeTab === "Job Matches" ? "can-active" : ""}
-                onClick={() =>
-                  handleNavClick(
-                    "Job Matches",
-                    "/Resume-builder/candidate/candidate/job-matches",
-                  )
-                }
-              >
-                <img src={jobsIcon} alt="Job Matches" />
-                <span>Job Matches</span>
-              </li>
-              <li
-                className={activeTab === "Saved Jobs" ? "can-active" : ""}
-                onClick={() =>
-                  handleNavClick(
-                    "Saved Jobs",
-                    "/Resume-builder/candidate/candidate/saved-jobs",
-                  )
-                }
-              >
-                <img src={savedIcon} alt="Saved Jobs" />
-                <span>Saved Jobs</span>
-              </li>
-              <li
-                className={`can-message ${activeTab === "Message" ? "can-active" : ""}`}
-                onClick={() =>
-                  handleNavClick(
-                    "Message",
-                    "/Resume-builder/candidate/candidate/messages",
-                  )
-                }
-              >
-                <div className="can-left">
-                  <img src={messageIcon} alt="Message" />
-                  <span>Message</span>
-                </div>
-                <span className="can-badge">2</span>
-              </li>
-              <li
-                className={activeTab === "Learning Center" ? "can-active" : ""}
-                onClick={() =>
-                  handleNavClick(
-                    "Learning Center",
-                    "/Resume-builder/candidate/candidate/learning-center",
-                  )
-                }
-              >
-                <img src={learningIcon} alt="Learning Center" />
-                <span>Learning Center</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="can-upgrade-card">
-            <div className="can-upgrade-title">
-              <img src={crownIcon} alt="Crown" />
-              <span>Upgrade to Pro</span>
-            </div>
-            <p>Unlock Premium tools and grow your career faster</p>
-            <ul className="can-features">
-              <li>
-                <img
-                  src={tickIcon}
-                  alt="Tick"
-                  className="can-feature-check-img"
-                />
-                <span>Advanced AI Insights</span>
-              </li>
-              <li>
-                <img
-                  src={tickIcon}
-                  alt="Tick"
-                  className="can-feature-check-img"
-                />
-                <span>Unlimited Resumes</span>
-              </li>
-              <li>
-                <img
-                  src={tickIcon}
-                  alt="Tick"
-                  className="can-feature-check-img"
-                />
-                <span>Priority Support</span>
-              </li>
-              <li>
-                <img
-                  src={tickIcon}
-                  alt="Tick"
-                  className="can-feature-check-img"
-                />
-                <span>Job Match Boost</span>
-              </li>
-            </ul>
-            <button className="can-upgrade-btn">
-              Upgrade Now
-              <img src={arrowIcon} alt="Arrow" />
-            </button>
-          </div>
-        </aside>
-
-        {/* Main Work Area */}
         <main className="can-dashboard-main">
           <div className="resume-page-wrapper">
             <div className="resume-top-header">
@@ -322,33 +143,21 @@ const PersonalInfo = () => {
             <div className="steps-card-box desktop-only-steps">
               <div className="resume-steps-bar">
                 <span
-                  className={`step-item ${activeStep === 1 ? "active" : ""}`}
+                  className="step-item active"
                   onClick={() => handleStepClick(1)}
                 >
                   1. Personal Info
                 </span>
-                <span
-                  className={`step-item ${activeStep === 2 ? "active" : ""}`}
-                  onClick={() => handleStepClick(2)}
-                >
+                <span className="step-item" onClick={() => handleStepClick(2)}>
                   2. Experience
                 </span>
-                <span
-                  className={`step-item ${activeStep === 3 ? "active" : ""}`}
-                  onClick={() => handleStepClick(3)}
-                >
+                <span className="step-item" onClick={() => handleStepClick(3)}>
                   3. Education
                 </span>
-                <span
-                  className={`step-item ${activeStep === 4 ? "active" : ""}`}
-                  onClick={() => handleStepClick(4)}
-                >
+                <span className="step-item" onClick={() => handleStepClick(4)}>
                   4. Skills
                 </span>
-                <span
-                  className={`step-item ${activeStep === 5 ? "active" : ""}`}
-                  onClick={() => handleStepClick(5)}
-                >
+                <span className="step-item" onClick={() => handleStepClick(5)}>
                   5. Review
                 </span>
               </div>
@@ -364,7 +173,7 @@ const PersonalInfo = () => {
               ].map((stepLabel, idx) => (
                 <div
                   key={idx}
-                  className={`drawer-item ${activeStep === idx + 1 ? "active" : ""}`}
+                  className={`drawer-item ${idx === 0 ? "active" : ""}`}
                   onClick={() => handleStepClick(idx + 1)}
                 >
                   {stepLabel}
@@ -374,6 +183,7 @@ const PersonalInfo = () => {
 
             {/* Grid Layout Container */}
             <div className="resume-grid-layout">
+              {/* Left Form */}
               <div className="resume-card-box form-card">
                 <div className="form-group">
                   <label>Full Name</label>
@@ -455,10 +265,11 @@ const PersonalInfo = () => {
                 </div>
               </div>
 
+              {/* Right Live Preview */}
               <div className="resume-card-box preview-card">
                 <div className="preview-header">
                   <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250"
+                    src={ProfileImg}
                     alt="Profile Avatar"
                     className="profile-img-circle"
                   />
@@ -500,7 +311,7 @@ const PersonalInfo = () => {
                 <div className="preview-section">
                   <h4 className="section-title-underlined">EXPERIENCE</h4>
                   <div className="item-header">
-                    <strong>Senier Full Stack developer</strong>
+                    <strong>Senior Full Stack developer</strong>
                     <span className="item-date">Jan 2022 - Present</span>
                   </div>
                   <ul className="bullet-list">

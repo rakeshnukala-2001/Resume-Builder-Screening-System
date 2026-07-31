@@ -10,9 +10,7 @@ import linkedinIcon from "../assets/recruiter/Rec-profiles/LinkedIn.png";
 import historyIcon from "../assets/recruiter/Rec-profiles/History.png";
 import verifiedIcon from "../assets/recruiter/Rec-profiles/Verified.png";
 import companyIcon from "../assets/recruiter/Rec-profiles/company.png";
-import BlueDot from "../assets/recruiter/Rec-profiles/RecruiterProfile-BlueDot.png";
-import TwoFactorIcon from "../assets/recruiter/Rec-profiles/RecruiterProfile-TwoFactAuth.png";  
-import EnabledIcon from "../assets/recruiter/Rec-profiles/RecruiterProfile-Enabled.png";
+import TwoFactorIcon from "../assets/recruiter/Rec-profiles/RecruiterProfile-TwoFactAuth.png";
 import PasswordIcon from "../assets/recruiter/Rec-profiles/RecruiterProfile-ChangePassword.png";
 import LoginHistoryIcon from "../assets/recruiter/Rec-profiles/RecruiterProfile-LoginHistory.png";
 import DeviceManagementIcon from "../assets/recruiter/Rec-profiles/RecruiterProfile-DeviceManagement.png";
@@ -63,9 +61,8 @@ const securityItems = [
     id: 1,
     icon: TwoFactorIcon,
     title: "Two - Factor Authentication",
-    badge: EnabledIcon,
-    badgeAlt: "Enabled",
     type: "badge",
+    badgeText: "Enabled",
   },
   {
     id: 2,
@@ -126,7 +123,6 @@ const documentsList = [
 const RecruiterProfile = () => {
   return (
     <div className="recruiter-page">
-      
       {/* Page Header Section */}
       <div className="recruiter-page-header">
         <div className="header-left">
@@ -139,18 +135,25 @@ const RecruiterProfile = () => {
         </div>
         <div className="header-actions">
           <button className="btn-change-password">
-            <img src={ChangePasswordIcon} alt="Change Password" className="header-btn-icon" />
+            <img
+              src={ChangePasswordIcon}
+              alt="Change Password"
+              className="header-btn-icon"
+            />
             <span>Change Password</span>
           </button>
           <button className="btn-edit-profile">
-            <img src={EditProfileIcon} alt="Edit Profile" className="header-btn-icon" />
+            <img
+              src={EditProfileIcon}
+              alt="Edit Profile"
+              className="header-btn-icon"
+            />
             <span>Edit Profile</span>
           </button>
         </div>
       </div>
 
       <div className="recruiter-profile-container">
-        
         {/* Profile Card */}
         <div className="profile-card">
           <div className="status">
@@ -162,26 +165,22 @@ const RecruiterProfile = () => {
 
           <div className="profile-name-row">
             <h2>Rohith Sharma</h2>
-            <img
-              src={verifiedIcon}
-              alt="Verified"
-              className="verified-icon"
-            />
+            <img src={verifiedIcon} alt="Verified" className="verified-icon" />
           </div>
 
           <p className="designation">Senior HR Recruiter</p>
           <p className="company">TalentAcme Solutions Pvt. Ltd.</p>
 
-          <button className="recruiter-id">
-            Recruiter ID : REC-2024-0187
-          </button>
+          <button className="recruiter-id">Recruiter ID : REC-2024-0187</button>
 
           <hr />
 
           <div className="contact-list">
             <div className="contact-item">
               <img src={mailIcon} alt="Mail" />
-              <span>rohithsharma@talentacme.com</span>
+              <div className="contact-text">
+                <span>rohithsharma@talentacme.com</span>
+              </div>
             </div>
 
             <div className="contact-item">
@@ -298,8 +297,8 @@ const RecruiterProfile = () => {
             <div className="activity-list">
               {activities.map((activity) => (
                 <div className="activity-item" key={activity.id}>
+                  <div className="timeline-dot" />
                   <div className="activity-header">
-                    <img src={BlueDot} alt="Dot" className="timeline-dot" />
                     <h4>{activity.title}</h4>
                   </div>
                   <p>{activity.time}</p>
@@ -326,11 +325,7 @@ const RecruiterProfile = () => {
                 </div>
 
                 {item.type === "badge" && (
-                  <img
-                    src={item.badge}
-                    alt={item.badgeAlt}
-                    className="enabled-badge"
-                  />
+                  <span className="enabled-badge">{item.badgeText}</span>
                 )}
 
                 {item.type === "arrow" && (
@@ -381,7 +376,6 @@ const RecruiterProfile = () => {
             ))}
           </div>
         </div>
-
       </div>
     </div>
   );

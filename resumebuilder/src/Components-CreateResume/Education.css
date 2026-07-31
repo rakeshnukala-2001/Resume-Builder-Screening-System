@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 14px 16px 40px 200px;
   font-family:
     "Inter",
     -apple-system,
@@ -46,12 +46,12 @@
   margin: 4px 0 0 36px;
 }
 
-/* Main Grid Layout - Fixed to Match Reference Image */
+/* Main Grid Layout */
 .edu-main-grid {
   display: grid;
   grid-template-columns: 1fr 420px;
   gap: 24px;
-  align-items: start; /* Image standard: Top aligned, not stretched */
+  align-items: start;
 }
 
 .edu-form-column {
@@ -202,7 +202,7 @@
 /* Right Side Resume Preview Card */
 .edu-preview-column {
   position: sticky;
-  top: 24px;
+  top: 90px;
 }
 
 .edu-preview-card {
@@ -377,8 +377,12 @@
    BREAKPOINTS & RESPONSIVE CONFIGURATIONS
 ========================================================= */
 
-/* Mobile & Tablet (<1024px) */
+/* Mobile & Tablet (<1023px) */
 @media (max-width: 1023px) {
+  .edu-page-container {
+    padding: 80px 16px 30px 16px;
+  }
+
   .edu-main-grid {
     display: flex;
     flex-direction: column-reverse;
@@ -403,7 +407,7 @@
 
 @media (max-width: 480px) {
   .edu-page-container {
-    padding: 16px 12px;
+    padding: 70px 12px 20px 12px;
   }
 
   .edu-form-grid-3 {
@@ -433,7 +437,7 @@
 @media (min-width: 1024px) and (max-width: 1439px) {
   .edu-page-container {
     max-width: 100%;
-    padding: 24px 20px;
+    padding: 90px 20px 40px 280px;
   }
 
   .edu-main-grid {
@@ -442,12 +446,10 @@
     align-items: start;
   }
 
-  /* Requirement: Degree card lo two boxes (2 columns per row) layout */
   .edu-card:first-child .edu-form-grid-3 {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  /* School Education nested cards stay 3-columns */
   .edu-nested-card .edu-form-grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -456,8 +458,8 @@
 /* 1440px SCREEN DESKTOP CONFIGURATION */
 @media (min-width: 1440px) and (max-width: 2559px) {
   .edu-page-container {
-    max-width: 1400px;
-    padding: 32px;
+    max-width: 100%;
+    padding: 100px 32px 50px 300px;
   }
 
   .edu-main-grid {
@@ -478,8 +480,8 @@
 /* 2560px 4K FULL SCREEN COVERAGE */
 @media (min-width: 2560px) {
   .edu-page-container {
-    max-width: 95vw;
-    padding: 40px 60px;
+    max-width: 100%;
+    padding: 120px 60px 60px 360px;
   }
 
   .edu-title-wrapper h2 {
