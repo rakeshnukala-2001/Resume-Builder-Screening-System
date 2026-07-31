@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #fff;
+}
+
+/* Container */
+
+.ls-success-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* Card */
+
+.ls-success-card {
+  width: 100%;
+  max-width: 1150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Left */
+
+.ls-image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.ls-login-image {
+  width: 100%;
+  max-width: 520px;
+  object-fit: contain;
+}
+
+/* Right */
+
+.ls-content-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Success Icon */
+
+.ls-success-icon {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: #2f66f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 50px;
+  margin-bottom: 25px;
+}
+
+/* Heading */
+
+.ls-content-section h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.ls-content-section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+/* Description */
+
+.ls-subtitle {
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+/* Blue Card */
+
+/* Blue Card */
+.ls-security-card {
+  width: 100%;
+  max-width: 390px;
+  background: #2f66f5;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 10px 25px rgba(47, 102, 245, 0.25);
+}
+
+/* White Box */
+/* White Box */
+/* Success Image */
+.ls-success-image-box {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ls-success-image {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* Security Box */
+.ls-security-icon-box {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Circle Image */
+.ls-security-image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Inner Icon Image */
+.ls-security-image-inner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Text */
+.ls-security-info h3 {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 6px;
+}
+
+.ls-security-info p {
+  color: #fff;
+  font-size: 15px;
+  margin: 2px 0;
+}
+/* Text */
+
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .ls-success-card {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ls-login-image {
+    max-width: 420px;
+  }
+
+  .ls-content-section {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .ls-login-image {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .ls-success-container {
+    padding: 20px;
+  }
+
+  .ls-login-image {
+    display: none;
+  }
+
+  .ls-success-icon {
+    width: 75px;
+    height: 75px;
+    font-size: 36px;
+  }
+
+  .ls-content-section h1 {
+    font-size: 24px;
+  }
+
+  .ls-content-section h2 {
+    font-size: 17px;
+  }
+
+  .ls-subtitle {
+    font-size: 14px;
+  }
+
+  .ls-security-card {
+    max-width: 100%;
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .ls-security-icon-box {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ls-security-icon {
+    font-size: 24px;
+  }
+
+  .ls-security-info h3 {
+    font-size: 16px;
+  }
+
+  .ls-security-info p {
+    font-size: 13px;
+  }
+}
