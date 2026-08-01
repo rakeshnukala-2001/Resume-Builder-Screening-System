@@ -8,24 +8,24 @@ body {
   overflow-x: hidden;
 }
 
-.dashboard-page-wrapper {
+.can-dashboard-page-wrapper {
   width: 100%;
   position: relative;
 }
-.dashboard-page-wrapper > header + header,
-.dashboard-main > header {
+.can-dashboard-page-wrapper > header + header,
+.can-dashboard-main > header {
   display: none !important;
 }
 
-.dashboard-layout {
+.can-dashboard-layout {
   display: flex;
   width: 100%;
   min-height: calc(100vh - 75px);
   margin-top: 80px;
 }
 
-/* Sidebar Layout */
-.sidebar {
+/* Sidebar Layout (Scrollable with Hidden Scrollbar) */
+.can-sidebar {
   position: fixed;
   top: 75px;
   left: 0;
@@ -38,37 +38,34 @@ body {
   justify-content: space-between;
   padding: 15px;
   overflow-y: auto;
-  overflow-x: hidden;
   z-index: 1000;
   box-sizing: border-box;
+
+  /* Hide Scrollbar for Chrome, Safari, and Opera */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.sidebar::-webkit-scrollbar {
-  width: 5px;
-}
-.sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 10px;
+.can-sidebar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
-.logo-section,
-.logo,
-.logo-text {
+.can-logo-section,
+.can-logo,
+.can-logo-text {
   display: none !important;
 }
 
-.menu {
-  align-items: center;
+.can-menu {
   list-style: none;
   flex: 1;
+  min-height: 0;
   margin: 0 !important;
   padding: 0 !important;
 }
 
-.menu li {
+.can-menu li {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -82,22 +79,25 @@ body {
   transition: all 0.2s ease;
 }
 
-.menu li:hover {
-  background: #f8fafc;
+.can-menu li:hover {
+  background: #eef3ff;
+  color: #2563eb;
 }
 
-.menu li img {
+.can-menu li img {
   width: 20px;
   height: 20px;
   object-fit: contain;
   flex-shrink: 0;
+  filter: brightness(0) saturate(100%) invert(31%) sepia(94%) saturate(4900%)
+    hue-rotate(218deg) brightness(97%) contrast(102%);
 }
 
-.menu li span {
+.can-menu li span {
   flex: 1;
 }
 
-.menu .active {
+.can-menu .can-active {
   width: 100%;
   box-sizing: border-box;
   padding: 12px 15px;
@@ -107,23 +107,28 @@ body {
   font-weight: 600;
 }
 
-.menu .active img {
+.can-menu .can-active:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.can-menu .can-active img {
   filter: brightness(0) invert(1);
 }
 
-.message {
+.can-message {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.message .left {
+.can-message .can-left {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.badge {
+.can-badge {
   width: 22px;
   height: 22px;
   border-radius: 4px;
@@ -138,7 +143,7 @@ body {
   flex-shrink: 0;
 }
 
-.upgrade-card {
+.can-upgrade-card {
   background: #eef2ff;
   border: 1px solid #dbe4ff;
   border-radius: 16px;
@@ -148,7 +153,7 @@ body {
   display: block !important;
 }
 
-.upgrade-title {
+.can-upgrade-title {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -158,20 +163,20 @@ body {
   font-weight: 700;
 }
 
-.upgrade-title img {
+.can-upgrade-title img {
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
 
-.upgrade-card p {
+.can-upgrade-card p {
   font-size: 13px;
   line-height: 20px;
   color: #475569;
   margin-bottom: 16px;
 }
 
-.features {
+.can-features {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -180,7 +185,7 @@ body {
   margin: 0 0 18px 0;
 }
 
-.features li {
+.can-features li {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -189,14 +194,14 @@ body {
   font-weight: 500;
 }
 
-.feature-check-img {
+.can-feature-check-img {
   width: 15px;
   height: 15px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.upgrade-btn {
+.can-upgrade-btn {
   width: 100%;
   height: 44px;
   border: none;
@@ -212,14 +217,14 @@ body {
   font-weight: 600;
 }
 
-.upgrade-btn img {
+.can-upgrade-btn img {
   width: 16px;
   height: 16px;
   object-fit: contain;
 }
 
 /* Dashboard Main Alignment */
-.dashboard-main {
+.can-dashboard-main {
   margin-left: 260px;
   width: calc(100% - 260px);
   display: flex;
@@ -229,7 +234,7 @@ body {
   padding-top: 0 !important;
 }
 
-.dashboard-header {
+.can-dashboard-header {
   width: 100%;
   padding: 1rem 1.5rem 0.5rem 1.5rem;
   background: #fff;
@@ -237,7 +242,7 @@ body {
   margin-top: 0 !important;
 }
 
-.welcome-container {
+.can-welcome-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -247,18 +252,18 @@ body {
   margin-top: 0 !important;
 }
 
-.welcome-left {
+.can-welcome-left {
   flex: 1;
   min-width: 0;
 }
 
-.welcome-heading {
+.can-welcome-heading {
   display: flex;
   align-items: center;
   margin-bottom: 0.35rem;
 }
 
-.welcome-heading h1 {
+.can-welcome-heading h1 {
   margin: 0;
   font-size: 1.75rem;
   font-weight: 700;
@@ -266,14 +271,7 @@ body {
   line-height: 1.3;
 }
 
-.name-with-hand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  white-space: nowrap;
-}
-
-.welcome-img {
+.can-welcome-img {
   width: 1.55rem;
   height: 1.55rem;
   flex-shrink: 0;
@@ -281,20 +279,20 @@ body {
   vertical-align: middle;
 }
 
-.welcome-left p {
+.can-welcome-left p {
   margin: 0;
   font-size: 0.88rem;
   color: #6b7280;
 }
 
-.welcome-right {
+.can-welcome-right {
   display: flex;
   align-items: center;
   gap: 0.85rem;
   flex-shrink: 0;
 }
 
-.action-btn {
+.can-action-btn {
   height: 2.75rem;
   padding: 0 1.15rem;
   border-radius: 0.6rem;
@@ -308,44 +306,44 @@ body {
   font-weight: 600;
 }
 
-.btn-content-left {
+.can-btn-content-left {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.plus-symbol {
+.can-plus-symbol {
   font-size: 1rem;
   font-weight: 700;
 }
 
-.btn-inner-img {
+.can-btn-inner-img {
   width: 0.85rem;
   height: 0.85rem;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.active-highlight {
+.can-active-highlight {
   background: #2563eb;
   color: #fff;
   border-color: #2563eb;
 }
 
-.inactive-btn {
+.can-inactive-btn {
   background: #fff;
   color: #2563eb;
   border-color: #cbd5e1;
 }
 
-.img-white {
+.can-img-white {
   width: 1.1rem;
   height: 1.1rem;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
 
-.img-blue-arrow {
+.can-img-blue-arrow {
   width: 1.1rem;
   height: 1.1rem;
   object-fit: contain;
@@ -353,7 +351,7 @@ body {
     hue-rotate(218deg) brightness(97%) contrast(102%);
 }
 
-.dashboard-cards {
+.can-dashboard-cards {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -361,7 +359,8 @@ body {
   row-gap: 0.8rem;
 }
 
-.dashboard-card {
+/* TOP METRIC CARD VERTICAL LEFT-ALIGNMENT FIX */
+.can-dashboard-card {
   background: #fff;
   border: 0.07rem solid #e5e7eb;
   border-radius: 0.75rem;
@@ -370,16 +369,17 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   min-height: 9.6rem;
+  box-sizing: border-box;
 }
 
-.card-header {
+.can-card-header {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.75rem;
 }
 
-.card-img-wrapper {
+.can-card-img-wrapper {
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
@@ -387,69 +387,72 @@ body {
   justify-content: center;
   align-items: center;
   background: #f8fafc;
+  flex-shrink: 0;
 }
 
-.card-top-icon {
+.can-card-top-icon {
   width: 1.1rem;
   height: 1.1rem;
 }
 
-.card-img-active-blue {
+.can-card-img-active-blue {
   filter: invert(31%) sepia(94%) saturate(4900%) hue-rotate(218deg)
     brightness(97%) contrast(102%);
 }
 
-.card-header h3 {
+.can-card-header h3 {
   margin: 0;
   font-size: 0.95rem;
   font-weight: 700;
   color: #111827;
 }
 
-.dashboard-card h2 {
-  margin: 0 0 0.6rem 2.85rem;
+/* All card content elements align from the same left edge as the title text
+   (icon width 2.2rem + header gap 0.65rem = 2.85rem offset) */
+.can-dashboard-card h2 {
+  margin: 0 0 0.25rem 2.85rem;
   font-size: 1.7rem;
   color: #2563eb;
 }
 
-.dashboard-card h4 {
+.can-dashboard-card h4 {
   margin: 0 0 0.5rem 2.85rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #16a34a;
 }
 
-.card-growth-trend {
+.can-card-growth-trend {
   margin-left: 2.85rem;
   display: flex;
   align-items: center;
   gap: 0.3rem;
 }
 
-.trend-arrow-img {
+.can-trend-arrow-img {
   width: 0.75rem;
 }
 
-.trend-percentage {
+.can-trend-percentage {
   font-size: 0.82rem;
   font-weight: 700;
   color: #16a34a;
 }
 
-.trend-timeline {
+.can-trend-timeline {
   font-size: 0.82rem;
   color: #475569;
 }
 
 /* Content Layout Grids */
-.dashboard-content {
+.can-dashboard-content {
   width: 100%;
   padding: 1.25rem;
   box-sizing: border-box;
 }
 
-.dashboard-row-one,
-.dashboard-row-two {
+.can-dashboard-row-one,
+.can-dashboard-row-two {
   width: 100%;
   display: grid;
   grid-template-columns: calc(42% - 0.5rem) calc(31.7% - 0.5rem) calc(
@@ -459,22 +462,22 @@ body {
   align-items: stretch;
 }
 
-.dashboard-row-two {
+.can-dashboard-row-two {
   margin-top: 0.75rem;
 }
 
-.ats-wrapper,
-.skill-analysis-wrapper,
-.ai-assistant-wrapper,
-.recent-activity-wrapper,
-.upcoming-interviews-wrapper,
-.profile-visibility-wrapper {
+.can-ats-wrapper,
+.can-skill-analysis-wrapper,
+.can-ai-assistant-wrapper,
+.can-recent-activity-wrapper,
+.can-upcoming-interviews-wrapper,
+.can-profile-visibility-wrapper {
   width: 100%;
   display: flex;
 }
 
 /* ATS Score Breakdown CSS */
-.ats-card {
+.can-ats-card {
   width: 100%;
   min-height: 23.1rem;
   background: #ffffff;
@@ -487,14 +490,14 @@ body {
   overflow: hidden;
 }
 
-.ats-title {
+.can-ats-title {
   font-size: 1.25rem;
   font-weight: 700;
   color: #111827;
   margin: 0 0 1.5rem 0;
 }
 
-.ats-content {
+.can-ats-content {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -502,7 +505,7 @@ body {
   flex: 1;
 }
 
-.gauge-wrapper {
+.can-gauge-wrapper {
   width: 13.75rem;
   min-width: 13.75rem;
   height: 12rem;
@@ -514,19 +517,19 @@ body {
   margin-top: 1.5rem;
 }
 
-.gauge {
+.can-gauge {
   width: 100%;
   height: auto;
 }
 
-.gauge-bg {
+.can-gauge-bg {
   fill: none;
   stroke: #e5e7eb;
   stroke-width: 1rem;
   stroke-linecap: round;
 }
 
-.gauge-progress {
+.can-gauge-progress {
   fill: none;
   stroke: #2563eb;
   stroke-width: 1rem;
@@ -534,7 +537,7 @@ body {
   stroke-dasharray: 94 100;
 }
 
-.gauge-text {
+.can-gauge-text {
   position: absolute;
   width: 100%;
   top: 4.9rem;
@@ -544,7 +547,7 @@ body {
   cursor: pointer;
 }
 
-.gauge-text h1 {
+.can-gauge-text h1 {
   font-size: 2.6rem;
   font-weight: 700;
   color: #111827;
@@ -552,7 +555,7 @@ body {
   margin: 0;
 }
 
-.gauge-text span {
+.can-gauge-text span {
   display: block;
   margin-top: 0.45rem;
   font-size: 1rem;
@@ -560,7 +563,7 @@ body {
   color: #16a34a;
 }
 
-.score-list {
+.can-score-list {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -569,30 +572,30 @@ body {
   margin-top: 0.5rem;
 }
 
-.score-item {
+.can-score-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.score-left {
+.can-score-left {
   display: flex;
   align-items: center;
   gap: 0.7rem;
 }
 
-.score-left span {
+.can-score-left span {
   font-size: 0.9rem;
   color: #374151;
 }
 
-.score-item strong {
+.can-score-item strong {
   font-size: 0.9rem;
   font-weight: 700;
   color: #111827;
 }
 
-.dot {
+.can-dot {
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 50%;
@@ -600,7 +603,7 @@ body {
 }
 
 /* Skill Analysis CSS */
-.skill-card {
+.can-skill-card {
   width: 100%;
   min-height: 23.1rem;
   background: #ffffff;
@@ -613,42 +616,42 @@ body {
   box-sizing: border-box;
 }
 
-.skill-card h2 {
+.can-skill-card h2 {
   font-size: 1.25rem;
   font-weight: 700;
   color: #111827;
   margin: 0 0 1.25rem 0;
 }
 
-.skill-box {
+.can-skill-box {
   margin-bottom: 1rem;
   width: 100%;
 }
 
-.skill-box:last-child {
+.can-skill-box:last-child {
   margin-bottom: 0;
 }
 
-.skill-title {
+.can-skill-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.4rem;
 }
 
-.skill-title span:first-child {
+.can-skill-title span:first-child {
   font-size: 0.85rem;
   font-weight: 600;
   color: #374151;
 }
 
-.skill-title span:last-child {
+.can-skill-title span:last-child {
   font-size: 0.85rem;
   font-weight: 700;
   color: #2563eb;
 }
 
-.progress-bar {
+.can-progress-bar {
   width: 100%;
   height: 0.5rem;
   background: #e5e7eb;
@@ -656,14 +659,14 @@ body {
   overflow: hidden;
 }
 
-.progress-fill {
+.can-progress-fill {
   height: 100%;
   background: #2563eb;
   border-radius: 1.8rem;
 }
 
 /* AI Career Assistant CSS */
-.assistant-card {
+.can-assistant-card {
   width: 100%;
   min-height: 23.1rem;
   background: #ffffff;
@@ -676,21 +679,21 @@ body {
   box-sizing: border-box;
 }
 
-.assistant-header {
+.can-assistant-header {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
-.assistant-header img {
+.can-assistant-header img {
   width: 1.35rem;
   height: 1.35rem;
   flex-shrink: 0;
   margin-top: 0.2rem;
 }
 
-.assistant-header h2 {
+.can-assistant-header h2 {
   font-size: 1.25rem;
   font-weight: 700;
   color: #111827;
@@ -698,38 +701,38 @@ body {
   line-height: 1.2;
 }
 
-.assistant-header p {
+.can-assistant-header p {
   margin: 0.2rem 0 0 0;
   font-size: 0.75rem;
   color: #64748b;
   line-height: 1.4;
 }
 
-.assistant-item {
+.can-assistant-item {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
   padding: 0.6rem 0;
 }
 
-.assistant-item:not(:last-child) {
+.can-assistant-item:not(:last-child) {
   border-bottom: 0.07rem solid #f1f5f9;
 }
 
-.assistant-icon {
+.can-assistant-icon {
   width: 2rem;
   height: 2rem;
   flex-shrink: 0;
 }
 
-.assistant-item h4 {
+.can-assistant-item h4 {
   font-size: 0.88rem;
   font-weight: 600;
   color: #111827;
   margin: 0 0 0.2rem 0;
 }
 
-.assistant-item p {
+.can-assistant-item p {
   font-size: 0.75rem;
   color: #64748b;
   margin: 0;
@@ -737,7 +740,7 @@ body {
 }
 
 /* Recent Activity CSS */
-.recent-activity-card {
+.can-recent-activity-card {
   width: 100%;
   min-height: 23.5rem;
   background: #ffffff;
@@ -749,14 +752,14 @@ body {
   flex-direction: column;
 }
 
-.recent-activity-title {
+.can-recent-activity-title {
   margin: 0 0 1.25rem 0;
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
 }
 
-.recent-activity-list {
+.can-recent-activity-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -764,14 +767,14 @@ body {
   justify-content: space-between;
 }
 
-.recent-activity-item {
+.can-recent-activity-item {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.recent-activity-left {
+.can-recent-activity-left {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -779,7 +782,7 @@ body {
   min-width: 0;
 }
 
-.recent-activity-icon {
+.can-recent-activity-icon {
   width: 42px;
   height: 42px;
   border-radius: 8px;
@@ -790,34 +793,34 @@ body {
   flex-shrink: 0;
 }
 
-.recent-activity-icon img {
+.can-recent-activity-icon img {
   width: 22px;
   height: 22px;
   object-fit: contain;
 }
 
-.recent-activity-content {
+.can-recent-activity-content {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
 }
 
-.recent-activity-content h4 {
+.can-recent-activity-content h4 {
   margin: 0 0 4px 0;
   font-size: 0.9rem;
   font-weight: 600;
   color: #1e293b;
 }
 
-.recent-activity-content p {
+.can-recent-activity-content p {
   margin: 0;
   font-size: 0.8rem;
   color: #64748b;
   line-height: 1.4;
 }
 
-.recent-activity-time {
+.can-recent-activity-time {
   font-size: 0.8rem;
   font-weight: 500;
   color: #94a3b8;
@@ -826,7 +829,7 @@ body {
 }
 
 /* Upcoming Interviews CSS */
-.upcoming-card {
+.can-upcoming-card {
   width: 100%;
   min-height: 23.5rem;
   background: #ffffff;
@@ -838,14 +841,14 @@ body {
   flex-direction: column;
 }
 
-.upcoming-title {
+.can-upcoming-title {
   margin: 0 0 1.25rem 0;
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
 }
 
-.upcoming-list {
+.can-upcoming-list {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -853,7 +856,7 @@ body {
   flex: 1;
 }
 
-.interview-item {
+.can-interview-item {
   width: 100%;
   display: flex;
   align-items: center;
@@ -867,12 +870,12 @@ body {
     box-shadow 0.2s ease;
 }
 
-.interview-item:hover {
+.can-interview-item:hover {
   border-color: #3b82f6;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
 }
 
-.date-box {
+.can-date-box {
   width: 44px;
   height: 46px;
   background: #ccd8ff;
@@ -884,7 +887,7 @@ body {
   flex-shrink: 0;
 }
 
-.month {
+.can-month {
   font-size: 13px;
   font-weight: 700;
   color: #4338ca;
@@ -892,14 +895,14 @@ body {
   margin-bottom: 2px;
 }
 
-.day {
+.can-day {
   font-size: 16px;
   font-weight: 600;
   color: #111827;
   line-height: 1;
 }
 
-.interview-details {
+.can-interview-details {
   flex: 1;
   min-width: 0;
   margin-left: 12px;
@@ -908,20 +911,20 @@ body {
   justify-content: center;
 }
 
-.interview-details h4 {
+.can-interview-details h4 {
   margin: 0 0 2px 0;
   font-size: 0.88rem;
   font-weight: 600;
   color: #1e293b;
 }
 
-.interview-details p {
+.can-interview-details p {
   margin: 0;
   font-size: 0.78rem;
   color: #64748b;
 }
 
-.interview-time {
+.can-interview-time {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -929,20 +932,20 @@ body {
   flex-shrink: 0;
 }
 
-.interview-time span {
+.can-interview-time span {
   font-size: 0.8rem;
   font-weight: 500;
   color: #64748b;
 }
 
-.calendar-icon {
+.can-calendar-icon {
   width: 14px;
   height: 14px;
   object-fit: contain;
 }
 
 /* Profile Visibility CSS */
-.profile-card {
+.can-profile-card {
   width: 100%;
   min-height: 23.5rem;
   background: #ffffff;
@@ -954,21 +957,21 @@ body {
   flex-direction: column;
 }
 
-.profile-title {
+.can-profile-title {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
 }
 
-.profile-subtitle {
+.can-profile-subtitle {
   margin: 6px 0 12px 0;
   font-size: 0.8rem;
   color: #64748b;
   line-height: 1.4;
 }
 
-.profile-frame {
+.can-profile-frame {
   width: 100%;
   height: auto;
   display: block;
@@ -976,7 +979,7 @@ body {
   object-fit: contain;
 }
 
-.profile-stats {
+.can-profile-stats {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -984,7 +987,7 @@ body {
   gap: 8px;
 }
 
-.stat-box {
+.can-stat-box {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -993,28 +996,28 @@ body {
   min-width: 0;
 }
 
-.stat-icon {
+.can-stat-icon {
   width: 24px;
   height: 24px;
   object-fit: contain;
   margin-bottom: 8px;
 }
 
-.stat-box h4 {
+.can-stat-box h4 {
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
 }
 
-.stat-box p {
+.can-stat-box p {
   margin: 4px 0 0 0;
   font-size: 0.7rem;
   line-height: 1.3;
   color: #64748b;
 }
 
-.divider {
+.can-divider {
   width: 1px;
   height: 48px;
   background: #e2e8f0;
@@ -1022,45 +1025,45 @@ body {
   flex-shrink: 0;
 }
 
-.why-title {
+.can-why-title {
   margin: 0 0 10px 0;
   font-size: 0.9rem;
   font-weight: 700;
   color: #1e293b;
 }
 
-.benefit-item {
+.can-benefit-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   margin-bottom: 10px;
 }
 
-.benefit-item:last-child {
+.can-benefit-item:last-child {
   margin-bottom: 0;
 }
 
-.benefit-icon {
+.can-benefit-icon {
   width: 24px;
   height: 24px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.benefit-item-content {
+.can-benefit-item-content {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-.benefit-item h5 {
+.can-benefit-item h5 {
   margin: 0 0 2px 0;
   font-size: 0.82rem;
   font-weight: 600;
   color: #1e293b;
 }
 
-.benefit-item p {
+.can-benefit-item p {
   margin: 0;
   font-size: 0.75rem;
   line-height: 1.3;
@@ -1068,7 +1071,7 @@ body {
 }
 
 /* Modal Overlay Popup */
-.popup-overlay {
+.can-popup-overlay {
   position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.45);
@@ -1078,7 +1081,7 @@ body {
   z-index: 1500;
 }
 
-.popup {
+.can-popup {
   width: 28rem;
   max-width: 92%;
   background: #ffffff;
@@ -1087,7 +1090,7 @@ body {
   position: relative;
 }
 
-.close-btn {
+.can-close-btn {
   position: absolute;
   top: 0.8rem;
   right: 1rem;
@@ -1097,14 +1100,14 @@ body {
   cursor: pointer;
 }
 
-.popup h2 {
+.can-popup h2 {
   text-align: center;
   font-size: 1.35rem;
   color: #111827;
   margin: 0;
 }
 
-.popup-score {
+.can-popup-score {
   margin-top: 1rem;
   text-align: center;
   font-size: 3.5rem;
@@ -1112,7 +1115,7 @@ body {
   color: #2563eb;
 }
 
-.status {
+.can-status {
   margin-top: 0.35rem;
   text-align: center;
   color: #16a34a;
@@ -1120,11 +1123,11 @@ body {
   font-weight: 600;
 }
 
-.popup-list {
+.can-popup-list {
   margin-top: 1.5rem;
 }
 
-.popup-item {
+.can-popup-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1132,18 +1135,18 @@ body {
   border-bottom: 0.07rem solid #e5e7eb;
 }
 
-.popup-left {
+.can-popup-left {
   display: flex;
   align-items: center;
   gap: 0.7rem;
 }
 
-.popup-left span {
+.can-popup-left span {
   font-size: 0.9rem;
   color: #374151;
 }
 
-.popup-button {
+.can-popup-button {
   width: 100%;
   margin-top: 1.5rem;
   padding: 0.85rem;
@@ -1156,170 +1159,275 @@ body {
   cursor: pointer;
 }
 
+/* ===========================================
+   2560px ULTRA-WIDE FIX (NO BOTTOM BLANK SPACE)
+   Main content area + rows now stretch to fill
+   the full viewport height instead of leaving a
+   blank gap below the cards.
+=========================================== */
+/* ===============================
+   2560px (Large Desktop)
+==================================*/
+@media (min-width: 1921px) {
+  .can-dashboard-main {
+    max-width: 2600px;
+    margin-left: 260px;
+  }
+
+  .can-dashboard-content {
+    padding: 2rem;
+  }
+
+  .can-dashboard-cards {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+
+  .can-dashboard-row-one,
+  .can-dashboard-row-two {
+    grid-template-columns: 42% 32% 24%;
+    gap: 1rem;
+  }
+}
+
 /* 1024px & Tablet Breakpoint Grid Repairs */
 @media (max-width: 1200px) and (min-width: 769px) {
-  .dashboard-row-one,
-  .dashboard-row-two {
+  .can-dashboard-row-one,
+  .can-dashboard-row-two {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
   }
 
-  .gauge-wrapper {
+  .can-gauge-wrapper {
     width: 10rem;
     min-width: 10rem;
   }
 
-  .gauge-text h1 {
+  .can-gauge-text h1 {
     font-size: 2.1rem;
   }
 }
 
+/* ===========================================
+   768px BREAKPOINT ATS FIX
+=========================================== */
 @media (max-width: 1024px) {
-  .sidebar {
+  .can-sidebar {
     width: 220px;
   }
 
-  .dashboard-main {
+  .can-dashboard-main {
     margin-left: 220px;
     width: calc(100% - 220px);
   }
 
-  .welcome-heading h1 {
+  .can-welcome-heading h1 {
     font-size: 1.5rem;
   }
 
-  .dashboard-cards {
+  .can-dashboard-cards {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .dashboard-row-one,
-  .dashboard-row-two {
+  .can-dashboard-row-one,
+  .can-dashboard-row-two {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 
-  .ai-assistant-wrapper,
-  .profile-visibility-wrapper {
+  .can-ai-assistant-wrapper,
+  .can-profile-visibility-wrapper {
     grid-column: span 2;
   }
 
-  .ats-card,
-  .skill-card,
-  .assistant-card,
-  .recent-activity-card,
-  .upcoming-card,
-  .profile-card {
+  .can-ats-card,
+  .can-skill-card,
+  .can-assistant-card,
+  .can-recent-activity-card,
+  .can-upcoming-card,
+  .can-profile-card {
     min-height: auto;
   }
 }
 
-/* Mobile View Breaks (< 768px) */
 @media (max-width: 768px) {
-  header,
-  .top-navbar,
-  .navbar-container {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 75px !important;
-    z-index: 1200 !important;
-  }
-
-  .sidebar {
+  .can-sidebar {
     position: fixed !important;
     top: 75px !important;
-    left: -280px;
+    left: 0 !important;
     width: 260px;
+    max-width: 85vw;
     height: calc(100vh - 75px) !important;
-    z-index: 1100 !important;
-    transition: left 0.3s ease-in-out;
+    box-sizing: border-box;
+    z-index: 9999 !important;
+    background: #ffffff;
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.12);
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: transform 0.3s ease-in-out;
     display: flex !important;
     flex-direction: column;
     justify-content: space-between;
-    background: #ffffff;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px;
   }
 
-  .sidebar.mobile-open {
-    left: 0 !important;
+  .can-sidebar.can-mobile-open {
+    transform: translateX(0);
+    pointer-events: auto;
   }
 
-  .sidebar-mobile-overlay {
-    position: fixed !important;
-    top: 75px !important;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(15, 23, 42, 0.45);
-    z-index: 1050 !important;
-  }
-
-  .dashboard-main {
+  .can-dashboard-main {
     margin-left: 0;
     width: 100%;
   }
 
-  /* Responsive screen fluid adjustment */
-  .welcome-heading h1 {
-    font-size: 1.35rem;
-  }
-
-  .welcome-img {
-    width: 1.35rem;
-    height: 1.35rem;
-  }
-
-  .dashboard-row-one,
-  .dashboard-row-two {
-    grid-template-columns: 100%;
-    gap: 1.25rem;
-  }
-
-  .ai-assistant-wrapper,
-  .profile-visibility-wrapper {
-    grid-column: span 1;
-  }
-
-  .dashboard-cards {
+  /* Keep a proper 2-column grid at 768px (the 1024px query only
+     applies down to 769px) so cards don't collapse into the
+     cramped 42/31.7/26.3% desktop split */
+  .can-dashboard-row-one,
+  .can-dashboard-row-two {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
 
-  .ats-content {
+  .can-ai-assistant-wrapper,
+  .can-profile-visibility-wrapper {
+    grid-column: span 2;
+  }
+
+  /* Remove the fixed min-height so ATS / Skill Analysis cards
+     don't leave empty space when their stacked content is shorter */
+  .can-ats-card,
+  .can-skill-card,
+  .can-assistant-card,
+  .can-recent-activity-card,
+  .can-upcoming-card,
+  .can-profile-card {
+    min-height: auto;
+  }
+
+  /* 768px ATS Breakdown visibility fix */
+  .can-ats-content {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
   }
 
-  .gauge-wrapper {
-    margin-top: 0;
+  .can-ats-title {
+    margin-bottom: 1rem;
   }
 
-  .score-list {
+  .can-gauge-wrapper {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .can-score-list {
     width: 100%;
-    margin-top: 0;
+    margin-top: 0.75rem;
   }
 }
 
+/* ===========================================
+   320px, 375px, 425px MOBILE RESPONSIVE FIXES
+   (NO OVERLAP, STEP BY STEP VERTICAL FLOW, GAUGE FIX)
+=========================================== */
 @media (max-width: 480px) {
-  .dashboard-cards {
+  .can-dashboard-cards {
     grid-template-columns: 1fr;
   }
-  .dashboard-header {
+
+  .can-dashboard-header {
     padding: 1rem;
   }
-  .welcome-container {
+
+  .can-welcome-container {
     flex-direction: column;
     align-items: flex-start;
   }
-  .welcome-heading h1 {
+
+  .can-welcome-heading h1 {
     font-size: 1.25rem;
   }
-  .welcome-right {
+
+  .can-welcome-right {
     width: 100%;
     flex-direction: column;
   }
-  .action-btn {
+
+  .can-action-btn {
     width: 100%;
+  }
+
+  /* STEP BY STEP ROW-WISE CARDS FLATTENING */
+  .can-dashboard-row-one,
+  .can-dashboard-row-two {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .can-ai-assistant-wrapper,
+  .can-profile-visibility-wrapper {
+    grid-column: span 1 !important;
+  }
+
+  /* GAUGE GRAPH ABOVE AND SCORE BREAKDOWN POINTS BELOW */
+  .can-ats-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+  }
+
+  .can-ats-title {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .can-gauge-wrapper {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .can-score-list {
+    width: 100% !important;
+    margin-top: 0.5rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .can-score-item {
+    width: 100% !important;
+  }
+
+  /* RECENT ACTIVITY & UPCOMING INTERVIEWS STEP BY STEP FLOW */
+  .can-recent-activity-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .can-recent-activity-time {
+    margin-left: 3.6rem;
+  }
+
+  .can-interview-item {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .can-interview-time {
+    margin-left: auto;
+  }
+
+  /* PROFILE STATS FLATTENING FOR SMALL PHONES */
+  .can-profile-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .can-divider {
+    width: 100%;
+    height: 1px;
+    margin-top: 0;
   }
 }

@@ -26,7 +26,7 @@ const LoginRecruiter = () => {
   
   const [showPassword, setShowPassword] = useState(false);
 
-  // Candidate / Recruiter toggle (this page defaults to Recruiter)
+
   const [userType, setUserType] = useState('recruiter');
 
   const handleUserTypeChange = (type) => {

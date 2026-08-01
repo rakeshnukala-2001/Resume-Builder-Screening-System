@@ -7,7 +7,6 @@ import ForgotPassword from "./Components-login-candidate/Forgotpassword";
 import CreatePassword from "./Components-login-candidate/CreatePassword";
 import EmailVerification from "./Components-login-candidate/EmailVerification";
 import OtpVerification from "./Components-login-candidate/OtpVerification";
-import LoginSuccess from "./Components-login-candidate/LoginSuccess";
 import LandingPage from "./Components-landingpage/LandingPage";
 import UserRegRecruiter from "./Components-login-recruiter/Userregrecruiter";
 import UserRegCandidate from "./Components-login-candidate/Userregcandidate";
@@ -17,13 +16,18 @@ import OtpRecruiter from "./Components-login-recruiter/OtpRecruiter";
 import ForgotPasswordRe from "./Components-login-recruiter/ForgotpasswordRe";
 import CreatePasswordRe from "./Components-login-recruiter/CreatepasswordRe";
 import RecruiterDashboard from "./Components-Recruiter/RecruiterDashboard";
-import CandidateDashboard from "./Components-Candidate/CandidateDashboard";
+import CandidtateDashboard from "./Components-Candidate/CandidateDashboard";
+import AboutUs from "./Components-landingpage/AboutUs";
+import RecruiterProfile from "./Components-Recruiter/RecruiterProfile";
 import CandidateProfile from "./Components-Candidate/CandidateProfile";
-import CreateResume from "./Components-CreateResume/PersonalInfo";
+import PersonalInfo from "./Components-CreateResume/PersonalInfo";
+import EducationPage from "./Components-CreateResume/Education";
+import SkillsPage from "./Components-CreateResume/CandidateSkills";
+import ReviewPage from "./Components-CreateResume/ReviewPage";
 
 const router = createBrowserRouter([
   {
-    path: "/Resume-builder/home",
+    path: "/Resume-builder/",
     element: <LandingPage />,
   },
   {
@@ -49,10 +53,6 @@ const router = createBrowserRouter([
   {
     path: "/Resume-builder/login/emailverification/otpverification",
     element: <OtpVerification />,
-  },
-  {
-    path: "/Resume-builder/login/loginsuccess",
-    element: <LoginSuccess />,
   },
   {
     path: "/Resume-builder/userregrecruiter",
@@ -83,20 +83,36 @@ const router = createBrowserRouter([
     element: <RecruiterDashboard />,
   },
   {
-    path: "/Resume-builder/candidate/dashboard",
-    element: <CandidateDashboard />,
+    path: "/Resume-builder/dashboard/candidate",
+    element: <CandidtateDashboard />,
   },
   {
-    path: "/Resume-builder/candidate/profile",
+    path: "/Resume-builder/Aboutus",
+    element: <AboutUs />,
+  },
+  {
+    path: "Resume-builder/dashboard/recruiter/Profile",
+    element: <RecruiterProfile />,
+  },
+  {
+    path: "/Resume-builder/candidate/candidate/profile",
     element: <CandidateProfile />,
   },
   {
-    path: "/Resume-builder/candidate/profile",
-    element: <CandidateProfile />,
+    path: "/Resume-builder/candidate/candidate/personalinfo",
+    element: <PersonalInfo />,
   },
   {
-    path: "/Resume-builder/candidate/personalinfo",
-    element: <CreateResume />,
+    path: "/Resume-builder/candidate/candidate/education",
+    element: <EducationPage />,
+  },
+  {
+    path: "/Resume-builder/candidate/candidate/skills",
+    element: <SkillsPage />,
+  },
+  {
+    path: "/Resume-builder/candidate/candidate/review",
+    element: <ReviewPage />,
   },
 ]);
 

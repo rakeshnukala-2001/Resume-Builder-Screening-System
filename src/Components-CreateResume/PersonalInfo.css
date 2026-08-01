@@ -1,18 +1,41 @@
-/* ====================================
-      Base & Global Styles                                 
-   ==================================== */
-.resume-page-wrapper {
+/* Container & Dashboard Layout */
+.can-dashboard-page-wrapper {
+  min-height: 100vh;
   background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
-  padding: 32px 48px;
+}
+
+.can-dashboard-layout {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.can-dashboard-main {
+  flex: 1;
+  padding: 0px 16px 24px 16px;
+  overflow-y: auto;
+}
+
+/* Error Highlight */
+.input-error {
+  border-color: #ef4444 !important;
+}
+
+/* Inner Page Wrapper */
+.resume-page-wrapper {
+  background-color: #f8fafc;
+  padding: 24px 16px;
   min-height: 100vh;
   box-sizing: border-box;
   width: 100%;
 }
 
-/* Header Section */
+/* Top Header */
 .resume-top-header {
   display: flex;
   justify-content: space-between;
@@ -33,7 +56,6 @@
   margin: 0;
 }
 
-/* Mobile-only elements hidden on desktop */
 .mobile-hamburger-btn,
 .mobile-only-dropdown-wrapper,
 .mobile-nav-drawer {
@@ -76,7 +98,7 @@
   filter: brightness(0) invert(1);
 }
 
-/* Top Stepper Card Box */
+/* Stepper Component */
 .steps-card-box {
   background: #ffffff;
   border: 1px solid #d1d5db;
@@ -105,7 +127,7 @@
   color: #2563eb;
 }
 
-/* Two-column Layout Grid */
+/* Grid Layout */
 .resume-grid-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -113,7 +135,6 @@
   align-items: stretch;
 }
 
-/* Card Containers */
 .resume-card-box {
   border: 1px solid #d1d5db;
   border-radius: 12px;
@@ -122,7 +143,7 @@
   box-sizing: border-box;
 }
 
-/* Form Section Styles */
+/* Form Section */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -196,7 +217,7 @@
   background: transparent;
 }
 
-/* Right Side Resume Live Preview Styles */
+/* Live Resume Preview Card */
 .preview-header {
   display: flex;
   gap: 20px;
@@ -243,14 +264,12 @@
   height: 13px;
 }
 
-/* Contact divider line */
 .preview-thick-hr {
   border-top: 2px solid #cbd5e1;
   margin: 20px 0 16px 0;
   width: 100%;
 }
 
-/* Section Underlines */
 .preview-section {
   margin-bottom: 16px;
 }
@@ -300,7 +319,6 @@
   margin: 0;
 }
 
-/* Skill Badges */
 .skills-badge-list {
   display: flex;
   flex-wrap: wrap;
@@ -317,7 +335,6 @@
   font-weight: 500;
 }
 
-/* Centered Bottom Next Button */
 .bottom-button-wrapper {
   display: flex;
   justify-content: center;
@@ -341,9 +358,7 @@
   background: #1d4ed8;
 }
 
-/* ==================================================== 
-       Tablet Responsive Rules (426px to 900px)            
- ==================================================== */
+/* Tablet Responsiveness */
 @media screen and (min-width: 426px) and (max-width: 900px) {
   .resume-page-wrapper {
     padding: 16px;
@@ -380,9 +395,7 @@
   }
 }
 
-/* ==================================================== 
-    Mobile Specific Rules (320px, 375px, 425px)          
-   ==================================================== */
+/* Mobile Responsiveness */
 @media screen and (max-width: 430px) {
   .resume-page-wrapper {
     padding: 12px !important;
@@ -391,13 +404,11 @@
     overflow-x: hidden !important;
   }
 
-  /* Hide Desktop Elements strictly */
   .desktop-only-steps,
   .desktop-only-actions {
     display: none !important;
   }
 
-  /* Header Alignment  */
   .resume-top-header {
     display: flex !important;
     justify-content: space-between !important;
@@ -419,7 +430,6 @@
     white-space: nowrap !important;
   }
 
-  /* LHS Top Hamburger Icon */
   .mobile-hamburger-btn {
     display: flex !important;
     align-items: center !important;
@@ -435,7 +445,6 @@
     flex-shrink: 0 !important;
   }
 
-  /* RHS Top Dropdown Button */
   .mobile-only-dropdown-wrapper {
     display: block !important;
     position: relative !important;
@@ -488,7 +497,6 @@
     border-bottom: none !important;
   }
 
-  /* Mobile Drawer Navigation List */
   .mobile-nav-drawer {
     display: flex !important;
     flex-direction: column !important;
@@ -513,7 +521,6 @@
     background: #eff6ff !important;
   }
 
-  /* Grid Fix */
   .resume-grid-layout {
     display: flex !important;
     flex-direction: column !important;
@@ -527,6 +534,7 @@
     box-sizing: border-box !important;
     padding: 16px !important;
   }
+
   .resume-grid-layout .preview-card {
     order: 1 !important;
   }

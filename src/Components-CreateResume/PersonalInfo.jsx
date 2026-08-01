@@ -1,19 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CandidateHeader from "./../Components-Candidate/CandidateHeader";
+import Sidebar from "./Sidebar";
 import "./PersonalInfo.css";
 
-// Images Imports
-import profileAvatarImg from "../assets/ai-report/profile.png";
-import emailIconImg from "../assets/ai-report/email.png";
-import phoneIconImg from "../assets/ai-report/phone.png";
-import locationIconImg from "../assets/ai-report/location.png";
-import linkedinIconImg from "../assets/ai-report/linkedin.png";
-import aiSparkleIconImg from "../assets/ai-report/ai.png";
-import downloadIconImg from "../assets/ai-report/download.png";
+// Form & Resume Assets
+import ProfileImg from "../assets/Create-Resume/profile.png";
+import mailIcon from "../assets/Create-Resume/email.png";
+import phoneIcon from "../assets/Create-Resume/phone.png";
+import locationIcon from "../assets/Create-Resume/location.png";
+import linkedinIcon from "../assets/Create-Resume/linkedin.png";
+import aiIcon from "../assets/Create-Resume/ai.png";
+import downloadIconAsset from "../assets/Create-Resume/download.png";
 
 const PersonalInfo = () => {
-  const [step, setStep] = useState(1);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isActionDropdownOpen, setIsActionDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const [activeStep, setActiveStep] = useState(1);
+  const [activeTab, setActiveTab] = useState("");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showMobileActionMenu, setShowMobileActionMenu] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     fullName: "Ajith Akash",
@@ -23,334 +30,335 @@ const PersonalInfo = () => {
     location: "Bengaluru, India",
     linkedin: "linkedin.com/in/aman",
     summary:
-      "Full Stack Developer with 3+ years of experience building responsive web applications using HTML, CSS, JavaScript and React. Passionate about creating intuitive user interfaces and optimizing performance.",
+      "Frontend Developer with 3+ years of experience building responsive web applications using HTML, CSS, JavaScript and React. Passionate about creating intuitive user interfaces and optimizing performance.",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: false }));
+    }
   };
 
-  const handleStepSelect = (stepNum) => {
-    setStep(stepNum);
-    setIsMenuOpen(false);
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.fullName.trim()) newErrors.fullName = true;
+    if (!formData.jobTitle.trim()) newErrors.jobTitle = true;
+    if (!formData.email.trim()) newErrors.email = true;
+    if (!formData.phone.trim()) newErrors.phone = true;
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
+      alert("Please fill in all mandatory fields before proceeding.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleStepClick = (stepNumber) => {
+    if (!validateForm()) return;
+
+    if (stepNumber === 1) {
+      navigate("/Resume-builder/candidate/candidate/personalinfo");
+    } else if (stepNumber === 2) {
+      navigate("/Resume-builder/candidate/candidate/experience");
+    } else if (stepNumber === 3) {
+      navigate("/Resume-builder/candidate/candidate/education");
+    } else if (stepNumber === 4) {
+      navigate("/Resume-builder/candidate/candidate/skills");
+    } else if (stepNumber === 5) {
+      navigate("/Resume-builder/candidate/candidate/review");
+    }
+  };
+
+  const handleNextStep = () => {
+    if (validateForm()) {
+      navigate("/Resume-builder/candidate/candidate/experience");
+    }
   };
 
   return (
-    <div className="resume-page-wrapper">
-      {/* Top Header Navigation */}
-      <header className="resume-top-header">
-        <div className="header-left-title">
-          {/* Hamburger Icon */}
-          <button
-            className="mobile-hamburger-btn"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            ☰
-          </button>
-          <h2>Create a Resume</h2>
-        </div>
+    <div className="can-dashboard-page-wrapper">
+      <CandidateHeader
+        mobileMenuOpen={isSidebarOpen}
+        setMobileMenuOpen={setIsSidebarOpen}
+      />
 
-        {/* Desktop Buttons */}
-        <div className="header-action-btns desktop-only-actions">
-          <button className="save-btn">Save</button>
-          <button className="download-btn">
-            Download
-            <img
-              src={downloadIconImg}
-              alt="Download"
-              className="download-btn-icon"
-            />
-          </button>
-        </div>
+      <div className="can-dashboard-layout">
+        <Sidebar
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          isOpen={isSidebarOpen}
+          setIsOpen={setIsSidebarOpen}
+        />
 
-        {/* Mobile Dropdown Button (Only 320, 375, 425px) */}
-        <div className="mobile-only-dropdown-wrapper">
-          <button
-            className="action-dropdown-btn"
-            onClick={() => setIsActionDropdownOpen(!isActionDropdownOpen)}
-          >
-            ▾
-          </button>
-          {isActionDropdownOpen && (
-            <div className="action-dropdown-menu">
-              <button onClick={() => setIsActionDropdownOpen(false)}>
-                Save
-              </button>
-              <button onClick={() => setIsActionDropdownOpen(false)}>
-                Download
-              </button>
-            </div>
-          )}
-        </div>
-      </header>
-
-      {/* Mobile Nav Drawer Popup (320, 375, 425px) */}
-      {isMenuOpen && (
-        <div className="mobile-nav-drawer">
-          <div
-            className={`drawer-item ${step === 1 ? "active" : ""}`}
-            onClick={() => handleStepSelect(1)}
-          >
-            1. Personal Info
-          </div>
-          <div
-            className={`drawer-item ${step === 2 ? "active" : ""}`}
-            onClick={() => handleStepSelect(2)}
-          >
-            2. Experience
-          </div>
-          <div
-            className={`drawer-item ${step === 3 ? "active" : ""}`}
-            onClick={() => handleStepSelect(3)}
-          >
-            3. Education
-          </div>
-          <div
-            className={`drawer-item ${step === 4 ? "active" : ""}`}
-            onClick={() => handleStepSelect(4)}
-          >
-            4. Skills
-          </div>
-          <div
-            className={`drawer-item ${step === 5 ? "active" : ""}`}
-            onClick={() => handleStepSelect(5)}
-          >
-            5. Review
-          </div>
-        </div>
-      )}
-
-      {/* Desktop Stepper Bar Box */}
-      <div className="steps-card-box desktop-only-steps">
-        <div className="resume-steps-bar">
-          <div
-            className={`step-item ${step === 1 ? "active" : ""}`}
-            onClick={() => setStep(1)}
-          >
-            1. Personal Info
-          </div>
-          <div
-            className={`step-item ${step === 2 ? "active" : ""}`}
-            onClick={() => setStep(2)}
-          >
-            2. Experience
-          </div>
-          <div
-            className={`step-item ${step === 3 ? "active" : ""}`}
-            onClick={() => setStep(3)}
-          >
-            3. Education
-          </div>
-          <div
-            className={`step-item ${step === 4 ? "active" : ""}`}
-            onClick={() => setStep(4)}
-          >
-            4. Skills
-          </div>
-          <div
-            className={`step-item ${step === 5 ? "active" : ""}`}
-            onClick={() => setStep(5)}
-          >
-            5. Review
-          </div>
-        </div>
-      </div>
-
-      {/* Content Grid Layout */}
-      <div className="resume-grid-layout">
-        {/* Form Section */}
-        <div className="resume-card-box form-card">
-          {step === 1 && (
-            <div className="form-content">
-              <div className="form-group">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                />
+        <main className="can-dashboard-main">
+          <div className="resume-page-wrapper">
+            <div className="resume-top-header">
+              <div className="header-left-title">
+                <button
+                  className="mobile-hamburger-btn"
+                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                >
+                  ☰
+                </button>
+                <h2>Create a Resume</h2>
               </div>
 
-              <div className="form-group">
-                <label>Job Title</label>
-                <input
-                  type="text"
-                  name="jobTitle"
-                  value={formData.jobTitle}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="form-row-two">
-                <div className="form-group">
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
+              <div className="header-action-btns desktop-only-actions">
+                <button className="save-btn">Save</button>
+                <button className="download-btn">
+                  Download
+                  <img
+                    src={downloadIconAsset}
+                    alt="download"
+                    className="download-btn-icon"
                   />
+                </button>
+              </div>
+
+              <div className="mobile-only-dropdown-wrapper">
+                <button
+                  className="action-dropdown-btn"
+                  onClick={() => setShowMobileActionMenu(!showMobileActionMenu)}
+                >
+                  ⋮
+                </button>
+                {showMobileActionMenu && (
+                  <div className="action-dropdown-menu">
+                    <button onClick={() => setShowMobileActionMenu(false)}>
+                      Save
+                    </button>
+                    <button onClick={() => setShowMobileActionMenu(false)}>
+                      Download
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Stepper Navigation */}
+            <div className="steps-card-box desktop-only-steps">
+              <div className="resume-steps-bar">
+                <span
+                  className="step-item active"
+                  onClick={() => handleStepClick(1)}
+                >
+                  1. Personal Info
+                </span>
+                <span className="step-item" onClick={() => handleStepClick(2)}>
+                  2. Experience
+                </span>
+                <span className="step-item" onClick={() => handleStepClick(3)}>
+                  3. Education
+                </span>
+                <span className="step-item" onClick={() => handleStepClick(4)}>
+                  4. Skills
+                </span>
+                <span className="step-item" onClick={() => handleStepClick(5)}>
+                  5. Review
+                </span>
+              </div>
+            </div>
+
+            <div className="mobile-nav-drawer">
+              {[
+                "1. Personal Info",
+                "2. Experience",
+                "3. Education",
+                "4. Skills",
+                "5. Review",
+              ].map((stepLabel, idx) => (
+                <div
+                  key={idx}
+                  className={`drawer-item ${idx === 0 ? "active" : ""}`}
+                  onClick={() => handleStepClick(idx + 1)}
+                >
+                  {stepLabel}
                 </div>
+              ))}
+            </div>
+
+            {/* Grid Layout Container */}
+            <div className="resume-grid-layout">
+              {/* Left Form */}
+              <div className="resume-card-box form-card">
                 <div className="form-group">
-                  <label>Phone</label>
+                  <label>Full Name</label>
                   <input
                     type="text"
-                    name="phone"
-                    value={formData.phone}
+                    name="fullName"
+                    className={errors.fullName ? "input-error" : ""}
+                    value={formData.fullName}
                     onChange={handleChange}
                   />
                 </div>
-              </div>
 
-              <div className="form-group">
-                <label>Location</label>
-                <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>LinkedIn</label>
-                <input
-                  type="text"
-                  name="linkedin"
-                  value={formData.linkedin}
-                  onChange={handleChange}
-                />
-              </div>
-
-              {/* AI Summary Section */}
-              <div className="ai-summary-section">
-                <div className="ai-summary-title">
-                  <img
-                    src={aiSparkleIconImg}
-                    alt="AI Logo"
-                    className="ai-icon"
+                <div className="form-group">
+                  <label>Job Title</label>
+                  <input
+                    type="text"
+                    name="jobTitle"
+                    className={errors.jobTitle ? "input-error" : ""}
+                    value={formData.jobTitle}
+                    onChange={handleChange}
                   />
-                  <h3>AI Write My Summary</h3>
                 </div>
-                <label className="summary-sublabel">Professional Summary</label>
-                <textarea
-                  name="summary"
-                  value={formData.summary}
-                  onChange={handleChange}
-                  rows="4"
-                />
+
+                <div className="form-row-two">
+                  <div className="form-group">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      className={errors.email ? "input-error" : ""}
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Phone</label>
+                    <input
+                      type="text"
+                      name="phone"
+                      className={errors.phone ? "input-error" : ""}
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Location</label>
+                  <input
+                    type="text"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>LinkedIn</label>
+                  <input
+                    type="text"
+                    name="linkedin"
+                    value={formData.linkedin}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="ai-summary-section">
+                  <div className="ai-summary-title">
+                    <img src={aiIcon} alt="AI Icon" className="ai-icon" />
+                    <h3>AI Write My Summary</h3>
+                  </div>
+                  <span className="summary-sublabel">Professional Summary</span>
+                  <textarea
+                    name="summary"
+                    rows="4"
+                    value={formData.summary}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+              </div>
+
+              {/* Right Live Preview */}
+              <div className="resume-card-box preview-card">
+                <div className="preview-header">
+                  <img
+                    src={ProfileImg}
+                    alt="Profile Avatar"
+                    className="profile-img-circle"
+                  />
+                  <div>
+                    <h3 className="preview-name">
+                      {formData.fullName || "Ajith Akash"}
+                    </h3>
+                    <p className="preview-title">
+                      {formData.jobTitle || "Full stack Developer"}
+                    </p>
+                    <div className="preview-contacts">
+                      <span>
+                        <img src={mailIcon} alt="email" /> {formData.email}
+                      </span>
+                      <span>
+                        <img src={phoneIcon} alt="phone" /> {formData.phone}
+                      </span>
+                      <span>
+                        <img src={locationIcon} alt="location" />{" "}
+                        {formData.location}
+                      </span>
+                      <span>
+                        <img src={linkedinIcon} alt="linkedin" />{" "}
+                        {formData.linkedin}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="preview-thick-hr"></div>
+
+                <div className="preview-section">
+                  <h4 className="section-title-underlined">
+                    PROFESSIONAL SUMMARY
+                  </h4>
+                  <p className="preview-summary-text">{formData.summary}</p>
+                </div>
+
+                <div className="preview-section">
+                  <h4 className="section-title-underlined">EXPERIENCE</h4>
+                  <div className="item-header">
+                    <strong>Senior Full Stack developer</strong>
+                    <span className="item-date">Jan 2022 - Present</span>
+                  </div>
+                  <ul className="bullet-list">
+                    <li>
+                      Developed responsive web applications using React, Redux
+                      and Tailwind CSS.
+                    </li>
+                    <li>
+                      Collaborated with UX/UI designers and backend developers.
+                    </li>
+                    <li>Improved website performance by 30%.</li>
+                  </ul>
+                </div>
+
+                <div className="preview-section">
+                  <h4 className="section-title-underlined">EDUCATION</h4>
+                  <div className="item-header">
+                    <strong>Bachelor of Computer Science</strong>
+                    <span className="item-date">2016 - 2020</span>
+                  </div>
+                  <p className="university-name">Anna University</p>
+                </div>
+
+                <div className="preview-section">
+                  <h4 className="section-title-underlined">SKILLS</h4>
+                  <div className="skills-badge-list">
+                    <span className="skill-chip">HTML</span>
+                    <span className="skill-chip">CSS</span>
+                    <span className="skill-chip">JavaScript</span>
+                    <span className="skill-chip">React</span>
+                    <span className="skill-chip">Tailwind CSS</span>
+                    <span className="skill-chip">Git</span>
+                    <span className="skill-chip">GitHub</span>
+                    <span className="skill-chip">REST API</span>
+                    <span className="skill-chip">Python</span>
+                  </div>
+                </div>
               </div>
             </div>
-          )}
 
-          {step > 1 && (
-            <div className="placeholder-view">
-              <h3>Step {step} Section</h3>
-              <p>Fill details for this step.</p>
-            </div>
-          )}
-        </div>
-
-        {/* Resume Preview Card */}
-        <div className="resume-card-box preview-card">
-          <div className="preview-header">
-            <img
-              src={profileAvatarImg}
-              alt="Avatar"
-              className="profile-img-circle"
-            />
-            <div className="profile-details">
-              <h2 className="preview-name">
-                {formData.fullName || "Ajith Akash"}
-              </h2>
-              <p className="preview-title">
-                {formData.jobTitle || "Full stack Developer"}
-              </p>
-
-              <div className="preview-contacts">
-                <span>
-                  <img src={emailIconImg} alt="email" /> {formData.email}
-                </span>
-                <span>
-                  <img src={phoneIconImg} alt="phone" /> {formData.phone}
-                </span>
-                <span>
-                  <img src={locationIconImg} alt="location" />{" "}
-                  {formData.location}
-                </span>
-                <span>
-                  <img src={linkedinIconImg} alt="linkedin" />{" "}
-                  {formData.linkedin}
-                </span>
-              </div>
+            <div className="bottom-button-wrapper">
+              <button className="center-next-btn" onClick={handleNextStep}>
+                Next
+              </button>
             </div>
           </div>
-
-          <div className="preview-thick-hr"></div>
-
-          <div className="preview-section">
-            <h4 className="section-title-underlined">PROFESSIONAL SUMMARY</h4>
-            <p className="preview-summary-text">{formData.summary}</p>
-          </div>
-
-          <div className="preview-section">
-            <h4 className="section-title-underlined">EXPERIENCE</h4>
-            <div className="exp-item">
-              <div className="item-header">
-                <strong>Senier Full Stack developer</strong>
-                <span className="item-date">Jan 2022 - Present</span>
-              </div>
-              <ul className="bullet-list">
-                <li>
-                  Developed responsive web applications using React, Redux and
-                  Tailwind CSS.
-                </li>
-                <li>
-                  Collaborated with UX/UI designers and backend developers.
-                </li>
-                <li>Improved website performance by 30%.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="preview-section">
-            <h4 className="section-title-underlined">EDUCATION</h4>
-            <div className="edu-item">
-              <div className="item-header">
-                <strong>Bachelor of Computer Science</strong>
-                <span className="item-date">2016 - 2020</span>
-              </div>
-              <p className="university-name">Anna University</p>
-            </div>
-          </div>
-
-          <div className="preview-section">
-            <h4 className="section-title-underlined">SKILLS</h4>
-            <div className="skills-badge-list">
-              <span className="skill-chip">HTML</span>
-              <span className="skill-chip">CSS</span>
-              <span className="skill-chip">JavaScript</span>
-              <span className="skill-chip">React</span>
-              <span className="skill-chip">Tailwind CSS</span>
-              <span className="skill-chip">Git</span>
-              <span className="skill-chip">GitHub</span>
-              <span className="skill-chip">REST API</span>
-              <span className="skill-chip">Python</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Button */}
-      <div className="bottom-button-wrapper">
-        <button
-          className="center-next-btn"
-          onClick={() => setStep((prev) => Math.min(prev + 1, 5))}
-        >
-          Next
-        </button>
+        </main>
       </div>
     </div>
   );

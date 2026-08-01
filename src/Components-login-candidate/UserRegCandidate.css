@@ -1,27 +1,30 @@
+/* ==========================================================================
+   PAGE WRAPPER & CONTAINER
+   ========================================================================== */
 
-.urc-register-page-wrapper .urc-register-container  {
+.urc-register-page-wrapper .urc-register-container {
   display: flex;
-  gap: 1.5rem;
+  gap: 20px;
   flex-wrap: nowrap;
-  padding: 1.25rem;
+  padding: 12px;
   justify-content: center;
-  align-items: flex-start;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  align-items: stretch;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: #f8fafc;
-  /* height: 100vh;          */
+  height: 100vh;
   box-sizing: border-box;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
+  width: 100%;
 }
 
-
 /* ==========================================================================
-   LEFT INFO PANEL (Matches .urr-info 34% width layout)
+   LEFT INFO PANEL (34% Width)
    ========================================================================== */
 .urc-register-left {
   flex: 0 0 34%;
   max-width: 34%;
-  padding: 18px 20px;
+  padding: 20px;
   color: #1f2937;
   background: #ffffff;
   border: 1px solid gray;
@@ -30,73 +33,73 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly; 
-  height: 100%; 
+  justify-content: space-between;
+  gap: 12px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .urc-main-title {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   color: #2563eb;
-  margin: 0 0 4px 0;
+  margin: 0;
 }
 
 .urc-top-text {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #64748b;
-  line-height: 2;
-  padding: 10px;
+  line-height: 1.5;
+  padding: 4px 0;
+  margin: 0;
 }
-
 
 .urc-left-image {
   width: 100%;
-  flex: 1 1 auto; 
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .urc-left-image img {
-  max-width: 400px;
-  max-height: 400px;
-  /* width: auto;
-  height: auto; */
-  object-fit: contain; 
+  width: 100%;
+  max-width: 360px;
+  max-height: 280px;
+  object-fit: contain;
   display: block;
 }
 
 .urc-sub-title {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 700;
   color: #111827;
-  margin: 0 0 2px 0;
+  margin: 0;
   line-height: 1.3;
-  padding: 10px;
 }
 
 .urc-career-text {
-  font-size: 16px;
+  font-size: 15px;
   color: #2563eb;
-  /* line-height: 1.4; */
   font-weight: 500;
-  margin: 10px;
+  margin: 4px 0;
 }
 
 .urc-feature-list {
   list-style: none;
-  margin: 10px;
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 8px 16px;
+  gap: 8px;
 }
 
 .urc-feature-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   color: #374151;
 }
@@ -107,13 +110,14 @@
 }
 
 /* ==========================================================================
-   RIGHT FORM PANEL (Matches .urr-page 66% width layout)
+   RIGHT FORM PANEL (66% Width)
    ========================================================================== */
 .urc-register-right {
-  flex: 1 1 66%;
+  flex: 0 0 66%;
   max-width: 66%;
   height: 100%;
   padding: 4px;
+  margin-top: 10px;
   color: #1f2937;
   box-sizing: border-box;
   display: flex;
@@ -125,43 +129,43 @@
 .urc-form-title {
   font-size: 18px;
   font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 18px;
+  margin-top: 10px;
+  margin-bottom: 16px;
   color: #111827;
   text-align: center;
 }
 
-/* Candidate Form Element styling matches .urr-card */
+/* Candidate Form Element Styling */
 .urc-register-right form {
   border: 1px solid #e2e8f0;
   border-radius: 8px;
-  padding: 40px 14px;
+  padding: 14px 16px;
   background: #ffffff;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-  height: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  /* overflow: hidden; */
-  gap: 12px;
+  overflow: hidden;
+  flex: 1;
 }
 
 .urc-register-label {
   display: block;
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
   color: #111827;
+  margin-bottom: 5px;
 }
 
-/* Role Selector wrapper matches .urr-role-toggle */
+/* Role Selector Wrapper */
 .urc-role-wrapper {
   display: flex;
   gap: 60px;
 }
 
-/* Role Selector Cards matches .urr-role-card */
+/* Role Selector Cards */
 .urc-role-card {
   position: relative;
   display: flex;
@@ -170,14 +174,14 @@
   justify-content: center;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 14px;
   background: #ffffff;
   cursor: pointer;
   text-align: left;
   font-family: inherit;
   flex: 0 0 270px;
-  width: 200px;
-  height: 150px;              
+  width: 220px;
+  height: 120px;
   box-sizing: border-box;
   transition: all 0.2s ease;
 }
@@ -192,29 +196,26 @@
 }
 
 .urc-role-card img {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   margin-bottom: 6px;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
 }
 
 .urc-role-card h4 {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   color: #111827;
-  margin-bottom: 2px;
+  margin: 0 0 2px 0;
 }
 
 .urc-role-card p {
   font-size: 12px;
   color: #6b7280;
-  line-height: 1.9;
-  margin-top: 0;
+  line-height: 1.4;
+  margin: 0;
 }
 
-/* Radio selectors inside role card */
+/* Radio Selectors Inside Role Card */
 .urc-radio-circle {
   position: absolute;
   top: 12px;
@@ -242,24 +243,18 @@
 }
 
 /* ==========================================================================
-   INPUT GRIDS & FIELD WRAPPERS (Matches .urr-grid)
+   INPUT GRIDS & FIELD WRAPPERS
    ========================================================================== */
 .urc-form-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px 16px;
-  margin-bottom: 0;
-  overflow: visible;
-  flex: 0 0 auto;
   align-content: start;
-  
 }
 
 .urc-input-group {
   display: block;
   width: 100%;
-  font-size: 16px;
-  font-weight: 600;
 }
 
 .urc-input-group.urc-full-width {
@@ -268,20 +263,19 @@
 
 .urc-input-group label {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #111827;
-  margin-bottom: 5px;
-  padding: 5px;
+  margin-bottom: 7px;
 }
 
 .urc-input-group input,
 .urc-input-group select {
   width: 100%;
   box-sizing: border-box;
-  padding: 9px 12px;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
   font-size: 13px;
   color: #334155;
   background: #ffffff;
@@ -289,18 +283,67 @@
   transition: all 0.15s ease;
 }
 
-.urc-input-group input::placeholder{
-  color:#94a3b8;
+.urc-input-group input::placeholder {
+  color: #94a3b8;
 }
 
 .urc-input-group input:focus,
 .urc-input-group select:focus {
   outline: none;
   border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-/* Password View Toggles alignment style */
+.urc-input-group select {
+  padding-right: 12px;
+}
+
+/* Email Field Action & Badge */
+.urc-email-wrapper .urc-input-with-action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.urc-email-wrapper .urc-input-with-action input {
+  padding-right: 75px;
+}
+
+.urc-verify-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.urc-verify-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.urc-verified-badge {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Password View Toggles Alignment Style */
 .urc-password-wrapper {
   position: relative;
 }
@@ -320,18 +363,18 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   z-index: 2;
 }
 
 /* ==========================================================================
-   RESUME UPLOAD & TERMS & ACTIONS (Aligned)
+   RESUME UPLOAD, TERMS & ACTIONS
    ========================================================================== */
 .urc-upload-box {
   border: 1px dashed #cbd5e1;
   border-radius: 6px;
-  padding: 8px 12px !important;
+  padding: 5px 10px !important;
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
@@ -340,13 +383,13 @@
   gap: 6px !important;
   background: #ffffff;
   cursor: pointer;
-  min-height: 38px;
+  min-height: 30px;
   height: auto;
   text-align: center;
   overflow: hidden;
+  position: relative;
 }
 
-/* Any direct child wrapper inside the upload box must also lay out in a row */
 .urc-upload-box > * {
   display: inline-flex !important;
   flex-direction: row !important;
@@ -375,10 +418,10 @@
   display: inline !important;
 }
 
-.urc-upload-box p:first-of-type{
+.urc-upload-box p:first-of-type {
   font-size: 12px;
-  font-weight:600;
-  color:#374151;
+  font-weight: 600;
+  color: #374151;
 }
 
 .urc-upload-box p:first-of-type::after {
@@ -386,8 +429,7 @@
   white-space: pre;
 }
 
-
-/* Hide Native input safely */
+/* Native Input Hidden */
 .urc-upload-box input[type="file"] {
   position: absolute;
   inset: 0;
@@ -404,11 +446,6 @@
   display: none;
 }
 
-.urc-upload-box {
-  position: relative;
-}
-
-
 /* Terms Container */
 .urc-terms-wrapper-block {
   margin-bottom: 0;
@@ -417,7 +454,7 @@
 .urc-terms-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-size: 13px;
   color: #475569;
   cursor: pointer;
@@ -443,16 +480,17 @@
   text-decoration: underline;
 }
 
-/* Complete Registration Button style */
+/* Submit Button */
 .urc-register-btn {
   width: 100%;
-  padding: 13px;
+  padding: 12px;
   background: #2563eb;
   color: #ffffff;
   border: none;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
+  height: 46px;
   cursor: pointer;
   font-family: inherit;
   transition: background-color 0.15s ease;
@@ -466,7 +504,7 @@
   text-align: center;
   font-size: 13px;
   color: #475569;
-  margin-top: 0;
+  margin: 0;
 }
 
 .urc-login-text span {
@@ -479,101 +517,270 @@
   text-decoration: underline;
 }
 
-/* Error text fallback hide */
 .urc-error-text {
-  color: red;
+  color: #ef4444;
   font-size: 12px;
   margin-top: 4px;
-  display: block !important; /* Visible when triggered */
+  display: block !important;
 }
-
 
 /* ==========================================================================
-   RESPONSIVE MEDIA QUERIES (Exact duplicates of Recruiter responsive states)
+   OTP POPUP MODAL STYLES
    ========================================================================== */
+.urc-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
 
-/* 1024px to 1100px: Prevent Role Card Overflow */
-@media screen and (min-width: 1024px) and (max-width: 1100px) {
-  .urc-role-wrapper {
-    gap: 24px;
+.urc-modal-content {
+  background: #ffffff;
+  padding: 32px 28px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  animation: urcModalFadeIn 0.2s ease-out;
+}
+
+@keyframes urcModalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  
-  .urc-left-image img {
-    max-width: 300px;
-    max-height: 300px;
- } 
-
-  .urc-role-card {
-    flex: 1 1 0;
-    width: auto;
-    max-width: 220px;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-/* 769px to 1023px: Desktop & Tablet medium screens */
-@media screen and (min-width: 769px) and (max-width: 1023px) {
-  .urc-register-page-wrapper .urc-register-container{
-      height:auto;
-      min-height:100vh;
-      overflow-y:auto;
-      overflow-x:hidden;
+.urc-modal-icon {
+  font-size: 26px;
+  background: #eff6ff;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin: 0 auto 16px;
+  color: #2563eb;
+  border: 1px solid #dbeafe;
+}
+
+.urc-success-icon {
+  background: #f0fdf4;
+  color: #22c55e;
+  border-color: #bbf7d0;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.urc-modal-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+}
+
+.urc-modal-content p {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+.urc-modal-content p strong {
+  color: #111827;
+}
+
+.urc-otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.urc-otp-inputs input {
+  width: 42px;
+  height: 48px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.urc-otp-inputs input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.urc-resend-text {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 24px !important;
+}
+
+.urc-resend-link {
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.urc-modal-btn {
+  width: 100%;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.urc-modal-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES (1024px, 1440px, 2560px & Mobile)
+   ========================================================================== */
+
+/* Laptop Screens (1024px to 1366px) */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  .urc-register-page-wrapper .urc-register-container {
+    max-width: 1180px;
+    padding: 1rem;
   }
 
-  .urc-register-page-wrapper{
-      overflow-y:auto;
+  .urc-role-wrapper {
+    gap: 16px;
   }
- 
-  body{
-      overflow-y:auto;
+
+  .urc-role-card {
+    max-width: 220px;
+    padding: 10px;
+  }
+
+  .urc-left-image img {
+    max-width: 260px;
+    max-height: 220px;
+  }
+}
+
+/* Desktop Screens (1440px to 1919px) */
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  .urc-register-page-wrapper .urc-register-container {
+    max-width: 1380px;
+    padding: 1.5rem;
+  }
+
+  .urc-register-right form {
+    padding: 28px;
+    gap: 16px;
+  }
+
+  .urc-left-image img {
+    max-width: 380px;
+    max-height: 320px;
+  }
+}
+
+/* Ultra-Wide & 4K Screens (2560px and above) */
+@media screen and (min-width: 2560px) {
+  .urc-register-page-wrapper .urc-register-container {
+    max-width: 1750px;
+    padding: 2.5rem;
+    gap: 2.5rem;
+  }
+
+  .urc-main-title {
+    font-size: 36px;
+  }
+
+  .urc-sub-title {
+    font-size: 28px;
+  }
+
+  .urc-feature-item {
+    font-size: 18px;
+  }
+
+  .urc-left-image img {
+    max-width: 480px;
+    max-height: 420px;
+  }
+
+  .urc-register-right form {
+    padding: 36px;
+    gap: 20px;
+  }
+
+  .urc-input-group input,
+  .urc-input-group select {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+}
+
+/* Tablet Screens (769px to 1023px) */
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .urc-register-page-wrapper .urc-register-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+    gap: 20px;
   }
 
   .urc-register-left,
   .urc-register-right {
     width: 100%;
     max-width: 100%;
-    /* flex: 100%; */
+    flex: 100%;
     height: auto;
   }
-  .urc-register-left {
-    padding: 24px;
-    gap: 18px;
-  }
-  .urc-main-title {
-    text-align: center;
-  }
+
   .urc-left-image img {
-    max-width: 200px;
-    max-height: 100px;
- }
-  .urc-register-right {
-    padding: 0;
+    max-width: 280px;
+    max-height: 220px;
   }
-  .urc-register-right form {
-    height: auto;
-    padding: 24px;
-    overflow: visible;
-  }
-  .urc-role-wrapper {
-    gap: 20px;
-  }
+
   .urc-role-card {
     flex: 1;
-    width: auto;
-    height: 120px;
+    max-width: 100%;
   }
+
   .urc-form-row {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
   }
-  /* .urc-input-group.urc-full-width {
-    grid-column: span 2;
-  } */
 }
 
-/* Max 768px: Mobile & Tablets styling */
+/* Mobile Screens (up to 768px) */
 @media screen and (max-width: 768px) {
-
-  .urc-register-container {
+  .urc-register-page-wrapper .urc-register-container {
     flex-direction: column;
     height: auto;
     min-height: 100vh;
@@ -591,66 +798,20 @@
     height: auto;
   }
 
-  .urc-register-left {
-    padding: 20px;
-    gap: 18px;
-    overflow: visible;
-  }
-
-  .urc-main-title {
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .urc-feature-list {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .urc-feature-card-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .urc-feature-card {
-    padding: 14px;
-  }
-
-  .urc-left-image img {
-    max-width: 250px;
-    max-height: 250px;
- }
-
-  .urc-register-right {
-    padding: 0;
-  }
-
-  .urc-form-title {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-
-  .urc-register-right form {
-    padding: 20px;
-    height: auto;
-    overflow: visible;
-  }
-
   .urc-role-wrapper {
-    display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .urc-role-card {
-    flex: 1;
-    width: auto;
-    height: 115px;
-    padding: 14px;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
   }
 
   .urc-form-row {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 12px;
   }
 
   .urc-input-group.urc-full-width {
@@ -659,65 +820,29 @@
 
   .urc-input-group input,
   .urc-input-group select {
-    height: 46px;
+    height: 44px;
     font-size: 14px;
-  }
-
-  .urc-register-btn {
-    height: 48px;
-    margin-top: 15px;
   }
 }
 
-/* ===========================
-   Mobile (Max 480px)
-=========================== */
+/* Small Mobile Screens (up to 480px) */
 @media screen and (max-width: 480px) {
-  .urc-register-container {
+  .urc-register-page-wrapper .urc-register-container {
     padding: 12px;
   }
 
-  .urc-register-left {
-    padding: 16px;
-  }
-
+  .urc-register-left,
   .urc-register-right form {
     padding: 16px;
   }
 
   .urc-form-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 
-  .urc-role-wrapper {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .urc-role-card {
-    width: 100%;
-    height: auto;
-  }
-
-  .urc-main-title {
-    font-size: 18px;
-  }
-
-  
-  .urc-feature-card__title {
-    font-size: 13px;
-  }
-
-  .urc-feature-card__desc {
-    font-size: 11px;
-  }
-
-  .urc-input-group label {
-    font-size: 13px;
-  }
-
-  .urc-input-group input,
-  .urc-input-group select {
-    font-size: 13px;
+  .urc-otp-inputs input {
+    width: 36px;
+    height: 42px;
+    font-size: 16px;
   }
 }

@@ -197,7 +197,7 @@ const LoginCandidate = () => {
           </div>
  
           <p className="lc-contact-admin">
-            Do you have account! <Link to="/Resume-builder/UserRegCandidate">Create Account</Link>
+            Do not have an account? <Link to="/Resume-builder/UserRegCandidate">Create Account</Link>
           </p>
         </form>
       </div>

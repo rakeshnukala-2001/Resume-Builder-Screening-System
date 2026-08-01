@@ -12,7 +12,7 @@
 ========================================== */
 .lp-main-hero-section {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 40px 40px;
   min-height: calc(100vh - 82px);
@@ -23,14 +23,14 @@
 }
 
 .lp-main-hero-left {
-  flex: 1.1;
-  max-width: 560px;
+  flex: 1.2;
+  max-width: 680px;
   display: flex;
   flex-direction: column;
 }
 
 .lp-main-hero-right {
-  flex: 0.9;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,7 @@
 
 .lp-main-hero-right img {
   width: 100%;
-  max-width: 550px;
+  max-width: 500px;
   object-fit: contain;
 }
 
@@ -58,19 +58,19 @@
   font-size: clamp(16px, 1.5vw, 19px);
   line-height: 1.7;
   color: #6b7280;
-  max-width: 510px;
+  max-width: 600px;
   margin-bottom: 35px;
 }
 
 .lp-main-hero-buttons {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   margin-bottom: 35px;
   align-items: center;
 }
 
 .lp-main-hero-btn {
-  width: 230px;
+  width: 260px;
   height: 68px;
   background: #fff;
   border: 2px solid #e5e7eb;
@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 20px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -124,10 +124,10 @@
 .lp-main-feature-card {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  width: 180px;
+  gap: 12px;
+  width: 220px;
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid transparent;
   border-radius: 10px;
   transition: all 0.2s ease;
@@ -162,86 +162,28 @@
 }
 
 /* ==========================================
-   2. TRUSTED COMPANIES SECTION
-========================================== */
-.trusted-section {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0px 40px 45px 40px !important;
-  margin-top: -25px !important;
-  position: relative;
-  z-index: 10;
-  text-align: center;
-}
-
-.trusted-title {
-  font-size: 13.5px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #6b7280;
-  margin-bottom: 25px;
-  text-transform: uppercase;
-  width: 100%;
-  max-width: 1120px !important;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.tc-logos-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 55px !important;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 960px !important;
-  margin: 0 auto;
-}
-
-.tc-logo-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tc-logo-wrapper img {
-  height: 26px;
-  max-width: 100%;
-  object-fit: contain;
-  filter: grayscale(10%);
-  transition: all 0.2s ease;
-}
-
-.tc-logo-wrapper img:hover {
-  filter: grayscale(0%);
-  transform: scale(1.02);
-}
-
-/* ==========================================
-   3. FEATURES & STATS SECTION
+   2. FEATURES & STATS SECTION
 ========================================== */
 .features-section {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 5px 40px 0px 40px !important;
   margin-top: -5px !important;
 }
 
 .features-inner-container {
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
   border-radius: 24px;
   padding: 50px 40px 25px 40px !important;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .section-main-title {
   text-align: center;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: #0f172a;
   margin-bottom: 40px;
@@ -253,9 +195,9 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 28px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -267,8 +209,8 @@
   box-shadow: 0 4px 15px rgba(15, 23, 42, 0.01);
   display: flex;
   flex-direction: column;
-  width: 310px !important;
-  height: 200px !important;
+  width: 360px !important;
+  height: 210px !important;
   align-items: center !important;
   text-align: center !important;
   justify-content: center;
@@ -298,32 +240,32 @@
 }
 
 .feature-grid-card h3 {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: #0f172a;
   margin-bottom: 8px;
 }
 
 .feature-grid-card p {
-  font-size: 12.5px;
+  font-size: 13px;
   color: #64748b;
   line-height: 1.5;
 }
 
 .stats-wrapper-block {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 5px 40px 10px 40px !important;
 }
 
 .stats-row-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   background: #2563eb;
   border-radius: 16px;
-  padding: 20px 45px !important;
+  padding: 24px 50px !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -339,8 +281,8 @@
 }
 
 .stat-icon-holder-circle {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   background-color: #ffffff !important;
   border-radius: 50%;
   display: flex;
@@ -350,8 +292,8 @@
 }
 
 .stat-inline-img {
-  width: 20px !important;
-  height: 20px !important;
+  width: 22px !important;
+  height: 22px !important;
   object-fit: contain;
   display: block;
 }
@@ -363,35 +305,35 @@
 }
 
 .stat-text-meta h3 {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 500 !important;
   line-height: 1.1;
 }
 
 .stat-text-meta p {
-  font-size: 12.5px;
+  font-size: 13px;
   color: #93c5fd;
   font-weight: 400;
   margin-top: 1px;
 }
 
 /* ==========================================
-   4. CTA SECTION
+   3. CTA SECTION
 ========================================== */
 .cta-wrapper-section {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 5px 40px 50px 40px !important;
 }
 
 .cta-blue-card {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   background: #2563eb;
   border-radius: 16px;
-  padding: 30px 45px;
+  padding: 35px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -403,7 +345,7 @@
 }
 
 .cta-content-left h2 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 6px;
@@ -411,7 +353,7 @@
 }
 
 .cta-content-left p {
-  font-size: 14.5px;
+  font-size: 15px;
   color: #93c5fd;
   font-weight: 400;
 }
@@ -421,8 +363,8 @@
   color: #2563eb;
   border: none;
   border-radius: 10px;
-  padding: 15px 35px;
-  font-size: 14.5px;
+  padding: 16px 40px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -435,11 +377,11 @@
 }
 
 /* ==========================================
-   5. ULTRA-WIDE SCREENS (2560px & ABOVE)
+   4. ULTRA-WIDE SCREENS (2560px & ABOVE)
 ========================================== */
 @media (min-width: 2560px) {
   .lp-main-hero-section {
-    max-width: 2350px;
+    max-width: 2450px;
     margin: 0 auto;
     padding: 60px 100px 20px 100px !important;
     align-items: flex-start;
@@ -447,7 +389,7 @@
   }
 
   .lp-main-hero-left {
-    max-width: 950px;
+    max-width: 1050px;
   }
 
   .lp-main-hero-left h1 {
@@ -456,7 +398,7 @@
 
   .lp-main-hero-left p {
     font-size: 24px;
-    max-width: 850px;
+    max-width: 950px;
     margin-bottom: 45px;
   }
 
@@ -466,7 +408,7 @@
   }
 
   .lp-main-hero-btn {
-    width: 280px;
+    width: 320px;
     height: 80px;
     padding: 0 24px;
     border-radius: 16px;
@@ -490,7 +432,7 @@
   }
 
   .lp-main-feature-card {
-    width: 260px;
+    width: 280px;
     padding: 12px;
   }
 
@@ -509,39 +451,13 @@
   }
 
   .lp-main-hero-right img {
-    max-width: 1000px;
-  }
-
-  .trusted-section {
-    max-width: 2150px !important;
-    margin: 0 auto !important;
-    padding: 0px 60px 30px 60px !important;
-    margin-top: 10px !important;
-    position: relative;
-    z-index: 10;
-  }
-
-  .trusted-title {
-    font-size: 20px !important;
-    font-weight: 800 !important;
-    max-width: 2000px !important;
-    margin-bottom: 35px !important;
-    letter-spacing: 3px !important;
-  }
-
-  .tc-logos-container {
-    max-width: 2000px !important;
-    gap: 120px !important;
-  }
-
-  .tc-logo-wrapper img {
-    height: 52px !important;
+    max-width: 1100px;
   }
 
   .features-section,
   .stats-wrapper-block,
   .cta-wrapper-section {
-    max-width: 2350px;
+    max-width: 2450px;
     margin: 0 auto;
     padding-left: 100px !important;
     padding-right: 100px !important;
@@ -553,7 +469,7 @@
   }
 
   .features-inner-container {
-    max-width: 2150px;
+    max-width: 2250px;
     padding: 55px 60px 35px 60px !important;
   }
 
@@ -563,13 +479,13 @@
   }
 
   .features-grid-layout {
-    max-width: 1850px;
+    max-width: 1950px;
     gap: 36px;
   }
 
   .feature-grid-card {
-    width: 400px !important;
-    height: 250px !important;
+    width: 440px !important;
+    height: 260px !important;
     padding: 32px 28px;
     border-radius: 20px;
   }
@@ -599,7 +515,7 @@
   }
 
   .stats-row-container {
-    max-width: 2150px;
+    max-width: 2250px;
     padding: 35px 60px !important;
     border-radius: 20px;
   }
@@ -628,7 +544,7 @@
   }
 
   .cta-blue-card {
-    max-width: 2150px;
+    max-width: 2250px;
     padding: 50px 70px;
     border-radius: 20px;
   }
@@ -650,7 +566,7 @@
 }
 
 /* ==========================================
-   6. LARGE & LAPTOP SCREENS (1440px & 1024px)
+   5. LARGE & LAPTOP SCREENS (1440px & 1024px)
 ========================================== */
 @media (min-width: 1440px) and (max-width: 2559px) {
   .lp-main-hero-section {
@@ -658,29 +574,6 @@
     padding-bottom: 20px !important;
     align-items: flex-start;
     padding-top: 30px !important;
-  }
-
-  .trusted-section {
-    max-width: 1320px !important;
-    margin: 0 auto !important;
-    margin-top: -30px !important;
-    padding-bottom: 15px !important;
-  }
-
-  .trusted-title {
-    font-size: 15px !important;
-    font-weight: 800 !important;
-    max-width: 1200px !important;
-    letter-spacing: 2.5px !important;
-  }
-
-  .tc-logos-container {
-    max-width: 1200px !important;
-    gap: 75px !important;
-  }
-
-  .tc-logo-wrapper img {
-    height: 35px !important;
   }
 
   .features-section {
@@ -712,11 +605,6 @@
     padding-top: 20px;
   }
 
-  .trusted-section {
-    margin-top: -20px !important;
-    padding-bottom: 10px !important;
-  }
-
   .features-section {
     padding-top: 0px !important;
     margin-top: -5px !important;
@@ -738,16 +626,16 @@
     font-size: 22px;
   }
 }
+
 /* ==========================================
    MOBILE & TABLET SCREENS (320px TO 768px)
 ========================================== */
 @media (max-width: 768px) {
-  /* Main section grid layout & top drop */
   .lp-main-hero-section {
     display: grid !important;
     grid-template-columns: 100% !important;
     min-height: auto !important;
-    padding: 95px 16px 20px 16px !important;
+    padding: 25px 16px 20px 16px !important;
     gap: 12px !important;
     text-align: center !important;
   }
@@ -756,7 +644,6 @@
     display: contents !important;
   }
 
-  /* 1. Main Heading */
   .lp-main-hero-left h1 {
     grid-row: 1 !important;
     text-align: center !important;
@@ -765,7 +652,6 @@
     margin-bottom: 0px !important;
   }
 
-  /* 2. Text Content */
   .lp-main-hero-left p {
     grid-row: 2 !important;
     text-align: center !important;
@@ -776,7 +662,6 @@
     line-height: 1.4 !important;
   }
 
-  /* 3. Hero Image  */
   .lp-main-hero-right {
     grid-row: 3 !important;
     display: flex !important;
@@ -787,12 +672,11 @@
 
   .lp-main-hero-right img {
     width: 100% !important;
-    max-width: 250px !important;
+    max-width: 280px !important;
     height: auto !important;
     object-fit: contain !important;
   }
 
-  /* 4. Action Buttons (Create Resume & Recruiter) */
   .lp-main-hero-buttons {
     grid-row: 4 !important;
     display: flex !important;
@@ -811,7 +695,6 @@
     height: 50px !important;
   }
 
-  /* 5. Feature Cards */
   .lp-main-features {
     grid-row: 5 !important;
     display: flex !important;
@@ -861,30 +744,6 @@
     line-height: 1.2 !important;
   }
 
-  /* Trusted Section */
-  .trusted-section {
-    padding: 15px 16px 20px 16px !important;
-    margin-top: 0 !important;
-    text-align: center !important;
-  }
-
-  .tc-logos-container {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 16px !important;
-    flex-wrap: wrap !important;
-    max-width: 320px !important;
-    margin: 0 auto !important;
-  }
-
-  .tc-logo-wrapper img {
-    height: 20px !important;
-    max-width: 75px !important;
-    object-fit: contain !important;
-  }
-
-  /* Features Grid Section */
   .features-section {
     padding: 0 16px 0 16px !important;
   }
@@ -910,7 +769,6 @@
     padding: 18px 14px !important;
   }
 
-  /* Stats Section */
   .stats-wrapper-block {
     padding: 0 16px 10px 16px !important;
   }
@@ -936,7 +794,6 @@
     font-size: 11.5px !important;
   }
 
-  /* CTA Section */
   .cta-wrapper-section {
     padding: 0 16px 25px 16px !important;
   }
@@ -970,27 +827,7 @@
   }
 }
 
-/* ==========================================
-   TRUSTED TITLE RULES
-========================================== */
-@media (max-width: 767px) {
-  .trusted-title {
-    max-width: 260px !important;
-    white-space: normal !important;
-    text-align: center !important;
-    margin: 0 auto 15px auto !important;
-  }
-}
-
 @media (min-width: 768px) and (max-width: 768px) {
-  .trusted-title {
-    max-width: 100% !important;
-    white-space: nowrap !important;
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: table !important;
-  }
   .lp-main-features {
     flex-direction: row !important;
     justify-content: center !important;
