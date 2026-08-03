@@ -40,24 +40,25 @@ body {
   background-color: var(--bg-main);
   display: flex;
   justify-content: center;
-  align-items: center !important;
+  align-items: flex-start !important;
   padding-top: 0 !important;
-  padding-bottom: 50px !important;
-  margin-top: 0 !important;
-  padding: -20px 0px 24px 24px !important;
+  padding-bottom: 24px !important;
+  margin-top: 5px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .dashboard-layout.full-width-layout {
   width: 100%;
   padding-top: 0 !important;
-  margin-top: 0 !important;
+  margin-top: 5px !important;
 }
 
 .dashboard-main.profile-main-content {
   max-width: 1320px;
   width: 100%;
   margin: 0 auto !important;
-  padding: 0px 24px 24px 24px !important;
+  padding: 0px !important;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -109,6 +110,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
+  min-height: 200px;
+  justify-content: space-between;
 }
 
 .user-profile-inner-row {
@@ -118,11 +121,11 @@ body {
   width: 100%;
 }
 
-/* Avatar Badge */
+/* Avatar Wrapper */
 .avatar-wrapper {
   position: relative;
-  width: 100px;
-  height: 120px;
+  width: 140px;
+  height: 200px !important;
   flex-shrink: 0;
 }
 
@@ -135,26 +138,35 @@ body {
 
 .camera-icon-badge {
   position: absolute;
-  bottom: 4px;
-  right: 4px;
+  bottom: 0px;
+  right: 0px;
   background: #ffffff;
   border: 1px solid var(--border-color);
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.camera-icon-img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
 }
 
 /* Metadata Block */
 .profile-meta {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   flex: 1;
+  justify-content: flex-start;
 }
 
 .name-row {
@@ -185,7 +197,7 @@ body {
 .contact-details {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .contact-details p {
@@ -208,28 +220,22 @@ body {
   background: var(--primary-color);
   color: #fff;
   border: none;
-  width: 125px;
-  height: 38px;
-  border-radius: 8px;
-  font-size: 13px;
+  width: 110px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-
-  margin-top: 14px;
-  margin-left: 100px;
-  margin-right: 0;
-  margin-bottom: 0;
-
+  margin-top: 8px;
+  margin-left: 0;
   align-self: flex-start;
-
   transition:
-    background 0.25s ease,
-    transform 0.2s ease;
+    background 0.2s ease,
+    transform 0.1s ease;
 }
 
 .edit-profile-action-btn:hover {
   background: var(--primary-hover);
-  transform: translateY(-2px);
 }
 
 /* Profile Strength Chart Box  */
@@ -262,6 +268,7 @@ body {
   display: block;
   overflow: visible;
 }
+
 .strength-center-text {
   position: absolute;
   top: 90%;
@@ -346,6 +353,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 60px;
 }
 
 .h-icon-wrap {
@@ -478,6 +486,7 @@ body {
 .language-chips {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .lang-chip {
@@ -690,6 +699,7 @@ body {
   height: 14px;
   opacity: 0.7;
 }
+
 .action-icon-btn.delete-icon,
 .action-icon-btn[alt*="delete" i],
 .action-icon-btn[alt*="remove" i],
@@ -715,47 +725,115 @@ body {
   color: var(--text-muted);
 }
 
-/* =========================================================
-   AGGRESSIVE FONT & CONTENT SCALING FOR 1440px AND 2560px
-========================================================= */
-
+/* ========================================
+   1024px - 1439px VIEWPORT ADJUSTMENT
+=========================================== */
 @media (min-width: 1024px) and (max-width: 1439px) {
   html,
   body {
     min-height: 100vh !important;
   }
+
   .dashboard-page-wrapper {
     min-height: 100vh !important;
     align-items: flex-start !important;
+    padding-top: 0 !important;
     padding-bottom: 24px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
+
   .dashboard-main.profile-main-content {
-    max-width: 1380px !important;
+    max-width: 100% !important;
     margin: 0 auto !important;
-    padding: 15px 24px 24px 24px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
+
   .profile-top-layout-grid {
-    grid-template-columns: 1fr 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
   }
+
+  .profile-user-strength-unified-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .professional-highlights-container {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .prof-highlights-grid-2x2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .highlight-box {
+    padding: 10px 12px 10px 42px !important;
+    min-height: 56px !important;
+  }
+
+  .h-icon-wrap {
+    left: 8px !important;
+    top: 10px !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .h-icon-wrap img {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .highlight-box::before {
+    left: 36px !important;
+    top: 10px !important;
+    bottom: 10px !important;
+    width: 2px !important;
+  }
+
+  .highlight-box h4 {
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+  }
+
+  .highlight-box p {
+    font-size: 10.5px !important;
+    line-height: 1.3 !important;
+  }
+
   .profile-middle-grid {
-    grid-template-columns: 1.2fr 1fr 1.1fr !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 12px !important;
   }
+
   .profile-bottom-grid {
     grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
   }
 }
 
-/* 1. 1440px SCREEN OPTIMIZATION */
+/* ===============================
+   1440px SCREEN OPTIMIZATION
+================================== */
 @media (min-width: 1440px) and (max-width: 2559px) {
   html,
   body {
-    height: 100%;
+    min-height: 100vh;
   }
 
   .dashboard-page-wrapper {
     min-height: 100vh !important;
     width: 100%;
     align-items: stretch !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 
   .dashboard-main.profile-main-content {
@@ -764,7 +842,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 24px 48px 32px 48px !important;
+    padding: 0px 16px 32px 16px !important;
     gap: 24px;
   }
 
@@ -774,26 +852,11 @@ body {
     gap: 24px;
   }
 
-  .profile-top-layout-grid {
-    flex: 0 0 auto;
-  }
-  .profile-middle-grid,
-  .profile-bottom-grid {
-    flex: 1 1 0;
+  .avatar-wrapper {
+    width: 150px;
+    height: 200px !important;
   }
 
-  /* Expanded Card Padding */
-  .profile-user-strength-unified-card,
-  .professional-highlights-container,
-  .about-me-card,
-  .profile-highlights-list-card,
-  .skill-competency-card,
-  .experience-timeline-card,
-  .education-timeline-card {
-    padding: 28px 32px;
-  }
-
-  /* Font Scaling - Headings & Titles */
   .name-row h2 {
     font-size: 24px;
   }
@@ -805,7 +868,6 @@ body {
     font-size: 20px;
   }
 
-  /* Font Scaling - Subtitles & Labels */
   .role-text {
     font-size: 15px;
   }
@@ -819,7 +881,6 @@ body {
     font-size: 15px;
   }
 
-  /* Font Scaling - Paragraphs & Body Text */
   .about-me-card p {
     font-size: 14px;
     line-height: 1.7;
@@ -849,11 +910,10 @@ body {
     font-size: 13px;
   }
 
-  /* Badges & Buttons */
   .edit-profile-action-btn {
-    width: 150px;
-    height: 42px;
-    font-size: 14px;
+    width: 120px;
+    height: 36px;
+    font-size: 13px;
   }
   .add-item-btn {
     font-size: 13px;
@@ -868,27 +928,26 @@ body {
     padding: 5px 16px;
   }
 
-  /* Elements Enlargement */
-  .avatar-wrapper {
-    width: 120px;
-    height: 140px;
-  }
   .comp-bar {
     height: 10px;
   }
 }
 
-/* 2. 2560px (4K) SCREEN OPTIMIZATION */
+/* ====================================
+   2560px (4K) SCREEN OPTIMIZATION
+======================================= */
 @media (min-width: 2560px) {
   html,
   body {
-    height: 100%;
+    min-height: 100vh;
   }
 
   .dashboard-page-wrapper {
     min-height: 100vh !important;
     align-items: stretch !important;
-    padding-bottom: 32px !important;
+    padding-bottom: 24px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 
   .dashboard-main.profile-main-content {
@@ -897,8 +956,9 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     margin: 0 !important;
-    padding: 36px 60px 48px 60px !important;
+    padding: 12px 40px 40px 40px !important;
     gap: 32px !important;
   }
 
@@ -907,16 +967,11 @@ body {
   .profile-middle-grid {
     gap: 32px !important;
   }
-
-  .profile-top-layout-grid {
-    flex: 0 0 auto;
-  }
   .profile-middle-grid,
   .profile-bottom-grid {
-    flex: 1 1 0;
+    align-items: start;
   }
 
-  /* Extra Large Padding for 4K Cards */
   .profile-user-strength-unified-card,
   .professional-highlights-container,
   .about-me-card,
@@ -924,127 +979,228 @@ body {
   .skill-competency-card,
   .experience-timeline-card,
   .education-timeline-card {
-    padding: 36px 42px;
+    padding: 56px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
-  /* Huge Font Scaling - Headings & Titles */
-  .name-row h2 {
-    font-size: 32px;
+  .about-me-card {
+    gap: 30px;
   }
+  .profile-top-split-row {
+    gap: 72px;
+  }
+
+  /* Avatar */
+  .avatar-wrapper {
+    width: 270px;
+    height: 400px !important;
+  }
+
+  .camera-icon-badge {
+    width: 52px;
+    height: 52px;
+  }
+
+  .camera-icon-img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .user-profile-inner-col-group {
+    min-height: 310px;
+  }
+
+  /* Name / role / contact */
+  .name-row h2 {
+    font-size: 52px;
+  }
+  .verified-badge-img {
+    width: 30px;
+    height: 30px;
+  }
+  .role-text {
+    font-size: 31px;
+    margin-bottom: 14px;
+  }
+  .contact-details {
+    gap: 16px;
+  }
+  .contact-details p {
+    font-size: 30px;
+    gap: 12px;
+  }
+  .contact-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .edit-profile-action-btn {
+    width: 230px;
+    height: 68px;
+    font-size: 30px;
+    margin-top: 18px;
+  }
+  .profile-strength-inner-box {
+    width: 420px;
+  }
+  .strength-chart-box {
+    width: 360px;
+    height: 235px;
+    margin-bottom: 150px;
+  }
+  .strength-center-text {
+    top: 78%;
+  }
+  .strength-center-text h3 {
+    font-size: 78px;
+    margin-bottom: 230px;
+  }
+  .strength-center-text span {
+    font-size: 38px;
+    margin-bottom: 20px;
+  }
+  .strength-status-badge {
+    font-size: 29px;
+    padding: 13px 36px;
+    margin-top: 90px;
+  }
+  .strength-desc {
+    font-size: 35px;
+    margin-top: 12px;
+  }
+
+  /* Card headings shared across all cards */
   .card-heading-flex h3,
   .prof-highlights-header h3,
   .section-header-with-add h3,
   .profile-highlights-list-card h3,
   .skill-competency-card h3 {
-    font-size: 26px;
-    margin-bottom: 18px;
+    font-size: 44px;
+    margin-bottom: 26px;
+  }
+  .card-edit-icon {
+    width: 34px;
+    height: 34px;
   }
 
-  /* Huge Font Scaling - Subtitles & Highlight Titles */
-  .role-text {
-    font-size: 20px;
+  /* Highlights */
+  .highlight-box {
+    padding: 28px 32px 28px 94px;
+    min-height: 116px;
+  }
+  .h-icon-wrap {
+    width: 58px;
+    height: 58px;
+    left: 20px;
+    top: 20px;
+  }
+  .h-icon-wrap img {
+    width: 34px;
+    height: 34px;
+  }
+  .highlight-box::before {
+    left: 86px;
+    width: 5px;
   }
   .highlight-box h4 {
-    font-size: 20px;
-  }
-  .t-header h4 {
-    font-size: 20px;
-  }
-  .languages-heading {
-    font-size: 20px;
-  }
-
-  /* Huge Font Scaling - Text & Details */
-  .about-me-card p {
-    font-size: 18px;
-    line-height: 1.8;
-  }
-  .contact-details p {
-    font-size: 17px;
-    gap: 12px;
+    font-size: 36px;
   }
   .highlight-box p {
-    font-size: 16px;
+    font-size: 28px;
     line-height: 1.5;
   }
+
+  /* About me / languages */
+  .about-me-card p {
+    font-size: 29px;
+    line-height: 1.8;
+    margin-bottom: 0;
+  }
+  .languages-heading {
+    font-size: 31px;
+    margin-bottom: 16px;
+  }
+  .lang-chip {
+    font-size: 25px;
+    padding: 12px 28px;
+  }
+
+  /* Checklist / skills */
+  .checklist-items {
+    gap: 36px;
+    margin-top: 24px;
+  }
+  .checklist-items li {
+    font-size: 30px;
+  }
+  .check-item-left img,
+  .status-complete img {
+    width: 38px;
+    height: 38px;
+  }
+  .status-complete {
+    font-size: 24px;
+  }
+
+  .skill-competency-card {
+    gap: 34px;
+  }
+  .competency-skill-item {
+    gap: 14px;
+  }
+  .skill-info-row {
+    font-size: 28px;
+  }
+  .comp-bar {
+    height: 28px;
+    border-radius: 16px;
+  }
+  .comp-fill {
+    border-radius: 16px;
+  }
+
+  /* Timeline */
+  .timeline-item {
+    padding-bottom: 48px;
+  }
+  .t-header h4 {
+    font-size: 32px;
+  }
   .company-name {
-    font-size: 17px;
+    font-size: 26px;
   }
   .t-date,
   .location-tag,
   .score-tag {
-    font-size: 16px;
+    font-size: 24px;
   }
-  .checklist-items li {
-    font-size: 18px;
-  }
-  .skill-info-row {
-    font-size: 18px;
-  }
-  .strength-desc {
-    font-size: 16px;
-  }
-  .strength-center-text h3 {
-    font-size: 32px;
-  }
-  .strength-center-text span {
-    font-size: 12px;
-  }
-
-  /* Icon Sizes */
-  .contact-icon {
-    width: 18px;
-    height: 18px;
-  }
-  .card-edit-icon {
-    width: 20px;
-    height: 20px;
-  }
-  .check-item-left img,
-  .status-complete img {
+  .timeline-dot-pure {
     width: 22px;
     height: 22px;
+    left: -34px;
   }
-
-  /* Buttons & Badges Enlargement */
-  .edit-profile-action-btn {
-    width: 180px;
-    height: 50px;
-    font-size: 17px;
-    margin-left: 140px;
+  .timeline-items-wrapper {
+    padding-left: 36px;
+  }
+  .timeline-items-wrapper::before {
+    left: 9px;
+    width: 3px;
+  }
+  .action-icon-btn {
+    width: 26px;
+    height: 26px;
   }
   .add-item-btn {
-    font-size: 16px;
-    padding: 8px 20px;
-  }
-  .lang-chip {
-    font-size: 16px;
-    padding: 6px 18px;
-  }
-  .strength-status-badge {
-    font-size: 16px;
-    padding: 6px 20px;
-  }
-
-  /* Large Layout Fixes for 4K */
-  .avatar-wrapper {
-    width: 140px;
-    height: 165px;
-  }
-  .comp-bar {
-    height: 12px;
-  }
-  .highlight-box {
-    padding: 18px 20px 18px 65px;
-  }
-  .highlight-box::before {
-    left: 56px;
+    font-size: 25px;
+    padding: 13px 30px;
   }
 }
 
-/* ===========================================
-   Responsive Mobile & Tablet Viewport Adjustments
-=========================================== */
+/* ===========================
+   Mobile Responsiveness 
+============================== */
 @media (max-width: 1023px) {
   .profile-top-layout-grid {
     grid-template-columns: 1fr;
@@ -1055,11 +1211,15 @@ body {
   .profile-bottom-grid {
     grid-template-columns: 1fr;
   }
+  .prof-highlights-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
   .dashboard-main {
-    padding: 12px 16px 16px 16px;
+    padding-top: 12px !important;
+    padding-bottom: 16px !important;
     margin-top: 0;
   }
   .prof-highlights-grid-2x2 {
@@ -1067,65 +1227,102 @@ body {
   }
 }
 
-@media (max-width: 430px) {
-  .dashboard-main {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .dashboard-main.profile-main-content {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-page-wrapper {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .dashboard-main.profile-main-content {
     margin-top: 0;
-    padding: 10px 12px 12px;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-top: 10px !important;
+    padding-bottom: 12px !important;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center !important;
+    box-sizing: border-box;
   }
+
   .dashboard-top-layout-grid,
   .profile-top-layout-grid,
   .profile-middle-grid,
   .profile-bottom-grid,
   .professional-highlights-container {
     width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0 auto !important;
+    box-sizing: border-box;
   }
+
   .profile-user-strength-unified-card {
     width: 100%;
-    padding: 18px;
+    padding: 16px;
+    margin: 0 auto !important;
+    box-sizing: border-box;
   }
+
   .profile-top-split-row {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
   }
+
   .user-profile-inner-col-group {
     display: flex;
     flex-direction: column;
     width: 100%;
+    min-height: auto;
   }
+
   .user-profile-inner-row {
     display: flex;
     align-items: flex-start;
     gap: 14px;
     margin-bottom: 0;
   }
+
+  .avatar-wrapper {
+    width: 120px;
+    height: 200px !important;
+  }
+
   .profile-meta {
     flex: 1;
   }
+
   .name-row {
     justify-content: flex-start;
   }
+
   .role-text {
     text-align: left;
   }
+
   .contact-details {
     align-items: flex-start;
   }
+
   .contact-details p {
     justify-content: flex-start;
   }
+
   .edit-profile-action-btn {
     width: 100%;
     margin-top: 14px !important;
     margin-left: 0 !important;
     align-self: stretch;
   }
+
   .profile-strength-inner-box {
     width: 100%;
     align-items: center;
@@ -1133,31 +1330,41 @@ body {
     padding-top: 12px;
     margin-top: 6px;
   }
+
   .strength-chart-box {
     width: 160px;
     margin: 0 auto;
     transform: translateY(-15px);
   }
+
   .strength-status-badge {
     margin-top: 6px;
     margin-bottom: 2px;
   }
+
   .strength-desc {
     text-align: center;
     font-size: 10.5px;
   }
+
   .highlight-box,
   .about-me-card,
   .profile-highlights-list-card,
   .skill-competency-card,
   .experience-timeline-card,
   .education-timeline-card,
-  .profile-user-strength-unified-card,
   .professional-highlights-container {
     width: 100%;
-    max-width: 350px;
-    margin: 0 auto 16px;
+    max-width: 100%;
+    margin: 0 auto 12px !important;
     height: auto;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 320px) {
+  .dashboard-main.profile-main-content {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
   }
 }
 
@@ -1208,16 +1415,19 @@ body {
   flex-direction: column;
   gap: 14px;
 }
+
 .form-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
+
 .form-field label {
   font-size: 12px;
   font-weight: 600;
   color: var(--text-muted);
 }
+
 .form-field input,
 .form-field textarea {
   width: 100%;
@@ -1234,16 +1444,19 @@ body {
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
+
 .form-field input:focus,
 .form-field textarea:focus {
   border-color: var(--primary-color);
   background-color: var(--card-bg);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
+
 .form-field textarea {
   resize: vertical;
   min-height: 90px;
 }
+
 .modal-btn-row {
   display: flex;
   justify-content: flex-end;
@@ -1252,6 +1465,7 @@ body {
   padding-top: 14px;
   border-top: 1px solid var(--bg-main);
 }
+
 .btn-cancel {
   background-color: #f1f5f9;
   color: var(--text-muted);
@@ -1263,9 +1477,11 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
+
 .btn-cancel:hover {
   background-color: var(--border-color);
 }
+
 .btn-save {
   background-color: var(--primary-color);
   color: #ffffff;
@@ -1277,6 +1493,7 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
+
 .btn-save:hover {
   background-color: var(--primary-hover);
 }
@@ -1289,6 +1506,7 @@ body {
     opacity: 1;
   }
 }
+
 @keyframes slideUpModal {
   from {
     opacity: 0;

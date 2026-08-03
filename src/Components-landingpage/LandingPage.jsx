@@ -17,11 +17,10 @@ import happyUsersImg from "../assets/landingpage/stat-users.png";
 import resumesCreatedImg from "../assets/landingpage/stat-resumes.png";
 import companiesImg from "../assets/landingpage/stat-companies.png";
 import satisfactionImg from "../assets/landingpage/stat-satisfaction.png";
- 
+
 const LandingPage = () => {
   const [selectedRole, setSelectedRole] = useState("resume");
- 
- 
+
   const features = [
     {
       img: builderImg,
@@ -60,18 +59,18 @@ const LandingPage = () => {
       bg: "#e0f2fe",
     },
   ];
- 
+
   const stats = [
     { img: happyUsersImg, label: "25K+", sub: "Happy Users" },
     { img: resumesCreatedImg, label: "120K+", sub: "Resumes Created" },
     { img: companiesImg, label: "2K+", sub: "Companies" },
     { img: satisfactionImg, label: "98%", sub: "Satisfaction Rate" },
   ];
- 
+
   return (
     <div className="landing-page-wrapper">
       <Header />
- 
+
       {/* 1. MAIN HERO SECTION */}
       <section className="lp-main-hero-section">
         <div className="lp-main-hero-left">
@@ -84,7 +83,7 @@ const LandingPage = () => {
             Create job-winning resumes in minutes and help recruiters find the
             perfect talent with AI-powered screening.
           </p>
- 
+
           <div className="lp-main-hero-buttons">
             <button
               className={`lp-main-hero-btn ${
@@ -95,7 +94,7 @@ const LandingPage = () => {
               <img src={resumeIcon} alt="resume" />
               <span>Create My Resume</span>
             </button>
- 
+
             <button
               className={`lp-main-hero-btn ${
                 selectedRole === "recruiter" ? "lp-main-active-btn" : ""
@@ -106,7 +105,7 @@ const LandingPage = () => {
               <span>I'm a Recruiter</span>
             </button>
           </div>
- 
+
           <div className="lp-main-features">
             <div className="lp-main-feature-card">
               <img src={aiImage} alt="AI Powered" />
@@ -115,7 +114,7 @@ const LandingPage = () => {
                 <p>Smart suggestions that stand out</p>
               </div>
             </div>
- 
+
             <div className="lp-main-feature-card">
               <img src={atsImage} alt="ATS Friendly" />
               <div>
@@ -123,7 +122,7 @@ const LandingPage = () => {
                 <p>Resumes optimized for ATS systems</p>
               </div>
             </div>
- 
+
             <div className="lp-main-feature-card">
               <img src={secureImage} alt="Secure" />
               <div>
@@ -133,18 +132,17 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
- 
+
         <div className="lp-main-hero-right">
           <img src={heroImage} alt="Hero" />
         </div>
       </section>
- 
- 
+
       {/* 3. FEATURES & STATS SECTION */}
       <section className="features-section">
         <div className="features-inner-container">
           <h2 className="section-main-title">Powerful Features for Everyone</h2>
- 
+
           <div className="features-grid-layout">
             {features.map((item, idx) => (
               <div key={idx} className="feature-grid-card">
@@ -161,7 +159,7 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
- 
+
       <div className="stats-wrapper-block">
         <div className="stats-row-container">
           {stats.map((stat, idx) => (
@@ -181,7 +179,7 @@ const LandingPage = () => {
           ))}
         </div>
       </div>
- 
+
       {/* 4. CALL TO ACTION (CTA) SECTION */}
       <section className="cta-wrapper-section">
         <div className="cta-blue-card">
@@ -205,5 +203,5 @@ const LandingPage = () => {
     </div>
   );
 };
- 
+
 export default LandingPage;

@@ -16,9 +16,8 @@
 body {
   background: #f8fafc;
 }
-
 .recruiter-page {
-  padding: 24px;
+  padding: 12px 0px 24px 0px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -655,7 +654,7 @@ body {
 
 @media (max-width: 768px) {
   .recruiter-page {
-    padding: 16px;
+    padding: 12px 16px 16px 16px;
   }
 
   .recruiter-page-header {
@@ -681,5 +680,30 @@ body {
 
   .company-content {
     flex-direction: column;
+  }
+}
+
+/* ===================================
+   320px SPECIFIC VIEWPORT OPTIMIZATION
+====================================== */
+@media (max-width: 374px) {
+  .recruiter-page {
+    padding: 8px 0px 16px 0px;
+  }
+
+  .recruiter-profile-container {
+    align-items: center !important;
+  }
+
+  .profile-card,
+  .company-card,
+  .professional-card,
+  .recent-activity-card,
+  .security-card,
+  .documents-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
 }

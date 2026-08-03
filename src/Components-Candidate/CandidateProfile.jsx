@@ -7,6 +7,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 =========================================== */
 import profileImg from "../assets/Candidate/Profile-images/profile.png";
 import verifiedIcon from "../assets/Candidate/Profile-images/verified.png";
+import cameraIcon from "../assets/Candidate/Profile-images/camera.png";
 import locationIcon from "../assets/Candidate/Profile-images/location.png";
 import phoneIcon from "../assets/Candidate/Profile-images/phone.png";
 import emailIcon from "../assets/Candidate/Profile-images/email.png";
@@ -53,7 +54,7 @@ const CandidateProfile = () => {
     avatar: profileImg,
   });
 
-  // Dynamic Dynamic Dynamic Lists
+  // Dynamic Lists
   const [experienceList, setExperienceList] = useState([
     {
       id: 1,
@@ -277,19 +278,26 @@ const CandidateProfile = () => {
               <div className="profile-top-split-row">
                 <div className="user-profile-inner-col-group">
                   <div className="user-profile-inner-row">
-                    <div className="avatar-wrapper" onClick={handleCameraClick}>
+                    <div className="avatar-wrapper">
                       <img
                         src={profileData.avatar}
                         alt="Akash"
                         className="profile-avatar-img"
                       />
-                      <span
+                      <button
+                        type="button"
                         className="camera-icon-badge clickable-action"
                         title="Change Profile Picture"
+                        onClick={handleCameraClick}
                       >
-                        📷
-                      </span>
+                        <img
+                          src={cameraIcon}
+                          alt="Camera"
+                          className="camera-icon-img"
+                        />
+                      </button>
                     </div>
+
                     <div className="profile-meta">
                       <div className="name-row">
                         <h2>{profileData.name}</h2>
@@ -300,6 +308,7 @@ const CandidateProfile = () => {
                         />
                       </div>
                       <p className="role-text">{profileData.role}</p>
+
                       <div className="contact-details">
                         <p>
                           <img
@@ -334,18 +343,19 @@ const CandidateProfile = () => {
                           {profileData.linkedin}
                         </p>
                       </div>
+
+                      {/* Edit Profile button nested directly under contact info */}
+                      <button
+                        className="edit-profile-action-btn clickable-action"
+                        onClick={() => {
+                          setTempProfile({ ...profileData });
+                          setShowProfileModal(true);
+                        }}
+                      >
+                        Edit Profile
+                      </button>
                     </div>
                   </div>
-
-                  <button
-                    className="edit-profile-action-btn clickable-action"
-                    onClick={() => {
-                      setTempProfile({ ...profileData });
-                      setShowProfileModal(true);
-                    }}
-                  >
-                    Edit Profile
-                  </button>
                 </div>
 
                 {/* Right Profile Strength Chart */}
@@ -658,9 +668,7 @@ const CandidateProfile = () => {
         </main>
       </div>
 
-      {/* ===========================================
-          Validation Popups / Modals
-      =========================================== */}
+      {/* Validation Popups / Modals */}
       {showProfileModal && (
         <div className="profile-modal-overlay">
           <div className="profile-modal-content">
