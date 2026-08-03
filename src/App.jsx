@@ -20,10 +20,11 @@ import CandidtateDashboard from "./Components-Candidate/CandidateDashboard";
 import AboutUs from "./Components-landingpage/AboutUs";
 import RecruiterProfile from "./Components-Recruiter/RecruiterProfile";
 import CandidateProfile from "./Components-Candidate/CandidateProfile";
-import PersonalInfo from "./Components-CreateResume/PersonalInfo";
+
+/* import PersonalInfo from "./Components-CreateResume/PersonalInfo";
 import EducationPage from "./Components-CreateResume/Education";
 import SkillsPage from "./Components-CreateResume/CandidateSkills";
-import ReviewPage from "./Components-CreateResume/ReviewPage";
+import ReviewPage from "./Components-CreateResume/ReviewPage"; */
 
 const router = createBrowserRouter([
   {
@@ -98,7 +99,7 @@ const router = createBrowserRouter([
     path: "/Resume-builder/candidate/candidate/profile",
     element: <CandidateProfile />,
   },
-  {
+  /* {
     path: "/Resume-builder/candidate/candidate/personalinfo",
     element: <PersonalInfo />,
   },
@@ -113,7 +114,7 @@ const router = createBrowserRouter([
   {
     path: "/Resume-builder/candidate/candidate/review",
     element: <ReviewPage />,
-  },
+  }, */
 ]);
 
 function App() {
