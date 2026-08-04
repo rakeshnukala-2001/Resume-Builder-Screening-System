@@ -7,7 +7,7 @@ import findCandidatesIcon from "../assets/fi-can.png";
 import interviewIcon from "../assets/int-mang.png";
 import analyticsIcon from "../assets/rec-anal.png";
 import regIcon from "../assets/reg-r-image.png";
-import tickedImg from "../assets/tickbl.png";
+import tickedImg from "../assets/tick.png";
 import hidePasswordIcon from "../assets/eye-hide.png";
 import showPasswordIcon from "../assets/show_password.png";
 import "./UserRegRecruiter.css";
@@ -58,13 +58,31 @@ const UserRegRecruiter = () => {
   ];
 
   const featureCards = [
-    { icon: postJobsIcon, title: "Post Jobs", description: "Create and publish job vacancies effortlessly." },
-    { icon: findCandidatesIcon, title: "Find Candidates", description: "Advanced filters to find the perfect match." },
-    { icon: interviewIcon, title: "Interview Management", description: "Seamlessly schedule and track interviews." },
-    { icon: analyticsIcon, title: "Recruitment Analytics", description: "Data-driven insights into your hiring funnel." },
+    {
+      icon: postJobsIcon,
+      title: "Post Jobs",
+      description: "Create and publish job vacancies effortlessly.",
+    },
+    {
+      icon: findCandidatesIcon,
+      title: "Find Candidates",
+      description: "Advanced filters to find the perfect match.",
+    },
+    {
+      icon: interviewIcon,
+      title: "Interview Management",
+      description: "Seamlessly schedule and track interviews.",
+    },
+    {
+      icon: analyticsIcon,
+      title: "Recruitment Analytics",
+      description: "Data-driven insights into your hiring funnel.",
+    },
   ];
 
-  const isEmailValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(form.email || "");
+  const isEmailValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+    form.email || "",
+  );
 
   // Countdown Timer Logic
   useEffect(() => {
@@ -135,7 +153,10 @@ const UserRegRecruiter = () => {
       setCanResend(false);
       setShowOtpModal(true);
     } else {
-      setErrors((prev) => ({ ...prev, email: "Enter a valid email address first" }));
+      setErrors((prev) => ({
+        ...prev,
+        email: "Enter a valid email address first",
+      }));
     }
   };
 
@@ -173,7 +194,8 @@ const UserRegRecruiter = () => {
 
     if (!form.fullName.trim()) newErrors.fullName = "Full Name is required";
     if (!form.userName.trim()) newErrors.userName = "Username is required";
-    if (!form.recruiterName.trim()) newErrors.recruiterName = "Recruiter Name is required";
+    if (!form.recruiterName.trim())
+      newErrors.recruiterName = "Recruiter Name is required";
 
     if (!form.email.trim()) {
       newErrors.email = "Email Address is required";
@@ -189,10 +211,14 @@ const UserRegRecruiter = () => {
       newErrors.phone = "Enter valid 10-digit mobile number";
     }
 
-    if (!form.designation.trim()) newErrors.designation = "Designation is required";
-    if (!form.companyName.trim()) newErrors.companyName = "Company Name is required";
-    if (!form.companyWebsite.trim()) newErrors.companyWebsite = "Company Website is required";
-    if (!form.companyLocation.trim()) newErrors.companyLocation = "Company Location is required";
+    if (!form.designation.trim())
+      newErrors.designation = "Designation is required";
+    if (!form.companyName.trim())
+      newErrors.companyName = "Company Name is required";
+    if (!form.companyWebsite.trim())
+      newErrors.companyWebsite = "Company Website is required";
+    if (!form.companyLocation.trim())
+      newErrors.companyLocation = "Company Location is required";
     if (!form.industryType) newErrors.industryType = "Select Industry Type";
 
     if (!form.password) {
@@ -252,8 +278,16 @@ const UserRegRecruiter = () => {
 
         <ul className="urr-info__checklist">
           {checklistItems.map((item) => (
-            <li key={item} className="urr-info__checklist-item" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <img src={tickedImg} alt="tick" style={{ width: "15px", height: "15px" }} />
+            <li
+              key={item}
+              className="urr-info__checklist-item"
+              style={{ display: "flex", alignItems: "center", gap: "10px" }}
+            >
+              <img
+                src={tickedImg}
+                alt="tick"
+                style={{ width: "15px", height: "15px" }}
+              />
               <span>{item}</span>
             </li>
           ))}
@@ -262,7 +296,13 @@ const UserRegRecruiter = () => {
         <div className="urr-info__cards">
           {featureCards.map((card) => (
             <div className="urr-feature-card" key={card.title}>
-              {card.icon && <img src={card.icon} alt={card.title} className="urr-feature-card__icon" />}
+              {card.icon && (
+                <img
+                  src={card.icon}
+                  alt={card.title}
+                  className="urr-feature-card__icon"
+                />
+              )}
               <p className="urr-feature-card__title">{card.title}</p>
               <p className="urr-feature-card__desc">{card.description}</p>
             </div>
@@ -270,7 +310,11 @@ const UserRegRecruiter = () => {
         </div>
 
         {regIcon && (
-          <img src={regIcon} alt="Hiring Illustration" className="urr-info__illustration" />
+          <img
+            src={regIcon}
+            alt="Hiring Illustration"
+            className="urr-info__illustration"
+          />
         )}
       </div>
 
@@ -292,9 +336,15 @@ const UserRegRecruiter = () => {
               }}
             >
               <span className="urr-role-radio">
-                {role === "candidate" && <span className="urr-role-radio__dot" />}
+                {role === "candidate" && (
+                  <span className="urr-role-radio__dot" />
+                )}
               </span>
-              <img src={candidateIcon} alt="Candidate" className="urr-role-icon" />
+              <img
+                src={candidateIcon}
+                alt="Candidate"
+                className="urr-role-icon"
+              />
               <span className="urr-role-name">Candidate</span>
               <span className="urr-role-sub">Explore jobs take next step</span>
             </button>
@@ -306,11 +356,19 @@ const UserRegRecruiter = () => {
               onClick={() => setRole("recruiter")}
             >
               <span className="urr-role-radio">
-                {role === "recruiter" && <span className="urr-role-radio__dot" />}
+                {role === "recruiter" && (
+                  <span className="urr-role-radio__dot" />
+                )}
               </span>
-              <img src={recruiterIcon} alt="Recruiter" className="urr-role-icon" />
+              <img
+                src={recruiterIcon}
+                alt="Recruiter"
+                className="urr-role-icon"
+              />
               <span className="urr-role-name">Recruiter</span>
-              <span className="urr-role-sub">Post jobs find talent and hire</span>
+              <span className="urr-role-sub">
+                Post jobs find talent and hire
+              </span>
             </button>
           </div>
 
@@ -326,7 +384,14 @@ const UserRegRecruiter = () => {
                   onChange={handleChange("fullName")}
                 />
               </label>
-              {errors.fullName && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.fullName}</small>}
+              {errors.fullName && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.fullName}
+                </small>
+              )}
             </div>
 
             {/* User Name */}
@@ -340,7 +405,14 @@ const UserRegRecruiter = () => {
                   onChange={handleChange("userName")}
                 />
               </label>
-              {errors.userName && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.userName}</small>}
+              {errors.userName && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.userName}
+                </small>
+              )}
             </div>
 
             {/* Recruiter Name */}
@@ -354,7 +426,14 @@ const UserRegRecruiter = () => {
                   onChange={handleChange("recruiterName")}
                 />
               </label>
-              {errors.recruiterName && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.recruiterName}</small>}
+              {errors.recruiterName && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.recruiterName}
+                </small>
+              )}
             </div>
 
             {/* Email Address with Verification */}
@@ -409,7 +488,14 @@ const UserRegRecruiter = () => {
                   )}
                 </div>
               </label>
-              {errors.email && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.email}</small>}
+              {errors.email && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.email}
+                </small>
+              )}
             </div>
 
             {/* Phone Number */}
@@ -423,7 +509,14 @@ const UserRegRecruiter = () => {
                   onChange={handleChange("phone")}
                 />
               </label>
-              {errors.phone && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.phone}</small>}
+              {errors.phone && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.phone}
+                </small>
+              )}
             </div>
 
             {/* Designation / Job Title */}
@@ -437,7 +530,14 @@ const UserRegRecruiter = () => {
                   onChange={handleChange("designation")}
                 />
               </label>
-              {errors.designation && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.designation}</small>}
+              {errors.designation && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.designation}
+                </small>
+              )}
             </div>
 
             {/* Company Name */}
@@ -451,7 +551,14 @@ const UserRegRecruiter = () => {
                   onChange={handleChange("companyName")}
                 />
               </label>
-              {errors.companyName && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.companyName}</small>}
+              {errors.companyName && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.companyName}
+                </small>
+              )}
             </div>
 
             {/* Company Website */}
@@ -465,7 +572,14 @@ const UserRegRecruiter = () => {
                   onChange={handleChange("companyWebsite")}
                 />
               </label>
-              {errors.companyWebsite && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.companyWebsite}</small>}
+              {errors.companyWebsite && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.companyWebsite}
+                </small>
+              )}
             </div>
 
             {/* Company Location */}
@@ -479,15 +593,27 @@ const UserRegRecruiter = () => {
                   onChange={handleChange("companyLocation")}
                 />
               </label>
-              {errors.companyLocation && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.companyLocation}</small>}
+              {errors.companyLocation && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.companyLocation}
+                </small>
+              )}
             </div>
 
             {/* Industry Type */}
             <div className="urr-field-wrapper">
               <label className="urr-field">
                 <span className="urr-label">Industry Type</span>
-                <select value={form.industryType} onChange={handleChange("industryType")}>
-                  <option value="" disabled hidden>Select Industry Type</option>
+                <select
+                  value={form.industryType}
+                  onChange={handleChange("industryType")}
+                >
+                  <option value="" disabled hidden>
+                    Select Industry Type
+                  </option>
                   <option value="Designer">Designer</option>
                   <option value="Engineering">Engineering</option>
                   <option value="Marketing">Marketing</option>
@@ -495,7 +621,14 @@ const UserRegRecruiter = () => {
                   <option value="Other">Other</option>
                 </select>
               </label>
-              {errors.industryType && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.industryType}</small>}
+              {errors.industryType && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.industryType}
+                </small>
+              )}
             </div>
 
             {/* Password */}
@@ -514,12 +647,27 @@ const UserRegRecruiter = () => {
                       src={showPassword ? showPasswordIcon : hidePasswordIcon}
                       alt="toggle"
                       onClick={() => setShowPassword(!showPassword)}
-                      style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", cursor: "pointer", width: "20px", height: "20px" }}
+                      style={{
+                        position: "absolute",
+                        right: "12px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        cursor: "pointer",
+                        width: "20px",
+                        height: "20px",
+                      }}
                     />
                   )}
                 </div>
               </label>
-              {errors.password && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.password}</small>}
+              {errors.password && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.password}
+                </small>
+              )}
             </div>
 
             {/* Confirm Password */}
@@ -535,15 +683,36 @@ const UserRegRecruiter = () => {
                   />
                   {form.confirmPassword && (
                     <img
-                      src={showConfirmPassword ? showPasswordIcon : hidePasswordIcon}
+                      src={
+                        showConfirmPassword
+                          ? showPasswordIcon
+                          : hidePasswordIcon
+                      }
                       alt="toggle"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", cursor: "pointer", width: "20px", height: "20px" }}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      style={{
+                        position: "absolute",
+                        right: "12px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        cursor: "pointer",
+                        width: "20px",
+                        height: "20px",
+                      }}
                     />
                   )}
                 </div>
               </label>
-              {errors.confirmPassword && <small className="error-text" style={{ color: "red", fontSize: "12px" }}>{errors.confirmPassword}</small>}
+              {errors.confirmPassword && (
+                <small
+                  className="error-text"
+                  style={{ color: "red", fontSize: "12px" }}
+                >
+                  {errors.confirmPassword}
+                </small>
+              )}
             </div>
           </div>
 
@@ -555,10 +724,19 @@ const UserRegRecruiter = () => {
               onChange={(e) => setAgreed(e.target.checked)}
             />
             <span>
-              I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a> regarding my administrative access.
+              I agree to the <a href="#terms">Terms of Service</a> and{" "}
+              <a href="#privacy">Privacy Policy</a> regarding my administrative
+              access.
             </span>
           </label>
-          {errors.terms && <div className="error-text" style={{ color: "red", fontSize: "12px", marginTop: "4px" }}>{errors.terms}</div>}
+          {errors.terms && (
+            <div
+              className="error-text"
+              style={{ color: "red", fontSize: "12px", marginTop: "4px" }}
+            >
+              {errors.terms}
+            </div>
+          )}
 
           <button type="submit" className="urr-submit">
             Complete Registration
@@ -568,7 +746,11 @@ const UserRegRecruiter = () => {
             Already have an account?{" "}
             <span
               onClick={() => navigate("/Resume-builder/login/recruiter")}
-              style={{ color: "#007bff", cursor: "pointer", textDecoration: "underline" }}
+              style={{
+                color: "#007bff",
+                cursor: "pointer",
+                textDecoration: "underline",
+              }}
             >
               Login
             </span>
@@ -584,7 +766,10 @@ const UserRegRecruiter = () => {
               <>
                 <div className="urc-modal-icon">📩</div>
                 <h3>Email Verification</h3>
-                <p>We've Sent a Code To <strong>{form.email}</strong>.<br />Please enter it below</p>
+                <p>
+                  We've Sent a Code To <strong>{form.email}</strong>.<br />
+                  Please enter it below
+                </p>
 
                 <div className="urc-otp-inputs">
                   {otp.map((data, index) => (
@@ -600,28 +785,57 @@ const UserRegRecruiter = () => {
                   ))}
                 </div>
 
-                {otpError && <small className="urc-error-text" style={{ color: "red", display: "block", marginBottom: "12px" }}>{otpError}</small>}
+                {otpError && (
+                  <small
+                    className="urc-error-text"
+                    style={{
+                      color: "red",
+                      display: "block",
+                      marginBottom: "12px",
+                    }}
+                  >
+                    {otpError}
+                  </small>
+                )}
 
                 <p className="urc-resend-text">
                   {!canResend ? (
-                    <>Did not receive code? Resend OTP in <strong>{formatTime(timer)}</strong></>
+                    <>
+                      Did not receive code? Resend OTP in{" "}
+                      <strong>{formatTime(timer)}</strong>
+                    </>
                   ) : (
                     <>
                       Did not receive code?{" "}
-                      <span className="urc-resend-link" onClick={handleResendOtp} style={{ color: "#007bff", cursor: "pointer", textDecoration: "underline" }}>
+                      <span
+                        className="urc-resend-link"
+                        onClick={handleResendOtp}
+                        style={{
+                          color: "#007bff",
+                          cursor: "pointer",
+                          textDecoration: "underline",
+                        }}
+                      >
                         Resend OTP
                       </span>
                     </>
                   )}
                 </p>
 
-                <button className="urc-modal-btn" onClick={handleConfirmOtp}>Continue</button>
+                <button className="urc-modal-btn" onClick={handleConfirmOtp}>
+                  Continue
+                </button>
               </>
             ) : (
               <>
                 <div className="urc-modal-icon urc-success-icon">✓</div>
                 <h3>Verification Is Confirmed</h3>
-                <button className="urc-modal-btn" onClick={handleFinishVerification}>Continue</button>
+                <button
+                  className="urc-modal-btn"
+                  onClick={handleFinishVerification}
+                >
+                  Continue
+                </button>
               </>
             )}
           </div>

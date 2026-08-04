@@ -1046,25 +1046,25 @@ body {
     width: 420px;
   }
   .strength-chart-box {
-    width: 360px;
+    width: 800px;
     height: 235px;
     margin-bottom: 150px;
   }
   .strength-center-text {
-    top: 78%;
+    top: 90%;
   }
   .strength-center-text h3 {
-    font-size: 78px;
-    margin-bottom: 230px;
+    font-size: 60px;
+    margin-top: 60px;
   }
   .strength-center-text span {
     font-size: 38px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .strength-status-badge {
-    font-size: 29px;
+    font-size: 40px;
     padding: 13px 36px;
-    margin-top: 90px;
+    margin-top: 0px;
   }
   .strength-desc {
     font-size: 35px;

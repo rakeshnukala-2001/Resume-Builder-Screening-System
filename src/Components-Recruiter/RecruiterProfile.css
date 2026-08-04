@@ -18,7 +18,7 @@ body {
 }
 .recruiter-page {
   padding: 12px 0px 24px 0px;
-  max-width: 1200px;
+  max-width: 0 auto;
   margin: 0 auto;
 }
 
@@ -638,7 +638,339 @@ body {
   font-size: 11px;
   color: #6b7280;
 }
+/* ==================================================
+   2560px (4K SCREEN) LARGE DISPLAY OPTIMIZATION
+===================================================== */
+@media (min-width: 2560px) {
+  /* Container & Page Header Scaling */
+  .recruiter-page {
+    max-width: 100% !important;
+    padding: 24px 48px 48px 48px !important;
+  }
 
+  .recruiter-page-header {
+    margin-bottom: 36px;
+    gap: 24px;
+  }
+
+  .header-left {
+    gap: 10px;
+  }
+
+  .header-left h1 {
+    font-size: 38px;
+  }
+
+  .breadcrumb-nav {
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .header-actions {
+    gap: 20px;
+  }
+
+  .btn-change-password,
+  .btn-edit-profile {
+    height: 54px;
+    padding: 0 28px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+
+  .header-btn-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Main Grid Layout Adjustments */
+  .recruiter-profile-container {
+    grid-template-columns: 380px 1fr 460px !important;
+    gap: 36px !important;
+  }
+
+  /* Cards Padding & General Scaling */
+  .profile-card,
+  .company-card,
+  .professional-card,
+  .recent-activity-card,
+  .security-card,
+  .documents-card {
+    padding: 36px !important;
+    border-radius: 18px;
+  }
+
+  /* ================= PROFILE CARD ================= */
+  .status {
+    top: 24px;
+    right: 24px;
+    padding: 6px 16px;
+    font-size: 15px;
+    border-radius: 24px;
+  }
+
+  .status-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .profile-image {
+    width: 125px;
+    height: 125px;
+    border-width: 4px;
+    margin-top: 16px;
+  }
+
+  .profile-name-row {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .profile-name-row h2 {
+    font-size: 26px;
+  }
+
+  .verified-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .designation {
+    margin-top: 8px;
+    font-size: 18px;
+  }
+
+  .company {
+    margin-top: 6px;
+    font-size: 17px;
+  }
+
+  .recruiter-id {
+    margin-top: 24px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+
+  .profile-card hr {
+    margin: 26px 0;
+  }
+
+  .contact-list {
+    gap: 20px;
+  }
+
+  .contact-item {
+    gap: 14px;
+  }
+
+  .contact-item img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .contact-item span,
+  .contact-item a {
+    font-size: 17px;
+  }
+
+  /* ================= COMPANY CARD ================= */
+  .company-card h3 {
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .company-content {
+    gap: 24px;
+  }
+
+  .company-logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+  }
+
+  .company-logo-image {
+    width: 68px;
+    height: 68px;
+  }
+
+  .company-details h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .company-details p {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 12px;
+  }
+
+  .company-card hr {
+    margin: 28px 0;
+  }
+
+  .about-company h4 {
+    margin-bottom: 14px;
+    font-size: 20px;
+  }
+
+  .about-company p {
+    font-size: 17px;
+    line-height: 30px;
+  }
+
+  /* ================= PROFESSIONAL CARD ================= */
+  .professional-card h3 {
+    font-size: 26px;
+    margin-bottom: 26px;
+  }
+
+  .info-row {
+    padding: 14px 0;
+  }
+
+  .info-row span,
+  .info-row strong {
+    font-size: 18px;
+  }
+
+  .domain-title {
+    margin-top: 28px;
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+
+  .domain-tags {
+    gap: 12px;
+  }
+
+  .domain-tags span {
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .location {
+    margin-top: 30px;
+  }
+
+  .location h4 {
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .location p {
+    font-size: 17px;
+    line-height: 30px;
+  }
+
+  /* ================= RECENT ACTIVITY CARD ================= */
+  .recent-activity-title {
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .activity-list {
+    gap: 28px;
+    padding-left: 28px;
+  }
+
+  .activity-list::before {
+    left: 5px;
+    width: 3px;
+  }
+
+  .timeline-dot {
+    left: -28px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
+  }
+
+  .activity-header h4 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .activity-item p {
+    margin-top: 6px;
+    font-size: 16px;
+  }
+
+  /* ================= SECURITY CARD ================= */
+  .security-title {
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .security-item {
+    padding: 18px 0;
+  }
+
+  .security-left {
+    gap: 16px;
+  }
+
+  .security-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .security-text {
+    font-size: 18px;
+  }
+
+  .enabled-badge {
+    padding: 5px 14px;
+    font-size: 15px;
+    border-radius: 16px;
+  }
+
+  .active-device-text {
+    font-size: 16px;
+  }
+
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ================= DOCUMENTS CARD ================= */
+  .documents-title {
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .documents-list {
+    gap: 24px;
+  }
+
+  .document-left {
+    gap: 18px;
+  }
+
+  .document-icon-box {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+  }
+
+  .document-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .document-info h4 {
+    font-size: 18px;
+  }
+
+  .document-info span {
+    margin-top: 4px;
+    font-size: 15px;
+  }
+}
 /* ==================================
    RESPONSIVE BREAKPOINTS
 ===================================== */

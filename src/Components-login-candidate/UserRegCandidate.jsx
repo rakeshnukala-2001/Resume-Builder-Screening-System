@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./UserRegCandidate.css";
 import registerImage from "../assets/reg-c-image.png";
 import candidateImg from "../assets/candidate.png";
@@ -10,15 +10,15 @@ import hidePasswordIcon from "../assets/eye-hide.png";
 import showPasswordIcon from "../assets/show_password.png";
 
 const UserRegCandidate = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const [role, setRole] = useState("candidate");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [showOtpModal, setShowOtpModal] = useState(false);
-  const [otpStep, setOtpStep] = useState(1); 
-  
+  const [otpStep, setOtpStep] = useState(1);
+
   // Standard starting state with empty 6-digit inputs
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [otpError, setOtpError] = useState("");
@@ -41,8 +41,9 @@ const UserRegCandidate = () => {
 
   const [errors, setErrors] = useState({});
 
-  const isEmailValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email);
-
+  const isEmailValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+    formData.email,
+  );
 
   useEffect(() => {
     let interval = null;
@@ -51,7 +52,7 @@ const UserRegCandidate = () => {
         setTimer((prevTimer) => prevTimer - 1);
       }, 1000);
     } else if (timer === 0) {
-      setCanResend(true); 
+      setCanResend(true);
       clearInterval(interval);
     }
     return () => clearInterval(interval);
@@ -66,31 +67,29 @@ const UserRegCandidate = () => {
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
     if (name === "email") {
-      setIsEmailVerified(false); 
+      setIsEmailVerified(false);
     }
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : type === "file" ? files[0] : value,
+      [name]:
+        type === "checkbox" ? checked : type === "file" ? files[0] : value,
     });
   };
-
 
   const handleOtpChange = (e, index) => {
     const value = e.target.value;
     if (isNaN(value)) return;
 
     let newOtp = [...otp];
-    newOtp[index] = value.substring(value.length - 1); 
+    newOtp[index] = value.substring(value.length - 1);
     setOtp(newOtp);
     setOtpError("");
 
-   
     if (value && e.target.nextSibling) {
       e.target.nextSibling.focus();
     }
   };
 
- 
   const handleOtpKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index] && e.target.previousSibling) {
       e.target.previousSibling.focus();
@@ -109,23 +108,26 @@ const UserRegCandidate = () => {
 
   const handleVerifyClick = () => {
     if (isEmailValid) {
-      setOtp(["", "", "", "", "", ""]); 
+      setOtp(["", "", "", "", "", ""]);
       setOtpError("");
       setOtpStep(1);
-      setTimer(67); 
-      setCanResend(false); 
+      setTimer(67);
+      setCanResend(false);
       setShowOtpModal(true);
     } else {
-      setErrors((prev) => ({ ...prev, email: "Enter a valid email address first" }));
+      setErrors((prev) => ({
+        ...prev,
+        email: "Enter a valid email address first",
+      }));
     }
   };
 
   const handleResendOtp = () => {
     if (canResend) {
-      setOtp(["", "", "", "", "", ""]); 
+      setOtp(["", "", "", "", "", ""]);
       setOtpError("");
-      setTimer(67); 
-      setCanResend(false); 
+      setTimer(67);
+      setCanResend(false);
     }
   };
 
@@ -138,7 +140,7 @@ const UserRegCandidate = () => {
     }
 
     // Check against expected OTP
-    if (enteredOtp === "894085") {
+    if (enteredOtp === "829749") {
       setOtpError("");
       setOtpStep(2);
     } else {
@@ -155,12 +157,15 @@ const UserRegCandidate = () => {
     let newErrors = {};
     if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required";
     if (!formData.userName.trim()) newErrors.userName = "User Name is required";
-    if (!/^[6-9]\d{9}$/.test(formData.mobile)) newErrors.mobile = "Enter valid mobile number";
+    if (!/^[6-9]\d{9}$/.test(formData.mobile))
+      newErrors.mobile = "Enter valid mobile number";
     if (!isEmailValid) newErrors.email = "Enter valid email";
     if (!isEmailVerified) newErrors.email = "Please verify your email address";
     if (!formData.degree.trim()) newErrors.degree = "Degree is required";
-    if (formData.password.length < 8) newErrors.password = "Minimum 8 characters";
-    if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = "Passwords do not match";
+    if (formData.password.length < 8)
+      newErrors.password = "Minimum 8 characters";
+    if (formData.password !== formData.confirmPassword)
+      newErrors.confirmPassword = "Passwords do not match";
     if (!formData.resume) newErrors.resume = "Upload Resume";
     if (!formData.terms) newErrors.terms = "Accept Terms & Conditions";
 
@@ -182,15 +187,37 @@ const UserRegCandidate = () => {
         {/* LEFT SECTION */}
         <div className="urc-register-left">
           <h1 className="urc-main-title">Create your account</h1>
-          <p className="urc-top-text">Register and join our platform to connect, collaborate <br /> and grow together.</p>
-          <div className="urc-left-image"><img src={registerImage} alt="Register" /></div>
-          <h2 className="urc-sub-title">Land your dream <br /> career.</h2>
-          <p className="urc-career-text">Join the most active talent network and get discovered by <br /> top-tier employers globally.</p>
+          <p className="urc-top-text">
+            Register and join our platform to connect, collaborate <br /> and
+            grow together.
+          </p>
+          <div className="urc-left-image">
+            <img src={registerImage} alt="Register" />
+          </div>
+          <h2 className="urc-sub-title">
+            Land your dream <br /> career.
+          </h2>
+          <p className="urc-career-text">
+            Join the most active talent network and get discovered by <br />{" "}
+            top-tier employers globally.
+          </p>
           <div className="urc-feature-list">
-            <div className="urc-feature-item"><img src={tickImg} alt="tick" /><span>Find your dream job</span></div>
-            <div className="urc-feature-item"><img src={tickImg} alt="tick" /><span>Get noticed by top employers</span></div>
-            <div className="urc-feature-item"><img src={tickImg} alt="tick" /><span>Personalized job alerts</span></div>
-            <div className="urc-feature-item"><img src={tickImg} alt="tick" /><span>Track your applications</span></div>
+            <div className="urc-feature-item">
+              <img src={tickImg} alt="tick" />
+              <span>Find your dream job</span>
+            </div>
+            <div className="urc-feature-item">
+              <img src={tickImg} alt="tick" />
+              <span>Get noticed by top employers</span>
+            </div>
+            <div className="urc-feature-item">
+              <img src={tickImg} alt="tick" />
+              <span>Personalized job alerts</span>
+            </div>
+            <div className="urc-feature-item">
+              <img src={tickImg} alt="tick" />
+              <span>Track your applications</span>
+            </div>
           </div>
         </div>
 
@@ -207,7 +234,9 @@ const UserRegCandidate = () => {
                 onClick={() => setRole("candidate")}
               >
                 <div className="urc-radio-circle">
-                  {role === "candidate" && <div className="urc-radio-dot"></div>}
+                  {role === "candidate" && (
+                    <div className="urc-radio-dot"></div>
+                  )}
                 </div>
                 <img src={candidateImg} alt="Candidate" />
                 <h4>Candidate</h4>
@@ -218,11 +247,13 @@ const UserRegCandidate = () => {
                 className={`urc-role-card ${role === "recruiter" ? "urc-active" : ""}`}
                 onClick={() => {
                   setRole("recruiter");
-                  navigate("/Resume-builder/userregrecruiter"); 
+                  navigate("/Resume-builder/userregrecruiter");
                 }}
               >
                 <div className="urc-radio-circle">
-                  {role === "recruiter" && <div className="urc-radio-dot"></div>}
+                  {role === "recruiter" && (
+                    <div className="urc-radio-dot"></div>
+                  )}
                 </div>
                 <img src={recruiterImg} alt="Recruiter" />
                 <h4>Recruiter</h4>
@@ -234,18 +265,42 @@ const UserRegCandidate = () => {
             <div className="urc-form-row">
               <div className="urc-input-group">
                 <label>Full Name </label>
-                <input type="text" name="fullName" placeholder="" value={formData.fullName} onChange={handleChange} />
-                {errors.fullName && <small className="urc-error-text">{errors.fullName}</small>}
+                <input
+                  type="text"
+                  name="fullName"
+                  placeholder=""
+                  value={formData.fullName}
+                  onChange={handleChange}
+                />
+                {errors.fullName && (
+                  <small className="urc-error-text">{errors.fullName}</small>
+                )}
               </div>
               <div className="urc-input-group">
                 <label>User Name </label>
-                <input type="text" name="userName" placeholder="" value={formData.userName} onChange={handleChange} />
-                {errors.userName && <small className="urc-error-text">{errors.userName}</small>}
+                <input
+                  type="text"
+                  name="userName"
+                  placeholder=""
+                  value={formData.userName}
+                  onChange={handleChange}
+                />
+                {errors.userName && (
+                  <small className="urc-error-text">{errors.userName}</small>
+                )}
               </div>
               <div className="urc-input-group">
                 <label>Mobile Number </label>
-                <input type="text" name="mobile" placeholder="" value={formData.mobile} onChange={handleChange} />
-                {errors.mobile && <small className="urc-error-text">{errors.mobile}</small>}
+                <input
+                  type="text"
+                  name="mobile"
+                  placeholder=""
+                  value={formData.mobile}
+                  onChange={handleChange}
+                />
+                {errors.mobile && (
+                  <small className="urc-error-text">{errors.mobile}</small>
+                )}
               </div>
             </div>
 
@@ -253,17 +308,35 @@ const UserRegCandidate = () => {
             <div className="urc-form-row">
               <div className="urc-input-group">
                 <label>Degree </label>
-                <input type="text" name="degree" placeholder="" value={formData.degree} onChange={handleChange} />
-                {errors.degree && <small className="urc-error-text">{errors.degree}</small>}
+                <input
+                  type="text"
+                  name="degree"
+                  placeholder=""
+                  value={formData.degree}
+                  onChange={handleChange}
+                />
+                {errors.degree && (
+                  <small className="urc-error-text">{errors.degree}</small>
+                )}
               </div>
 
               {/* EMAIL WITH VERIFY BUTTON */}
               <div className="urc-input-group urc-email-wrapper">
                 <label>Enter your Email Address </label>
                 <div className="urc-input-with-action">
-                  <input type="email" name="email" placeholder="" value={formData.email} onChange={handleChange} />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder=""
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
                   {isEmailValid && !isEmailVerified && (
-                    <button type="button" className="urc-verify-btn" onClick={handleVerifyClick}>
+                    <button
+                      type="button"
+                      className="urc-verify-btn"
+                      onClick={handleVerifyClick}
+                    >
                       Verify
                     </button>
                   )}
@@ -271,18 +344,33 @@ const UserRegCandidate = () => {
                     <span className="urc-verified-badge">Verified</span>
                   )}
                 </div>
-                {errors.email && <small className="urc-error-text">{errors.email}</small>}
+                {errors.email && (
+                  <small className="urc-error-text">{errors.email}</small>
+                )}
               </div>
 
               <div className="urc-input-group urc-password-wrapper">
                 <label>Password </label>
                 <div className="urc-input-with-icon">
-                  <input type={showPassword ? "text" : "password"} name="password" placeholder="" value={formData.password} onChange={handleChange} />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder=""
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
                   {formData.password && (
-                    <img src={showPassword ? showPasswordIcon : hidePasswordIcon} alt="toggle" onClick={() => setShowPassword(!showPassword)} className="urc-password-toggle-icon" />
+                    <img
+                      src={showPassword ? showPasswordIcon : hidePasswordIcon}
+                      alt="toggle"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="urc-password-toggle-icon"
+                    />
                   )}
                 </div>
-                {errors.password && <small className="urc-error-text">{errors.password}</small>}
+                {errors.password && (
+                  <small className="urc-error-text">{errors.password}</small>
+                )}
               </div>
             </div>
 
@@ -291,12 +379,33 @@ const UserRegCandidate = () => {
               <div className="urc-input-group urc-full-width urc-password-wrapper">
                 <label>Confirm Password </label>
                 <div className="urc-input-with-icon">
-                  <input type={showConfirmPassword ? "text" : "password"} name="confirmPassword" placeholder="" value={formData.confirmPassword} onChange={handleChange} />
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    placeholder=""
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                  />
                   {formData.confirmPassword && (
-                    <img src={showConfirmPassword ? showPasswordIcon : hidePasswordIcon} alt="toggle" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="urc-password-toggle-icon" />
+                    <img
+                      src={
+                        showConfirmPassword
+                          ? showPasswordIcon
+                          : hidePasswordIcon
+                      }
+                      alt="toggle"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      className="urc-password-toggle-icon"
+                    />
                   )}
                 </div>
-                {errors.confirmPassword && <small className="urc-error-text">{errors.confirmPassword}</small>}
+                {errors.confirmPassword && (
+                  <small className="urc-error-text">
+                    {errors.confirmPassword}
+                  </small>
+                )}
               </div>
             </div>
 
@@ -305,23 +414,53 @@ const UserRegCandidate = () => {
               <label>Upload Resume </label>
               <label className="urc-upload-box">
                 <img src={uploadImg} alt="Upload" className="urc-upload-icon" />
-                <p>{formData.resume ? formData.resume.name : "Click to upload or drag and drop (PDF, DOCX)"}</p>
-                <input type="file" name="resume" accept=".pdf,.doc,.docx" hidden onChange={handleChange} />
+                <p>
+                  {formData.resume
+                    ? formData.resume.name
+                    : "Click to upload or drag and drop (PDF, DOCX)"}
+                </p>
+                <input
+                  type="file"
+                  name="resume"
+                  accept=".pdf,.doc,.docx"
+                  hidden
+                  onChange={handleChange}
+                />
               </label>
-              {errors.resume && <small className="urc-error-text">{errors.resume}</small>}
+              {errors.resume && (
+                <small className="urc-error-text">{errors.resume}</small>
+              )}
             </div>
 
             {/* TERMS */}
             <div className="urc-terms-wrapper-block">
               <div className="urc-terms-container">
-                <input type="checkbox" name="terms" checked={formData.terms} onChange={handleChange} />
-                <p>I agree to the <span>Terms of Service</span> and <span>Privacy Policy</span> regarding my administrative access.</p>
+                <input
+                  type="checkbox"
+                  name="terms"
+                  checked={formData.terms}
+                  onChange={handleChange}
+                />
+                <p>
+                  I agree to the <span>Terms of Service</span> and{" "}
+                  <span>Privacy Policy</span> regarding my administrative
+                  access.
+                </p>
               </div>
-              {errors.terms && <small className="urc-error-text">{errors.terms}</small>}
+              {errors.terms && (
+                <small className="urc-error-text">{errors.terms}</small>
+              )}
             </div>
 
-            <button type="submit" className="urc-register-btn">Complete Registration</button>
-            <p className="urc-login-text">Already have an account? <span onClick={() => navigate("/Resume-builder/login/candidate")}>Login</span></p>
+            <button type="submit" className="urc-register-btn">
+              Complete Registration
+            </button>
+            <p className="urc-login-text">
+              Already have an account?{" "}
+              <span onClick={() => navigate("/Resume-builder/login/candidate")}>
+                Login
+              </span>
+            </p>
           </form>
         </div>
       </div>
@@ -334,8 +473,11 @@ const UserRegCandidate = () => {
               <>
                 <div className="urc-modal-icon">📩</div>
                 <h3>Email Verification</h3>
-                <p>We've Sent a Code To <strong>{formData.email}</strong>.<br />Please enter it below</p>
-                
+                <p>
+                  We've Sent a Code To <strong>{formData.email}</strong>.<br />
+                  Please enter it below
+                </p>
+
                 {/* OTP INPUTS */}
                 <div className="urc-otp-inputs">
                   {otp.map((data, index) => (
@@ -352,29 +494,49 @@ const UserRegCandidate = () => {
                 </div>
 
                 {/* ERROR MESSAGE IF OTP IS WRONG / EMPTY */}
-                {otpError && <small className="urc-error-text" style={{ marginBottom: "12px", display: "block" }}>{otpError}</small>}
+                {otpError && (
+                  <small
+                    className="urc-error-text"
+                    style={{ marginBottom: "12px", display: "block" }}
+                  >
+                    {otpError}
+                  </small>
+                )}
 
                 {/* TIMER / RESEND OTP DISPLAY */}
                 <p className="urc-resend-text">
                   {!canResend ? (
-                    <>Did not receive code? Resend OTP in <strong>{formatTime(timer)}</strong></>
+                    <>
+                      Did not receive code? Resend OTP in{" "}
+                      <strong>{formatTime(timer)}</strong>
+                    </>
                   ) : (
                     <>
                       Did not receive code?{" "}
-                      <span className="urc-resend-link" onClick={handleResendOtp}>
+                      <span
+                        className="urc-resend-link"
+                        onClick={handleResendOtp}
+                      >
                         Resend OTP
                       </span>
                     </>
                   )}
                 </p>
 
-                <button className="urc-modal-btn" onClick={handleConfirmOtp}>Continue</button>
+                <button className="urc-modal-btn" onClick={handleConfirmOtp}>
+                  Continue
+                </button>
               </>
             ) : (
               <>
                 <div className="urc-modal-icon urc-success-icon">✓</div>
                 <h3>Verification Is Confirmed</h3>
-                <button className="urc-modal-btn" onClick={handleFinishVerification}>Continue</button>
+                <button
+                  className="urc-modal-btn"
+                  onClick={handleFinishVerification}
+                >
+                  Continue
+                </button>
               </>
             )}
           </div>

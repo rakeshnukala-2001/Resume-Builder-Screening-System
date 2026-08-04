@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import verified from "../assets/image 15.png";
-import backIcon from '../assets/arrw.png';
+import backIcon from "../assets/arrw.png";
 import "./EmailVerification.css";
 
 const EmailVerification = () => {
@@ -12,7 +12,7 @@ const EmailVerification = () => {
   const [error, setError] = useState("");
 
   const inputRefs = useRef([]);
-  const DEFAULT_OTP = "508213";
+  const DEFAULT_OTP = "829749";
 
   useEffect(() => {
     if (seconds > 0) {
@@ -57,10 +57,9 @@ const EmailVerification = () => {
       return;
     }
 
-    
     if (enteredOtp === DEFAULT_OTP) {
       setError("");
-      navigate("/Resume-builder/dashboard/candidate"); 
+      navigate("/Resume-builder/dashboard/candidate");
     } else {
       setError("❗ Invalid OTP. Please check and try again.");
       navigate("/Resume-builder/login/emailverification/otpverification");
@@ -83,10 +82,13 @@ const EmailVerification = () => {
 
       {/* Right Content Card */}
       <div className="em-otp-container">
-        
         {/* Back to Login Button */}
-        <div className="em-back-container" onClick={() => navigate("/Resume-builder/login/candidate")} style={{ cursor: 'pointer' }}>
-          <img src={backIcon} alt="back" className="em-back-icon" /> 
+        <div
+          className="em-back-container"
+          onClick={() => navigate("/Resume-builder/login/candidate")}
+          style={{ cursor: "pointer" }}
+        >
+          <img src={backIcon} alt="back" className="em-back-icon" />
           <span>Back to Login</span>
         </div>
 
@@ -117,14 +119,39 @@ const EmailVerification = () => {
               ))}
             </div>
 
-            {error && <p className="em-error-msg" style={{ color: "#ef4444", fontWeight: "500", marginTop: "10px", textAlign: "center" }}>{error}</p>}
+            {error && (
+              <p
+                className="em-error-msg"
+                style={{
+                  color: "#ef4444",
+                  fontWeight: "500",
+                  marginTop: "10px",
+                  textAlign: "center",
+                }}
+              >
+                {error}
+              </p>
+            )}
 
             <p className="em-resend-text">
               Didn't receive the code?{" "}
               {seconds > 0 ? (
-                <span className="em-timer-highlight">resend OTP({formatTime(seconds)})</span>
+                <span className="em-timer-highlight">
+                  resend OTP({formatTime(seconds)})
+                </span>
               ) : (
-                <button type="button" className="em-resend-link" onClick={handleResend} style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontWeight: '600' }}>
+                <button
+                  type="button"
+                  className="em-resend-link"
+                  onClick={handleResend}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "#2563eb",
+                    cursor: "pointer",
+                    fontWeight: "600",
+                  }}
+                >
                   resend OTP
                 </button>
               )}
