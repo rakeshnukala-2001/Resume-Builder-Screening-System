@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Navigation hook import
+import { useNavigate } from "react-router-dom";
 import CandidateHeader from "./CandidateHeader";
 import CandidateProfile from "./CandidateProfile";
 import "./CandidateDashboard.css";

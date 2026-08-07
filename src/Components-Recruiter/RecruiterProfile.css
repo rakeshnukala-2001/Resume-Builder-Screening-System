@@ -549,17 +549,24 @@ body {
   align-items: center;
   gap: 8px;
 }
-
-.enabled-badge {
-  display: inline-block;
-  padding: 3px 10px;
+.enabled-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
   background: #ecfdf3;
   color: #16a34a;
   border: 1px solid #a7f3d0;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 12px;
   font-weight: 600;
   line-height: 1;
+  cursor: pointer;
+  outline: none;
+}
+
+.enabled-btn:hover {
+  background: #dcfce7;
 }
 
 .active-device-text {

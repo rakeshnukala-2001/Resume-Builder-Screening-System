@@ -325,7 +325,7 @@ const RecruiterProfile = () => {
                 </div>
 
                 {item.type === "badge" && (
-                  <span className="enabled-badge">{item.badgeText}</span>
+                  <button className="enabled-btn">{item.badgeText}</button>
                 )}
 
                 {item.type === "arrow" && (
