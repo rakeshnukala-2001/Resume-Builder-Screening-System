@@ -260,7 +260,7 @@ const CandidateProfile = () => {
   };
 
   return (
-    <div className="dashboard-page-wrapper">
+    <div className="can-profile-page-wrapper">
       {/* Hidden File Input */}
       <input
         type="file"
@@ -270,8 +270,8 @@ const CandidateProfile = () => {
         onChange={handleImageChange}
       />
 
-      <div className="dashboard-layout full-width-layout">
-        <main className="dashboard-main profile-main-content">
+      <div className="can-profile-layout full-width-layout">
+        <main className="can-profile-main profile-main-content">
           {/* Top Section: Profile Card & Professional Highlights */}
           <div className="profile-top-layout-grid">
             <div className="profile-user-strength-unified-card">

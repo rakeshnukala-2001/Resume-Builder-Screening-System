@@ -14,14 +14,14 @@ body {
    ========================================================================== */
 .or-otp-error-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 30px 60px;
-  gap: 50px;
+  justify-content: center;
+  padding: 30px 5vw;
+  gap: 100px;
   background: #ffffff;
 }
 
@@ -77,6 +77,8 @@ body {
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 35px;
+  gap: 8px;
+  padding-right: 10px;
 }
 
 .or-back-login span {
@@ -89,25 +91,25 @@ body {
 .or-back-login img {
   width: 18px;
   height: 18px;
-  display: block;
+  margin-right: 6px;
 }
 
 /* Lock Circle (Standardize with Candidate Size) */
-.or-lock-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #2563eb;
+/* .or-lock-circle {
+  width: 90px;
+  height: 90px;
+ 
+ 
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
   box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
-}
+} */
 
 .or-lock-circle img {
-  width: 37px;
-  height: 37px;
+  width: 79px;
+  height: 79px;
   object-fit: contain;
 }
 
@@ -142,14 +144,14 @@ body {
 .or-otp-inputs input {
   width: 44px;
   height: 44px;
-  border: 1.5px solid #111827; 
+  border: 1.5px solid #111827;
   border-radius: 6px;
   background: #fff;
   text-align: center;
   font-size: 22px;
   font-weight: 600;
   outline: none;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .or-otp-inputs input:focus {
@@ -180,6 +182,7 @@ body {
   margin-bottom: 16px;
   text-align: center;
   color: #374151;
+  letter-spacing: 0.2px;
 }
 
 .or-resend span {
@@ -221,7 +224,7 @@ body {
 /* Laptop / 1024px Range Fix */
 @media (max-width: 1100px) {
   .or-otp-error-container {
-    gap: 30px;
+    gap: 40px;
     padding: 25px 40px;
   }
 
@@ -245,7 +248,7 @@ body {
 /* Tablet */
 @media (max-width: 992px) {
   .or-otp-error-container {
-    gap: 25px;
+    gap: 30px;
     padding: 25px 30px;
   }
 

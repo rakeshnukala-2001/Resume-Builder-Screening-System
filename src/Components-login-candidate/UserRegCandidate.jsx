@@ -19,7 +19,6 @@ const UserRegCandidate = () => {
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otpStep, setOtpStep] = useState(1);
 
-  // Standard starting state with empty 6-digit inputs
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [otpError, setOtpError] = useState("");
   const [isEmailVerified, setIsEmailVerified] = useState(false);
@@ -45,6 +44,12 @@ const UserRegCandidate = () => {
     formData.email,
   );
 
+  const isPasswordStrong = (pwd) => {
+    const passwordRegex =
+      /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    return passwordRegex.test(pwd);
+  };
+
   useEffect(() => {
     let interval = null;
     if (showOtpModal && otpStep === 1 && timer > 0) {
@@ -66,14 +71,49 @@ const UserRegCandidate = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
+    const fieldValue =
+      type === "checkbox" ? checked : type === "file" ? files[0] : value;
+
     if (name === "email") {
       setIsEmailVerified(false);
     }
-    setFormData({
+
+    const updatedFormData = {
       ...formData,
-      [name]:
-        type === "checkbox" ? checked : type === "file" ? files[0] : value,
-    });
+      [name]: fieldValue,
+    };
+
+    setFormData(updatedFormData);
+
+    let currentErrors = { ...errors };
+
+    if (name === "password") {
+      if (value && !isPasswordStrong(value)) {
+        currentErrors.password =
+          "Must contain 8+ chars, 1 uppercase letter & 1 special char";
+      } else {
+        delete currentErrors.password;
+      }
+
+      if (
+        updatedFormData.confirmPassword &&
+        value !== updatedFormData.confirmPassword
+      ) {
+        currentErrors.confirmPassword = "Passwords do not match!";
+      } else if (updatedFormData.confirmPassword) {
+        delete currentErrors.confirmPassword;
+      }
+    }
+
+    if (name === "confirmPassword") {
+      if (value && value !== updatedFormData.password) {
+        currentErrors.confirmPassword = "Passwords do not match!";
+      } else {
+        delete currentErrors.confirmPassword;
+      }
+    }
+
+    setErrors(currentErrors);
   };
 
   const handleOtpChange = (e, index) => {
@@ -96,7 +136,6 @@ const UserRegCandidate = () => {
     }
   };
 
-  // Support pasting full 6-digit OTP
   const handleOtpPaste = (e) => {
     e.preventDefault();
     const pasteData = e.clipboardData.getData("text").trim();
@@ -139,7 +178,6 @@ const UserRegCandidate = () => {
       return;
     }
 
-    // Check against expected OTP
     if (enteredOtp === "829749") {
       setOtpError("");
       setOtpStep(2);
@@ -162,10 +200,12 @@ const UserRegCandidate = () => {
     if (!isEmailValid) newErrors.email = "Enter valid email";
     if (!isEmailVerified) newErrors.email = "Please verify your email address";
     if (!formData.degree.trim()) newErrors.degree = "Degree is required";
-    if (formData.password.length < 8)
-      newErrors.password = "Minimum 8 characters";
+
+    if (!isPasswordStrong(formData.password))
+      newErrors.password =
+        "Min 8 chars, 1 uppercase & 1 special character required";
     if (formData.password !== formData.confirmPassword)
-      newErrors.confirmPassword = "Passwords do not match";
+      newErrors.confirmPassword = "Passwords do not match!";
     if (!formData.resume) newErrors.resume = "Upload Resume";
     if (!formData.terms) newErrors.terms = "Accept Terms & Conditions";
 
@@ -176,8 +216,8 @@ const UserRegCandidate = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      alert("Registration Successful");
       console.log("Submitting Candidate Context:", { role, ...formData });
+      navigate("/Resume-builder/login/candidate");
     }
   };
 
@@ -264,7 +304,7 @@ const UserRegCandidate = () => {
             {/* ROW 1: FULL NAME, USER NAME, MOBILE */}
             <div className="urc-form-row">
               <div className="urc-input-group">
-                <label>Full Name </label>
+                <label>Full Name</label>
                 <input
                   type="text"
                   name="fullName"
@@ -277,7 +317,7 @@ const UserRegCandidate = () => {
                 )}
               </div>
               <div className="urc-input-group">
-                <label>User Name </label>
+                <label>User Name</label>
                 <input
                   type="text"
                   name="userName"
@@ -290,7 +330,7 @@ const UserRegCandidate = () => {
                 )}
               </div>
               <div className="urc-input-group">
-                <label>Mobile Number </label>
+                <label>Mobile Number</label>
                 <input
                   type="text"
                   name="mobile"
@@ -307,7 +347,7 @@ const UserRegCandidate = () => {
             {/* ROW 2: DEGREE, EMAIL, PASSWORD */}
             <div className="urc-form-row">
               <div className="urc-input-group">
-                <label>Degree </label>
+                <label>Degree</label>
                 <input
                   type="text"
                   name="degree"
@@ -322,7 +362,7 @@ const UserRegCandidate = () => {
 
               {/* EMAIL WITH VERIFY BUTTON */}
               <div className="urc-input-group urc-email-wrapper">
-                <label>Enter your Email Address </label>
+                <label> Email Address</label>
                 <div className="urc-input-with-action">
                   <input
                     type="email"
@@ -350,7 +390,7 @@ const UserRegCandidate = () => {
               </div>
 
               <div className="urc-input-group urc-password-wrapper">
-                <label>Password </label>
+                <label>Password</label>
                 <div className="urc-input-with-icon">
                   <input
                     type={showPassword ? "text" : "password"}
@@ -362,7 +402,7 @@ const UserRegCandidate = () => {
                   {formData.password && (
                     <img
                       src={showPassword ? showPasswordIcon : hidePasswordIcon}
-                      alt="toggle"
+                      alt="toggle password"
                       onClick={() => setShowPassword(!showPassword)}
                       className="urc-password-toggle-icon"
                     />
@@ -377,7 +417,7 @@ const UserRegCandidate = () => {
             {/* ROW 3: CONFIRM PASSWORD */}
             <div className="urc-form-row">
               <div className="urc-input-group urc-full-width urc-password-wrapper">
-                <label>Confirm Password </label>
+                <label>Confirm Password</label>
                 <div className="urc-input-with-icon">
                   <input
                     type={showConfirmPassword ? "text" : "password"}
@@ -393,7 +433,7 @@ const UserRegCandidate = () => {
                           ? showPasswordIcon
                           : hidePasswordIcon
                       }
-                      alt="toggle"
+                      alt="toggle confirm password"
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
@@ -411,7 +451,7 @@ const UserRegCandidate = () => {
 
             {/* RESUME UPLOAD */}
             <div className="urc-input-group urc-full-width">
-              <label>Upload Resume </label>
+              <label>Upload Resume</label>
               <label className="urc-upload-box">
                 <img src={uploadImg} alt="Upload" className="urc-upload-icon" />
                 <p>
@@ -478,7 +518,6 @@ const UserRegCandidate = () => {
                   Please enter it below
                 </p>
 
-                {/* OTP INPUTS */}
                 <div className="urc-otp-inputs">
                   {otp.map((data, index) => (
                     <input
@@ -493,7 +532,6 @@ const UserRegCandidate = () => {
                   ))}
                 </div>
 
-                {/* ERROR MESSAGE IF OTP IS WRONG / EMPTY */}
                 {otpError && (
                   <small
                     className="urc-error-text"
@@ -503,7 +541,6 @@ const UserRegCandidate = () => {
                   </small>
                 )}
 
-                {/* TIMER / RESEND OTP DISPLAY */}
                 <p className="urc-resend-text">
                   {!canResend ? (
                     <>

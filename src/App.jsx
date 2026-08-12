@@ -23,8 +23,7 @@ import CandidateProfile from "./Components-Candidate/CandidateProfile";
 
 /* import PersonalInfo from "./Components-CreateResume/PersonalInfo";
 import EducationPage from "./Components-CreateResume/Education";
-import SkillsPage from "./Components-CreateResume/CandidateSkills";
-import ReviewPage from "./Components-CreateResume/ReviewPage"; */
+import SkillsPage from "./Components-CreateResume/CandidateSkills";*/
 
 const router = createBrowserRouter([
   {
@@ -111,10 +110,7 @@ const router = createBrowserRouter([
     path: "/Resume-builder/candidate/candidate/skills",
     element: <SkillsPage />,
   },
-  {
-    path: "/Resume-builder/candidate/candidate/review",
-    element: <ReviewPage />,
-  }, */
+   */
 ]);
 
 function App() {

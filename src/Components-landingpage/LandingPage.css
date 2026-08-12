@@ -379,189 +379,1258 @@
 /* ==========================================
    4. ULTRA-WIDE SCREENS (2560px & ABOVE)
 ========================================== */
-@media (min-width: 2560px) {
-  .lp-main-hero-section {
-    max-width: 2450px;
-    margin: 0 auto;
-    padding: 60px 100px 20px 100px !important;
-    align-items: flex-start;
-    min-height: auto !important;
+
+/* =========================================================
+   PROFILE 2560px - USE SPACE PROPERLY 10
+   Bigger content + better vertical spacing
+   ========================================================= */
+
+@media screen and (min-width: 2560px) {
+  /* -----------------------------------------
+     TOP PROFILE CARD
+     ----------------------------------------- */
+
+  .profile-top-layout-grid {
+    height: 330px !important;
+    min-height: 330px !important;
   }
 
-  .lp-main-hero-left {
-    max-width: 1050px;
+  .profile-user-strength-unified-card,
+  .professional-highlights-container {
+    height: 330px !important;
+    min-height: 330px !important;
+    padding: 24px 26px !important;
   }
 
-  .lp-main-hero-left h1 {
-    font-size: 72px;
+  .name-row h2 {
+    font-size: 28px !important;
   }
 
-  .lp-main-hero-left p {
-    font-size: 24px;
-    max-width: 950px;
-    margin-bottom: 45px;
+  .role-text {
+    font-size: 18px !important;
   }
 
-  .lp-main-hero-buttons {
-    gap: 24px;
-    margin-bottom: 45px;
+  .contact-details p {
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
   }
 
-  .lp-main-hero-btn {
-    width: 320px;
-    height: 80px;
-    padding: 0 24px;
-    border-radius: 16px;
+  .edit-profile-action-btn {
+    font-size: 15px !important;
+    padding: 10px 20px !important;
   }
 
-  .lp-main-hero-btn span {
-    font-size: 19px;
+  /* -----------------------------------------
+     PROFILE STRENGTH
+     ----------------------------------------- */
+
+  .strength-center-text h3 {
+    font-size: 28px !important;
   }
 
-  .lp-main-hero-btn img {
-    width: 28px;
-    height: 28px;
+  .strength-center-text span {
+    font-size: 11px !important;
   }
 
-  .lp-main-hero-buttons > * {
-    font-size: 18px;
+  .strength-status-badge {
+    font-size: 14px !important;
+    padding: 7px 18px !important;
   }
 
-  .lp-main-features {
-    gap: 36px;
+  .strength-desc {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
   }
 
-  .lp-main-feature-card {
-    width: 280px;
-    padding: 12px;
+  /* -----------------------------------------
+     PROFESSIONAL HIGHLIGHTS
+     ----------------------------------------- */
+
+  .prof-highlights-header h3 {
+    font-size: 22px !important;
   }
 
-  .lp-main-feature-card img {
-    width: 48px;
-    height: 48px;
+  .highlight-box {
+    min-height: 105px !important;
+    padding: 15px 18px 15px 58px !important;
   }
 
-  .lp-main-feature-card h4 {
-    font-size: 19px;
-    margin-bottom: 6px;
+  .highlight-box h4 {
+    font-size: 18px !important;
+    line-height: 1.35 !important;
   }
 
-  .lp-main-feature-card p {
-    font-size: 15px;
+  .highlight-box p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
   }
 
-  .lp-main-hero-right img {
-    max-width: 1100px;
+  /* -----------------------------------------
+     MIDDLE ROW
+     ----------------------------------------- */
+
+  .profile-middle-grid {
+    height: 270px !important;
+    min-height: 270px !important;
   }
 
-  .features-section,
-  .stats-wrapper-block,
-  .cta-wrapper-section {
-    max-width: 2450px;
-    margin: 0 auto;
-    padding-left: 100px !important;
-    padding-right: 100px !important;
-    padding-top: 0px !important;
+  .about-me-card,
+  .profile-highlights-list-card,
+  .skill-competency-card {
+    height: 270px !important;
+    min-height: 270px !important;
+    padding: 22px 24px !important;
   }
 
-  .features-section {
-    margin-top: -10px !important;
+  .card-heading-flex h3,
+  .profile-highlights-list-card h3,
+  .skill-competency-card h3 {
+    font-size: 21px !important;
   }
 
-  .features-inner-container {
-    max-width: 2250px;
-    padding: 55px 60px 35px 60px !important;
+  .about-me-card p {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
   }
 
-  .section-main-title {
-    font-size: 32px;
-    margin-bottom: 40px;
+  .languages-heading {
+    font-size: 16px !important;
   }
 
-  .features-grid-layout {
-    max-width: 1950px;
-    gap: 36px;
+  .lang-chip {
+    font-size: 13px !important;
+    padding: 6px 14px !important;
   }
 
-  .feature-grid-card {
-    width: 440px !important;
-    height: 260px !important;
-    padding: 32px 28px;
-    border-radius: 20px;
+  .checklist-items {
+    gap: 18px !important;
   }
 
-  .icon-box-wrapper {
-    width: 65px !important;
-    height: 65px !important;
+  .checklist-items li {
+    font-size: 15px !important;
   }
 
-  .icon-box-wrapper img {
-    width: 40px !important;
-    height: 40px !important;
+  .status-complete {
+    font-size: 14px !important;
   }
 
-  .feature-grid-card h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
+  .skill-info-row {
+    font-size: 15px !important;
   }
 
-  .feature-grid-card p {
-    font-size: 16px;
+  .comp-bar {
+    height: 12px !important;
   }
 
-  .stats-wrapper-block {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
+  /* -----------------------------------------
+     BOTTOM ROW
+     ----------------------------------------- */
+
+  .profile-bottom-grid {
+    height: 430px !important;
+    min-height: 430px !important;
+
+    flex: 0 0 430px !important;
   }
 
-  .stats-row-container {
-    max-width: 2250px;
-    padding: 35px 60px !important;
-    border-radius: 20px;
+  .experience-timeline-card,
+  .education-timeline-card {
+    height: 430px !important;
+    min-height: 430px !important;
+
+    padding: 24px 26px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
   }
 
-  .stat-icon-holder-circle {
-    width: 52px;
-    height: 52px;
+  /* Bottom headings */
+
+  .section-header-with-add h3 {
+    font-size: 21px !important;
   }
 
-  .stat-inline-img {
+  /* -----------------------------------------
+     TIMELINE CONTENT
+     ----------------------------------------- */
+
+  .experience-timeline-card .timeline-item,
+  .education-timeline-card .timeline-item {
+    padding-bottom: 35px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .t-header h4 {
+    font-size: 17px !important;
+  }
+
+  .company-name {
+    font-size: 15px !important;
+  }
+
+  .t-date,
+  .location-tag,
+  .score-tag {
+    font-size: 14px !important;
+  }
+
+  /* Timeline description/details */
+
+  .timeline-item small,
+  .timeline-item span {
+    font-size: 13px !important;
+  }
+
+  /* -----------------------------------------
+     SIDEBAR
+     ----------------------------------------- */
+
+  .can-sidebar {
+    width: 300px !important;
+    min-width: 300px !important;
+  }
+
+  .can-dashboard-main {
+    margin-left: 300px !important;
+    width: calc(100% - 300px) !important;
+  }
+
+  .can-menu li {
+    font-size: 17px !important;
+    padding: 16px 17px !important;
+  }
+
+  /* -----------------------------------------
+     HEADER
+     ----------------------------------------- */
+
+  .can-top-header {
+    height: 82px !important;
+    padding: 0 32px !important;
+  }
+
+  .can-dashboard-title-top {
+    font-size: 20px !important;
+  }
+
+  .can-dashboard-subtitle {
+    font-size: 13px !important;
+  }
+
+  .can-search-wrapper input {
+    font-size: 15px !important;
+  }
+
+  .can-user-info h4 {
+    font-size: 15px !important;
+  }
+
+  .can-user-info p {
+    font-size: 12px !important;
+  }
+}
+
+/* =========================================================
+   2560px -   UI
+   ========================================================= */
+
+@media screen and (min-width: 2560px) {
+  /* =========================
+     HEADER
+     ========================= */
+
+  .can-top-header {
+    height: 105px !important;
+    padding: 0 45px !important;
+    gap: 40px !important;
+  }
+
+  .can-logo-img {
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .can-header-left {
+    gap: 20px !important;
+  }
+
+  .can-dashboard-title-top {
+    font-size: 28px !important;
+  }
+
+  .can-dashboard-subtitle {
+    font-size: 17px !important;
+  }
+
+  .can-search-wrapper {
+    max-width: 850px !important;
+    min-width: 550px !important;
+    padding: 15px 20px !important;
+    border-radius: 12px !important;
+  }
+
+  .can-search-wrapper input {
+    font-size: 20px !important;
+  }
+
+  .can-header-icon {
+    width: 58px !important;
+    height: 58px !important;
+    border-radius: 12px !important;
+  }
+
+  .can-header-icon img {
     width: 28px !important;
     height: 28px !important;
   }
 
-  .stat-text-meta h3 {
-    font-size: 32px;
+  .can-top-avatar {
+    width: 48px !important;
+    height: 48px !important;
   }
 
-  .stat-text-meta p {
-    font-size: 16px;
+  .can-user-info h4 {
+    font-size: 19px !important;
   }
 
-  .cta-wrapper-section {
-    padding-top: 5px !important;
-    padding-bottom: 50px !important;
+  .can-user-info p {
+    font-size: 15px !important;
   }
 
-  .cta-blue-card {
-    max-width: 2250px;
-    padding: 50px 70px;
-    border-radius: 20px;
+  /* =========================
+     SIDEBAR
+     ========================= */
+
+  .can-sidebar {
+    width: 360px !important;
+    min-width: 360px !important;
+    top: 105px !important;
+    height: calc(100vh - 105px) !important;
+    padding: 28px !important;
   }
 
-  .cta-content-left h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
+  .can-dashboard-main {
+    margin-left: 360px !important;
+    width: calc(100% - 360px) !important;
   }
 
-  .cta-content-left p {
-    font-size: 18px;
+  .can-menu li {
+    font-size: 22px !important;
+    padding: 21px 22px !important;
+    gap: 20px !important;
+    margin-bottom: 12px !important;
+    border-radius: 12px !important;
   }
 
-  .cta-action-btn {
-    padding: 20px 45px;
-    font-size: 18px;
-    border-radius: 14px;
+  .can-menu li img {
+    width: 29px !important;
+    height: 29px !important;
+  }
+
+  /* =========================
+     PROFILE MAIN
+     ========================= */
+
+  .dashboard-main.profile-main-content {
+    padding: 30px 40px !important;
+    gap: 22px !important;
+  }
+
+  /* =========================
+     TOP PROFILE ROW
+     ========================= */
+
+  .profile-top-layout-grid {
+    height: 450px !important;
+    min-height: 450px !important;
+    gap: 22px !important;
+  }
+
+  .profile-user-strength-unified-card,
+  .professional-highlights-container {
+    height: 450px !important;
+    min-height: 450px !important;
+    padding: 35px !important;
+    border-radius: 14px !important;
+  }
+
+  /* PROFILE IMAGE */
+
+  .avatar-wrapper {
+    width: 230px !important;
+    height: 280px !important;
+  }
+
+  /* NAME */
+
+  .name-row h2 {
+    font-size: 38px !important;
+  }
+
+  .verified-badge-img {
+    width: 27px !important;
+    height: 27px !important;
+  }
+
+  .role-text {
+    font-size: 24px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .contact-details {
+    gap: 15px !important;
+  }
+
+  .contact-details p {
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .contact-icon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .edit-profile-action-btn {
+    width: 170px !important;
+    height: 52px !important;
+    font-size: 20px !important;
+    border-radius: 8px !important;
+  }
+
+  /* PROFILE STRENGTH */
+
+  .profile-strength-inner-box {
+    width: 280px !important;
+  }
+
+  .strength-chart-box {
+    width: 200px !important;
+    height: 145px !important;
+  }
+
+  .strength-center-text h3 {
+    font-size: 40px !important;
+  }
+
+  .strength-center-text span {
+    font-size: 14px !important;
+  }
+
+  .strength-status-badge {
+    font-size: 19px !important;
+    padding: 10px 25px !important;
+    border-radius: 8px !important;
+  }
+
+  .strength-desc {
+    font-size: 19px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* =========================
+     PROFESSIONAL HIGHLIGHTS
+     ========================= */
+
+  .prof-highlights-header h3 {
+    font-size: 30px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .prof-highlights-grid-2x2 {
+    gap: 18px !important;
+  }
+
+  .highlight-box {
+    min-height: 150px !important;
+    padding: 24px 28px 24px 80px !important;
+    border-radius: 10px !important;
+  }
+
+  .h-icon-wrap {
+    width: 48px !important;
+    height: 48px !important;
+    left: 18px !important;
+    top: 18px !important;
+  }
+
+  .h-icon-wrap img {
+    width: 27px !important;
+    height: 27px !important;
+  }
+
+  .highlight-box::before {
+    left: 68px !important;
+    width: 3px !important;
+  }
+
+  .highlight-box h4 {
+    font-size: 24px !important;
+    line-height: 1.35 !important;
+  }
+
+  .highlight-box p {
+    font-size: 19px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* =========================
+     MIDDLE ROW
+     ========================= */
+
+  .profile-middle-grid {
+    height: 360px !important;
+    min-height: 360px !important;
+    gap: 22px !important;
+  }
+
+  .about-me-card,
+  .profile-highlights-list-card,
+  .skill-competency-card {
+    height: 360px !important;
+    min-height: 360px !important;
+    padding: 30px !important;
+    border-radius: 14px !important;
+  }
+
+  .card-heading-flex h3,
+  .profile-highlights-list-card h3,
+  .skill-competency-card h3 {
+    font-size: 28px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .about-me-card p {
+    font-size: 20px !important;
+    line-height: 1.7 !important;
+  }
+
+  .languages-heading {
+    font-size: 21px !important;
+  }
+
+  .lang-chip {
+    font-size: 18px !important;
+    padding: 9px 18px !important;
+  }
+
+  /* PROFILE HIGHLIGHTS */
+
+  .checklist-items {
+    gap: 25px !important;
+  }
+
+  .checklist-items li {
+    font-size: 20px !important;
+  }
+
+  .check-item-left img,
+  .status-complete img {
+    width: 27px !important;
+    height: 27px !important;
+  }
+
+  .status-complete {
+    font-size: 18px !important;
+  }
+
+  /* SKILLS */
+
+  .skill-info-row {
+    font-size: 20px !important;
+  }
+
+  .comp-bar {
+    height: 16px !important;
+    border-radius: 12px !important;
+  }
+
+  /* =========================
+     EXPERIENCE / EDUCATION
+     ========================= */
+
+  .profile-bottom-grid {
+    height: 480px !important;
+    min-height: 480px !important;
+    flex: 0 0 480px !important;
+    gap: 22px !important;
+  }
+
+  .experience-timeline-card,
+  .education-timeline-card {
+    height: 480px !important;
+    min-height: 480px !important;
+    padding: 30px !important;
+    border-radius: 14px !important;
+  }
+
+  .section-header-with-add h3 {
+    font-size: 28px !important;
+  }
+
+  .timeline-item {
+    padding-bottom: 40px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .t-header h4 {
+    font-size: 21px !important;
+  }
+
+  .company-name {
+    font-size: 18px !important;
+  }
+
+  .t-date,
+  .location-tag,
+  .score-tag {
+    font-size: 17px !important;
+  }
+
+  .timeline-dot-pure {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .action-icon-btn {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+/* =========================================================
+   2560px - ADDITIONAL 2X SCALE
+   Paste as a SEPARATE block at the very end
+   ========================================================= */
+
+@media screen and (min-width: 2560px) {
+  /* =========================
+     HEADER
+     ========================= */
+
+  .can-top-header {
+    height: 120px !important;
+    padding: 0 55px !important;
+  }
+
+  .can-logo-img {
+    width: 68px !important;
+    height: 68px !important;
+  }
+
+  .can-dashboard-title-top {
+    font-size: 34px !important;
+  }
+
+  .can-dashboard-subtitle {
+    font-size: 20px !important;
+  }
+
+  .can-search-wrapper {
+    max-width: 1000px !important;
+    min-width: 650px !important;
+    padding: 18px 24px !important;
+  }
+
+  .can-search-wrapper input {
+    font-size: 24px !important;
+  }
+
+  .can-header-icon {
+    width: 68px !important;
+    height: 68px !important;
+  }
+
+  .can-header-icon img {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .can-top-avatar {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  .can-user-info h4 {
+    font-size: 22px !important;
+  }
+
+  .can-user-info p {
+    font-size: 18px !important;
+  }
+
+  /* =========================
+     SIDEBAR
+     ========================= */
+
+  .can-sidebar {
+    width: 420px !important;
+    min-width: 420px !important;
+    top: 120px !important;
+    height: calc(100vh - 120px) !important;
+    padding: 35px !important;
+  }
+
+  .can-dashboard-main {
+    margin-left: 420px !important;
+    width: calc(100% - 420px) !important;
+  }
+
+  .can-menu li {
+    font-size: 26px !important;
+    padding: 25px 26px !important;
+    gap: 24px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .can-menu li img {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  /* =========================
+     PROFILE MAIN
+     ========================= */
+
+  .dashboard-main.profile-main-content {
+    padding: 40px 50px !important;
+    gap: 28px !important;
+  }
+
+  /* =========================
+     TOP PROFILE
+     ========================= */
+
+  .profile-top-layout-grid {
+    height: 520px !important;
+    min-height: 520px !important;
+    gap: 28px !important;
+  }
+
+  .profile-user-strength-unified-card,
+  .professional-highlights-container {
+    height: 520px !important;
+    min-height: 520px !important;
+    padding: 42px !important;
+  }
+
+  /* PROFILE PHOTO */
+
+  .avatar-wrapper {
+    width: 280px !important;
+    height: 340px !important;
+  }
+
+  /* NAME */
+
+  .name-row h2 {
+    font-size: 48px !important;
+  }
+
+  .role-text {
+    font-size: 28px !important;
+  }
+
+  .contact-details p {
+    font-size: 24px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .contact-icon {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .edit-profile-action-btn {
+    width: 210px !important;
+    height: 64px !important;
+    font-size: 24px !important;
+  }
+
+  /* =========================
+     PROFILE STRENGTH
+     ========================= */
+
+  .profile-strength-inner-box {
+    width: 350px !important;
+  }
+
+  .strength-chart-box {
+    width: 250px !important;
+    height: 180px !important;
+  }
+
+  .strength-center-text h3 {
+    font-size: 50px !important;
+  }
+
+  .strength-center-text span {
+    font-size: 18px !important;
+  }
+
+  .strength-status-badge {
+    font-size: 24px !important;
+    padding: 12px 32px !important;
+  }
+
+  .strength-desc {
+    font-size: 23px !important;
+  }
+
+  /* =========================
+     PROFESSIONAL HIGHLIGHTS
+     ========================= */
+
+  .prof-highlights-header h3 {
+    font-size: 36px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .prof-highlights-grid-2x2 {
+    gap: 22px !important;
+  }
+
+  .highlight-box {
+    min-height: 180px !important;
+    padding: 30px 35px 30px 100px !important;
+  }
+
+  .h-icon-wrap {
+    width: 60px !important;
+    height: 60px !important;
+    left: 24px !important;
+    top: 24px !important;
+  }
+
+  .h-icon-wrap img {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .highlight-box::before {
+    left: 85px !important;
+    width: 4px !important;
+  }
+
+  .highlight-box h4 {
+    font-size: 29px !important;
+  }
+
+  .highlight-box p {
+    font-size: 23px !important;
+    line-height: 1.55 !important;
+  }
+
+  /* =========================
+     MIDDLE ROW
+     ========================= */
+
+  .profile-middle-grid {
+    height: 430px !important;
+    min-height: 430px !important;
+    gap: 28px !important;
+  }
+
+  .about-me-card,
+  .profile-highlights-list-card,
+  .skill-competency-card {
+    height: 430px !important;
+    min-height: 430px !important;
+    padding: 38px !important;
+  }
+
+  .card-heading-flex h3,
+  .profile-highlights-list-card h3,
+  .skill-competency-card h3 {
+    font-size: 34px !important;
+  }
+
+  .about-me-card p {
+    font-size: 24px !important;
+    line-height: 1.75 !important;
+  }
+
+  .languages-heading {
+    font-size: 25px !important;
+  }
+
+  .lang-chip {
+    font-size: 21px !important;
+    padding: 10px 20px !important;
+  }
+
+  .checklist-items {
+    gap: 30px !important;
+  }
+
+  .checklist-items li {
+    font-size: 24px !important;
+  }
+
+  .status-complete {
+    font-size: 21px !important;
+  }
+
+  .skill-info-row {
+    font-size: 24px !important;
+  }
+
+  .comp-bar {
+    height: 19px !important;
+  }
+
+  /* =========================
+     EXPERIENCE / EDUCATION
+     ========================= */
+
+  .profile-bottom-grid {
+    height: 560px !important;
+    min-height: 560px !important;
+    flex: 0 0 560px !important;
+    gap: 28px !important;
+  }
+
+  .experience-timeline-card,
+  .education-timeline-card {
+    height: 560px !important;
+    min-height: 560px !important;
+    padding: 38px !important;
+  }
+
+  .section-header-with-add h3 {
+    font-size: 34px !important;
+  }
+
+  .timeline-item {
+    padding-bottom: 48px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .t-header h4 {
+    font-size: 25px !important;
+  }
+
+  .company-name {
+    font-size: 22px !important;
+  }
+
+  .t-date,
+  .location-tag,
+  .score-tag {
+    font-size: 21px !important;
+  }
+
+  .timeline-dot-pure {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .action-icon-btn {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+/* =========================================================
+   UPGRADE TO PRO - LARGE 2560px VERSION
+   ========================================================= */
+
+@media screen and (min-width: 2560px) {
+  /* MAIN CARD */
+  aside.can-sidebar .can-upgrade-card {
+    width: 100% !important;
+    height: 430px !important;
+    min-height: 430px !important;
+
+    padding: 32px !important;
+    margin-top: 30px !important;
+
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* TITLE */
+  aside.can-sidebar .can-upgrade-title {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+    font-weight: 700 !important;
+
+    margin-bottom: 20px !important;
+  }
+
+  /* DESCRIPTION */
+  aside.can-sidebar .can-upgrade-card p {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+
+    margin-bottom: 24px !important;
+  }
+
+  /* FEATURES CONTAINER */
+  aside.can-sidebar .can-features {
+    gap: 16px !important;
+  }
+
+  /* EACH FEATURE */
+  aside.can-sidebar .can-features li {
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+
+    margin-bottom: 14px !important;
+  }
+
+  /* FEATURE ICONS */
+  aside.can-sidebar .can-features li svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* BUTTON */
+  aside.can-sidebar .can-upgrade-btn {
+    width: 100% !important;
+    height: 58px !important;
+    min-height: 58px !important;
+
+    font-size: 18px !important;
+    font-weight: 700 !important;
+
+    border-radius: 10px !important;
+
+    margin-top: 25px !important;
+  }
+}
+
+/* =========================================
+   2560px - FIX PROFESSIONAL HIGHLIGHTS
+========================================= */
+
+@media screen and (min-width: 2560px) {
+  /* Give the whole top row enough height */
+  .profile-top-layout-grid {
+    height: 620px !important;
+    min-height: 620px !important;
+  }
+
+  /* Professional Highlights card */
+  .professional-highlights-container {
+    height: 620px !important;
+    min-height: 620px !important;
+    padding: 40px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  /* Heading */
+  .prof-highlights-header h3 {
+    font-size: 36px !important;
+    margin-bottom: 30px !important;
+  }
+
+  /* 2 x 2 grid */
+  .prof-highlights-grid-2x2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  /* Individual boxes */
+  .highlight-box {
+    min-height: 220px !important;
+    height: 220px !important;
+    padding: 30px 35px 30px 100px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .highlight-box h4 {
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+    margin: 0 0 10px !important;
+  }
+
+  .highlight-box p {
+    font-size: 21px !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  /* Icons */
+  .h-icon-wrap {
+    width: 60px !important;
+    height: 60px !important;
+    left: 24px !important;
+    top: 24px !important;
+  }
+
+  .h-icon-wrap img {
+    width: 34px !important;
+    height: 34px !important;
+  }
+}
+@media screen and (min-width: 2560px) {
+  /* Make both top cards equal height */
+  .profile-top-layout-grid {
+    height: 700px !important;
+    min-height: 700px !important;
+    align-items: stretch !important;
+  }
+
+  /* Akash profile card */
+  .profile-user-strength-unified-card {
+    height: 700px !important;
+    min-height: 700px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Professional Highlights */
+  .professional-highlights-container {
+    height: 700px !important;
+    min-height: 700px !important;
+    box-sizing: border-box !important;
+  }
+}
+/* =========================================
+   2560px - FIX FULL PAGE SCROLL
+========================================= */
+
+@media screen and (min-width: 2560px) {
+  /* Allow entire page to grow */
+  .can-dashboard-page-wrapper {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+
+  /* Layout can grow beyond viewport */
+  .can-dashboard-layout {
+    height: auto !important;
+    min-height: calc(100vh - 82px) !important;
+    overflow: visible !important;
+  }
+
+  /* Main profile content */
+  .dashboard-main.profile-main-content {
+    height: auto !important;
+    min-height: calc(100vh - 82px) !important;
+
+    overflow: visible !important;
+
+    padding-bottom: 100px !important;
+  }
+
+  /* Let bottom cards show completely */
+  .profile-bottom-grid {
+    height: auto !important;
+    min-height: 400px !important;
+    overflow: visible !important;
+  }
+
+  .experience-card,
+  .education-card {
+    height: auto !important;
+    min-height: 400px !important;
+    overflow: visible !important;
+  }
+}
+/* =========================================
+   2560px - GAUGE ONLY
+   Larger + Move Up
+========================================= */
+
+@media screen and (min-width: 2560px) {
+  /* Gauge container */
+  .strength-chart-box {
+    width: 360px !important;
+    height: 240px !important;
+
+    margin-top: -25px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  /* Actual Recharts gauge */
+  .strength-chart-box .recharts-responsive-container {
+    width: 360px !important;
+    height: 240px !important;
+  }
+
+  .strength-chart-box .recharts-wrapper {
+    transform: scale(3.2) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Keep 85% centered with the larger gauge */
+  .strength-center-text {
+    top: 125px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 50 !important;
+  }
+
+  .strength-center-text h3 {
+    font-size: 46px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+
+  .strength-center-text span {
+    font-size: 12px !important;
+  }
+
+  /* Excellent stays below gauge */
+  .strength-status-badge {
+    position: relative !important;
+    top: 5px !important;
+    z-index: 60 !important;
+  }
+
+  /* Description */
+  .strength-desc {
+    position: relative !important;
+    top: 5px !important;
+    z-index: 60 !important;
+  }
+}
+@media screen and (min-width: 2560px) {
+  .strength-chart-box {
+    margin-top: -100px !important;
+  }
+
+  .strength-center-text {
+    top: 25px !important;
+  }
+
+  .strength-status-badge {
+    top: 5px !important;
+  }
+
+  .strength-desc {
+    top: 5px !important;
+  }
+}
+@media screen and (min-width: 2560px) {
+  .strength-center-text {
+    top: 150px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 50 !important;
+  }
+}
+@media screen and (min-width: 2560px) {
+  .strength-center-text {
+    top: 270px !important;
+  }
+}
+@media screen and (min-width: 2560px) {
+  .strength-status-badge {
+    top: 100px !important;
+  }
+
+  .strength-desc {
+    top: 100px !important;
   }
 }
 

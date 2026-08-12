@@ -111,7 +111,50 @@ const UserRegRecruiter = () => {
       setIsEmailVerified(false);
     }
 
-    setForm((prev) => ({ ...prev, [field]: value }));
+    setForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+
+    setErrors((prevErrors) => {
+      const newErrors = { ...prevErrors };
+
+      // PASSWORD LIVE VALIDATION
+      if (field === "password") {
+        if (!value) {
+          newErrors.password = "Password is required";
+        } else if (value.length < 8) {
+          newErrors.password = "Minimum 8 characters required";
+        } else if (!/[A-Z]/.test(value)) {
+          newErrors.password = "Must contain at least 1 uppercase letter";
+        } else if (!/[!@#$%^&*(),.?":{}|<>_\-\\[\]/+=;'`~]/.test(value)) {
+          newErrors.password = "Must contain at least 1 special character";
+        } else {
+          delete newErrors.password;
+        }
+
+        if (form.confirmPassword) {
+          if (value !== form.confirmPassword) {
+            newErrors.confirmPassword = "Passwords do not match";
+          } else {
+            delete newErrors.confirmPassword;
+          }
+        }
+      }
+
+      // CONFIRM PASSWORD LIVE VALIDATION
+      if (field === "confirmPassword") {
+        if (!value) {
+          newErrors.confirmPassword = "Confirm Password is required";
+        } else if (value !== form.password) {
+          newErrors.confirmPassword = "Passwords do not match";
+        } else {
+          delete newErrors.confirmPassword;
+        }
+      }
+
+      return newErrors;
+    });
   };
 
   // OTP Handlers
@@ -278,16 +321,8 @@ const UserRegRecruiter = () => {
 
         <ul className="urr-info__checklist">
           {checklistItems.map((item) => (
-            <li
-              key={item}
-              className="urr-info__checklist-item"
-              style={{ display: "flex", alignItems: "center", gap: "10px" }}
-            >
-              <img
-                src={tickedImg}
-                alt="tick"
-                style={{ width: "15px", height: "15px" }}
-              />
+            <li key={item} className="urr-info__checklist-item">
+              <img src={tickedImg} alt="tick" className="urr-info__check-img" />
               <span>{item}</span>
             </li>
           ))}
@@ -385,12 +420,7 @@ const UserRegRecruiter = () => {
                 />
               </label>
               {errors.fullName && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.fullName}
-                </small>
+                <small className="urr-error-text">{errors.fullName}</small>
               )}
             </div>
 
@@ -406,12 +436,7 @@ const UserRegRecruiter = () => {
                 />
               </label>
               {errors.userName && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.userName}
-                </small>
+                <small className="urr-error-text">{errors.userName}</small>
               )}
             </div>
 
@@ -427,74 +452,37 @@ const UserRegRecruiter = () => {
                 />
               </label>
               {errors.recruiterName && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.recruiterName}
-                </small>
+                <small className="urr-error-text">{errors.recruiterName}</small>
               )}
             </div>
 
             {/* Email Address with Verification */}
-            <div className="urr-field-wrapper">
-              <label className="urr-field" style={{ position: "relative" }}>
+            <div className="urr-field-wrapper urr-email-wrapper">
+              <label className="urr-field">
                 <span className="urr-label">Email Address</span>
-                <div style={{ position: "relative", width: "100%" }}>
+                <div className="urr-input-with-action">
                   <input
                     type="email"
                     placeholder=""
                     value={form.email}
                     onChange={handleChange("email")}
-                    style={{ paddingRight: "80px" }}
                   />
                   {isEmailValid && !isEmailVerified && (
                     <button
                       type="button"
-                      className="urc-verify-btn"
+                      className="urr-verify-btn"
                       onClick={handleVerifyClick}
-                      style={{
-                        position: "absolute",
-                        right: "8px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        background: "#007bff",
-                        color: "#fff",
-                        border: "none",
-                        borderRadius: "4px",
-                        padding: "4px 10px",
-                        cursor: "pointer",
-                        fontSize: "12px",
-                      }}
                     >
                       Verify
                     </button>
                   )}
                   {isEmailVerified && (
-                    <span
-                      className="urc-verified-badge"
-                      style={{
-                        position: "absolute",
-                        right: "8px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        color: "#28a745",
-                        fontWeight: "bold",
-                        fontSize: "12px",
-                      }}
-                    >
-                      Verified
-                    </span>
+                    <span className="urr-verified-badge">Verified</span>
                   )}
                 </div>
               </label>
               {errors.email && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.email}
-                </small>
+                <small className="urr-error-text">{errors.email}</small>
               )}
             </div>
 
@@ -510,12 +498,7 @@ const UserRegRecruiter = () => {
                 />
               </label>
               {errors.phone && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.phone}
-                </small>
+                <small className="urr-error-text">{errors.phone}</small>
               )}
             </div>
 
@@ -531,12 +514,7 @@ const UserRegRecruiter = () => {
                 />
               </label>
               {errors.designation && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.designation}
-                </small>
+                <small className="urr-error-text">{errors.designation}</small>
               )}
             </div>
 
@@ -552,12 +530,7 @@ const UserRegRecruiter = () => {
                 />
               </label>
               {errors.companyName && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.companyName}
-                </small>
+                <small className="urr-error-text">{errors.companyName}</small>
               )}
             </div>
 
@@ -573,10 +546,7 @@ const UserRegRecruiter = () => {
                 />
               </label>
               {errors.companyWebsite && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
+                <small className="urr-error-text">
                   {errors.companyWebsite}
                 </small>
               )}
@@ -594,10 +564,7 @@ const UserRegRecruiter = () => {
                 />
               </label>
               {errors.companyLocation && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
+                <small className="urr-error-text">
                   {errors.companyLocation}
                 </small>
               )}
@@ -622,20 +589,15 @@ const UserRegRecruiter = () => {
                 </select>
               </label>
               {errors.industryType && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.industryType}
-                </small>
+                <small className="urr-error-text">{errors.industryType}</small>
               )}
             </div>
 
             {/* Password */}
-            <div className="urr-field-wrapper">
-              <label className="urr-field" style={{ position: "relative" }}>
+            <div className="urr-field-wrapper urr-password-wrapper">
+              <label className="urr-field">
                 <span className="urr-label">Password</span>
-                <div style={{ position: "relative", width: "100%" }}>
+                <div className="urr-input-with-icon">
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder=""
@@ -647,34 +609,21 @@ const UserRegRecruiter = () => {
                       src={showPassword ? showPasswordIcon : hidePasswordIcon}
                       alt="toggle"
                       onClick={() => setShowPassword(!showPassword)}
-                      style={{
-                        position: "absolute",
-                        right: "12px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        cursor: "pointer",
-                        width: "20px",
-                        height: "20px",
-                      }}
+                      className="urr-password-toggle-icon"
                     />
                   )}
                 </div>
               </label>
               {errors.password && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
-                  {errors.password}
-                </small>
+                <small className="urr-error-text">{errors.password}</small>
               )}
             </div>
 
             {/* Confirm Password */}
-            <div className="urr-field-wrapper">
-              <label className="urr-field" style={{ position: "relative" }}>
+            <div className="urr-field-wrapper urr-password-wrapper">
+              <label className="urr-field">
                 <span className="urr-label">Confirm Password</span>
-                <div style={{ position: "relative", width: "100%" }}>
+                <div className="urr-input-with-icon">
                   <input
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder=""
@@ -692,24 +641,13 @@ const UserRegRecruiter = () => {
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
-                      style={{
-                        position: "absolute",
-                        right: "12px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        cursor: "pointer",
-                        width: "20px",
-                        height: "20px",
-                      }}
+                      className="urr-password-toggle-icon"
                     />
                   )}
                 </div>
               </label>
               {errors.confirmPassword && (
-                <small
-                  className="error-text"
-                  style={{ color: "red", fontSize: "12px" }}
-                >
+                <small className="urr-error-text">
                   {errors.confirmPassword}
                 </small>
               )}
@@ -729,14 +667,7 @@ const UserRegRecruiter = () => {
               access.
             </span>
           </label>
-          {errors.terms && (
-            <div
-              className="error-text"
-              style={{ color: "red", fontSize: "12px", marginTop: "4px" }}
-            >
-              {errors.terms}
-            </div>
-          )}
+          {errors.terms && <div className="urr-error-text">{errors.terms}</div>}
 
           <button type="submit" className="urr-submit">
             Complete Registration
@@ -744,14 +675,7 @@ const UserRegRecruiter = () => {
 
           <p className="urr-login">
             Already have an account?{" "}
-            <span
-              onClick={() => navigate("/Resume-builder/login/recruiter")}
-              style={{
-                color: "#007bff",
-                cursor: "pointer",
-                textDecoration: "underline",
-              }}
-            >
+            <span onClick={() => navigate("/Resume-builder/login/recruiter")}>
               Login
             </span>
           </p>
@@ -760,18 +684,18 @@ const UserRegRecruiter = () => {
 
       {/* OTP MODAL */}
       {showOtpModal && (
-        <div className="urc-modal-overlay">
-          <div className="urc-modal-content">
+        <div className="urr-modal-overlay">
+          <div className="urr-modal-content">
             {otpStep === 1 ? (
               <>
-                <div className="urc-modal-icon">📩</div>
+                <div className="urr-modal-icon">📩</div>
                 <h3>Email Verification</h3>
                 <p>
                   We've Sent a Code To <strong>{form.email}</strong>.<br />
                   Please enter it below
                 </p>
 
-                <div className="urc-otp-inputs">
+                <div className="urr-otp-inputs">
                   {otp.map((data, index) => (
                     <input
                       key={index}
@@ -786,19 +710,10 @@ const UserRegRecruiter = () => {
                 </div>
 
                 {otpError && (
-                  <small
-                    className="urc-error-text"
-                    style={{
-                      color: "red",
-                      display: "block",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    {otpError}
-                  </small>
+                  <small className="urr-error-text">{otpError}</small>
                 )}
 
-                <p className="urc-resend-text">
+                <p className="urr-resend-text">
                   {!canResend ? (
                     <>
                       Did not receive code? Resend OTP in{" "}
@@ -808,13 +723,8 @@ const UserRegRecruiter = () => {
                     <>
                       Did not receive code?{" "}
                       <span
-                        className="urc-resend-link"
+                        className="urr-resend-link"
                         onClick={handleResendOtp}
-                        style={{
-                          color: "#007bff",
-                          cursor: "pointer",
-                          textDecoration: "underline",
-                        }}
                       >
                         Resend OTP
                       </span>
@@ -822,16 +732,16 @@ const UserRegRecruiter = () => {
                   )}
                 </p>
 
-                <button className="urc-modal-btn" onClick={handleConfirmOtp}>
+                <button className="urr-modal-btn" onClick={handleConfirmOtp}>
                   Continue
                 </button>
               </>
             ) : (
               <>
-                <div className="urc-modal-icon urc-success-icon">✓</div>
+                <div className="urr-modal-icon urr-success-icon">✓</div>
                 <h3>Verification Is Confirmed</h3>
                 <button
-                  className="urc-modal-btn"
+                  className="urr-modal-btn"
                   onClick={handleFinishVerification}
                 >
                   Continue

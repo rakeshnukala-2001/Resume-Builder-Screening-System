@@ -34,7 +34,7 @@ body {
 }
 
 /* Base Wrapper */
-.dashboard-page-wrapper {
+.can-profile-page-wrapper {
   width: 100%;
   min-height: 100vh;
   background-color: var(--bg-main);
@@ -48,13 +48,13 @@ body {
   padding-right: 0px !important;
 }
 
-.dashboard-layout.full-width-layout {
+.can-profile-layout.full-width-layout {
   width: 100%;
   padding-top: 0 !important;
   margin-top: 5px !important;
 }
 
-.dashboard-main.profile-main-content {
+.can-profile-main.profile-main-content {
   max-width: 1320px;
   width: 100%;
   margin: 0 auto !important;
@@ -734,7 +734,7 @@ body {
     min-height: 100vh !important;
   }
 
-  .dashboard-page-wrapper {
+  .can-profile-page-wrapper {
     min-height: 100vh !important;
     align-items: flex-start !important;
     padding-top: 0 !important;
@@ -743,7 +743,7 @@ body {
     padding-right: 0px !important;
   }
 
-  .dashboard-main.profile-main-content {
+  .can-profile-main.profile-main-content {
     max-width: 100% !important;
     margin: 0 auto !important;
     padding-top: 0px !important;
@@ -828,7 +828,7 @@ body {
     min-height: 100vh;
   }
 
-  .dashboard-page-wrapper {
+  .can-profile-page-wrapper {
     min-height: 100vh !important;
     width: 100%;
     align-items: stretch !important;
@@ -836,7 +836,7 @@ body {
     padding-right: 0px !important;
   }
 
-  .dashboard-main.profile-main-content {
+  .can-profile-main.profile-main-content {
     max-width: 100% !important;
     width: 100%;
     min-height: 100vh;
@@ -942,7 +942,7 @@ body {
     min-height: 100vh;
   }
 
-  .dashboard-page-wrapper {
+  .can-profile-page-wrapper {
     min-height: 100vh !important;
     align-items: stretch !important;
     padding-bottom: 24px !important;
@@ -950,7 +950,7 @@ body {
     padding-right: 0px !important;
   }
 
-  .dashboard-main.profile-main-content {
+  .can-profile-main.profile-main-content {
     max-width: 100% !important;
     width: 100%;
     min-height: 100vh;
@@ -967,9 +967,13 @@ body {
   .profile-middle-grid {
     gap: 32px !important;
   }
-  .profile-middle-grid,
+
   .profile-bottom-grid {
     align-items: start;
+  }
+
+  .profile-middle-grid {
+    align-items: stretch;
   }
 
   .profile-user-strength-unified-card,
@@ -985,17 +989,22 @@ body {
     justify-content: flex-start;
   }
 
-  .about-me-card {
-    gap: 30px;
-  }
   .profile-top-split-row {
-    gap: 72px;
+    gap: 48px;
   }
 
-  /* Avatar */
+  .user-profile-inner-row {
+    gap: 28px;
+  }
+
+  .user-profile-inner-col-group {
+    min-height: 320px;
+    gap: 8px;
+  }
+
   .avatar-wrapper {
-    width: 270px;
-    height: 400px !important;
+    width: 280px;
+    height: 330px !important;
   }
 
   .camera-icon-badge {
@@ -1008,11 +1017,14 @@ body {
     height: 54px;
   }
 
-  .user-profile-inner-col-group {
-    min-height: 310px;
+  .profile-meta {
+    gap: 12px;
   }
 
-  /* Name / role / contact */
+  .name-row {
+    gap: 12px;
+  }
+
   .name-row h2 {
     font-size: 52px;
   }
@@ -1021,14 +1033,14 @@ body {
     height: 30px;
   }
   .role-text {
-    font-size: 31px;
+    font-size: 30px;
     margin-bottom: 14px;
   }
   .contact-details {
     gap: 16px;
   }
   .contact-details p {
-    font-size: 30px;
+    font-size: 25px;
     gap: 12px;
   }
   .contact-icon {
@@ -1039,53 +1051,45 @@ body {
   .edit-profile-action-btn {
     width: 230px;
     height: 68px;
-    font-size: 30px;
+    font-size: 24px;
     margin-top: 18px;
   }
+
   .profile-strength-inner-box {
-    width: 420px;
+    width: 500px;
   }
   .strength-chart-box {
-    width: 800px;
-    height: 235px;
-    margin-bottom: 150px;
+    width: 460px;
+    height: 301px;
+    margin-bottom: 70px;
   }
   .strength-center-text {
-    top: 90%;
+    top: 76%;
   }
   .strength-center-text h3 {
-    font-size: 60px;
-    margin-top: 60px;
+    font-size: 78px;
+    margin-bottom: 12px;
   }
   .strength-center-text span {
     font-size: 38px;
-    margin-bottom: 10px;
+    margin-top: 14px;
   }
   .strength-status-badge {
-    font-size: 40px;
-    padding: 13px 36px;
-    margin-top: 0px;
+    width: 220px;
+    max-width: 300px;
+    font-size: 30px;
+    padding: 14px 38px;
+    margin-top: 8px;
   }
   .strength-desc {
-    font-size: 35px;
-    margin-top: 12px;
+    font-size: 27px;
+    margin-top: 14px;
   }
 
-  /* Card headings shared across all cards */
-  .card-heading-flex h3,
-  .prof-highlights-header h3,
-  .section-header-with-add h3,
-  .profile-highlights-list-card h3,
-  .skill-competency-card h3 {
-    font-size: 44px;
-    margin-bottom: 26px;
-  }
-  .card-edit-icon {
-    width: 34px;
-    height: 34px;
+  .prof-highlights-grid-2x2 {
+    gap: 24px;
   }
 
-  /* Highlights */
   .highlight-box {
     padding: 28px 32px 28px 94px;
     min-height: 116px;
@@ -1112,7 +1116,22 @@ body {
     line-height: 1.5;
   }
 
-  /* About me / languages */
+  .card-heading-flex h3,
+  .prof-highlights-header h3,
+  .section-header-with-add h3,
+  .profile-highlights-list-card h3,
+  .skill-competency-card h3 {
+    font-size: 44px;
+    margin-bottom: 26px;
+  }
+  .card-edit-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .about-me-card {
+    gap: 30px;
+  }
   .about-me-card p {
     font-size: 29px;
     line-height: 1.8;
@@ -1122,18 +1141,23 @@ body {
     font-size: 31px;
     margin-bottom: 16px;
   }
+  .language-chips {
+    gap: 16px;
+  }
   .lang-chip {
     font-size: 25px;
     padding: 12px 28px;
   }
 
-  /* Checklist / skills */
   .checklist-items {
     gap: 36px;
     margin-top: 24px;
   }
   .checklist-items li {
     font-size: 30px;
+  }
+  .check-item-left {
+    gap: 16px;
   }
   .check-item-left img,
   .status-complete img {
@@ -1142,6 +1166,7 @@ body {
   }
   .status-complete {
     font-size: 24px;
+    gap: 10px;
   }
 
   .skill-competency-card {
@@ -1161,9 +1186,23 @@ body {
     border-radius: 16px;
   }
 
-  /* Timeline */
+  .section-header-with-add {
+    margin-bottom: 26px;
+  }
+  .timeline-items-wrapper {
+    padding-left: 36px;
+  }
+  .timeline-items-wrapper::before {
+    left: 9px;
+    width: 3px;
+  }
   .timeline-item {
     padding-bottom: 48px;
+  }
+  .timeline-dot-pure {
+    width: 22px;
+    height: 22px;
+    left: -34px;
   }
   .t-header h4 {
     font-size: 32px;
@@ -1176,17 +1215,8 @@ body {
   .score-tag {
     font-size: 24px;
   }
-  .timeline-dot-pure {
-    width: 22px;
-    height: 22px;
-    left: -34px;
-  }
-  .timeline-items-wrapper {
-    padding-left: 36px;
-  }
-  .timeline-items-wrapper::before {
-    left: 9px;
-    width: 3px;
+  .timeline-actions-right {
+    gap: 16px;
   }
   .action-icon-btn {
     width: 26px;
@@ -1217,7 +1247,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  .dashboard-main {
+  .can-profile-main {
     padding-top: 12px !important;
     padding-bottom: 16px !important;
     margin-top: 0;
@@ -1228,19 +1258,19 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .dashboard-main.profile-main-content {
+  .can-profile-main.profile-main-content {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
 }
 
 @media (max-width: 480px) {
-  .dashboard-page-wrapper {
+  .can-profile-page-wrapper {
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
 
-  .dashboard-main.profile-main-content {
+  .can-profile-main.profile-main-content {
     margin-top: 0;
     padding-left: 12px !important;
     padding-right: 12px !important;
@@ -1252,7 +1282,7 @@ body {
     box-sizing: border-box;
   }
 
-  .dashboard-top-layout-grid,
+  .can-profile-top-layout-grid,
   .profile-top-layout-grid,
   .profile-middle-grid,
   .profile-bottom-grid,
@@ -1361,8 +1391,9 @@ body {
     box-sizing: border-box;
   }
 }
+
 @media (max-width: 320px) {
-  .dashboard-main.profile-main-content {
+  .can-profile-main.profile-main-content {
     padding-left: 8px !important;
     padding-right: 8px !important;
   }

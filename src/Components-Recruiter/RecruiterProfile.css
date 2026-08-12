@@ -18,8 +18,8 @@ body {
 }
 .recruiter-page {
   padding: 12px 0px 24px 0px;
-  max-width: 0 auto;
-  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* =============================
@@ -981,9 +981,36 @@ body {
 /* ==================================
    RESPONSIVE BREAKPOINTS
 ===================================== */
+
+/* ---- 1440px: Narrow the third column a bit ---- */
+@media (max-width: 1440px) {
+  .recruiter-profile-container {
+    grid-template-columns: 260px 1fr 300px;
+  }
+}
+
+/* ---- 1280px: Collapse to 2 columns ---- */
+@media (max-width: 1280px) {
+  .recruiter-profile-container {
+    grid-template-columns: 260px 1fr;
+    grid-template-areas:
+      "profile company"
+      "profile professional"
+      "activity security"
+      "documents documents";
+  }
+}
+
+/* ==================================
+
+   RESPONSIVE BREAKPOINTS
+
+===================================== */
+
 @media (max-width: 1024px) {
   .recruiter-profile-container {
     grid-template-columns: 1fr 1fr;
+
     grid-template-areas:
       "profile company"
       "professional activity"
@@ -991,29 +1018,53 @@ body {
   }
 }
 
+/* ==================================
+
+   TABLET / 768px
+
+===================================== */
+
 @media (max-width: 768px) {
   .recruiter-page {
-    padding: 12px 16px 16px 16px;
+    padding: 12px 16px 16px;
+
+    overflow-x: hidden;
   }
 
   .recruiter-page-header {
-    flex-direction: column;
+    flex-direction: row;
+
     align-items: flex-start;
+
+    justify-content: space-between;
   }
 
   .header-actions {
-    width: 100%;
-    flex-direction: column;
+    width: auto;
+
+    flex-direction: row;
+
+    gap: 10px;
+
+    margin-top: 8px;
   }
 
   .btn-change-password,
   .btn-edit-profile {
-    width: 100%;
+    width: 200px;
+    max-width: 200px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 0;
+    box-sizing: border-box;
   }
 
   .recruiter-profile-container {
     display: flex;
+
     flex-direction: column;
+
     gap: 16px;
   }
 
@@ -1022,27 +1073,242 @@ body {
   }
 }
 
-/* ===================================
-   320px SPECIFIC VIEWPORT OPTIMIZATION
-====================================== */
-@media (max-width: 374px) {
+/* ==================================
+
+   MOBILE / 320px - 767px
+
+===================================== */
+
+@media (max-width: 767px) {
   .recruiter-page {
-    padding: 8px 0px 16px 0px;
+    width: 100%;
+
+    max-width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    overflow-x: hidden;
   }
 
-  .recruiter-profile-container {
+  .recruiter-page-header {
+    width: 100%;
+
+    max-width: 100%;
+
+    min-width: 0;
+
+    display: grid !important;
+
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    column-gap: 5px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+  }
+
+  .recruiter-page-header h1 {
+    width: 100%;
+
+    max-width: 100%;
+
+    min-width: 0;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-size: 18px;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+  .header-actions {
+    position: static !important;
+
+    width: auto !important;
+
+    max-width: none !important;
+
+    min-width: 0 !important;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    flex-wrap: nowrap !important;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 4px;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    box-sizing: border-box;
+  }
+
+  .btn-change-password,
+  .btn-edit-profile {
+    flex: 0 0 auto !important;
+
+    width: auto !important;
+
+    min-width: 0 !important;
+
+    max-width: none !important;
+
+    height: 38px;
+
+    margin: 0 !important;
+
+    padding: 0 7px !important;
+
+    display: flex !important;
+
     align-items: center !important;
+
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+
+    font-size: 9px !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+
+    overflow: hidden !important;
   }
 
-  .profile-card,
-  .company-card,
-  .professional-card,
-  .recent-activity-card,
-  .security-card,
-  .documents-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    box-sizing: border-box !important;
+  /* Remove button icons */
+
+  .btn-change-password svg,
+  .btn-edit-profile svg {
+    display: none !important;
+  }
+}
+
+/* ==================================
+
+   320px - 374px
+
+===================================== */
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .recruiter-page {
+    padding-left: 7px;
+
+    padding-right: 7px;
+  }
+
+  .recruiter-page-header {
+    grid-template-columns: minmax(0, 1fr) 84px;
+
+    column-gap: 4px;
+
+    align-items: start;
+  }
+
+  .recruiter-page-header h1 {
+    font-size: 15px;
+  }
+
+  .header-actions {
+    width: 84px !important;
+
+    height: auto !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    justify-content: flex-start !important;
+
+    gap: 4px !important;
+
+    transform: translateY(0px);
+  }
+
+  .btn-change-password,
+  .btn-edit-profile {
+    width: 84px !important;
+
+    min-width: 84px !important;
+
+    max-width: 84px !important;
+
+    height: 32px !important;
+
+    padding: 0 2px !important;
+
+    font-size: 8px !important;
+
+    gap: 1px !important;
+  }
+}
+
+/* ==================================
+
+   375px - 424px
+
+===================================== */
+
+@media (min-width: 375px) and (max-width: 424px) {
+  .recruiter-page-header {
+    grid-template-columns: minmax(0, 1fr) 95px;
+
+    column-gap: 4px;
+
+    align-items: start;
+  }
+
+  .recruiter-page-header h1 {
+    font-size: 18px;
+  }
+
+  .header-actions {
+    width: 95px !important;
+
+    height: auto !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    justify-content: flex-start !important;
+
+    gap: 4px !important;
+  }
+
+  .btn-change-password,
+  .btn-edit-profile {
+    width: 95px !important;
+
+    min-width: 95px !important;
+
+    max-width: 95px !important;
+
+    height: 32px !important;
+
+    padding: 0 4px !important;
+
+    font-size: 9px !important;
+
+    gap: 2px !important;
   }
 }

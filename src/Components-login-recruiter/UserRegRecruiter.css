@@ -1,6 +1,4 @@
-/* ==========================================================================
-   CONTAINER & LAYOUT WRAPPERS
-   ========================================================================== */
+/* CONTAINER & LAYOUT WRAPPERS */
 .urr-container {
   display: flex;
   gap: 12px;
@@ -16,9 +14,7 @@
   overflow: hidden;
 }
 
-/* ==========================================================================
-   LEFT INFO PANEL
-   ========================================================================== */
+/* LEFT INFO PANEL */
 .urr-info {
   flex: 1 1 34%;
   max-width: 34%;
@@ -57,17 +53,18 @@
 .urr-info__checklist-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 15px;
   font-weight: 500;
   color: #374151;
   line-height: 1.35;
 }
 
-.urr-info__check-icon {
-  color: #2563eb;
-  font-size: 15px;
-  font-weight: bold;
+.urr-info__check-img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .urr-info__cards {
@@ -121,9 +118,7 @@
   margin: 0 auto;
 }
 
-/* ==========================================================================
-   RIGHT FORM PANEL
-   ========================================================================== */
+/* RIGHT FORM PANEL */
 .urr-page {
   flex: 1 1 66%;
   max-width: 66%;
@@ -255,9 +250,7 @@
   line-height: 1.9;
 }
 
-/* ==========================================================================
-   INPUT GRIDS & FIELD WRAPPERS
-   ========================================================================== */
+/* INPUT GRIDS & FIELD WRAPPERS */
 .urr-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -301,19 +294,33 @@
 .urr-field select {
   padding-right: 12px;
 }
+.urr-field input::-ms-reveal,
+.urr-field input::-ms-clear {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
 
-/* ==========================================================================
-   EMAIL FIELD WITH VERIFY ACTION & BADGE (.urr- prefix)
-   ========================================================================== */
-.urr-email-wrapper .urr-input-with-action {
+.urr-field input::-webkit-contacts-auto-fill-button,
+.urr-field input::-webkit-credentials-auto-fill-button {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0 !important;
+}
+
+/* EMAIL & PASSWORD FIELD WITH VERIFY ACTION & BADGE */
+.urr-email-wrapper .urr-input-with-action,
+.urr-password-wrapper .urr-input-with-icon {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.urr-email-wrapper .urr-input-with-action input {
-  padding-right: 75px; /* space for button / badge */
+.urr-email-wrapper .urr-input-with-action input,
+.urr-password-wrapper .urr-input-with-icon input {
+  padding-right: 40px;
 }
 
 .urr-verify-btn {
@@ -349,9 +356,19 @@
   gap: 3px;
 }
 
-/* ==========================================================================
-   TERMS, SUBMIT & LOGIN FOOTER
-   ========================================================================== */
+.urr-password-toggle-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  z-index: 2;
+  background: #ffffff;
+}
+
+/* TERMS, SUBMIT & LOGIN FOOTER */
 .urr-agree {
   display: flex;
   align-items: center;
@@ -407,23 +424,17 @@
   padding: 6px 0 0;
 }
 
-.urr-login a {
+.urr-login a,
+.urr-login span {
   color: #2563eb;
   font-weight: 600;
   text-decoration: none;
-}
-
-.urr-login a:hover {
-  text-decoration: underline;
-}
-
-.urr-login span {
-  color: #007bff;
   cursor: pointer;
 }
 
+.urr-login a:hover,
 .urr-login span:hover {
-  color: #0056b3;
+  text-decoration: underline;
 }
 
 /* Error text style */
@@ -432,11 +443,11 @@
   font-size: 12px;
   margin-top: 4px;
   display: block;
+  font-weight: 500;
 }
 
-/* ==========================================================================
-   EMAIL VERIFICATION OTP POPUP MODAL STYLES (.urr- prefix)
-   ========================================================================== */
+/* EMAIL VERIFICATION OTP POPUP MODAL STYLES */
+
 .urr-modal-overlay {
   position: fixed;
   top: 0;
@@ -573,9 +584,156 @@
   background-color: #1d4ed8;
 }
 
-/* ==========================================================================
-   RESPONSIVE MEDIA QUERIES
-   ========================================================================== */
+/* RESPONSIVE MEDIA QUERIES */
+
+/* 2560px Ultra-Wide / 4K Monitors */
+@media screen and (min-width: 2560px) {
+  .urr-container {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .urr-info {
+    padding: 32px 28px;
+    gap: 16px;
+  }
+
+  .urr-info__title {
+    font-size: 90px;
+  }
+
+  .urr-info__checklist {
+    gap: 16px;
+  }
+
+  .urr-info__checklist-item {
+    font-size: 50px;
+    gap: 25px;
+  }
+
+  .urr-info__check-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .urr-feature-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .urr-feature-card__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .urr-feature-card__title {
+    font-size: 32px;
+  }
+
+  .urr-feature-card__desc {
+    font-size: 24px;
+  }
+
+  .urr-info__illustration {
+    height: 650px;
+  }
+
+  .urr-title {
+    font-size: 60px;
+    margin-bottom: 24px;
+  }
+
+  .urr-card {
+    padding: 28px 32px;
+    gap: 16px;
+  }
+
+  .urr-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .urr-label,
+  .urr-field label {
+    font-size: 45px;
+  }
+
+  .urr-role-card {
+    width: 600px;
+    max-width: 600px;
+    height: 250px;
+    padding: 16px;
+    flex: 0 0 600px;
+    border-radius: 18px;
+    border-width: 2px;
+  }
+
+  .urr-role-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .urr-role-name {
+    font-size: 45px;
+  }
+
+  .urr-role-sub {
+    font-size: 35px;
+  }
+
+  .urr-field input,
+  .urr-field select {
+    padding: 14px 18px;
+    font-size: 30px;
+    border-radius: 18px;
+    border-width: 2px;
+  }
+
+  .urr-verify-btn {
+    font-size: 30px;
+    padding: 8px 18px;
+    border-radius: 10px;
+  }
+
+  .urr-input-with-icon input {
+    padding-right: 70px;
+  }
+
+  .urr-password-toggle-icon {
+    width: 32px;
+    height: 32px;
+    right: 20px;
+  }
+
+  .urr-agree {
+    gap: 16px;
+    font-size: 40px;
+  }
+
+  .urr-agree input {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border-width: 2px;
+  }
+
+  .urr-submit {
+    height: 76px;
+    font-size: 50px;
+    border-radius: 10px;
+  }
+
+  .urr-login {
+    font-size: 40px;
+  }
+
+  .urr-error-text {
+    font-size: 30px;
+    margin-top: 8px;
+    line-height: 1.2;
+  }
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1100px) {
   .urr-role-toggle {
     gap: 24px;

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./OtpRecruiter.css";
 import otpImage from "../assets/otp-error.png";
-import backIcon from '../assets/arrw.png';
+import backIcon from "../assets/arrw.png";
 import lockIcon from "../assets/lock-icon.png";
 
 const OtpRecruiter = () => {
@@ -11,10 +11,10 @@ const OtpRecruiter = () => {
   // States & Refs
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [seconds, setSeconds] = useState(40);
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
   const inputs = useRef([]);
 
-  const DEFAULT_OTP = "894085"; 
+  const DEFAULT_OTP = "894085";
 
   // Timer Effect Logic
   useEffect(() => {
@@ -35,12 +35,12 @@ const OtpRecruiter = () => {
 
   // Handle Input Changes & Auto Focus Next
   const handleChange = (value, index) => {
-    if (!/^\d?$/.test(value)) return; 
+    if (!/^\d?$/.test(value)) return;
 
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
-    setError(""); 
+    setError("");
 
     if (value && index < 5) {
       inputs.current[index + 1].focus();
@@ -66,25 +66,24 @@ const OtpRecruiter = () => {
 
     if (enteredOtp === DEFAULT_OTP) {
       setError("");
-      
-      navigate("/Resume-builder/dashboard/candidate"); 
+
+      navigate("/Resume-builder/dashboard/recruiter");
     } else {
       setError("❗ Invalid OTP. Please check and try again.");
     }
   };
 
   // Resend OTP Logic
-  const handleResend = () => { 
+  const handleResend = () => {
     setOtp(["", "", "", "", "", ""]);
-    setSeconds(40); 
-    setError(""); 
-    inputs.current[0]?.focus(); 
+    setSeconds(40);
+    setError("");
+    inputs.current[0]?.focus();
     console.log("OTP Resent successfully!");
   };
 
   return (
     <div className="or-otp-error-container">
-
       {/* LEFT IMAGE */}
       <div className="or-otp-error-left">
         <img
@@ -96,12 +95,11 @@ const OtpRecruiter = () => {
 
       {/* RIGHT FORM */}
       <div className="or-otp-error-right">
-
         {/* Back to Login Button */}
-        <div 
-          className="or-back-login" 
-          onClick={() => navigate("/Resume-builder/login/recruiter")} 
-          style={{ cursor: 'pointer' }}
+        <div
+          className="or-back-login"
+          onClick={() => navigate("/Resume-builder/login/recruiter")}
+          style={{ cursor: "pointer" }}
         >
           <img src={backIcon} alt="Back" />
           <span>Back to Login</span>
@@ -113,13 +111,18 @@ const OtpRecruiter = () => {
         </div>
 
         <h3>The OTP you entered is incorrect</h3>
-        <p className="or-try-again">
-          Please try again.
-        </p>
+        <p className="or-try-again">Please try again.</p>
 
         {/* Form Container */}
-        <form onSubmit={handleVerifyOtp} style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          
+        <form
+          onSubmit={handleVerifyOtp}
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           {/* OTP Input Grid */}
           <div className="or-otp-inputs">
             {otp.map((digit, index) => (
@@ -129,7 +132,7 @@ const OtpRecruiter = () => {
                 type="text"
                 maxLength="1"
                 value={digit}
-                className={error ? "otp-error" : ""} 
+                className={error ? "otp-error" : ""}
                 onChange={(e) => handleChange(e.target.value, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
               />
@@ -138,7 +141,15 @@ const OtpRecruiter = () => {
 
           {/* Dynamic Error Message display */}
           {error && (
-            <p className="or-error-text" style={{ color: "#ef4444", fontWeight: "500", marginTop: "10px", textAlign: "center" }}>
+            <p
+              className="or-error-text"
+              style={{
+                color: "#ef4444",
+                fontWeight: "500",
+                marginTop: "10px",
+                textAlign: "center",
+              }}
+            >
               {error}
             </p>
           )}
@@ -150,7 +161,14 @@ const OtpRecruiter = () => {
             ) : (
               <>
                 Re-send OTP?{" "}
-                <span onClick={handleResend} style={{ cursor: "pointer", color: "#2563eb", fontWeight: "600" }}>
+                <span
+                  onClick={handleResend}
+                  style={{
+                    cursor: "pointer",
+                    color: "#2563eb",
+                    fontWeight: "600",
+                  }}
+                >
                   Click here
                 </span>
               </>
@@ -161,7 +179,6 @@ const OtpRecruiter = () => {
             Verify & Continue
           </button>
         </form>
-
       </div>
     </div>
   );

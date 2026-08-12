@@ -5,24 +5,37 @@
   font-family: "Poppins", sans-serif;
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   background: #ffffff;
 }
 
+/* =========================================================
+MAIN CONTAINER
+========================================================= */
 .otp-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   min-height: 100vh;
   margin: 0 auto;
+  padding: 30px 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 30px 60px;
-  gap: 50px;
+  justify-content: center;
+  gap: 100px;
   background: #ffffff;
 }
 
-/* Left (STANDARDIZED) */
+/* =========================================================
+LEFT ILLUSTRATION
+========================================================= */
+
 .otp-left {
   flex: 0 0 480px;
   width: 480px;
@@ -37,17 +50,23 @@ body {
   object-fit: contain;
 }
 
-/* Right (STANDARDIZED) */
+/* =========================================================
+RIGHT OTP SECTION
+========================================================= */
+
 .otp-right {
-  flex: 0 0 420px;
-  width: 420px;
-  max-width: 100%;
+  flex: 0 0 425px;
+  width: 425px;
+  max-width: 425px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 0;
 }
+
+/* =========================================================
+BACK BUTTON
+========================================================= */
 
 .back-btn {
   width: 100%;
@@ -62,78 +81,123 @@ body {
 .back-btn span {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .back-btn .btn-icon-img {
-  display: block;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
 }
 
+/* =========================================================
+LOCK CIRCLE
+========================================================= */
+
 .lock-circle {
-  width: 60px;
-  height: 60px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #2563eb;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.25);
 }
 
+/* =========================================================
+LOCK ICON
+========================================================= */
+
 .lock-icon {
-  width: 37px;
-  height: 37px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 
+/* =========================================================
+HEADING
+========================================================= */
+
 .otp-right h4 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   text-align: center;
   color: #111827;
+  margin-bottom: 8px;
 }
 
+/* =========================================================
+DESCRIPTION
+========================================================= */
+
 .otp-right p {
-  font-size: 13px;
-  margin-top: 5px;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 0;
   color: #6b7280;
   text-align: center;
   line-height: 1.6;
 }
+
+/* =========================================================
+OTP INPUTS
+========================================================= */
 
 .otp-inputs {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 28px 0 18px;
+  gap: 10px;
+  margin: 28px 0 15px;
 }
 
 .otp-inputs input {
   width: 44px;
   height: 44px;
+  flex: 0 0 44px;
   border: 1.5px solid #111827;
   border-radius: 6px;
-  background: #fff;
+  background: #ffffff;
   text-align: center;
   font-size: 22px;
   font-weight: 600;
   outline: none;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .otp-inputs input:focus {
   border-color: #2563eb;
 }
 
+/* =========================================================
+OTP ERROR
+========================================================= */
+
+.otp-inputs input.otp-error {
+  border: 2px solid #ef4444 !important;
+  background-color: #fef2f2;
+}
+
+/* =========================================================
+ERROR TEXT
+========================================================= */
+
 .error-text {
   width: 100%;
-  color: #ff4d4d;
-  font-size: 13px;
+  margin-top: 8px;
   margin-bottom: 12px;
-  text-align: center;
+  color: #ef4444;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
 }
+
+/* =========================================================
+RESEND
+========================================================= */
 
 .resend {
   width: 100%;
@@ -146,35 +210,177 @@ body {
 .resend span {
   color: #2563eb;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .resend span:hover {
   text-decoration: underline;
 }
 
+/* =========================================================
+VERIFY BUTTON
+========================================================= */
+
 .verify-btn {
   width: 100%;
   height: 46px;
   background: linear-gradient(90deg, #1d4ed8, #3b82f6);
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 .verify-btn:hover {
   opacity: 0.9;
 }
 
-/* Laptop / 1024px range fix */
-@media (max-width: 1100px) {
+/* =========================================================
+2560px - LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1921px) {
   .otp-container {
-    gap: 30px;
+    max-width: 1800px;
+    padding: 40px 80px;
+    gap: 140px;
+  }
+
+  .otp-left {
+    flex: 0 0 520px;
+    width: 520px;
+  }
+
+  .otp-left img {
+    width: 520px;
+    height: 520px;
+  }
+
+  .otp-right {
+    flex: 0 0 525px;
+    width: 525px;
+    max-width: 525px;
+  }
+
+  .back-btn {
+    font-size: 16px;
+    margin-bottom: 35px;
+  }
+
+  .back-btn .btn-icon-img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .lock-circle {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 22px;
+  }
+
+  .lock-icon {
+    width: 29px;
+    height: 29px;
+  }
+
+  .otp-right h4 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .otp-right p {
+    font-size: 16px;
+  }
+
+  .otp-inputs {
+    gap: 12px;
+    margin: 30px 0 18px;
+  }
+
+  .otp-inputs input {
+    width: 62px;
+    height: 62px;
+    flex: 0 0 62px;
+    font-size: 26px;
+    border-radius: 9px;
+  }
+
+  .error-text {
+    font-size: 14px;
+  }
+
+  .resend {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .verify-btn {
+    height: 54px;
+    font-size: 17px;
+    border-radius: 9px;
+  }
+}
+
+/* =========================================================
+1440px - DESKTOP
+========================================================= */
+
+@media (min-width: 1201px) and (max-width: 1920px) {
+  .otp-container {
+    max-width: 1600px;
+    padding: 30px 60px;
+    gap: 100px;
+  }
+
+  .otp-left {
+    flex: 0 0 480px;
+    width: 480px;
+  }
+
+  .otp-left img {
+    width: 480px;
+    height: 480px;
+  }
+
+  .otp-right {
+    flex: 0 0 425px;
+    width: 425px;
+    max-width: 425px;
+  }
+
+  .lock-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .lock-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .otp-inputs {
+    gap: 10px;
+  }
+
+  .otp-inputs input {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+}
+
+/* =========================================================
+1024px - LAPTOP
+========================================================= */
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .otp-container {
+    max-width: 100%;
     padding: 25px 40px;
+    gap: 40px;
   }
 
   .otp-left {
@@ -190,9 +396,52 @@ body {
   .otp-right {
     flex: 0 0 380px;
     width: 380px;
-    margin-top: 0;
+    max-width: 380px;
+  }
+
+  .back-btn {
+    margin-bottom: 28px;
+  }
+
+  .lock-circle {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 18px;
+  }
+
+  .lock-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .otp-right h4 {
+    font-size: 22px;
+  }
+
+  .otp-right p {
+    font-size: 14px;
+  }
+
+  .otp-inputs {
+    gap: 7px;
+    margin-top: 24px;
+  }
+
+  .otp-inputs input {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    font-size: 20px;
+  }
+
+  .verify-btn {
+    height: 44px;
   }
 }
+
+/* =========================================================
+768px - TABLET / MOBILE
+========================================================= */
 
 @media (max-width: 992px) {
   .otp-container {
@@ -213,19 +462,33 @@ body {
   .otp-right {
     flex: 0 0 340px;
     width: 340px;
-    margin-top: 0;
+    max-width: 340px;
+  }
+
+  .lock-circle {
+    width: 45px;
+    height: 45px;
+  }
+
+  .lock-icon {
+    width: 20px;
+    height: 20px;
   }
 }
 
+/* =========================================================
+768px AND BELOW - MOBILE
+========================================================= */
+
 @media (max-width: 768px) {
   .otp-container {
+    width: 100%;
     flex-direction: column;
     gap: 10px;
     padding: 20px;
-    height: auto;
-    min-height: 100vh;      /* auto ku pathila 100vh */
+    min-height: 100vh;
     justify-content: center;
-    padding-top: 60px;       /* venumna idha kooda adjust pannunga */
+    align-items: center;
   }
 
   .otp-left {
@@ -234,28 +497,191 @@ body {
 
   .otp-right {
     width: 100%;
-    max-width: 400px;
-    margin-top: 0;
+    max-width: 320px;
+    flex: none;
   }
 
   .back-btn {
     margin-bottom: 20px;
   }
 
+  .back-btn .btn-icon-img {
+    width: 13px;
+    height: 13px;
+  }
+
+  .lock-circle {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .lock-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .otp-right h4 {
+    font-size: 20px;
+  }
+
+  .otp-right p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .otp-inputs {
+    width: 100%;
+    gap: 6px;
+    margin: 24px 0 14px;
+  }
+
   .otp-inputs input {
-    height: 34px;
+    width: 42px;
+    height: 42px;
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 19px;
+    border-radius: 6px;
+  }
+
+  .error-text {
+    font-size: 12px;
+  }
+
+  .resend {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .verify-btn {
+    height: 44px;
+    font-size: 14px;
+    border-radius: 7px;
   }
 }
 
-.otp-error{
-    border:2px solid #ef4444 !important;
+/* =========================================================
+425px - MOBILE
+========================================================= */
+
+@media (max-width: 425px) {
+  .otp-container {
+    padding: 20px 15px;
+  }
+
+  .otp-right {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .back-btn {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  .lock-circle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .lock-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .otp-right h4 {
+    font-size: 19px;
+  }
+
+  .otp-right p {
+    font-size: 12.5px;
+  }
+
+  .otp-inputs {
+    gap: 5px;
+  }
+
+  .otp-inputs input {
+    height: 40px;
+
+    font-size: 18px;
+  }
+
+  .verify-btn {
+    height: 43px;
+    font-size: 14px;
+  }
 }
 
-.error-text {
-  width: 100%;
-  margin-top: 8px;
-  color: #ef4444;
-  font-size: 13px;
-  font-weight: 500;
-  text-align: left;
+/* =========================================================
+320px - VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .otp-container {
+    padding: 15px 10px;
+  }
+
+  .otp-right {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .back-btn {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  .back-btn .btn-icon-img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .lock-circle {
+    width: 35px;
+    height: 35px;
+
+    margin-bottom: 14px;
+  }
+
+  .lock-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .otp-right h4 {
+    font-size: 18px;
+  }
+
+  .otp-right p {
+    font-size: 12px;
+  }
+
+  .otp-inputs {
+    gap: 4px;
+
+    margin-top: 20px;
+  }
+
+  .otp-inputs input {
+    width: 39px;
+    height: 38px;
+    flex: 1 1 0;
+    font-size: 17px;
+    border-radius: 5px;
+  }
+
+  .error-text {
+    font-size: 11px;
+  }
+
+  .resend {
+    font-size: 11px;
+  }
+
+  .verify-btn {
+    height: 40px;
+    font-size: 13px;
+  }
 }

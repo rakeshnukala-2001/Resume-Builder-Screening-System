@@ -11,7 +11,11 @@ body {
 .can-dashboard-page-wrapper {
   width: 100%;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
 .can-dashboard-page-wrapper > header + header,
 .can-dashboard-main > header {
   display: none !important;
@@ -21,10 +25,11 @@ body {
   display: flex;
   width: 100%;
   min-height: calc(100vh - 75px);
-  margin-top: 80px;
+  margin-top: 75px;
+  position: relative;
 }
 
-/* Sidebar Layout (Scrollable with Hidden Scrollbar) */
+/* Sidebar Layout */
 .can-sidebar {
   position: fixed;
   top: 75px;
@@ -38,17 +43,15 @@ body {
   justify-content: space-between;
   padding: 15px;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 99;
   box-sizing: border-box;
-
-  /* Hide Scrollbar for Chrome, Safari, and Opera */
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .can-sidebar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .can-logo-section,
@@ -129,8 +132,9 @@ body {
 }
 
 .can-badge {
-  width: 22px;
-  height: 22px;
+  width: 100%;
+  max-width: 30px;
+  height: 24px;
   border-radius: 4px;
   background: #dbeafe;
   color: #2563eb;
@@ -141,6 +145,7 @@ body {
   font-weight: 700;
   line-height: 1;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .can-upgrade-card {
@@ -232,6 +237,7 @@ body {
   box-sizing: border-box;
   margin-top: 0 !important;
   padding-top: 0 !important;
+  min-height: calc(100vh - 75px);
 }
 
 .can-dashboard-header {
@@ -359,7 +365,6 @@ body {
   row-gap: 0.8rem;
 }
 
-/* TOP METRIC CARD VERTICAL LEFT-ALIGNMENT FIX */
 .can-dashboard-card {
   background: #fff;
   border: 0.07rem solid #e5e7eb;
@@ -407,8 +412,6 @@ body {
   color: #111827;
 }
 
-/* All card content elements align from the same left edge as the title text
-   (icon width 2.2rem + header gap 0.65rem = 2.85rem offset) */
 .can-dashboard-card h2 {
   margin: 0 0 0.25rem 2.85rem;
   font-size: 1.7rem;
@@ -1159,34 +1162,239 @@ body {
   cursor: pointer;
 }
 
-/* ===========================================
-   2560px ULTRA-WIDE FIX (NO BOTTOM BLANK SPACE)
-   Main content area + rows now stretch to fill
-   the full viewport height instead of leaving a
-   blank gap below the cards.
-=========================================== */
-/* ===============================
-   2560px (Large Desktop)
-==================================*/
-@media (min-width: 1921px) {
-  .can-dashboard-main {
-    max-width: 2600px;
-    margin-left: 260px;
+/* 2560px 4K ULTRA-WIDE MONITORS (RESPONSIVE PROPORTIONAL SCALING) */
+@media screen and (min-width: 2560px) {
+  .can-dashboard-layout {
+    margin-top: 110px;
+    min-height: calc(100vh - 110px);
   }
 
-  .can-dashboard-content {
-    padding: 2rem;
+  /* Sidebar Fixed Layout */
+  .can-sidebar {
+    top: 110px;
+    width: 420px;
+    height: calc(100vh - 110px);
+    padding: 30px;
+  }
+
+  .can-menu li {
+    padding: 22px 28px;
+    font-size: 26px;
+    border-radius: 16px;
+    margin-bottom: 14px;
+    gap: 20px;
+  }
+
+  .can-menu li img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .can-badge {
+    height: 38px;
+    font-size: 22px;
+    border-radius: 8px;
+    padding: 0 12px;
+  }
+
+  .can-upgrade-card {
+    padding: 28px;
+    border-radius: 24px;
+  }
+
+  .can-upgrade-title {
+    font-size: 28px;
+    gap: 12px;
+  }
+
+  .can-upgrade-title img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .can-upgrade-card p {
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .can-features li {
+    font-size: 22px;
+    gap: 16px;
+  }
+
+  .can-feature-check-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .can-upgrade-btn {
+    height: 72px;
+    font-size: 24px;
+    border-radius: 16px;
+  }
+
+  /* Main Section Content Area */
+  .can-dashboard-main {
+    margin-left: 420px;
+    width: calc(100% - 420px);
+    min-height: calc(100vh - 110px);
+  }
+
+  .can-dashboard-header {
+    padding: 32px 40px 16px 40px;
+  }
+
+  .can-welcome-heading h1 {
+    font-size: 52px;
+  }
+
+  .can-welcome-img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .can-welcome-left p {
+    font-size: 26px;
+  }
+
+  .can-action-btn {
+    height: 80px;
+    padding: 0 32px;
+    font-size: 26px;
+    border-radius: 16px;
+  }
+
+  .can-btn-inner-img {
+    width: 24px;
+    height: 24px;
   }
 
   .can-dashboard-cards {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    gap: 20px;
+  }
+
+  .can-dashboard-card {
+    padding: 28px;
+    border-radius: 20px;
+    min-height: 240px;
+  }
+
+  .can-card-header h3 {
+    font-size: 26px;
+  }
+
+  .can-card-img-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .can-card-top-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .can-dashboard-card h2 {
+    font-size: 48px;
+    margin-left: 0;
+  }
+
+  .can-dashboard-card h4 {
+    font-size: 26px;
+    margin-left: 0;
+  }
+
+  .can-card-growth-trend {
+    margin-left: 0;
+  }
+
+  .can-trend-percentage,
+  .can-trend-timeline {
+    font-size: 22px;
+  }
+
+  .can-dashboard-content {
+    padding: 32px 40px;
   }
 
   .can-dashboard-row-one,
   .can-dashboard-row-two {
-    grid-template-columns: 42% 32% 24%;
-    gap: 1rem;
+    gap: 24px;
+  }
+
+  .can-ats-card,
+  .can-skill-card,
+  .can-assistant-card,
+  .can-recent-activity-card,
+  .can-upcoming-card,
+  .can-profile-card {
+    padding: 36px;
+    border-radius: 20px;
+    min-height: auto;
+  }
+
+  .can-ats-title,
+  .can-skill-card h2,
+  .can-assistant-header h2,
+  .can-recent-activity-title,
+  .can-upcoming-title,
+  .can-profile-title {
+    font-size: 34px;
+  }
+
+  .can-gauge-wrapper {
+    width: 320px;
+    height: 260px;
+  }
+
+  .can-gauge-text h1 {
+    font-size: 64px;
+  }
+
+  .can-gauge-text span {
+    font-size: 26px;
+  }
+
+  .can-score-left span,
+  .can-score-item strong,
+  .can-skill-title span,
+  .can-assistant-item h4,
+  .can-recent-activity-content h4,
+  .can-interview-details h4,
+  .can-interview-time span {
+    font-size: 24px;
+  }
+
+  .can-assistant-item p,
+  .can-recent-activity-content p,
+  .can-interview-details p,
+  .can-profile-subtitle,
+  .can-benefit-item p {
+    font-size: 20px;
+  }
+
+  .can-recent-activity-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+  }
+
+  .can-recent-activity-icon img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .can-date-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+  }
+
+  .can-month {
+    font-size: 22px;
+  }
+
+  .can-day {
+    font-size: 30px;
   }
 }
 
@@ -1208,9 +1416,7 @@ body {
   }
 }
 
-/* ===========================================
-   768px BREAKPOINT ATS FIX
-=========================================== */
+/* 768px BREAKPOINT */
 @media (max-width: 1024px) {
   .can-sidebar {
     width: 220px;
@@ -1281,9 +1487,6 @@ body {
     width: 100%;
   }
 
-  /* Keep a proper 2-column grid at 768px (the 1024px query only
-     applies down to 769px) so cards don't collapse into the
-     cramped 42/31.7/26.3% desktop split */
   .can-dashboard-row-one,
   .can-dashboard-row-two {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1295,8 +1498,6 @@ body {
     grid-column: span 2;
   }
 
-  /* Remove the fixed min-height so ATS / Skill Analysis cards
-     don't leave empty space when their stacked content is shorter */
   .can-ats-card,
   .can-skill-card,
   .can-assistant-card,
@@ -1306,7 +1507,6 @@ body {
     min-height: auto;
   }
 
-  /* 768px ATS Breakdown visibility fix */
   .can-ats-content {
     flex-direction: column;
     align-items: center;
@@ -1327,10 +1527,7 @@ body {
   }
 }
 
-/* ===========================================
-   320px, 375px, 425px MOBILE RESPONSIVE FIXES
-   (NO OVERLAP, STEP BY STEP VERTICAL FLOW, GAUGE FIX)
-=========================================== */
+/* 480px MOBILE RESPONSIVE FIXES */
 @media (max-width: 480px) {
   .can-dashboard-cards {
     grid-template-columns: 1fr;
@@ -1358,7 +1555,6 @@ body {
     width: 100%;
   }
 
-  /* STEP BY STEP ROW-WISE CARDS FLATTENING */
   .can-dashboard-row-one,
   .can-dashboard-row-two {
     grid-template-columns: 1fr !important;
@@ -1370,7 +1566,6 @@ body {
     grid-column: span 1 !important;
   }
 
-  /* GAUGE GRAPH ABOVE AND SCORE BREAKDOWN POINTS BELOW */
   .can-ats-content {
     display: flex !important;
     flex-direction: column !important;
@@ -1398,7 +1593,6 @@ body {
     width: 100% !important;
   }
 
-  /* RECENT ACTIVITY & UPCOMING INTERVIEWS STEP BY STEP FLOW */
   .can-recent-activity-item {
     flex-direction: column;
     align-items: flex-start;
@@ -1418,7 +1612,6 @@ body {
     margin-left: auto;
   }
 
-  /* PROFILE STATS FLATTENING FOR SMALL PHONES */
   .can-profile-stats {
     flex-direction: column;
     align-items: center;
