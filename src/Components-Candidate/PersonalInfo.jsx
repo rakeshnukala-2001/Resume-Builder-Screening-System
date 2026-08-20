@@ -19,11 +19,13 @@ import ideaIcon from "../assets/Create-Resume/idea.png";
 const PersonalInfo = () => {
   const navigate = useNavigate();
 
-  const [showMobileActionMenu, setShowMobileActionMenu] = useState(false);
-  const [showMobileNavDrawer, setShowMobileNavDrawer] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(100);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [errors, setErrors] = useState({});
+
+  // Mobile navigation & action dropdown state management
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isActionMenuOpen, setIsActionMenuOpen] = useState(false);
 
   const [formData, setFormData] = useState(() => {
     const savedData = localStorage.getItem("resume_personal_info");
@@ -31,11 +33,11 @@ const PersonalInfo = () => {
       ? JSON.parse(savedData)
       : {
           fullName: "Ajith Akash",
-          jobTitle: "Full Stack Developer",
+          jobTitle: "Full stack Developer",
           email: "Ajith@email.com",
           phone: "+91 95000 40000",
           location: "Bengaluru, India",
-          linkedin: "linkedin.com/in/aman",
+          linkedin: "linkedin.com/in/Aman",
           summary:
             "Full Stack Developer with 3+ years of experience building responsive web applications using HTML, CSS, JavaScript and React. Passionate about creating intuitive user interfaces and optimizing performance.",
         };
@@ -69,6 +71,7 @@ const PersonalInfo = () => {
     if (validateForm()) {
       localStorage.setItem("resume_personal_info", JSON.stringify(formData));
       alert("Personal Info Saved Successfully!");
+      setIsActionMenuOpen(false);
     }
   };
 
@@ -85,7 +88,7 @@ const PersonalInfo = () => {
     };
 
     if (routes[stepNumber]) {
-      setShowMobileNavDrawer(false);
+      setIsMobileNavOpen(false);
       navigate(routes[stepNumber]);
     }
   };
@@ -105,7 +108,6 @@ const PersonalInfo = () => {
     setZoomLevel(100);
   };
 
-  // Live Resume Card JSX (reusable component inside component body)
   const renderResumeCard = () => (
     <div
       className="resume-card-box preview-card"
@@ -120,7 +122,7 @@ const PersonalInfo = () => {
           alt="Profile Avatar"
           className="profile-img-circle"
         />
-        <div>
+        <div className="preview-header-info">
           <h3 className="preview-name">{formData.fullName || "Ajith Akash"}</h3>
           <p className="preview-title">
             {formData.jobTitle || "Full stack Developer"}
@@ -176,7 +178,7 @@ const PersonalInfo = () => {
       <div className="preview-section">
         <h4 className="section-title-underlined">EXPERIENCE</h4>
         <div className="item-header">
-          <strong>Senior Full Stack Developer</strong>
+          <strong>Senior Full Stack developer</strong>
           <span className="item-date">Jan 2022 - Present</span>
         </div>
         <ul className="bullet-list">
@@ -220,18 +222,19 @@ const PersonalInfo = () => {
       <div className="can-personalinfo-layout">
         <main className="can-personalinfo-main">
           <div className="resume-page-wrapper">
-            {/* Top Header */}
             <div className="resume-top-header">
               <div className="header-left-title">
+                {/* Mobile Hamburger Toggle Button */}
                 <button
                   className="mobile-hamburger-btn"
-                  onClick={() => setShowMobileNavDrawer(!showMobileNavDrawer)}
+                  onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
                 >
                   ☰
                 </button>
                 <h2>Create a Resume</h2>
               </div>
 
+              {/* Desktop Direct Buttons */}
               <div className="header-action-btns desktop-only-actions">
                 <button className="save-btn" onClick={handleSaveData}>
                   Save
@@ -249,27 +252,22 @@ const PersonalInfo = () => {
                 </button>
               </div>
 
+              {/* Mobile 3-Dots Action Dropdown */}
               <div className="mobile-only-dropdown-wrapper">
                 <button
                   className="action-dropdown-btn"
-                  onClick={() => setShowMobileActionMenu(!showMobileActionMenu)}
+                  onClick={() => setIsActionMenuOpen(!isActionMenuOpen)}
                 >
                   ⋮
                 </button>
-                {showMobileActionMenu && (
+
+                {isActionMenuOpen && (
                   <div className="action-dropdown-menu">
+                    <button onClick={handleSaveData}>Save</button>
                     <button
                       onClick={() => {
-                        setShowMobileActionMenu(false);
-                        handleSaveData();
-                      }}
-                    >
-                      Save
-                    </button>
-                    <button
-                      onClick={() => {
-                        setShowMobileActionMenu(false);
-                        alert("Downloading...");
+                        setIsActionMenuOpen(false);
+                        alert("Downloading Resume...");
                       }}
                     >
                       Download
@@ -279,29 +277,34 @@ const PersonalInfo = () => {
               </div>
             </div>
 
-            {/* Mobile Hamburger Drawer Items */}
-            {showMobileNavDrawer && (
+            {/* Mobile Nav Drawer */}
+            {isMobileNavOpen && (
               <div className="mobile-nav-drawer">
-                {[
-                  "1. Personal Info",
-                  "2. Experience",
-                  "3. Education",
-                  "4. Skills",
-                  "5. Summary",
-                  "6. Review",
-                ].map((stepLabel, idx) => (
-                  <div
-                    key={idx}
-                    className={`drawer-item ${idx === 0 ? "active" : ""}`}
-                    onClick={() => handleStepClick(idx + 1)}
-                  >
-                    {stepLabel}
-                  </div>
-                ))}
+                <div
+                  className="drawer-item active"
+                  onClick={() => handleStepClick(1)}
+                >
+                  1. Personal Info
+                </div>
+                <div className="drawer-item" onClick={() => handleStepClick(2)}>
+                  2. Experience
+                </div>
+                <div className="drawer-item" onClick={() => handleStepClick(3)}>
+                  3. Education
+                </div>
+                <div className="drawer-item" onClick={() => handleStepClick(4)}>
+                  4. Skills
+                </div>
+                <div className="drawer-item" onClick={() => handleStepClick(5)}>
+                  5. Summary
+                </div>
+                <div className="drawer-item" onClick={() => handleStepClick(6)}>
+                  6. Review
+                </div>
               </div>
             )}
 
-            {/* Desktop Stepper Navigation */}
+            {/* Desktop Stepper Bar */}
             <div className="steps-card-box desktop-only-steps">
               <div className="resume-steps-bar">
                 <span
@@ -328,11 +331,8 @@ const PersonalInfo = () => {
               </div>
             </div>
 
-            {/* Grid Layout Container */}
             <div className="resume-grid-layout">
-              {/* LEFT COLUMN */}
               <div className="left-column-wrapper">
-                {/* Personal Details Form Card */}
                 <div className="resume-card-box form-card">
                   <div className="form-card-header">
                     <h3>Personal details</h3>
@@ -344,7 +344,7 @@ const PersonalInfo = () => {
                         src={aiSuggestIcon}
                         alt="AI"
                         className="ai-btn-icon"
-                      />{" "}
+                      />
                       AI Suggest
                     </button>
                   </div>
@@ -415,12 +415,10 @@ const PersonalInfo = () => {
                   </div>
                 </div>
 
-                {/* Overall Completion Card */}
                 <div className="resume-card-box completion-card">
                   <h4 className="completion-title">Overall Completion</h4>
 
                   <div className="completion-main-row">
-                    {/* Circle Score & Status Info */}
                     <div className="completion-score-block">
                       <div className="circle-score-wrapper">
                         <svg className="progress-ring" width="80" height="80">
@@ -464,7 +462,6 @@ const PersonalInfo = () => {
                       </div>
                     </div>
 
-                    {/* 3 Column Metrics Section */}
                     <div className="metrics-three-columns">
                       <div
                         className="metric-col"
@@ -531,7 +528,6 @@ const PersonalInfo = () => {
                     </div>
                   </div>
 
-                  {/* Tips Box */}
                   <div className="completion-tip-box">
                     <img src={ideaIcon} alt="Tip" className="tip-idea-icon" />
                     <p className="tip-text">
@@ -542,7 +538,6 @@ const PersonalInfo = () => {
                 </div>
               </div>
 
-              {/* RIGHT COLUMN - LIVE PREVIEW */}
               <div className="preview-container-wrapper">
                 <div className="preview-top-controls">
                   <span className="preview-heading">Live Preview</span>
@@ -560,7 +555,6 @@ const PersonalInfo = () => {
                     >
                       +
                     </button>
-
                     <button
                       className="control-icon-btn"
                       title="Full Screen"
@@ -572,7 +566,6 @@ const PersonalInfo = () => {
                         className="control-icon-img"
                       />
                     </button>
-
                     <button
                       className="control-icon-btn"
                       title="Undo / Reset Zoom"
@@ -599,7 +592,6 @@ const PersonalInfo = () => {
           </div>
         </main>
 
-        {/* FULLSCREEN MODAL OVERLAY */}
         {isFullscreen && (
           <div className="preview-fullscreen-overlay">
             <div className="fullscreen-controls-bar">
