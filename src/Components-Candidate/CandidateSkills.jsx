@@ -8,7 +8,7 @@ import emailIcon from "../assets/Create-Resume/email.png";
 import phoneIcon from "../assets/Create-Resume/phone.png";
 import locationPinIcon from "../assets/Create-Resume/location.png";
 import linkedinIcon from "../assets/Create-Resume/linkedin.png";
-import aiSuggestIcon from "../assets/Create-Resume/AI-suggest.png";
+import aiSuggestIcon from "../assets/Create-Resume/Ai suggest.png";
 import downloadIcon from "../assets/Create-Resume/download.png";
 import contentIcon from "../assets/Create-Resume/content.png";
 import skillsIcon from "../assets/Create-Resume/skills.png";

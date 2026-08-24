@@ -1,193 +1,131 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
-// Sidebar Assets
-import dashboardIcon from "../assets/candidate/dashboard.png";
-import profileIcon from "../assets/candidate/profileIcon.png";
-import aiReportIcon from "../assets/candidate/ai-report.png";
-import skillIconSidebar from "../assets/candidate/skill.png";
-import jobsIcon from "../assets/candidate/jobs.png";
-import savedIcon from "../assets/candidate/saved.png";
-import messageIcon from "../assets/candidate/message.png";
-import learningIcon from "../assets/candidate/learning.png";
-import crownIcon from "../assets/candidate/crown.png";
-import arrowIcon from "../assets/candidate/arrow.png";
-import tickIcon from "../assets/candidate/tick.png";
+import logoIcon from "../assets/sidebar/logo.png";
+import dashboardIcon from "../assets/sidebar/dashboard.png";
+import profileIcon from "../assets/sidebar/profile.png";
+import myResumesIcon from "../assets/sidebar/resumes.png";
+import resumeBuilderIcon from "../assets/sidebar/builder.png";
+import templatesIcon from "../assets/sidebar/templates.png";
+import aiOptimizationIcon from "../assets/sidebar/optimization.png";
+import documentsIcon from "../assets/sidebar/documents.png";
+import skillAnalysisIcon from "../assets/sidebar/analysis.png";
+import jobMatchesIcon from "../assets/sidebar/matches.png";
+import savedJobsIcon from "../assets/sidebar/saved.png";
+import careerInsightsIcon from "../assets/sidebar/insights.png";
+import applicationsIcon from "../assets/sidebar/applications.png";
+import interviewsIcon from "../assets/sidebar/interviews.png";
+import notificationsIcon from "../assets/sidebar/notifications.png";
+import upgradeProIcon from "../assets/sidebar/upgrade.png";
+import settingsIcon from "../assets/sidebar/settings.png";
+import logoutIcon from "../assets/sidebar/logout.png";
 
-const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
+const topMenuItems = [
+  { id: "dashboard", label: "Dashboard", icon: dashboardIcon },
+  { id: "profile", label: "Profile", icon: profileIcon },
+  { id: "my-resumes", label: "My Resumes", icon: myResumesIcon },
+];
+
+const toolMenuItems = [
+  { id: "resume-builder", label: "Resume Builder", icon: resumeBuilderIcon },
+  { id: "templates", label: "Templates", icon: templatesIcon },
+  { id: "ai-optimization", label: "AI Optimization", icon: aiOptimizationIcon },
+  { id: "documents", label: "Documents", icon: documentsIcon },
+  { id: "skill-analysis", label: "Skill Analysis", icon: skillAnalysisIcon },
+  { id: "job-matches", label: "Job Matches", icon: jobMatchesIcon },
+  { id: "saved-jobs", label: "Saved Jobs", icon: savedJobsIcon },
+  { id: "career-insights", label: "Career Insights", icon: careerInsightsIcon },
+  { id: "applications", label: "Applications", icon: applicationsIcon },
+  { id: "interviews", label: "Interviews", icon: interviewsIcon },
+  { id: "notifications", label: "Notifications", icon: notificationsIcon },
+];
+
+const Sidebar = ({ isOpen }) => {
+  const [activeItem, setActiveItem] = useState("resume-builder");
   const navigate = useNavigate();
 
-  const handleNavClick = (tabName, routePath) => {
-    if (setActiveTab) setActiveTab(tabName);
-    if (setIsOpen) setIsOpen(false);
-
-    if (routePath) {
-      navigate(routePath);
-    }
+  const handleItemClick = (id) => {
+    setActiveItem(id);
+    // Exact path structure: /Resume-builder/candidate/id
+    navigate(`/Resume-builder/candidate/${id}`);
   };
 
+  const handleLogout = () => {
+    console.log("Logout clicked");
+    localStorage.clear();
+    sessionStorage.clear();
+    navigate("/Resume-builder/login/candidate");
+  };
+
+  const renderMenuItem = (item) => (
+    <li
+      key={item.id}
+      className={`sidebar-menu-item ${
+        activeItem === item.id ? "sidebar-menu-item--active" : ""
+      }`}
+      onClick={() => handleItemClick(item.id)}
+    >
+      <img src={item.icon} alt={item.label} className="sidebar-menu-icon" />
+      <span className="sidebar-menu-label">{item.label}</span>
+    </li>
+  );
+
   return (
-    <>
-      {isOpen && (
-        <div
-          className="can-sidebar-mobile-overlay"
-          onClick={() => setIsOpen && setIsOpen(false)}
-        />
-      )}
-
-      <aside className={`can-sidebar ${isOpen ? "can-mobile-open" : ""}`}>
-        <div>
-          <ul className="can-menu">
-            <li
-              className={activeTab === "Dashboard" ? "can-active" : ""}
-              onClick={() =>
-                handleNavClick(
-                  "Dashboard",
-                  "/Resume-builder/dashboard/candidate",
-                )
-              }
-            >
-              <img src={dashboardIcon} alt="Dashboard" />
-              <span>Dashboard</span>
-            </li>
-            <li
-              className={activeTab === "Profile" ? "can-active" : ""}
-              onClick={() =>
-                handleNavClick(
-                  "Profile",
-                  "/Resume-builder/candidate/candidate/profile",
-                )
-              }
-            >
-              <img src={profileIcon} alt="Profile" />
-              <span>Profile</span>
-            </li>
-            <li
-              className={activeTab === "AI Report" ? "can-active" : ""}
-              onClick={() =>
-                handleNavClick(
-                  "AI Report",
-                  "/Resume-builder/candidate/candidate/ai-report",
-                )
-              }
-            >
-              <img src={aiReportIcon} alt="AI Report" />
-              <span>AI Report</span>
-            </li>
-            <li
-              className={activeTab === "Skill Matching" ? "can-active" : ""}
-              onClick={() =>
-                handleNavClick(
-                  "Skill Matching",
-                  "/Resume-builder/candidate/candidate/skill-matching",
-                )
-              }
-            >
-              <img src={skillIconSidebar} alt="Skill Matching" />
-              <span>Skill Matching</span>
-            </li>
-            <li
-              className={activeTab === "Job Matches" ? "can-active" : ""}
-              onClick={() =>
-                handleNavClick(
-                  "Job Matches",
-                  "/Resume-builder/candidate/candidate/job-matches",
-                )
-              }
-            >
-              <img src={jobsIcon} alt="Job Matches" />
-              <span>Job Matches</span>
-            </li>
-            <li
-              className={activeTab === "Saved Jobs" ? "can-active" : ""}
-              onClick={() =>
-                handleNavClick(
-                  "Saved Jobs",
-                  "/Resume-builder/candidate/candidate/saved-jobs",
-                )
-              }
-            >
-              <img src={savedIcon} alt="Saved Jobs" />
-              <span>Saved Jobs</span>
-            </li>
-            <li
-              className={`can-message ${activeTab === "Message" ? "can-active" : ""}`}
-              onClick={() =>
-                handleNavClick(
-                  "Message",
-                  "/Resume-builder/candidate/candidate/messages",
-                )
-              }
-            >
-              <div className="can-left">
-                <img src={messageIcon} alt="Message" />
-                <span>Message</span>
-              </div>
-              <span className="can-badge">2</span>
-            </li>
-            <li
-              className={activeTab === "Learning Center" ? "can-active" : ""}
-              onClick={() =>
-                handleNavClick(
-                  "Learning Center",
-                  "/Resume-builder/candidate/candidate/learning-center",
-                )
-              }
-            >
-              <img src={learningIcon} alt="Learning Center" />
-              <span>Learning Center</span>
-            </li>
-          </ul>
+    <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+      {/* Logo / Header */}
+      <div className="sidebar-header">
+        <div className="sidebar-logo-box">
+          <img src={logoIcon} alt="Logo" className="sidebar-logo-icon" />
         </div>
-
-        <div className="can-upgrade-card">
-          <div className="can-upgrade-title">
-            <img src={crownIcon} alt="Crown" />
-            <span>Upgrade to Pro</span>
-          </div>
-          <p>Unlock Premium tools and grow your career faster</p>
-          <ul className="can-features">
-            <li>
-              <img
-                src={tickIcon}
-                alt="Tick"
-                className="can-feature-check-img"
-              />
-              <span>Advanced AI Insights</span>
-            </li>
-            <li>
-              <img
-                src={tickIcon}
-                alt="Tick"
-                className="can-feature-check-img"
-              />
-              <span>Unlimited Resumes</span>
-            </li>
-            <li>
-              <img
-                src={tickIcon}
-                alt="Tick"
-                className="can-feature-check-img"
-              />
-              <span>Priority Support</span>
-            </li>
-            <li>
-              <img
-                src={tickIcon}
-                alt="Tick"
-                className="can-feature-check-img"
-              />
-              <span>Job Match Boost</span>
-            </li>
-          </ul>
-          <button className="can-upgrade-btn">
-            Upgrade Now
-            <img src={arrowIcon} alt="Arrow" />
-          </button>
+        <div className="sidebar-header-text">
+          <h1 className="sidebar-title">AI Resume Builder</h1>
+          <p className="sidebar-subtitle">&amp; Screening System</p>
         </div>
-      </aside>
-    </>
+      </div>
+
+      {/* Top menu items */}
+      <ul className="sidebar-menu">{topMenuItems.map(renderMenuItem)}</ul>
+
+      {/* AI Resume Tool section */}
+      <p className="sidebar-section-label">AI Resume Tool</p>
+      <ul className="sidebar-menu">{toolMenuItems.map(renderMenuItem)}</ul>
+
+      {/* Bottom section */}
+      <div className="sidebar-footer">
+        <ul className="sidebar-menu">
+          <li
+            className="sidebar-menu-item"
+            onClick={() => handleItemClick("upgrade-pro")}
+          >
+            <img
+              src={upgradeProIcon}
+              alt="Upgrade to PRO"
+              className="sidebar-menu-icon"
+            />
+            <span className="sidebar-menu-label">Upgrade to PRO</span>
+          </li>
+          <li
+            className="sidebar-menu-item"
+            onClick={() => handleItemClick("settings")}
+          >
+            <img
+              src={settingsIcon}
+              alt="Settings"
+              className="sidebar-menu-icon"
+            />
+            <span className="sidebar-menu-label">Settings</span>
+          </li>
+          <li
+            className="sidebar-menu-item sidebar-menu-item--logout"
+            onClick={handleLogout}
+          >
+            <img src={logoutIcon} alt="Logout" className="sidebar-menu-icon" />
+            <span className="sidebar-menu-label">Logout</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
   );
 };
 

@@ -1,0 +1,1011 @@
+/* =========================================================
+   PAGE
+   ========================================================= */
+.sum-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #111827;
+}
+.sum-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 22px 0 42px;
+}
+/* =========================================================
+   HEADER
+   ========================================================= */
+.sum-header {
+  position: relative;
+  width: 100%;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d9dee8;
+  background: #ffffff;
+}
+.sum-header-title {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #111827;
+}
+.sum-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sum-save-button,
+.sum-download-button {
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.sum-save-button {
+  border: 1px solid #2463eb;
+  background: #ffffff;
+  color: #1557dc;
+}
+.sum-download-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #2463eb;
+  background: #2463eb;
+  color: #ffffff;
+}
+.sum-download-button img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+/* =========================================================
+   MOBILE HEADER BUTTONS
+   ========================================================= */
+.sum-mobile-menu-button,
+.sum-mobile-more-button,
+.sum-mobile-navigation-menu,
+.sum-mobile-actions-menu {
+  display: none;
+}
+/* =========================================================
+   DESKTOP STEP NAVIGATION
+   ========================================================= */
+.sum-steps {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: stretch;
+  border: 1px solid #d7dce5;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.sum-steps button {
+  min-width: 0;
+  border: 0;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 500;
+  cursor: pointer;
+}
+.sum-steps button.sum-active {
+  color: #155fe8;
+  font-weight: 700;
+}
+/* =========================================================
+   MAIN CONTENT LAYOUT
+   ========================================================= */
+.sum-layout {
+  width: 1400;
+  margin-top: 18px;
+  padding: 70px 24px 30px 10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "editor preview"
+    "completion preview";
+  gap: 12px;
+  align-items: start;
+}
+/* =========================================================
+   PROFESSIONAL SUMMARY CARD
+   ========================================================= */
+.sum-editor-card {
+  grid-area: editor;
+  width: 100%;
+  min-height: 650px;
+  padding: 18px;
+  border: 1px solid #cfd8e6;
+  border-radius: 7px;
+  background: #ffffff;
+}
+.sum-editor-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+.sum-editor-heading-content {
+  min-width: 0;
+}
+.sum-editor-heading h2 {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+.sum-editor-heading p {
+  margin: 6px 0 0;
+  color: #728097;
+  font-size: 14px;
+  line-height: 1.45;
+}
+/* =========================================================
+   AI SUGGEST BUTTON
+   ========================================================= */
+.sum-ai-suggest-button {
+  width: 98px;
+  height: 27px;
+  min-width: 103px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bcd2fb;
+  border-radius: 6px;
+  background: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+}
+.sum-ai-suggest-button img {
+  width: 115px;
+  height: 60px;
+  max-width: 115px;
+  max-height: 60px;
+  object-fit: contain;
+  display: block;
+}
+/* =========================================================
+   SUMMARY TIPS
+   ========================================================= */
+.sum-tips-card {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid #b8d2f9;
+  border-radius: 6px;
+  background: #e7f0ff;
+}
+.sum-tips-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.sum-tip-row {
+  min-height: 21px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #687993;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.sum-tip-row img {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 13px;
+  object-fit: contain;
+}
+/* =========================================================
+   RICH TEXT EDITOR
+   ========================================================= */
+.sum-field {
+  margin-top: 16px;
+}
+.sum-field > label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.sum-editor-box {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #cbd7e7;
+  border-radius: 6px;
+  background: #ffffff;
+}
+.sum-editor-toolbar {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-bottom: 1px solid #d8dee8;
+}
+.sum-editor-toolbar button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.sum-editor-toolbar img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+.sum-textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: 14px 14px 30px;
+  display: block;
+  color: #475569;
+  background: #ffffff;
+  font-size: 15px;
+  line-height: 1.5;
+  outline: none;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.sum-textarea ul {
+  margin: 6px 0;
+  padding-left: 20px;
+  list-style-position: inside;
+}
+.sum-textarea ol {
+  margin: 6px 0;
+  padding-left: 20px;
+  list-style-position: inside;
+}
+.sum-textarea li {
+  margin: 3px 0;
+  padding-left: 2px;
+}
+.sum-character-count {
+  position: absolute;
+  right: 10px;
+  bottom: 7px;
+  color: #78869b;
+  font-size: 11px;
+}
+/* =========================================================
+   AI GENERATED SUMMARIES
+   ========================================================= */
+.sum-generated-section {
+  margin-top: 16px;
+}
+.sum-generated-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sum-generated-title img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+.sum-generated-title h3 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.sum-generated-heading p {
+  margin: 5px 0 9px 21px;
+  color: #718096;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.sum-generated-summary {
+  width: 100%;
+  min-height: 72px;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 11px;
+  text-align: left;
+  border: 1px solid #cbd8ec;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #61708a;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.sum-generated-summary.sum-selected {
+  border-color: #b8d2f9;
+  background: #f8fbff;
+}
+.sum-radio-dot {
+  width: 11px;
+  height: 11px;
+  margin-top: 3px;
+  flex: 0 0 11px;
+  border: 2px solid #2463eb;
+  border-radius: 50%;
+  background: #2463eb;
+  box-shadow: inset 0 0 0 2px #ffffff;
+}
+.sum-generate-button {
+  height: 38px;
+  margin: 12px auto 0;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #b8d2f9;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #155fe8;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sum-generate-button img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+/* =========================================================
+   JOB CUSTOMIZATION
+   ========================================================= */
+.sum-personalize-card {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid #cbd8ec;
+  border-radius: 6px;
+}
+.sum-personalize-card h3 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.sum-personalize-card p {
+  margin: 5px 0 8px;
+  color: #78869b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.sum-personalize-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 82px;
+  gap: 9px;
+}
+.sum-personalize-row input {
+  width: 100%;
+  height: 35px;
+  padding: 0 10px;
+  border: 1px solid #cbd8ec;
+  border-radius: 5px;
+  outline: 0;
+  color: #56657c;
+  font-size: 12px;
+}
+.sum-personalize-row input:focus {
+  border-color: #2463eb;
+}
+.sum-personalize-row button {
+  height: 35px;
+  border: 1px solid #b8d2f9;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #155fe8;
+  font-size: 12px;
+  cursor: pointer;
+}
+/* =========================================================
+   LIVE PREVIEW
+   ========================================================= */
+.sum-preview-section {
+  grid-area: preview;
+  width: 100%;
+  min-width: 0;
+}
+.sum-preview-title-row {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #d9dee8;
+}
+.sum-preview-title-row h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.sum-preview-toolbar {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 5px;
+  border: 1px solid #d7dce5;
+  border-radius: 6px;
+  background: #ffffff;
+}
+.sum-zoom-button {
+  width: 28px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  font-size: 18px;
+  cursor: pointer;
+}
+.sum-zoom-value {
+  min-width: 43px;
+  text-align: center;
+  color: #526175;
+  font-size: 12px;
+}
+.sum-icon-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.sum-toolbar-small {
+  width: 27px;
+  height: 30px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sum-toolbar-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.sum-preview-card {
+  width: 100%;
+  min-height: 610px;
+  margin-top: 12px;
+  padding: 18px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  border: 1px solid #d0d8e5;
+  border-radius: 7px;
+  background: #ffffff;
+}
+.sum-preview-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+   RESUME HEADER
+   ========================================================= */
+.sum-resume-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d7dce5;
+}
+.sum-resume-profile {
+  width: 66px;
+  height: 66px;
+  flex: 0 0 66px;
+  border: 2px solid #2463eb;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.sum-resume-identity {
+  min-width: 0;
+  flex: 1;
+}
+.sum-resume-identity h1 {
+  margin: 1px 0 2px;
+  color: #095be6;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.sum-resume-identity > p {
+  margin: 0 0 9px;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.sum-resume-contact {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  column-gap: 0;
+  row-gap: 6px;
+  width: 100%;
+}
+.sum-resume-contact div {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.sum-resume-contact img {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  object-fit: contain;
+}
+.sum-resume-contact span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+/* =========================================================
+   RESUME SECTIONS
+   ========================================================= */
+.sum-resume-section {
+  padding: 14px 0;
+  border-bottom: 1px solid #d7dce5;
+}
+.sum-resume-section h3 {
+  margin: 0 0 9px;
+  color: #111827;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+.sum-resume-section p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.sum-resume-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.sum-resume-section-heading strong {
+  min-width: 0;
+  color: #111827;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.sum-resume-section-heading span {
+  flex: 0 0 auto;
+  color: #526175;
+  font-size: 11px;
+  line-height: 1.3;
+}
+.sum-company-name {
+  margin-top: 3px !important;
+  margin-bottom: 6px !important;
+}
+.sum-resume-section ul {
+  margin: 7px 0 0;
+  padding-left: 17px;
+  color: #64748b;
+}
+.sum-resume-section li {
+  margin: 3px 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.sum-resume-skills {
+  border-bottom: 0;
+}
+.sum-resume-skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.sum-resume-skill-list span {
+  padding: 5px 8px;
+  border: 1px solid #cbd8ec;
+  border-radius: 4px;
+  background: #f7faff;
+  color: #334155;
+  font-size: 11px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+/* =========================================================
+   OVERALL COMPLETION
+   ========================================================= */
+.sum-completion-card {
+  grid-area: completion;
+  width: 100%;
+  min-height: 170px;
+  padding: 14px;
+  border: 1px solid #cbd8ec;
+  border-radius: 7px;
+  background: #ffffff;
+}
+.sum-completion-card h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.sum-completion-content {
+  display: grid;
+  grid-template-columns: 155px minmax(0, 1fr);
+  gap: 12px;
+}
+.sum-score-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sum-score-circle {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 6px solid #32965e;
+  border-left-color: #dbe3e7;
+  border-radius: 50%;
+}
+.sum-score-circle strong {
+  font-size: 20px;
+  line-height: 1;
+}
+.sum-score-circle span {
+  margin-top: 2px;
+  font-size: 10px;
+  line-height: 1;
+}
+.sum-score-info {
+  min-width: 0;
+}
+.sum-score-info > strong {
+  color: #32965e;
+  font-size: 11px;
+  line-height: 1.3;
+}
+.sum-score-info p {
+  margin: 5px 0 6px;
+  color: #56657c;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.sum-score-info button {
+  height: 28px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 4px;
+  background: #2463eb;
+  color: #ffffff;
+  font-size: 10px;
+  cursor: pointer;
+}
+.sum-metric-area {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.sum-metric {
+  min-width: 0;
+  padding-left: 10px;
+  border-left: 1px solid #d7dce5;
+}
+.sum-metric-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #475569;
+  font-size: 10px;
+  line-height: 1.3;
+}
+.sum-metric-title img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+}
+.sum-metric > strong {
+  display: block;
+  margin-top: 12px;
+  color: #334155;
+  font-size: 10px;
+  line-height: 1.3;
+}
+.sum-metric-track {
+  width: 100%;
+  height: 7px;
+  margin-top: 7px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #dce3e7;
+}
+.sum-metric-track span {
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+  background: #32965e;
+}
+.sum-completion-tip {
+  min-height: 38px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 5px;
+  background: #e6f1ff;
+}
+.sum-completion-tip img {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  object-fit: contain;
+}
+.sum-completion-tip span {
+  color: #526175;
+  font-size: 10px;
+  line-height: 1.4;
+}
+/* =========================================================
+   PREVIOUS / NEXT BUTTONS
+   ========================================================= */
+.sum-page-navigation {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 22px;
+}
+.sum-previous-button,
+.sum-next-button {
+  min-width: 105px;
+  height: 42px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sum-previous-button {
+  border: 1px solid #2463eb;
+  background: #ffffff;
+  color: #2463eb;
+}
+.sum-next-button {
+  border: 1px solid #2463eb;
+  background: #2463eb;
+  color: #ffffff;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE FIX (Crucial Bug Fixes)
+   ========================================================= */
+@media (max-width: 600px) {
+  .sum-container {
+    width: 100%;
+    margin: 0;
+    padding: 10px 10px 30px;
+  }
+  .sum-header {
+    position: relative;
+    width: 100%;
+    height: 68px;
+    min-height: 68px;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    align-items: center;
+    column-gap: 8px;
+    border-bottom: 1px solid #d9dee8;
+  }
+  .sum-header-title {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #111827;
+  }
+  .sum-header-actions {
+    display: none !important;
+  }
+  .sum-mobile-menu-button {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    padding: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid #cbd8ec;
+    border-radius: 7px;
+    background: #ffffff;
+    z-index: 2000;
+    cursor: pointer;
+  }
+  .sum-mobile-menu-button span {
+    display: block !important;
+    width: 21px !important;
+    height: 2px !important;
+    min-width: 21px;
+    min-height: 2px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 2px;
+    background: #111827 !important;
+  }
+  .sum-mobile-more-button {
+    position: relative;
+    grid-column: 3;
+    grid-row: 1;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    padding: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid #cbd8ec;
+    border-radius: 7px;
+    background: #ffffff;
+    z-index: 2000;
+    cursor: pointer;
+  }
+  .sum-mobile-more-button span {
+    display: block !important;
+    width: 5px !important;
+    height: 5px !important;
+    min-width: 5px;
+    min-height: 5px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 50%;
+    background: #111827 !important;
+  }
+  .sum-mobile-menu-button.sum-is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .sum-mobile-menu-button.sum-is-open span:nth-child(2) {
+    opacity: 0 !important;
+  }
+  .sum-mobile-menu-button.sum-is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .sum-mobile-navigation-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #d6deea;
+    border-radius: 7px;
+    background: #ffffff;
+    z-index: 1500;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  }
+  .sum-mobile-navigation-menu button {
+    width: 100%;
+    height: 54px;
+    min-height: 54px;
+    margin: 0;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0;
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #244b78;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+  }
+  .sum-mobile-navigation-menu button.sum-active {
+    background: #eaf3ff;
+    color: #155fe8;
+    font-weight: 600;
+  }
+  .sum-mobile-actions-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 150px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #ffffff;
+    z-index: 1600;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  }
+  .sum-mobile-actions-menu button {
+    width: 100%;
+    height: 48px;
+    min-height: 48px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 0;
+    border-bottom: 1px solid #e8edf3;
+    background: #ffffff;
+    color: #111827;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .sum-steps {
+    display: none !important;
+  }
+  .sum-layout {
+    width: 100%;
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "preview"
+      "editor"
+      "completion";
+    gap: 12px;
+  }
+  .sum-preview-section {
+    width: 100%;
+  }
+  .sum-preview-card {
+    min-height: 0;
+    margin-top: 10px;
+    padding: 14px;
+  }
+  .sum-editor-card {
+    min-height: 0;
+    padding: 14px;
+  }
+  .sum-completion-card {
+    min-height: 0;
+    padding: 14px;
+  }
+  .sum-completion-content {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

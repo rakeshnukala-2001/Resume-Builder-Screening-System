@@ -3,7 +3,7 @@
 .candidate-skills-page {
   width: 100%;
   min-height: 100vh;
-  padding: 0 18px 32px;
+  padding: 70 0px 0px;
   background: #f8fafc;
   color: #111827;
   overflow-x: hidden;
@@ -14,7 +14,7 @@
 .skills-layout,
 .skills-footer {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 }

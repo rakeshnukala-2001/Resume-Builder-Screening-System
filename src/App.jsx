@@ -21,11 +21,13 @@ import AboutUs from "./Components-landingpage/AboutUs";
 import RecruiterProfile from "./Components-Recruiter/RecruiterProfile";
 import CandidateProfile from "./Components-Candidate/CandidateProfile";
 
+import MainLayout from "./Components-Candidate/MainLayout";
 import PersonalInfo from "./Components-Candidate/PersonalInfo";
 import EducationPage from "./Components-Candidate/Education";
 import SkillsPage from "./Components-Candidate/CandidateSkills";
 import ExperiencePage from "./Components-Candidate/Experience";
 import ReviewPage from "./Components-Candidate/ReviewPage";
+import SummaryPage from "./Components-Candidate/Summary";
 
 const router = createBrowserRouter([
   {
@@ -85,7 +87,7 @@ const router = createBrowserRouter([
     element: <RecruiterDashboard />,
   },
   {
-    path: "/Resume-builder/dashboard/candidate",
+    path: "/Resume-builder/candidate/dashboard",
     element: <CandidtateDashboard />,
   },
   {
@@ -96,29 +98,39 @@ const router = createBrowserRouter([
     path: "Resume-builder/dashboard/recruiter/Profile",
     element: <RecruiterProfile />,
   },
+
   {
-    path: "/Resume-builder/candidate/candidate/profile",
-    element: <CandidateProfile />,
-  },
-  {
-    path: "/Resume-builder/candidate/candidate/personalinfo",
-    element: <PersonalInfo />,
-  },
-  {
-    path: "/Resume-builder/candidate/candidate/education",
-    element: <EducationPage />,
-  },
-  {
-    path: "/Resume-builder/candidate/candidate/experience",
-    element: <ExperiencePage />,
-  },
-  {
-    path: "/Resume-builder/candidate/candidate/skills",
-    element: <SkillsPage />,
-  },
-  {
-    path: "/Resume-builder/candidate/candidate/review",
-    element: <ReviewPage />,
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/Resume-builder/candidate/profile",
+        element: <CandidateProfile />,
+      },
+      {
+        path: "/Resume-builder/candidate/candidate/personalinfo",
+        element: <PersonalInfo />,
+      },
+      {
+        path: "/Resume-builder/candidate/candidate/education",
+        element: <EducationPage />,
+      },
+      {
+        path: "/Resume-builder/candidate/candidate/experience",
+        element: <ExperiencePage />,
+      },
+      {
+        path: "/Resume-builder/candidate/candidate/skills",
+        element: <SkillsPage />,
+      },
+      {
+        path: "/Resume-builder/candidate/candidate/summary",
+        element: <SummaryPage />,
+      },
+      {
+        path: "/Resume-builder/candidate/candidate/review",
+        element: <ReviewPage />,
+      },
+    ],
   },
 ]);
 
